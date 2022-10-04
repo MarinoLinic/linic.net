@@ -6,7 +6,7 @@ function App() {
 
 	return (
 		<div className="flex flex-col text-center mt-64 justify-center">
-			<p className="text-quarternary uppercase">frontend & backend developer</p>
+			<p className="text-quarternary uppercase">junior web developer</p>
 			<h1>Marino Linić</h1>
 			<div className="my-4 flex justify-center">
 				<img src="ml.jpg" alt="Image of Marino Linic" className="w-36 h-36 grayscale hover:grayscale-0 rounded-3xl" />
