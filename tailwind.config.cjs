@@ -3,7 +3,20 @@ module.exports = {
 	content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
 	mode: 'jit',
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				primary: '#393f5f',
+				secondary: '#ffe69d',
+				tertiary: '#646cff',
+				quarternary: '#eb6171',
+				quarnary: '#d65f9e',
+				dimWhite: 'rgba(255, 255, 255, 0.7)',
+				dimBlue: 'rgba(9, 151, 124, 0.1)'
+			},
+			fontFamily: {
+				poppins: ['Poppins', 'sans-serif']
+			}
+		},
 		screens: {
 			xs: '480px',
 			ss: '620px',

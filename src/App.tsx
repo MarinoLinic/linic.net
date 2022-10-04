@@ -6,7 +6,7 @@ function App() {
 	return (
 		<div className="flex flex-col text-center mt-56">
 			<div className="">
-				<p>web engineer</p>
+				<p className="text-quarternary">web engineer</p>
 			</div>
 			<h1>Marino Linić</h1>
 			<div className="my-4">
