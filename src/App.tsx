@@ -9,7 +9,7 @@ function App() {
 			<p className="text-quarternary uppercase">web engineer</p>
 			<h1>Marino Linić</h1>
 			<div className="my-4 flex justify-center">
-				<img src="src\assets\ml.jpg" alt="Image of Marino Linic" className="w-36 h-36 grayscale hover:grayscale-0 rounded-3xl" />
+				<img src="ml.jpg" alt="Image of Marino Linic" className="w-36 h-36 grayscale hover:grayscale-0 rounded-3xl" />
 			</div>
 			<h2 className="text-3xl">Hello!</h2>
 			<p className="">
