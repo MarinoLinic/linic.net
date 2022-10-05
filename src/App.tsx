@@ -16,7 +16,7 @@ function App() {
 				<Loader />
 			) : (
 				<div className="flex flex-col items-center justify-center h-screen">
-					<p className="text-quarternary uppercase">junior web developer</p>
+					<h5 className="text-quarternary uppercase">junior web developer</h5>
 					<h1>Marino Linić</h1>
 					<div className="my-4 flex justify-center">
 						<img src="ml.jpg" alt="Image of Marino Linic" className="w-36 h-36 grayscale hover:grayscale-0 rounded-3xl" />
