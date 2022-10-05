@@ -15,13 +15,13 @@ function App() {
 			{loading ? (
 				<Loader />
 			) : (
-				<div className="flex flex-col text-center mt-64 justify-center">
+				<div className="flex flex-col items-center justify-center h-screen">
 					<p className="text-quarternary uppercase">junior web developer</p>
 					<h1>Marino Linić</h1>
 					<div className="my-4 flex justify-center">
 						<img src="ml.jpg" alt="Image of Marino Linic" className="w-36 h-36 grayscale hover:grayscale-0 rounded-3xl" />
 					</div>
-					<h2 className="text-3xl">Hello!</h2>
+					<h2 className="">Hello!</h2>
 					<p className="">
 						Visit my <a href="https://linktr.ee/marino.linic">social media</a>!
 					</p>
