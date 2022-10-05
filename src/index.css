@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 :root {
-	font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+	font-family: Inter, sans-serif;
 	line-height: 24px;
 	font-weight: 400;
+	overflow: auto;
 
 	color: rgba(255, 255, 255, 0.85);
 	background-color: #242424;
