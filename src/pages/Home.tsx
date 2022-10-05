@@ -4,10 +4,22 @@ import Loader from '../components/Loader'
 
 const Home = () => {
 	const [count, setCount] = useState(0)
-	const [loading, setLoading] = useState(true)
+	const [isHovering, setIsHovering] = useState(false)
+	const [loading, setLoading] = useState(false)
+
+	const handleMouseOver = () => {
+		setIsHovering(true)
+	}
+
+	const handleMouseOut = () => {
+		setIsHovering(false)
+	}
 
 	useEffect(() => {
-		setLoading(false)
+		// setLoading(true)
+		setTimeout(() => {
+			setLoading(false)
+		}, 3000)
 	}, [])
 
 	return (
@@ -16,10 +28,23 @@ const Home = () => {
 				<Loader />
 			) : (
 				<div className="flex flex-col items-center justify-center h-screen">
-					<h5 className="text-quarternary uppercase">junior web developer</h5>
+					{isHovering ? (
+						<h5 onMouseOut={handleMouseOut} className="text-secondary uppercase">
+							& musician, photographer
+						</h5>
+					) : (
+						<h5 onMouseOver={handleMouseOver} className="text-quarternary uppercase">
+							junior web developer
+						</h5>
+					)}
+
 					<h1>Marino Linić</h1>
 					<div className="my-4 flex justify-center">
-						<img src="ml.jpg" alt="Image of Marino Linic" className="w-36 h-36 grayscale hover:grayscale-0 rounded-3xl" />
+						<img
+							src="ml.jpg"
+							alt="Image of Marino Linic"
+							className="w-36 h-36 grayscale hover:grayscale-0 rounded-3xl"
+						/>
 					</div>
 					<h2 className="">Hello!</h2>
 					<p className="">
