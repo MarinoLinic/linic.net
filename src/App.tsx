@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './animation.css';
+import Circles from './components/Circles';
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -18,20 +18,7 @@ function App() {
 			<div className="my-4">
 				<button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
 			</div>
-			<div className="-z-10">
-				<ul className="circles">
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-					<li></li>
-				</ul>
-			</div>
+			<Circles />
 		</div>
 	);
 }
