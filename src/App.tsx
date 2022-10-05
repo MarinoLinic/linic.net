@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import Circles from './components/Circles';
+import { useState } from 'react'
+import Circles from './components/Circles'
+import Loader from './components/Loader'
 
 function App() {
-	const [count, setCount] = useState(0);
+	const [count, setCount] = useState(0)
 
 	return (
 		<div className="flex flex-col text-center mt-64 justify-center">
@@ -20,7 +21,7 @@ function App() {
 			</div>
 			<Circles />
 		</div>
-	);
+	)
 }
 
-export default App;
+export default App

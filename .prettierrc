@@ -7,7 +7,7 @@
 	"useTabs": true,
 	"trailingComma": "none",
 	"bracketSpacing": true,
-	"semi": true,
+	"semi": false,
 	"bracketSameLine": true,
 	"tabWidth": 2
 }

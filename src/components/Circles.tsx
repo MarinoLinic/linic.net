@@ -1,4 +1,4 @@
-import '../styles/animation.css';
+import '../styles/animation.css'
 
 const Circles = () => {
 	return (
@@ -16,7 +16,7 @@ const Circles = () => {
 				<li></li>
 			</ul>
 		</div>
-	);
-};
+	)
+}
 
-export default Circles;
+export default Circles
