@@ -1,0 +1,60 @@
+.rainbow {
+	/* Chrome, Safari, Opera */
+	-webkit-animation: rainbow 5s infinite alternate;
+
+	/* Internet Explorer */
+	-ms-animation: rainbow 5s infinite alternate;
+
+	/* Standard Syntax */
+	animation: rainbow 5s infinite alternate;
+
+	opacity: 25%;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes rainbow {
+	0% {
+		color: #ffffff;
+	}
+	25% {
+		color: #ffe69d;
+	}
+	75% {
+		color: #646cff;
+	}
+	100% {
+		color: #eb6171;
+	}
+}
+
+/* Internet Explorer */
+@-ms-keyframes rainbow {
+	0% {
+		color: #ffffff;
+	}
+	25% {
+		color: #ffe69d;
+	}
+	75% {
+		color: #646cff;
+	}
+	100% {
+		color: #eb6171;
+	}
+}
+
+/* Standar Syntax */
+@keyframes rainbow {
+	0% {
+		color: #ffffff;
+	}
+	25% {
+		color: #ffe69d;
+	}
+	75% {
+		color: #646cff;
+	}
+	100% {
+		color: #eb6171;
+	}
+}
