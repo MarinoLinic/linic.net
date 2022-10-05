@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { Route, Routes, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Flight from './pages/Flight'
