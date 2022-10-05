@@ -1,4 +1,4 @@
-import '../styles/animation.css'
+import '../styles/circles-animation.css'
 
 const Circles = () => {
 	return (
