@@ -1,19 +1,12 @@
 import { useState, useEffect } from 'react'
 import Circles from '../components/Circles'
 import Loader from '../components/Loader'
+import { handleMouseOver, handleMouseOut } from '../utils/functions/handleMouseOver'
 
 const Home = () => {
 	const [count, setCount] = useState(0)
 	const [isHovering, setIsHovering] = useState(false)
 	const [loading, setLoading] = useState(false)
-
-	const handleMouseOver = () => {
-		setIsHovering(true)
-	}
-
-	const handleMouseOut = () => {
-		setIsHovering(false)
-	}
 
 	useEffect(() => {
 		// setLoading(true)
@@ -29,16 +22,24 @@ const Home = () => {
 			) : (
 				<div className="flex flex-col items-center justify-center h-screen">
 					{isHovering ? (
-						<h5 onMouseOut={handleMouseOut} className="text-secondary uppercase">
+						<h5
+							onMouseOut={() => {
+								handleMouseOut(setIsHovering)
+							}}
+							className="text-secondary uppercase cursor-default">
 							& musician, photographer
 						</h5>
 					) : (
-						<h5 onMouseOver={handleMouseOver} className="text-quarternary uppercase">
+						<h5
+							onMouseOver={() => {
+								handleMouseOver(setIsHovering)
+							}}
+							className="text-quarternary uppercase cursor-default">
 							junior web developer
 						</h5>
 					)}
 
-					<h1>Marino Linić</h1>
+					<h1 className="cursor-default">Marino Linić</h1>
 					<div className="my-4 flex justify-center">
 						<img
 							src="ml.jpg"
