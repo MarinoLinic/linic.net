@@ -1,6 +1,5 @@
 import postList from '../assets/rgPosts.json'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
-import rehypeRaw from 'rehype-raw'
 
 const PostList = () => {
 	const excerptList = postList.map((post) => {
@@ -17,8 +16,10 @@ const PostList = () => {
 								Published on {post.date} by {post.author}
 							</small>
 							<hr />
-							<ReactMarkdown children={excerptList[i]} rehypePlugins={[rehypeRaw]} />
-							<small>Read more...</small>
+							<ReactMarkdown children={excerptList[i]} />
+							<small>
+								<a href={`/rg/${post.id}`}>Read more...</a>
+							</small>
 						</div>
 					)
 				})}

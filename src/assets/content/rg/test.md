@@ -12,4 +12,6 @@ ashjd ashdjk as a dhasjkd ashdjk ashdjk as as dhask dashdjk as as dhasjkd ashdjk
 
 <a href="#">Haha</a>
 
-![image](ml.jpg)
+![image](/ml.jpg)
+
+<img src="https://linic.net/ml.jpg" alt="fdsfsd"/>
