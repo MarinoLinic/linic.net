@@ -15,6 +15,7 @@ const getPosts = () => {
 					if (/^---/.test(elem)) {
 						accumulator.push(index)
 					}
+					//console.log(accumulator)
 					return accumulator
 				}
 				const parseMetadata = ({ lines, metadataIndices }) => {
@@ -36,16 +37,21 @@ const getPosts = () => {
 				const metadataIndices = lines.reduce(getMetadataIndices, [])
 				const metadata = parseMetadata({ lines, metadataIndices })
 				const content = parseContent({ lines, metadataIndices })
+				const date = new Date(metadata.date)
+				const timestamp = date.getTime() / 1000
 				post = {
-					id: index + 1,
+					id: timestamp,
 					title: metadata.title ? metadata.title : 'No title available',
 					author: metadata.author ? metadata.author : 'No author available',
 					date: metadata.date ? metadata.date : 'No date available',
-					content: metadata.content ? metadata.content : 'No content available'
+					content: content ? content : 'No content available'
 				}
 				postList.push(post)
 				if (index === files.length - 1) {
-					let data = JSON.stringify(postList)
+					const sortedList = postList.sort((a, b) => {
+						return a.id < b.id ? 1 : -1
+					})
+					let data = JSON.stringify(sortedList)
 					fs.writeFileSync('src/assets/rgPosts.json', data)
 				}
 			})
