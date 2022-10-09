@@ -15,22 +15,22 @@ const Clock = ({ title, timerDays, timerHours, timerMinutes, timerSeconds }: pro
 			<div className="flex items-center justify-center">
 				<section>
 					<h1 className="text-quarnary">{timerDays}</h1>
-					<p>Days</p>
+					<p className="font-bold">Days</p>
 				</section>
 				<h3 className="mb-4">:</h3>
 				<section>
 					<h1 className="text-quarnary">{timerHours}</h1>
-					<p>Hrs</p>
+					<p className="font-bold">Hrs</p>
 				</section>{' '}
 				<h3 className="mb-4">:</h3>
 				<section>
 					<h1 className="text-quarnary">{timerMinutes}</h1>
-					<p>Mins</p>
+					<p className="font-bold">Mins</p>
 				</section>{' '}
 				<h3 className="mb-4">:</h3>
 				<section>
 					<h1 className="text-quarnary">{timerSeconds}</h1>
-					<p>Secs</p>
+					<p className="font-bold">Secs</p>
 				</section>
 			</div>
 		</div>

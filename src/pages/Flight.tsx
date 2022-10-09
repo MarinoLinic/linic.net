@@ -44,13 +44,16 @@ const Flight = () => {
 
 	return (
 		<div className="flex items-center justify-center h-screen">
-			<Clock
-				title={title}
-				timerDays={timerDays}
-				timerHours={timerHours}
-				timerMinutes={timerMinutes}
-				timerSeconds={timerSeconds}
-			/>
+			<div>
+				<Clock
+					title={title}
+					timerDays={timerDays}
+					timerHours={timerHours}
+					timerMinutes={timerMinutes}
+					timerSeconds={timerSeconds}
+				/>
+				<h5 className="pt-10 text-secondary text-center">October 12, 2022, 11:25</h5>
+			</div>
 			<Circles />
 		</div>
 	)
