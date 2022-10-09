@@ -19,6 +19,7 @@ const Post = () => {
 										<p className="mt-2 font-mono text-quarnary">
 											{post.date} by {post.author}
 										</p>
+										<img src={post.image} alt="Post image" className="object-cover mt-2 w-full h-auto" />
 									</div>
 									<div className="my-12">
 										<ReactMarkdown

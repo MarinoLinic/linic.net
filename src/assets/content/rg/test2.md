@@ -1,7 +1,8 @@
 ---
-title: The Anatomy of the Larynx and Its Relation to Singing (actual thing I wrote 2)
+title: The Anatomy of the Larynx (actual thing I wrote 2)
 author: Marino Linić
 date: 15 June 2022
+image: https://www.pharmacy180.com/media/article/article-Larynx-bxC.jpg
 ---
 
 The **larynx** is one of the key organs involved in producing sound, principally the manipulation of pitch and

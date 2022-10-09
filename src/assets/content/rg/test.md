@@ -1,7 +1,8 @@
 ---
-title: Types of Music (actual thing I wrote)
+title: Types of Music and Music Listening (actual thing I wrote)
 author: Marino Linić
 date: 13 September 2022
+image: https://upload.wikimedia.org/wikipedia/commons/f/f6/Exposition_Haydn%27s_Sonata_in_G_Major.png
 ---
 
 My friend described 5 types of music (or 5 ways of listening to music):  

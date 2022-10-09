@@ -15,7 +15,7 @@ const PostList = () => {
 				</a>{' '}
 				(ak. g. 2022/23) za dokumentaciju projekata iz kolegija Računalna grafika.
 			</h5>
-			<div className="grid grid-cols-1 md:grid-cols-3 my-16 gap-10">
+			<div className="grid grid-cols-1 md:grid-cols-3 my-16 gap-8 md:gap-48">
 				{postList.length &&
 					postList.map((post, i) => {
 						return (
@@ -25,6 +25,13 @@ const PostList = () => {
 										{post.title}
 									</a>
 								</h2>
+								<a href={`/rg/${post.id}`}>
+									<img
+										src={post.image}
+										alt="Post image"
+										className="object-cover mt-2 w-full h-1/3 grayscale hover:grayscale-0"
+									/>
+								</a>
 								<small>
 									<a className="text-quarnary hover:text-quarnary" href={`/rg/${post.id}`}>
 										{post.date}
