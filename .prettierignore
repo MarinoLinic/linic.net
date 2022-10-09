@@ -4,3 +4,4 @@ dist
 build
 coverage
 .nyc_output
+content
