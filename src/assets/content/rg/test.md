@@ -4,29 +4,19 @@ author: Marino Linić
 date: 13 September 2022
 ---
 
-My friend described 5 types of music (or 5 ways of listening to music):
-
-<br>
+My friend described 5 types of music (or 5 ways of listening to music):  
 
 **Dance music**  
 The focus is on familiarity and being strongly rhythmic; basically music to dance to.
 
-<br>
-
 **Function music**  
 Used for ceremonies and marches; it is not meant to draw attention per se, but it _is_ meant to make the occasion feel important.
-
-<br>
 
 **Florid music**  
 Intricate, elaborate music that you listen to with full attention; the structure itself is complex enough that you _can_ listen to _just_ the music. These are arias, symphonies, intense duets, etc.
 
-<br>
-
 **Vibing music**  
 Essentially chilling music, it is used to just exist in the background for whatever purpose.
-
-<br>
 
 **Escapist music**  
 Music that encourages fantasy in whatever form; lots of film music might belong to this category.  

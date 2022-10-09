@@ -10,7 +10,7 @@ const Post = () => {
 		<div>
 			{postList.length &&
 				postList.map((post, i) => {
-					if (post.id == id) {
+					if (post.id === Number(id)) {
 						return (
 							<div className="flex flex-col items-center justify-center mt-16">
 								<div className="md:w-1/3 md:max-w-1/3">
