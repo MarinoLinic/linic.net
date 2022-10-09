@@ -1,15 +1,18 @@
-import { Route, Routes, Link } from 'react-router-dom'
+import { Route, Routes, Link, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Flight from './pages/Flight'
 import RacunalnaGrafika from './pages/RacunalnaGrafika'
 import Post from './components/Post'
+// import CV from './components/CV'
 import NotFound from './pages/NotFound'
+import Navigation from './components/Navigation'
 
 function App() {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<Home />} />
+				{/*<Route path="/cv" element={<CV />} />*/}
 				<Route path="/flight" element={<Flight />} />
 				<Route path="/rg" element={<RacunalnaGrafika />} />
 				<Route path="/rg/:id" element={<Post />} />
@@ -18,5 +21,7 @@ function App() {
 		</>
 	)
 }
+
+//"path" | "route"
 
 export default App

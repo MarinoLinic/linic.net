@@ -4,8 +4,10 @@ import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import { useParams } from 'react-router-dom'
+import { useState } from 'react'
 
 const Post = () => {
+	const [found, setFound] = useState(false)
 	let { id } = useParams()
 	return (
 		<div>
@@ -32,7 +34,7 @@ const Post = () => {
 								</div>
 							</div>
 						)
-					} else if (i === postList.length - 1) {
+					} else if (i === postList.length - 1 && !found) {
 						return <NotFound />
 					}
 				})}

@@ -12,14 +12,21 @@
 
 	color: rgba(255, 255, 255, 0.85);
 	background-color: #242424;
+
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+	display: none;
 }
 
 ::selection {
-	background: #393f5f; /* WebKit/Blink Browsers */
+	background: rgba(57, 63, 95, 0.85); /* WebKit/Blink Browsers */
 	color: rgba(255, 255, 255, 0.85);
 }
 ::-moz-selection {
-	background: #393f5f; /* Gecko Browsers */
+	background: rgba(57, 63, 95, 0.85); /* Gecko Browsers */
 	color: rgba(255, 255, 255, 0.85);
 }
 
@@ -67,7 +74,7 @@ button {
 	border: 1px solid transparent;
 	padding: 0.6em 1.2em;
 	font-size: 15px;
-	font-weight: 500;
+	font-weight: 700;
 	font-family: inherit;
 	background-color: #1a1a1a;
 	cursor: pointer;
