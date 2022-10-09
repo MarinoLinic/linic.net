@@ -21,6 +21,4 @@ function App() {
 	)
 }
 
-//"path" | "route"
-
 export default App
