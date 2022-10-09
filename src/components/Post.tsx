@@ -1,4 +1,5 @@
 import postList from '../assets/rgPosts.json'
+import NotFound from '../pages/NotFound'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -31,6 +32,8 @@ const Post = () => {
 								</div>
 							</div>
 						)
+					} else if (i === postList.length - 1) {
+						return <NotFound />
 					}
 				})}
 		</div>
