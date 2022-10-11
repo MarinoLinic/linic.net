@@ -52,7 +52,7 @@ const Flight = () => {
 					timerMinutes={timerMinutes}
 					timerSeconds={timerSeconds}
 				/>
-				<h5 className="pt-10 text-secondary text-center">Happy birthday!</h5>
+				<h5 className="pt-10 text-secondary text-center">October 12, 2022, 11:25</h5>
 			</div>
 			<Circles />
 		</div>
