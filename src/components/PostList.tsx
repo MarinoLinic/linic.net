@@ -34,9 +34,9 @@ const PostList = () => {
 									/>
 								</Link>
 								<small>
-									<a className="text-quarnary hover:text-quarnary" href={`/rg/${post.id}`}>
+									<Link className="text-quarnary hover:text-quarnary" to={`/rg/${post.id}`}>
 										{post.date}
-									</a>
+									</Link>
 								</small>
 								<ReactMarkdown children={excerptList[i]} />
 								<small>
