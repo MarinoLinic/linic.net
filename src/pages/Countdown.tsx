@@ -3,31 +3,38 @@ import Clock from '../components/Clock'
 import Circles from '../components/Circles'
 import { clockString } from '../utils/functions/clockString'
 
-const Flight = () => {
+const Countdown = () => {
 	const [timerDays, setTimerDays] = useState('')
 	const [timerHours, setTimerHours] = useState('')
 	const [timerMinutes, setTimerMinutes] = useState('')
 	const [timerSeconds, setTimerSeconds] = useState('')
 
 	let interval: any
-	let title: string = 'Time until flight to the Czech Republic'
+	let title: string = "Time until Marino's 24th birthday"
+	let date: string = 'October 13, 2023, 00:00'
 
-	const startTimer = () => {
-		const countDownDate = new Date('October 12, 2022, 11:25').getTime()
+	const startTimer = (date: string) => {
+		const countDownDate = new Date(date).getTime()
 
 		interval = setInterval(() => {
 			const now = new Date().getTime()
 
 			const timeLeft = countDownDate - now
 
-			const days = Math.floor(timeLeft / (24 * 60 * 60 * 1000)) as any
-			const hours = Math.floor((timeLeft % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)) as any
-			const minutes = Math.floor((timeLeft % (60 * 60 * 1000)) / (1000 * 60)) as any
-			const seconds = Math.floor((timeLeft % (60 * 1000)) / 1000) as any
+			const days: number = Math.floor(timeLeft / (24 * 60 * 60 * 1000))
+			const hours: number = Math.floor((timeLeft % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60))
+			const minutes: number = Math.floor((timeLeft % (60 * 60 * 1000)) / (1000 * 60))
+			const seconds: number = Math.floor((timeLeft % (60 * 1000)) / 1000)
+
+			console.log(hours)
 
 			if (timeLeft < 0) {
 				// Stop Timer
 				clearInterval(interval.current)
+				setTimerDays(clockString(0))
+				setTimerHours(clockString(0))
+				setTimerMinutes(clockString(0))
+				setTimerSeconds(clockString(0))
 			} else {
 				// Update Timer
 				setTimerDays(clockString(days))
@@ -39,7 +46,7 @@ const Flight = () => {
 	}
 
 	useEffect(() => {
-		startTimer()
+		startTimer(date)
 	})
 
 	return (
@@ -52,11 +59,11 @@ const Flight = () => {
 					timerMinutes={timerMinutes}
 					timerSeconds={timerSeconds}
 				/>
-				<h5 className="pt-10 text-secondary text-center">October 12, 2022, 11:25</h5>
+				<h5 className="pt-10 text-secondary text-center">{date}</h5>
 			</div>
 			<Circles />
 		</div>
 	)
 }
 
-export default Flight
+export default Countdown
