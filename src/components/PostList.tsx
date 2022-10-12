@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import postList from '../assets/rgPosts.json'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
@@ -10,9 +11,9 @@ const PostList = () => {
 			<h1 className="mb-2 md:text-start text-center">UNIRI: Računalna grafika</h1>
 			<h5 className="mt-8 md:mt-0 md:text-start text-center">
 				Ovo je blog{' '}
-				<a href="/" className="text-quarternary hover:text-quarternary">
+				<Link to="/" className="text-quarternary hover:text-quarternary">
 					Marina Linića
-				</a>{' '}
+				</Link>{' '}
 				(ak. g. 2022/23) za dokumentaciju projekata iz kolegija Računalna grafika.
 			</h5>
 			<div className="grid grid-cols-1 md:grid-cols-3 my-16 gap-8 md:gap-48">
@@ -21,17 +22,17 @@ const PostList = () => {
 						return (
 							<div>
 								<h2>
-									<a className="text-text hover:text-text" href={`/rg/${post.id}`}>
+									<Link className="text-text hover:text-text" to={`/rg/${post.id}`}>
 										{post.title}
-									</a>
+									</Link>
 								</h2>
-								<a href={`/rg/${post.id}`}>
+								<Link to={`/rg/${post.id}`}>
 									<img
 										src={post.image}
 										alt="Post image"
 										className="object-cover mt-2 w-full h-1/3 grayscale hover:grayscale-0"
 									/>
-								</a>
+								</Link>
 								<small>
 									<a className="text-quarnary hover:text-quarnary" href={`/rg/${post.id}`}>
 										{post.date}
@@ -39,7 +40,7 @@ const PostList = () => {
 								</small>
 								<ReactMarkdown children={excerptList[i]} />
 								<small>
-									<a href={`/rg/${post.id}`}>Nastavite čitati...</a>
+									<Link to={`/rg/${post.id}`}>Nastavite čitati...</Link>
 								</small>
 							</div>
 						)
