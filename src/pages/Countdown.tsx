@@ -3,18 +3,21 @@ import Clock from '../components/Clock'
 import Circles from '../components/Circles'
 import { clockString } from '../utils/functions/clockString'
 
-const Countdown = () => {
+interface props {
+	date: string
+	title: string
+}
+
+const Countdown = (props: props) => {
 	const [timerDays, setTimerDays] = useState('')
 	const [timerHours, setTimerHours] = useState('')
 	const [timerMinutes, setTimerMinutes] = useState('')
 	const [timerSeconds, setTimerSeconds] = useState('')
 
 	let interval: any
-	let title: string = "Time until Marino's 24th birthday"
-	let date: string = 'October 13, 2023, 00:00'
 
 	const startTimer = (date: string) => {
-		const countDownDate = new Date(date).getTime()
+		const countDownDate = new Date(props.date).getTime()
 
 		interval = setInterval(() => {
 			const now = new Date().getTime()
@@ -46,20 +49,20 @@ const Countdown = () => {
 	}
 
 	useEffect(() => {
-		startTimer(date)
+		startTimer(props.date)
 	})
 
 	return (
 		<div className="flex items-center justify-center h-screen">
 			<div>
 				<Clock
-					title={title}
+					title={props.title}
 					timerDays={timerDays}
 					timerHours={timerHours}
 					timerMinutes={timerMinutes}
 					timerSeconds={timerSeconds}
 				/>
-				<h5 className="pt-10 text-secondary text-center">{date}</h5>
+				<h5 className="pt-10 text-secondary text-center">{props.date}</h5>
 			</div>
 			<Circles />
 		</div>

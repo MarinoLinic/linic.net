@@ -12,7 +12,10 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/cv" element={<CV />} />
-				<Route path="/countdown" element={<Countdown />} />
+				<Route
+					path="/countdown"
+					element={<Countdown date="October 13, 2023, 00:00" title="Time until Marino's 24th birthday" />}
+				/>
 				<Route path="/rg" element={<RacunalnaGrafika />} />
 				<Route path="/rg/:id" element={<Post />} />
 				<Route path="*" element={<NotFound />} />

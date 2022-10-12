@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 const Navigation = () => {
 	return (
 		<nav className="md:sticky md:top-0 pt-8">
@@ -9,12 +11,12 @@ const Navigation = () => {
 					{[
 						['Resume/CV', '/cv'],
 						['Računalna grafika', '/rg'],
-						['Countdown', '/flight']
+						['Countdown', '/countdown']
 					].map(([title, url]) => (
 						<div key={title} className="px-2">
-							<a href={url} className="text-text">
+							<Link to={url} className="text-text">
 								{title}
-							</a>
+							</Link>
 						</div>
 					))}
 				</div>
