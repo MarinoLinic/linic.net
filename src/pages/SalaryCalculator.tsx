@@ -49,7 +49,7 @@ const SalaryCalculator = () => {
 
 	return (
 		<div className="flex flex-col items-center justify-center h-screen text-xl font-semibold leading-relaxed">
-			<h2 className="mb-4 text-text">Porez na dohodak u Hrvatskoj</h2>
+			<h2 className="mb-4 text-text text-center">Porez na dohodak u Hrvatskoj</h2>
 			<p>Grad (prirez)</p>
 			<select
 				title="gradovi"
