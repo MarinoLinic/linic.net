@@ -5,3 +5,4 @@ build
 coverage
 .nyc_output
 content
+src/pages/SalaryCalculator

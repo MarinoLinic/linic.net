@@ -4,6 +4,7 @@ import Countdown from './pages/Countdown'
 import RacunalnaGrafika from './pages/RacunalnaGrafika'
 import Post from './components/Post'
 import CV from './components/CV'
+import SalaryCalculator from './pages/SalaryCalculator'
 import NotFound from './pages/NotFound'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 				/>
 				<Route path="/rg" element={<RacunalnaGrafika />} />
 				<Route path="/rg/:id" element={<Post />} />
+				<Route path="/salary" element={<SalaryCalculator />} />
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>

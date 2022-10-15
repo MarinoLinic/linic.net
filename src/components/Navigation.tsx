@@ -11,7 +11,8 @@ const Navigation = () => {
 					{[
 						['Resume/CV', '/cv'],
 						['Računalna grafika', '/rg'],
-						['Countdown', '/countdown']
+						['Countdown', '/countdown'],
+						['Neto kalkulator', '/salary']
 					].map(([title, url]) => (
 						<div key={title} className="px-2">
 							<Link to={url} className="text-text">
