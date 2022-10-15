@@ -32,7 +32,7 @@ const SalaryCalculator = () => {
 				value={brutoPlaca}
 				autoComplete="off"
 				placeholder={brutoPlaca.toString()}
-				onChange={(e) => setBrutoPlaca(e.target.value)}
+				onChange={(e) => setBrutoPlaca(parseFloat(e.target.value))}
 			/>
 			<div>
 				{[
