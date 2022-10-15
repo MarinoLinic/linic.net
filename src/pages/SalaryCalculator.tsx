@@ -26,7 +26,7 @@ const SalaryCalculator = () => {
 	return (
 		<div className="flex flex-col items-center justify-center h-screen text-xl font-semibold leading-relaxed">
 			<input
-				className="bg-text text-primary mb-8 text-center font-extrabold text-3xl"
+				className="bg-text text-primary mb-8 text-center font-extrabold text-2xl md:text-3xl"
 				type="text"
 				name="bruto"
 				value={brutoPlaca}
