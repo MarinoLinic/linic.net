@@ -36,7 +36,7 @@ const SalaryCalculator = () => {
 			/>
 			<div>
 				{[
-					['my-0 text-text', 'text-text', 'Bruto mjesečno:', brutoPlaca, valuta],
+					['my-0 text-text', 'text-text', 'Bruto mjesečno:', brutoPlaca.toFixed(2), valuta],
 					['my-0 text-text', 'text-tertiary', 'Neto mjesečno:', izracun_place(brutoPlaca).toFixed(2), valuta],
 					[
 						'my-0 text-text',
@@ -56,7 +56,7 @@ const SalaryCalculator = () => {
 					['my-0 text-text', 'text-text', 'Neto godišnje:', (izracun_place(brutoPlaca) * 12).toFixed(2), valuta],
 					[
 						'my-0 text-text',
-						'text-quarternary',
+						'text-text',
 						'Godišnja razlika:',
 						(izracun_place(brutoPlaca) * 12 - brutoPlaca * 12).toFixed(2),
 						valuta
