@@ -24,6 +24,10 @@ const SalaryCalculator = () => {
 	let valuta = 'HRK'
 
 	function izracun_place(bruto: number, koeficijent: number, prirez: number) {
+		// sanitization (incomplete)
+		if (isNaN(bruto)) bruto = 0
+		if (isNaN(koeficijent) || koeficijent < 0) koeficijent = 0
+
 		let porez, izracun
 		let osnovica = 2500
 		let mirovinsko_stopa = 0.2 // 20%
