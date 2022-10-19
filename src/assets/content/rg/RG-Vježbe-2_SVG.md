@@ -13,10 +13,10 @@ SVG je široko korišten u web UI razvoju i smatram njegovo učenje korisnim. Os
 
 <br>
 
-###### [Repozitorij 2. vježbe na GitHubu](https://github.com/MarinoLinic/racunalna-grafika/tree/main/RG-Vje%C5%BEbe-2_SVG)
+###### [Repozitorij 2. vježbe na GitHubu](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/tree/main/RG-Vje%C5%BEbe-2_SVG)
 
 <br>
 
-##### Zadatak 7b ([izvorni kôd](https://github.com/MarinoLinic/racunalna-grafika/blob/main/RG-Vje%C5%BEbe-2_SVG/zadatak7b.html) | [postavljeni HTML na webu](https://marinolinic.github.io/racunalna-grafika/RG-Vje%C5%BEbe-2_SVG/zadatak7b.html))
+##### Zadatak 7b ([izvorni kôd](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/blob/main/RG-Vje%C5%BEbe-2_SVG/zadatak7b.html) | [postavljeni HTML na webu](https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-2_SVG/zadatak7b.html))
 
 <br>
