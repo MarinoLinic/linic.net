@@ -17,12 +17,16 @@ const Post = () => {
 						return (
 							<div className="flex flex-col items-center justify-center mt-16 mx-10">
 								<div className="md:w-1/3 md:max-w-1/3">
-									<div className="text-center">
+									<div className="text-center flex flex-col justify-center items-center">
 										<h2>{post.title}</h2>
 										<p className="mt-2 font-mono text-quarnary">
 											{post.date} by {post.author}
 										</p>
-										<img src={post.image} alt="Post image" className="object-cover mt-2 w-full h-auto" />
+										<img
+											src={post.image}
+											alt="Post image"
+											className="object-cover mt-2 w-full md:max-w-[500px] h-auto"
+										/>
 									</div>
 									<div className="my-12">
 										<ReactMarkdown
