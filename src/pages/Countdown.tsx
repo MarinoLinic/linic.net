@@ -53,7 +53,7 @@ const Countdown = (props: props) => {
 	})
 
 	return (
-		<div className="flex items-center justify-center h-screen">
+		<div className="flex items-center justify-center h-[80vh] md:h-screen">
 			<div>
 				<Clock
 					title={props.title}

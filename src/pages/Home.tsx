@@ -21,9 +21,9 @@ const Home = () => {
 			{loading ? (
 				<Loader />
 			) : (
-				<div className="h-screen">
+				<div className="">
 					<Navigation />
-					<div className="flex flex-col items-center justify-center h-[80vh]">
+					<div className="flex flex-col items-center justify-center h-[60vh] md:h-[80vh]">
 						{isHovering ? (
 							<h5
 								onMouseOut={() => {
