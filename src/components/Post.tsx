@@ -5,6 +5,7 @@ import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Post = () => {
 	const [found, setFound] = useState(false)
@@ -36,6 +37,9 @@ const Post = () => {
 										/>
 									</div>
 								</div>
+								<Link className="text-quarnary hover:text-quarnary" to={`/rg/`}>
+									← Return
+								</Link>
 								<p className="m-8 text-gray-600">Računalna grafika, 2022./2023.</p>
 							</div>
 						)
