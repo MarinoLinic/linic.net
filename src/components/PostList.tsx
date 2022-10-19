@@ -30,7 +30,7 @@ const PostList = () => {
 									<img
 										src={post.image}
 										alt="Post image"
-										className="object-cover mt-2 w-full h-1/3 grayscale hover:grayscale-0"
+										className="object-cover mt-2 w-full h-2/3 grayscale hover:grayscale-0"
 									/>
 								</Link>
 								<small>

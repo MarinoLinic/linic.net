@@ -32,6 +32,7 @@ const Post = () => {
 										/>
 									</div>
 								</div>
+								<p className="m-8 text-gray-600">Računalna grafika, 2022./2023.</p>
 							</div>
 						)
 					} else if (i === postList.length - 1 && !found) {
