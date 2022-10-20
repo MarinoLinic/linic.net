@@ -1,5 +1,6 @@
 import { Route, Routes, Link } from 'react-router-dom'
 import Home from './pages/Home'
+import About from './pages/About'
 import Countdown from './pages/Countdown'
 import RacunalnaGrafika from './pages/RacunalnaGrafika'
 import Post from './components/Post'
@@ -12,6 +13,7 @@ function App() {
 		<>
 			<Routes>
 				<Route path="/" element={<Home />} />
+				<Route path="/about" element={<About />} />
 				<Route path="/cv" element={<CV />} />
 				<Route
 					path="/countdown"
