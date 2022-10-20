@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,8 +10,8 @@
 	font-weight: 400;
 	overflow: auto;
 
-	color: rgba(255, 255, 255, 0.85);
-	background-color: #242424;
+	color: theme('colors.text');
+	background-color: theme('colors.background');
 
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none;
@@ -22,17 +22,17 @@
 }
 
 ::selection {
-	background: rgba(57, 63, 95, 0.85); /* WebKit/Blink Browsers */
-	color: rgba(255, 255, 255, 0.85);
+	background: theme('colors.primary'); /* WebKit/Blink Browsers */
+	color: theme('colors.text');
 }
 ::-moz-selection {
-	background: rgba(57, 63, 95, 0.85); /* Gecko Browsers */
-	color: rgba(255, 255, 255, 0.85);
+	background: theme('colors.primary'); /* Gecko Browsers */
+	color: theme('colors.text');
 }
 
 a {
 	font-weight: 700;
-	color: #646cff;
+	color: theme('colors.tertiary');
 	text-decoration: inherit;
 }
 a:hover {
@@ -81,7 +81,7 @@ button {
 	transition: border-color 0.25s;
 }
 button:hover {
-	border-color: #646cff;
+	border-color: theme('colors.tertiary');
 }
 button:focus {
 	outline: 4px auto -webkit-focus-ring-color;
@@ -93,5 +93,5 @@ img {
 }
 
 img:hover {
-	border-color: #646cff;
+	border-color: theme('colors.tertiary');
 }
