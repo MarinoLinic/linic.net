@@ -35,6 +35,13 @@ const About = () => {
 				<br />
 				<br />
 				<section>
+					<h2>Socials</h2>
+					<br />
+					<p>Ok, so... I have a lot of these things.</p>
+				</section>
+				<br />
+				<br />
+				<section>
 					<h2>Computer Science</h2>
 					<br />
 					<p>Under construction.</p>
@@ -94,7 +101,7 @@ const About = () => {
 					<br />
 					<p>
 						But I think a proper way to show my photography would actually be to display a video I filmed on my...
-						phone... when I was 17. (I'm a fan of diving.)
+						phone... when I was 17.
 					</p>
 					<br />
 					<iframe
@@ -102,6 +109,7 @@ const About = () => {
 						className="w-full h-auto md:h-[300px]"
 						src="https://www.youtube.com/embed/jCOIRbg6zIU"
 					/>
+					<small className="text-gray-400">(I'm a fan of diving.)</small>
 				</section>
 				<br />
 				<br />
@@ -128,6 +136,25 @@ const About = () => {
 					<p>
 						Zoology—and entomology and arachnology in particular—shaped my childhood and early adolescence, and I
 						suppose I won't let an introduction get away without it.
+					</p>
+					<br />
+					<p>
+						When I was 14, I stumbled upon a male specimen of{' '}
+						<i>
+							<a href="https://inaturalist.nz/observations/117533411">Trigonidium cicindeloides</a>
+						</i>
+						. It turned out this was the first confirmation of the species' existence in Croatia in 50 years. It
+						continues to be the only observation on the island of Pašman and the first on an Adriatic island. My
+						name appears in{' '}
+						<a href="https://zenodo.org/record/5993822">
+							The first annotated checklist of Croatian crickets and grasshoppers
+						</a>{' '}
+						by
+						<a href="https://www.researchgate.net/publication/329842940_The_first_annotated_checklist_of_Croatian_crickets_and_grasshoppers_Orthoptera_Ensifera_Caelifera">
+							{' '}
+							Skejo et al. (2018)
+						</a>
+						.
 					</p>
 					<br />
 					<p>
@@ -162,7 +189,7 @@ const About = () => {
 					<br />
 					<p>
 						Here's one of the last videos I made before deciding I wasn't going to actively spend time on zoology.
-						In this case, to be precise: herpetology.
+						In this case, anyhow, herpetology.
 					</p>
 					<br />
 					<iframe
@@ -172,11 +199,10 @@ const About = () => {
 					<br />
 					<small className="text-gray-400">
 						(As a side note, considering that, at the time of that recording, I had never set foot in the US and
-						wasn't a native speaker, people have wondered how I was able to emulate a native US English accent, and
-						I generally get asked that all the time. I believe this is intimately related to musicality. Acting,
-						singing, and controlling pronunciation seem to be all correlated. I learned this accent by the time I
-						was 12-13 years old, and got it from cinema. Languages come naturally to me, albeit I<em> am </em>only
-						bilingual.)
+						wasn't a native speaker, people have wondered how I was able to emulate a native US English accent. I
+						believe this is intimately related to musicality. Acting, singing, and controlling pronunciation seem
+						to be all correlated. I learned this accent by the time I was 12-13 years old, and got it from cinema.
+						Languages come naturally to me, albeit I<em> am </em>only bilingual.)
 					</small>
 				</section>
 				<br />
