@@ -18,5 +18,3 @@ SVG je široko korišten u web UI razvoju i smatram njegovo učenje korisnim. Os
 <br>
 
 ##### Zadatak 7b ([izvorni kôd](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/blob/main/RG-Vje%C5%BEbe-2_SVG/zadatak7b.html) | [postavljeni HTML na webu](https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-2_SVG/zadatak7b.html))
-
-<br>

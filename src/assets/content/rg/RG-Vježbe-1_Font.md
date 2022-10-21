@@ -14,5 +14,3 @@ Ovo je bilo korisno naučiti u slučaju stvaranja nekakvog vlastitog multimedijs
 <br/>
 
 ##### Zadatak: [Font (TTF)](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/blob/main/RG-Vje%C5%BEbe-1_Font/Jokefont-Regular.ttf) | [PNG Slika](https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-1_Font/MarinoLinic.png)
-
-<img src="https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-1_Font/MarinoLinic.png" alt="Slika" width="100%" height="auto">
