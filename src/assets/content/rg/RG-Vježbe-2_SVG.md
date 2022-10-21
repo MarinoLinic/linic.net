@@ -1,5 +1,5 @@
 ---
-title: Vježbe 2 - SVG
+title: RG - Vježbe 2: SVG
 author: Marino Linić
 date: 13 October 2022
 image: https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-2_SVG/zadatak7b.png
