@@ -13,4 +13,8 @@ Ovo je bilo korisno naučiti u slučaju stvaranja nekakvog vlastitog multimedijs
 
 <br/>
 
+###### [Repozitorij 1. vježbe na GitHubu](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/tree/main/RG-Vje%C5%BEbe-1_Font)
+
+<br/>
+
 ##### Zadatak: [Font (TTF)](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/blob/main/RG-Vje%C5%BEbe-1_Font/Jokefont-Regular.ttf) | [PNG Slika](https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-1_Font/MarinoLinic.png)
