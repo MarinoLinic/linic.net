@@ -1,5 +1,4 @@
 const About = () => {
-	// https://www.youtube.com/watch?v=jCOIRbg6zIU
 	let age: number = 23
 	let habitat: string = 'Rijeka, Croatia'
 	let habitatAddition: string | undefined = ', where I was also born'
@@ -233,6 +232,13 @@ const About = () => {
 						I watched.
 					</p>
 					<p>I care about economics, philosophy, genetics, history, and geography.</p>
+				</section>
+				<br />
+				<br />
+				<br />
+				<br />
+				<section className="flex justify-center">
+					<img src="WhiteSignature.svg" alt="Signature" className="w-1/3" />
 				</section>
 				<br />
 				<br />
