@@ -5,7 +5,7 @@ date: 05 October 2022
 image: https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-1_Font/MarinoLinic.png
 ---
 
-Calligraphr je zanimljiv alat koji omogućuje kreiranje fontova. Može se skenirati nacrtani tekst na temelju predloška i uređivati pojedina slova.
+Calligraphr je zanimljiv alat koji omogućuje kreiranje fontova. Može se skenirati nacrtani tekst na temelju predloška i uređivati pojedina slova. Kao alat je vrlo jednostavan za koristiti i nudi široku funkcionalnost.
 
 <br/>
 
