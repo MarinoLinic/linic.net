@@ -5,16 +5,22 @@ import Navigation from '../components/Navigation'
 import { handleMouseOver, handleMouseOut } from '../utils/functions/handleMouseOver'
 
 const Home = () => {
-	const [count, setCount] = useState(0)
+	const [count, setCount] = useState(() => {
+		let cond = localStorage.getItem('Clicks') ? JSON.parse(localStorage.getItem('Clicks')!) : 0
+		return cond
+	})
+
 	const [isHovering, setIsHovering] = useState(false)
 	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
+		localStorage.setItem('Clicks', JSON.stringify(count))
+
 		// setLoading(true)
-		setTimeout(() => {
-			setLoading(false)
-		}, 3000)
-	}, [])
+		// setTimeout(() => {
+		// 	setLoading(false)
+		// }, 3000)
+	}, [count])
 
 	return (
 		<>
@@ -55,7 +61,7 @@ const Home = () => {
 							Visit my <a href="https://linktr.ee/marino.linic">social media</a>!
 						</p>
 						<div className="my-4">
-							<button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
+							<button onClick={() => setCount((count: number) => count + 1)}>count is {count}</button>
 						</div>
 						<Circles />
 					</div>
