@@ -43,7 +43,19 @@ const About = () => {
 				<section>
 					<h2>Computer Science</h2>
 					<br />
-					<p>Under construction.</p>
+					<p>
+						I am an Informatics student and started programming right about the time I started university. My
+						knowledge is largely derived from self-study. I remember, right around the time I enrolled in my
+						studies, I downloaded a small C++ jumping game with ~400 lines of code. The weekend I spent completely
+						glued to my screen editing and playing around with that code resulted in me picking up on various
+						programming concepts and set me up for the next entire half of semester without having to pay any
+						attention to our C++ subject.
+					</p>
+					<br />
+					<p>
+						I love self-studying. I started getting into web development in 2022 and made a collection of projects
+						you can see at https://linic.net/portfolio. Still, I will distinguish some projects on this page.
+					</p>
 				</section>
 				<br />
 				<br />
