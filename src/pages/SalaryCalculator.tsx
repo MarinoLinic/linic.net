@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import SalaryChart from '../components/SalaryChart'
 
 let prirez_gradovi: any = {
 	Zagreb: 0.18,
@@ -17,7 +18,7 @@ let prirez_gradovi: any = {
 }
 
 const SalaryCalculator = () => {
-	const [brutoPlaca, setBrutoPlaca] = useState(10000)
+	const [brutoPlaca, setBrutoPlaca] = useState(5000)
 	const [koeficijent, setKoeficijent] = useState(0)
 	const [grad, setGrad] = useState(prirez_gradovi['Zagreb'])
 
@@ -50,6 +51,16 @@ const SalaryCalculator = () => {
 	let netoPlaca = izracun_place(brutoPlaca, koeficijent, grad)
 
 	const gradovi = Object.keys(prirez_gradovi)
+
+	let statistike = []
+	for (let i = 1; i < 11; i++) {
+		let percent = (100 - (izracun_place(5000 * i, koeficijent, grad) / (5000 * i)) * 100).toFixed(2)
+		let obj = {
+			value: 5000 * i,
+			postotak: percent
+		}
+		statistike.push(obj)
+	}
 
 	return (
 		<div className="flex flex-col items-center justify-center h-screen text-xl font-semibold leading-relaxed">
@@ -112,8 +123,36 @@ const SalaryCalculator = () => {
 					</div>
 				))}
 			</div>
+			<div className="mt-8">
+				<SalaryChart dataArr={statistike} />
+			</div>
 		</div>
 	)
 }
+
+// TODO: Add key as prop
+
+/* 
+					['my-0 text-text', 'text-text', 'Bruto po satu:', (brutoPlaca / 22 / 8).toFixed(2), valuta],
+					['my-0 text-text', 'text-text', 'Neto po satu:', (netoPlaca / 22 / 8).toFixed(2), valuta],
+					[
+						'my-0 text-text',
+						'text-text',
+						'Razlika po satu:',
+						(netoPlaca / 22 / 8 - brutoPlaca / 22 / 8).toFixed(2),
+						valuta
+					],
+*/
+
+/*
+
+	fetch(`https://api.inaturalist.org/v1/users/5691431`)
+		.then((response) => response.json())
+		.then((actualData) => console.log(actualData.results[0].observations_count))
+		.catch((err) => {
+			console.log(err.message)
+		})
+
+*/
 
 export default SalaryCalculator
