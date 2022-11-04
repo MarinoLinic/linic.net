@@ -9,7 +9,7 @@ SVG je zapravo XML jezik koji prikazuje 2D vektorske grafike. S obzirom na to da
 
 <br>
 
-SVG je široko korišten u web UI razvoju i smatram njegovo učenje korisnim. Osim CSSa, animacije na webu većinom su rađene u SVGu.
+SVG je široko korišten u web UI razvoju i smatram njegovo učenje korisnim. Osim CSSa, animacije na webu većinom su rađene u SVGu. Kao zadnji korak sam dodao samostalno animaciju na zadatak 7b.
 
 <br>
 
