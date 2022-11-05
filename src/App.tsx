@@ -1,4 +1,4 @@
-import { Route, Routes, Link } from 'react-router-dom'
+import { Route, Routes, Link, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Countdown from './pages/Countdown'
@@ -21,7 +21,11 @@ function App() {
 				/>
 				<Route path="/rg" element={<RacunalnaGrafika />} />
 				<Route path="/rg/:id" element={<Post />} />
-				<Route path="/salary" element={<SalaryCalculator />} />
+
+				<Route path="/porez-na-dohodak" element={<SalaryCalculator />} />
+				<Route path="/porez" element={<Navigate to="/porez-na-dohodak" />} />
+				<Route path="/salary" element={<Navigate to="/porez-na-dohodak" />} />
+
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>

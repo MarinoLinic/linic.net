@@ -12,7 +12,7 @@ const Navigation = () => {
 						['Resume/CV', '/cv'],
 						['Računalna grafika', '/rg'],
 						['Countdown', '/countdown'],
-						['Neto kalkulator', '/salary']
+						['Neto kalkulator', '/porez-na-dohodak']
 					].map(([title, url]) => (
 						<div key={title} className="px-2">
 							<Link to={url} className="text-text">
