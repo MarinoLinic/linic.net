@@ -1,37 +1,30 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const About = () => {
-	const [iNat, setINat] = useState() as any
-	const [observations, setObservations] = useState(1209)
-	const [species, setSpecies] = useState(621)
-	const [identifications, setIdentifications] = useState(820)
-	const [iNatUsername, setINatUsername] = useState('marinolinic')
-	const [iNatCreated, setINatCreated] = useState('2022-05-17T22:58:06+00:00') as any
-	const [iNatPfp, setINatPfp] = useState(
-		'https://static.inaturalist.org/attachments/users/icons/5691431/medium.jpg?1655436998'
-	)
+	const [iNat, setINat] = useState({
+		observations_count: 1208,
+		species_count: 620,
+		identifications_count: 820,
+		login_exact: 'marinolinic',
+		created_at: '2022-05-17T22:58:06+00:00',
+		icon_url: 'https://static.inaturalist.org/attachments/users/icons/5691431/medium.jpg?1655436998'
+	}) as any
 
 	useEffect(() => {
-		fetch(`https://api.inaturalist.org/v1/users/5691431`)
-			.then((response) => response.json())
-			.then((data) => setINat(data.results[0]))
-			.then(() => {
-				setObservations(iNat.observations_count)
-				setSpecies(iNat.species_count)
-				setIdentifications(iNat.identifications_count)
-				setINatUsername(iNat.login_exact)
-				setINatCreated(iNat.created_at)
-				setINatPfp(iNat.icon_url)
-			})
-			.catch((err) => {
-				console.log(err.message)
-			})
-	}, [species, identifications, observations])
+		const fetchData = async () => {
+			const result = await axios('https://api.inaturalist.org/v1/users/5691431')
+
+			setINat(result.data.results[0])
+		}
+
+		fetchData()
+	}, [])
 
 	const age: number = 23
 	const habitat: string = 'Rijeka, Croatia'
 	const habitatAddition: string | undefined = ', where I was also born'
-	const iNatDate = new Date(iNatCreated)
+	const iNatDate = new Date(iNat.created_at)
 
 	return (
 		<div className="flex flex-col items-center justify-center md:mt-16 mt-8 md:mx-0 mx-8">
@@ -196,18 +189,21 @@ const About = () => {
 					</p>
 					<br />
 					<div className="flex flex-col md:flex-row">
-						<img src={iNatPfp} alt="iNat pfp" className="mb-4 md:mb-0 md:mr-2 md:w-1/4" />
+						<img src={iNat.icon_url} alt="iNat pfp" className="mb-4 md:mb-0 md:mr-2 md:w-1/4" />
 						<p>
 							On {iNatDate.toDateString()} I registered my account on iNaturalist as{' '}
-							<a href="https://www.inaturalist.org/people/marinolinic">{iNatUsername}</a>. I had documented
-							<a href="https://www.inaturalist.org/lifelists/marinolinic?view=tree"> {species} species</a> with a
-							total of {observations} observations in Croatia and Denmark, and helped with {identifications}{' '}
-							identifications. I quickly became the{' '}
+							<a href="https://www.inaturalist.org/people/marinolinic">{iNat.login_exact}</a>. I had documented
+							<a href="https://www.inaturalist.org/lifelists/marinolinic?view=tree">
+								{' '}
+								{iNat.species_count} species
+							</a>{' '}
+							with a total of {iNat.observations_count} observations in Croatia and Denmark, and helped with{' '}
+							{iNat.identifications_count} identifications. I quickly became the{' '}
 							<a href="https://www.inaturalist.org/observations?place_id=8196&view=observers">top 20 user</a> in
 							the country with one
 							<a href="https://www.inaturalist.org/observations/121820870"> global first</a> observation on the
-							site, which at this time is no longer the only one. I also bundled together findings that were the
-							first for Croatia at the time of upload
+							site, albeit it lost that status since. I also bundled together findings that were the first for
+							Croatia at the time of their upload
 							<a href="https://www.inaturalist.org/observations?q=marinoliniccrofirst&search_on=tags"> here</a>.
 							Quite an interesting bunch.
 						</p>
@@ -223,11 +219,6 @@ const About = () => {
 						I also have an entire
 						<a href="https://www.youtube.com/channel/UC_VLETxZwt9He99CBEMPXXg"> YouTube channel</a> dedicated to
 						this hobby.
-					</p>
-					<br />
-					<p>
-						If things turned out differently, I might've had a career in this field, but alas, there are better
-						things to do!
 					</p>
 					<br />
 					<p>
