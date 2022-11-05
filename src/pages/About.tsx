@@ -26,7 +26,7 @@ const About = () => {
 			.catch((err) => {
 				console.log(err.message)
 			})
-	}, [species])
+	}, [species, identifications, observations])
 
 	const age: number = 23
 	const habitat: string = 'Rijeka, Croatia'
