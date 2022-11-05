@@ -74,16 +74,17 @@ const About = () => {
 					<br />
 					<p>
 						I am an Informatics student and started programming right about the time I started university. My
-						knowledge is largely derived from self-study. I remember, right around the time I enrolled in my
-						studies, I downloaded a small C++ jumping game with ~400 lines of code. The weekend I spent completely
-						glued to my screen editing and playing around with that code resulted in me picking up on various
-						programming concepts and set me up for the next entire half of semester without having to pay any
-						attention to our C++ subject.
+						knowledge is largely derived from self-study. I remember—right around the time I enrolled—I downloaded
+						a small C++ jumping game with ~400 lines of code. I spent a weekend completely glued to my screen
+						editing and playing around with that code and it resulted in me picking up on various programming
+						concepts. I was set for the next entire half of semester without having to pay any attention to my main
+						programming subject.
 					</p>
 					<br />
 					<p>
 						I love self-studying. I started getting into web development in 2022 and made a collection of projects
-						you can see at https://linic.net/portfolio. Still, I will distinguish some projects on this page.
+						you can see at <a href="https://linic.net/portfolio">linic.net/portfolio</a>. Still, I will distinguish
+						some projects on this page.
 					</p>
 				</section>
 				<br />
@@ -92,22 +93,19 @@ const About = () => {
 					<h2>Music</h2>
 					<br />
 					<p>
-						I come from a somewhat musical family. This helped me start singing early, and I learned fundamental
-						music theory and playing the piano when I was a child. At 19, I decided to learn to play the guitar,
-						and at 21 I started taking singing seriously.
+						I come from a somewhat musical family. This helped me start singing early, and I learned music theory
+						and playing the piano when I was young. At 19, I decided to learn to play the guitar, and at 21 I
+						started taking singing seriously.
 					</p>
 					<br />
 					<p>
-						Music is an enormous part of my life, whether it is background music I listen to at least 50% of my
-						waking time or florid music I am blown away by. Performing music never seems to be able to leave my
-						life.
+						Music is an enormous part of my life, and performing music never seems to be able to leave my life.
 					</p>
 					<br />
 					<p>
-						One of my projects to help practice composing relates to my love of Nintendo 64 games I grew up
-						playing. It seems like I need to really have a proper close to that chapter of my life. Unfortunately,
-						I am busy with other things and it seems it will take a few years. Here's a sample of me beginning to
-						remaster
+						I have a project to help me practice composing: remastering Nintendo 64 games' soundtrack I grew up
+						with. I am busy with other things and it seems it will take a few years, but here's a sample of me
+						beginning to remaster
 						<a href="https://www.youtube.com/watch?v=id0kbyKCG8c"> Fairy Fountain</a> from The Legend of Zelda:
 						Ocarina of Time:
 					</p>
@@ -132,8 +130,8 @@ const About = () => {
 					<h2>Photography</h2>
 					<br />
 					<p>
-						Photography's also a big one. But I am sort of disappointed with it. I'll make my own portfolio on this
-						site as well, but currently the best way to see it is to go to my
+						Photography's also a big one. I'll make my own portfolio on this site as well, but currently the best
+						way to see it is to go to my
 						<a href="https://unsplash.com/MarinoLinic"> Unsplash account</a>. I've got
 						<strong> over a million views and 5k downloads </strong>on my photos. I also have an old
 						<a href="https://www.viewbug.com/member/MarinoLinic"> ViewBug account </a>from when I was a teenager.
@@ -186,7 +184,7 @@ const About = () => {
 						. It turned out this was the first confirmation of the species' existence in Croatia in 50 years. It
 						continues to be the only observation on the island of Pašman and the first on an Adriatic island. My
 						name appears in{' '}
-						<a href="https://zenodo.org/record/5993822">
+						<a href="https://zenodo.org/record/5993822#:~:text=Otok%2C%20Bra%C4%8D%2C%20Molat)%20(-,Lini%C4%87%2014.VIII.2014,-%2C%20Rebrina%20%26%20Brigi%C4%87%2019">
 							The first annotated checklist of Croatian crickets and grasshoppers
 						</a>{' '}
 						by
