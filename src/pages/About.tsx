@@ -1,9 +1,38 @@
+import { useState, useEffect } from 'react'
+
 const About = () => {
-	let age: number = 23
-	let habitat: string = 'Rijeka, Croatia'
-	let habitatAddition: string | undefined = ', where I was also born'
-	let species: number = 617
-	let observations: number = 1202
+	const [iNat, setINat] = useState() as any
+	const [observations, setObservations] = useState(1209)
+	const [species, setSpecies] = useState(621)
+	const [identifications, setIdentifications] = useState(820)
+	const [iNatUsername, setINatUsername] = useState('marinolinic')
+	const [iNatCreated, setINatCreated] = useState('2022-05-17T22:58:06+00:00') as any
+	const [iNatPfp, setINatPfp] = useState(
+		'https://static.inaturalist.org/attachments/users/icons/5691431/medium.jpg?1655436998'
+	)
+
+	useEffect(() => {
+		fetch(`https://api.inaturalist.org/v1/users/5691431`)
+			.then((response) => response.json())
+			.then((data) => setINat(data.results[0]))
+			.then(() => {
+				setObservations(iNat.observations_count)
+				setSpecies(iNat.species_count)
+				setIdentifications(iNat.identifications_count)
+				setINatUsername(iNat.login_exact)
+				setINatCreated(iNat.created_at)
+				setINatPfp(iNat.icon_url)
+			})
+			.catch((err) => {
+				console.log(err.message)
+			})
+	}, [species])
+
+	const age: number = 23
+	const habitat: string = 'Rijeka, Croatia'
+	const habitatAddition: string | undefined = ', where I was also born'
+	const iNatDate = new Date(iNatCreated)
+
 	return (
 		<div className="flex flex-col items-center justify-center md:mt-16 mt-8 md:mx-0 mx-8">
 			<div className="md:w-1/3 w-full flex flex-col">
@@ -168,18 +197,23 @@ const About = () => {
 						.
 					</p>
 					<br />
-					<p>
-						I had documented
-						<a href="https://www.inaturalist.org/lifelists/marinolinic?view=tree"> {species} species</a> with a
-						total of {observations} observations in Croatia and Denmark. I should note that the period in which I
-						went ahead and uploaded these findings (mostly including my archives from a decade ago) was brief and
-						lasted two months, but I quickly became the top 15 user in the country with one
-						<a href="https://www.inaturalist.org/observations/121820870"> global first</a> observation on the site,
-						which at this time is no longer the only one. I also bundled together findings that were the first for
-						Croatia at the time of upload
-						<a href="https://www.inaturalist.org/observations?q=marinoliniccrofirst&search_on=tags"> here</a>.
-						Quite an interesting bunch.
-					</p>
+					<div className="flex flex-col md:flex-row">
+						<img src={iNatPfp} alt="iNat pfp" className="mb-4 md:mb-0 md:mr-2 md:w-1/4" />
+						<p>
+							On {iNatDate.toDateString()} I registered my account on iNaturalist as{' '}
+							<a href="https://www.inaturalist.org/people/marinolinic">{iNatUsername}</a>. I had documented
+							<a href="https://www.inaturalist.org/lifelists/marinolinic?view=tree"> {species} species</a> with a
+							total of {observations} observations in Croatia and Denmark, and helped with {identifications}{' '}
+							identifications. I quickly became the{' '}
+							<a href="https://www.inaturalist.org/observations?place_id=8196&view=observers">top 20 user</a> in
+							the country with one
+							<a href="https://www.inaturalist.org/observations/121820870"> global first</a> observation on the
+							site, which at this time is no longer the only one. I also bundled together findings that were the
+							first for Croatia at the time of upload
+							<a href="https://www.inaturalist.org/observations?q=marinoliniccrofirst&search_on=tags"> here</a>.
+							Quite an interesting bunch.
+						</p>
+					</div>
 					<br />
 					<p>
 						If you're wondering how difficult identifying many arachnid and insect species is,

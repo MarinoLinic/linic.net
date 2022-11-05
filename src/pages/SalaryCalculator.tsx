@@ -144,15 +144,4 @@ const SalaryCalculator = () => {
 					],
 */
 
-/*
-
-	fetch(`https://api.inaturalist.org/v1/users/5691431`)
-		.then((response) => response.json())
-		.then((actualData) => console.log(actualData.results[0].observations_count))
-		.catch((err) => {
-			console.log(err.message)
-		})
-
-*/
-
 export default SalaryCalculator
