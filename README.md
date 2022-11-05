@@ -17,3 +17,5 @@ $ npm run dev
 - Vite
 - Tailwind and PostCSS
 - React Router
+- Axios
+- ReCharts
