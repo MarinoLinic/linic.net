@@ -1,13 +1,23 @@
 import ML from '../assets/ML'
 
-const Loader = () => {
+interface props {
+	width: string
+	height: string
+}
+
+const Loader = (props: props) => {
 	return (
-		<div className="flex items-center justify-center h-screen">
-			<div className="w-40 animate-pulse">
+		<div className={`flex items-center justify-center ${props.height}`}>
+			<div className={`${props.width} animate-pulse`}>
 				<ML />
 			</div>
 		</div>
 	)
+}
+
+Loader.defaultProps = {
+	width: 'w-40',
+	height: 'h-screen'
 }
 
 export default Loader

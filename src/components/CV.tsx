@@ -7,7 +7,12 @@ const CV = () => {
 			window.location.href = 'https://drive.google.com/file/d/1jsVgAzWsNqjsLoU98-ROOF7SjNWPai7E/view?usp=sharing'
 		}
 	}, [])
-	return <Loader />
+	return (
+		<>
+			<Loader height="h-[60vh] md:h-[80vh]" />
+			<h5 className="text-center text-quarnary uppercase">Press return twice</h5>
+		</>
+	)
 }
 
 export default CV
