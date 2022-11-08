@@ -7,14 +7,20 @@ import Post from './components/Post'
 import CV from './components/CV'
 import SalaryCalculator from './pages/SalaryCalculator'
 import NotFound from './pages/NotFound'
+import Socials from './pages/Socials'
 
 function App() {
 	return (
 		<>
 			<Routes>
 				<Route path="/" element={<Home />} />
+
 				<Route path="/about" element={<About />} />
+
+				<Route path="/socials" element={<Socials />} />
+
 				<Route path="/cv" element={<CV />} />
+
 				<Route
 					path="/countdown"
 					element={<Countdown date="October 13, 2023, 00:00" title="Time until Marino's 24th birthday" />}
@@ -35,6 +41,7 @@ function App() {
 					path="/3"
 					element={<Countdown date="December 8, 2022, 12:00" title="Time until the Django exam" />}
 				/>
+
 				<Route path="/rg" element={<RacunalnaGrafika />} />
 				<Route path="/rg/:id" element={<Post />} />
 
