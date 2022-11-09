@@ -1,13 +1,25 @@
-import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts'
+import {
+	LineChart,
+	Line,
+	XAxis,
+	YAxis,
+	Tooltip,
+	ResponsiveContainer,
+	Area,
+	AreaChart,
+	ReferenceLine,
+	ReferenceArea
+} from 'recharts'
 
 const SalaryChart = ({ dataArr }: any) => {
-	console.log(dataArr)
+	console.table(dataArr)
 	return (
 		<div className="w-96 h-96 md:w-[700px] md:h-[350px]">
 			<ResponsiveContainer width="100%" height="100%">
 				<LineChart data={dataArr}>
-					<Line type="monotone" dataKey="postotak" stroke="#8884d8" />
+					<Line type="monotone" dataKey="postotak" stroke="#646cff" fill="none" />
 					<XAxis
+						type="number"
 						dataKey="value"
 						tick={{ fontSize: 10 }}
 						label={{ value: 'Bruto plaća', fill: '#777', dy: 10, fontSize: 15 }}
@@ -24,6 +36,12 @@ const SalaryChart = ({ dataArr }: any) => {
 						}}
 					/>
 					<Tooltip />
+					<ReferenceLine
+						x={dataArr[0].datapointS}
+						stroke="#eb6171"
+						label={{ value: `${dataArr[0].datapoint}%`, fill: '#eb6171', dy: -60, dx: 40 }}
+						ifOverflow="extendDomain"
+					/>
 				</LineChart>
 			</ResponsiveContainer>
 		</div>

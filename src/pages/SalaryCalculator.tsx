@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import SalaryChart from '../components/SalaryChart'
 
-let prirez_gradovi: any = {
+const prirez_gradovi: any = {
 	Zagreb: 0.18,
 	Split: 0.15,
 	Rijeka: 0.14,
@@ -53,14 +53,33 @@ const SalaryCalculator = () => {
 	const gradovi = Object.keys(prirez_gradovi)
 
 	let statistike = []
-	for (let i = 1; i < 11; i++) {
-		let percent = (100 - (izracun_place(5000 * i, koeficijent, grad) / (5000 * i)) * 100).toFixed(2)
+	const osnovica = 2500
+	for (let i = 1; i < 23; i++) {
+		let percent = (100 - (izracun_place(osnovica * i, koeficijent, grad) / (osnovica * i)) * 100).toFixed(2)
 		let obj = {
-			value: 5000 * i,
-			postotak: percent
+			value: osnovica * i,
+			postotak: percent,
+			datapointS: brutoPlaca,
+			datapoint: (100 - (izracun_place(brutoPlaca, koeficijent, grad) / brutoPlaca) * 100).toFixed(2)
 		}
 		statistike.push(obj)
 	}
+
+	const mainStats = [
+		['my-0 text-text', 'text-text', 'Bruto mjesečno:', brutoPlaca.toFixed(2), valuta],
+		['my-0 text-text', 'text-tertiary', 'Neto mjesečno:', netoPlaca.toFixed(2), valuta],
+		['my-0 text-text', 'text-quarternary', 'Mjesečna razlika:', (netoPlaca - brutoPlaca).toFixed(2), valuta],
+		[
+			'my-4 text-secondary',
+			'text-secondary',
+			'De facto porez:',
+			`${(100 - (netoPlaca / brutoPlaca) * 100).toFixed(2)}%`,
+			'plaće'
+		],
+		['my-0 text-text', 'text-text', 'Bruto godišnje:', (brutoPlaca * 12).toFixed(2), valuta],
+		['my-0 text-text', 'text-text', 'Neto godišnje:', (netoPlaca * 12).toFixed(2), valuta],
+		['my-0 text-text', 'text-text', 'Godišnja razlika:', (netoPlaca * 12 - brutoPlaca * 12).toFixed(2), valuta]
+	]
 
 	return (
 		<div className="flex flex-col items-center justify-center h-screen text-xl font-semibold leading-relaxed">
@@ -94,27 +113,7 @@ const SalaryCalculator = () => {
 				onChange={(e) => setBrutoPlaca(parseFloat(e.target.value))}
 			/>
 			<div>
-				{[
-					['my-0 text-text', 'text-text', 'Bruto mjesečno:', brutoPlaca.toFixed(2), valuta],
-					['my-0 text-text', 'text-tertiary', 'Neto mjesečno:', netoPlaca.toFixed(2), valuta],
-					['my-0 text-text', 'text-quarternary', 'Mjesečna razlika:', (netoPlaca - brutoPlaca).toFixed(2), valuta],
-					[
-						'my-4 text-secondary',
-						'text-secondary',
-						'De facto porez:',
-						`${(100 - (netoPlaca / brutoPlaca) * 100).toFixed(2)}%`,
-						'plaće'
-					],
-					['my-0 text-text', 'text-text', 'Bruto godišnje:', (brutoPlaca * 12).toFixed(2), valuta],
-					['my-0 text-text', 'text-text', 'Neto godišnje:', (netoPlaca * 12).toFixed(2), valuta],
-					[
-						'my-0 text-text',
-						'text-text',
-						'Godišnja razlika:',
-						(netoPlaca * 12 - brutoPlaca * 12).toFixed(2),
-						valuta
-					]
-				].map(([margin, color, desc, value, currency]) => (
+				{mainStats.map(([margin, color, desc, value, currency]) => (
 					<div key={desc} className={`${margin}`}>
 						{desc}{' '}
 						<span className={`${color}`}>
