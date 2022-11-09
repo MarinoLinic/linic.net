@@ -17,7 +17,7 @@ const SalaryChart = ({ dataArr }: any) => {
 		<div className="w-96 h-96 md:w-[700px] md:h-[350px]">
 			<ResponsiveContainer width="100%" height="100%">
 				<LineChart data={dataArr}>
-					<Line type="monotone" dataKey="postotak" stroke="#646cff" fill="none" />
+					<Line type="monotone" dataKey="postotak" stroke="#646cff" fill="none" dot={false} />
 					<XAxis
 						type="number"
 						dataKey="value"
