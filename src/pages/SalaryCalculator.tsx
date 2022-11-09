@@ -31,7 +31,7 @@ const SalaryCalculator = () => {
 
 		let porez, izracun
 		let osnovica = 2500
-		let mirovinsko_stopa = 0.2 // 20%
+		let mirovinsko_stopa = 0.15 + 0.05 // 20%
 		let minimalac = 4000
 		let porezna_granica = 30000
 		let odbitak = koeficijent * osnovica + minimalac
@@ -54,13 +54,17 @@ const SalaryCalculator = () => {
 
 	let statistike = []
 	const osnovica = 2500
-	for (let i = 1; i < 23; i++) {
-		let percent = (100 - (izracun_place(osnovica * i, koeficijent, grad) / (osnovica * i)) * 100).toFixed(2)
+	for (let i = 1; i < 24; i++) {
+		let net = izracun_place(osnovica * i, koeficijent, grad)
+		let percent = (100 - (net / (osnovica * i)) * 100).toFixed(2)
 		let obj = {
-			value: osnovica * i,
+			bruto: osnovica * i,
 			postotak: percent,
+			neto: net,
+			razlika: osnovica * i - net,
 			datapointS: brutoPlaca,
-			datapoint: (100 - (izracun_place(brutoPlaca, koeficijent, grad) / brutoPlaca) * 100).toFixed(2)
+			datapoint: (100 - (izracun_place(brutoPlaca, koeficijent, grad) / brutoPlaca) * 100).toFixed(2),
+			datapointN: netoPlaca
 		}
 		statistike.push(obj)
 	}
