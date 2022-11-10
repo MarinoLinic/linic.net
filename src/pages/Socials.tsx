@@ -31,7 +31,7 @@ const Socials = () => {
 						))}
 					</div>
 					<section>
-						<img src="WhiteSignature.svg" alt="Signature" className="w-32 mt-4" />
+						<img src="WhiteSignature.svg" alt="Signature" className="w-32 mt-4 hover:border-transparent" />
 					</section>
 				</main>
 			</div>

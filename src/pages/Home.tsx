@@ -51,7 +51,7 @@ const Home = () => {
 					</div>
 					<h2 className="">Hello!</h2>
 					<p className="">
-						Visit my socials <Link to="/socials">here</Link> or <a href="https://linktr.ee/marino.linic">here</a>
+						Visit my socials <Link to="/socials">here</Link> or <a href="https://linktr.ee/marino.linic">here</a>.
 					</p>
 					<div className="my-4">
 						<button onClick={() => setCount((count: number) => count + 1)}>count is {count}</button>

@@ -158,7 +158,7 @@ const SalaryCalculator = () => {
 			</div>
 			<div>
 				<p className="my-8">
-					Vlasnik projekta: <Link to="/">Marino Linić</Link>
+					Autor projekta: <Link to="/">Marino Linić</Link>
 				</p>
 			</div>
 		</div>

@@ -10,7 +10,7 @@ const CV = () => {
 	return (
 		<>
 			<Loader height="h-[60vh] md:h-[80vh]" />
-			<h5 className="text-center text-quarnary uppercase">Press return twice</h5>
+			<h5 className="text-center text-quarnary uppercase">You might need to press return twice</h5>
 		</>
 	)
 }

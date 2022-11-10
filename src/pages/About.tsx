@@ -3,9 +3,9 @@ import axios from 'axios'
 
 const About = () => {
 	const [iNat, setINat] = useState({
-		observations_count: 1208,
-		species_count: 620,
-		identifications_count: 820,
+		observations_count: 1262,
+		species_count: 638,
+		identifications_count: 1023,
 		login_exact: 'marinolinic',
 		created_at: '2022-05-17T22:58:06+00:00',
 		icon_url: 'https://static.inaturalist.org/attachments/users/icons/5691431/medium.jpg?1655436998'
@@ -273,7 +273,7 @@ const About = () => {
 				<br />
 				<br />
 				<section className="flex justify-center">
-					<img src="WhiteSignature.svg" alt="Signature" className="w-1/3" />
+					<img src="WhiteSignature.svg" alt="Signature" className="w-1/3 hover:border-transparent" />
 				</section>
 				<br />
 				<br />
