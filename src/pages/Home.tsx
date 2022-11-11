@@ -36,7 +36,7 @@ const Home = () => {
 								handleMouseOver(setIsHovering)
 							}}
 							className="text-quarternary uppercase cursor-default">
-							junior web developer
+							Junior web developer
 						</h5>
 					)}
 
