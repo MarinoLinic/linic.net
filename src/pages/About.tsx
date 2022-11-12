@@ -3,9 +3,9 @@ import axios from 'axios'
 
 const About = () => {
 	const [iNat, setINat] = useState({
-		observations_count: 1262,
-		species_count: 638,
-		identifications_count: 1023,
+		observations_count: 1266,
+		species_count: 644,
+		identifications_count: 1029,
 		login_exact: 'marinolinic',
 		created_at: '2022-05-17T22:58:06+00:00',
 		icon_url: 'https://static.inaturalist.org/attachments/users/icons/5691431/medium.jpg?1655436998'
