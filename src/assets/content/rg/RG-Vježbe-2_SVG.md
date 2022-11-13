@@ -13,6 +13,10 @@ SVG je široko korišten u web UI razvoju i smatram njegovo učenje korisnim. Os
 
 <br>
 
+###### [Rješenja zadataka (GDrive)](https://drive.google.com/drive/folders/1SxHwBBJdz83dLbn1IehFqyk4_W6cziOt?usp=sharing)
+
+<br>
+
 ###### [Repozitorij 2. vježbe na GitHubu](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/tree/main/RG-Vje%C5%BEbe-2_SVG)
 
 <br>

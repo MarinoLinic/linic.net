@@ -13,6 +13,10 @@ Ovo je bilo korisno naučiti u slučaju stvaranja nekakvog vlastitog multimedijs
 
 <br/>
 
+###### [Rješenja zadataka (GDrive)](https://drive.google.com/drive/folders/1y9QmJbZJViYr92TExy1VidgxMMTAPR7j?usp=sharing)
+
+<br>
+
 ###### [Repozitorij 1. vježbe na GitHubu](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/tree/main/RG-Vje%C5%BEbe-1_Font)
 
 <br/>
