@@ -13,8 +13,12 @@ Koristan je kao uvod kako grafika na webu funkcionira ispod strukture preglednik
 
 <br>
 
-##### Zadatak 9 ([izvorni kôd](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/blob/main/RG-Vje%C5%BEbe-3_WebGL/task3.html) | [postavljeni HTML na webu](https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-3_WebGL/task3.html))
+###### [Rješenja zadataka (GDrive)](https://drive.google.com/drive/folders/1SxHwBBJdz83dLbn1IehFqyk4_W6cziOt?usp=sharing)
 
 <br>
 
-<img src="Screenshot_1343.png" alt="zadatak 7b" width="50%" height="auto">
+##### Zadatak 9 ([izvorni kôd](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/blob/main/RG-Vje%C5%BEbe-3_WebGL) | [postavljeni HTML na webu](https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-3_WebGL/task3.html))
+
+<br>
+
+<img src="Screenshot_1343.png" alt="zadatak 9" width="50%" height="auto">
