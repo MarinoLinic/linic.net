@@ -21,4 +21,4 @@ Koristan je kao uvod kako grafika na webu funkcionira ispod strukture preglednik
 
 <br>
 
-<img src="Screenshot_1343.png" alt="zadatak 9" width="50%" height="auto">
+<img src="https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-3_WebGL/Screenshot_1343.png" alt="zadatak 9" width="50%" height="auto">
