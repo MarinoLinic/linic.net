@@ -14,7 +14,9 @@ const PostList = () => {
 				<Link to="/" className="text-quarternary hover:text-quarternary">
 					Marina Linića
 				</Link>{' '}
-				(ak. g. 2022/23) za dokumentaciju projekata iz kolegija Računalna grafika.
+				(ak. g. 2022/23) za dokumentaciju projekata iz kolegija Računalna grafika.{' '}
+				<a href="https://drive.google.com/drive/folders/1-EbQyVuDqMYiLW8L-u4AKm74FNmhQTF7?usp=share_link">Ovdje</a>{' '}
+				se nalazi direktorij na Google Disku.
 			</h5>
 			<div className="grid grid-cols-1 md:grid-cols-3 my-16 gap-8 md:gap-48">
 				{postList.length &&
