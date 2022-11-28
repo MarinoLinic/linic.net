@@ -1,5 +1,5 @@
 ---
-title: RG - Vježbe 3: Uvod u WebGL
+title: RG - Vježbe 3 Uvod u WebGL
 author: Marino Linić
 date: 28 October 2022
 image: https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-3_WebGL/Screenshot_1343.png
