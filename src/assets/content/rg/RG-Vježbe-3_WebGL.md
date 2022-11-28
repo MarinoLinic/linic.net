@@ -13,7 +13,7 @@ Koristan je kao uvod kako grafika na webu funkcionira ispod strukture preglednik
 
 <br>
 
-###### [Rješenja zadataka (GDrive)](https://drive.google.com/drive/folders/1SxHwBBJdz83dLbn1IehFqyk4_W6cziOt?usp=sharing)
+###### [Rješenja zadataka (GDrive)](https://drive.google.com/drive/folders/1CbabMFUFANfNeUBOuH-Jf6XRoJTNIYZS?usp=share_link)
 
 <br>
 
