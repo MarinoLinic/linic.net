@@ -27,18 +27,10 @@ function App() {
 				/>
 				<Route
 					path="/math"
-					element={<Countdown date="November 28, 2022, 16:00" title="Time until first Math exam" />}
+					element={<Countdown date="January 23, 2023, 16:00" title="Time until second Math exam" />}
 				/>
 				<Route
 					path="/1"
-					element={<Countdown date="November 15, 2022, 00:00" title="Time until the second RG task" />}
-				/>
-				<Route
-					path="/2"
-					element={<Countdown date="November 24, 2022, 00:00" title="Time until the first MT task" />}
-				/>
-				<Route
-					path="/3"
 					element={<Countdown date="December 8, 2022, 12:00" title="Time until the Django exam" />}
 				/>
 
