@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const About = () => {
 	const [iNat, setINat] = useState({
@@ -58,7 +59,9 @@ const About = () => {
 				<section>
 					<h2>Socials</h2>
 					<br />
-					<p>Ok, so... I have a lot of these things.</p>
+					<p>
+						I have a lot of these. You can see them at <Link to="/socials">linic.net/socials</Link>.
+					</p>
 				</section>
 				<br />
 				<br />
@@ -75,9 +78,9 @@ const About = () => {
 					</p>
 					<br />
 					<p>
-						I love self-studying. I started getting into web development in 2022 and made a collection of projects
-						you can see at <a href="https://linic.net/portfolio">linic.net/portfolio</a>. Still, I will distinguish
-						some projects on this page.
+						I love autodidacticism. I started getting into web development in 2022 and made a collection of
+						projects you can see at <a href="https://linic.net/portfolio">linic.net/portfolio</a>. Still, I will
+						distinguish some projects on this page.
 					</p>
 				</section>
 				<br />
@@ -91,9 +94,7 @@ const About = () => {
 						started taking singing seriously.
 					</p>
 					<br />
-					<p>
-						Music is an enormous part of my life, and performing music never seems to be able to leave my life.
-					</p>
+					<p>Music is an enormous part of my life.</p>
 					<br />
 					<p>
 						I have a project to help me practice composing: remastering Nintendo 64 games' soundtrack I grew up
@@ -131,8 +132,8 @@ const About = () => {
 					</p>
 					<br />
 					<p>
-						But I think a proper way to show my photography would actually be to display a video I filmed on my...
-						phone... when I was 17.
+						But I think a proper way to show my photography would actually be to display a video I filmed on my
+						phone when I was 17.
 					</p>
 					<br />
 					<iframe
@@ -172,7 +173,7 @@ const About = () => {
 					<p>
 						When I was 14, I stumbled upon a male specimen of{' '}
 						<i>
-							<a href="https://inaturalist.nz/observations/117533411">Trigonidium cicindeloides</a>
+							<a href="https://www.inaturalist.org/observations/117533411">Trigonidium cicindeloides</a>
 						</i>
 						. It turned out this was the first confirmation of the species' existence in Croatia in 50 years. It
 						continues to be the only observation on the island of Pašman and the first on an Adriatic island. My
@@ -221,10 +222,7 @@ const About = () => {
 						this hobby.
 					</p>
 					<br />
-					<p>
-						Here's one of the last videos I made before deciding I wasn't going to actively spend time on zoology.
-						In this case, anyhow, herpetology.
-					</p>
+					<p>Here's one of the last videos I made.</p>
 					<br />
 					<iframe
 						title="Me handling a European cat snake"
