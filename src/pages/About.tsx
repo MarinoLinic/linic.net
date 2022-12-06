@@ -264,7 +264,7 @@ const About = () => {
 						</a>{' '}
 						I watched.
 					</p>
-					<p>I care about economics, philosophy, genetics, history, and geography.</p>
+					<p>I am interested in economics, philosophy, genetics, history, and geography.</p>
 				</section>
 				<br />
 				<br />
