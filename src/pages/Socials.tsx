@@ -9,7 +9,7 @@ const Socials = () => {
 		['', 'Instagram', 'https://instagram.com/marino.linic'],
 		['', 'LinkedIn', 'https://www.linkedin.com/in/marino-linic/'],
 		['', 'GitHub', 'https://github.com/MarinoLinic'],
-		['', 'Unsplash', 'https://unsplash.com/MarinoLinic'],
+		['', 'Unsplash', 'https://unsplash.com/@marinolinic'],
 		['', 'iNaturalist', 'https://www.inaturalist.org/people/5691431'],
 		['', 'Medium', 'https://marinolinic.medium.com/'],
 		['', 'Goodreads', 'https://www.goodreads.com/user/show/76388574-marino-lini'],
