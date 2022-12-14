@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 const About = () => {
 	const [iNat, setINat] = useState({
-		observations_count: 1266,
-		species_count: 644,
+		observations_count: 1410,
+		species_count: 708,
 		identifications_count: 1029,
 		login_exact: 'marinolinic',
 		created_at: '2022-05-17T22:58:06+00:00',
