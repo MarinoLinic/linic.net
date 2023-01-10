@@ -4,7 +4,7 @@ import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
 const PostList = () => {
 	const excerptList = postList.map((post) => {
-		return post.content.split(' ').slice(0, 20).join(' ')
+		return post.content.split(' ').slice(0, 10).join(' ')
 	})
 	return (
 		<div className="md:mt-20 md:mx-20 mt-12 mx-12">
