@@ -13,6 +13,7 @@ const Socials = () => {
 		['', 'iNaturalist', 'https://www.inaturalist.org/people/5691431'],
 		['', 'Medium', 'https://marinolinic.medium.com/'],
 		['', 'Goodreads', 'https://www.goodreads.com/user/show/76388574-marino-lini'],
+		['', 'Wikipedia', 'https://en.wikipedia.org/wiki/User:LinicMarino'],
 		['', 'YouTube (programming)', 'https://www.youtube.com/channel/UC-TXTkze3ZC7WBtzg6Z99jg'],
 		['', 'YouTube (music)', 'https://www.youtube.com/channel/UC1nUn8ThCuFM_8VZijqnXyQ'],
 		['', 'YouTube (entomology)', 'https://www.youtube.com/channel/UC_VLETxZwt9He99CBEMPXXg']
