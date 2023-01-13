@@ -21,7 +21,7 @@ Očekujem da će postati još zanimljivije.
 
 <br>
 
-##### Zadatak ([Izvorne datoteke na GitHubu.](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/blob/main/RG-Vje%C5%BEbe-6_Uvod_u_Blender))
+##### Zadatak ([Izvorne datoteke na GitHubu.](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/tree/main/RG-Vje%C5%BEbe-6_Uvod_u_Blender))
 
 <br>
 

@@ -21,7 +21,7 @@ Najbitniji prečci bili su TAB (edit mode), E (extrude), S (scale), XYZ za smjer
 
 <br>
 
-##### Zadatak ([Izvorne datoteke.](https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-9_Izrada_3D_modela))
+##### Zadatak ([Izvorne datoteke.](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/tree/main/RG-Vje%C5%BEbe-9_Izrada_3D_modela))
 
 <br>
 

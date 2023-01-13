@@ -21,7 +21,7 @@ Vrlo poučno i zanimljivo.
 
 <br>
 
-##### Zadatak ([Izvorne datoteke na GitHubu.](https://marinolinic.github.io/MarinoLinic-racunalna-grafika/RG-Vje%C5%BEbe-8_Teksture_u_Blenderu))
+##### Zadatak ([Izvorne datoteke na GitHubu.](https://github.com/MarinoLinic/MarinoLinic-racunalna-grafika/tree/main/RG-Vje%C5%BEbe-8_Teksture_u_Blenderu))
 
 <br>
 
