@@ -17,6 +17,10 @@ Najbitniji prečci bili su TAB (edit mode), E (extrude), S (scale), XYZ za smjer
 
 <br>
 
+Izrađivanje ribe nije bilo jednostavno. Zadnje, donje, bočne peraje imaju na vrhuncu drugačiju površinu od prednjih. Stil modela je "low-poly". Na glavi ribe vide se dvije velike oči (kao u nekih vrsta, poput varijacija zlatne ribice, <a href="https://www.thesprucepets.com/thmb/XPZNkVvGfLU-PhA-9ncNDmF4CMQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/2687804310_09bb676d58_o-5beb9f6546e0fb0026a5f66c.jpg">_Carassius auratus_</a>). Dorzalna odnosno leđna peraja prati u suštini oblik peraja u stvarnosti, a najdetaljnija je peraja na kraju posteriornog odnosno stražnjeg dijela ribe. Za izradu sam se većinom oslanjao na selektiranje jedne strane modela, extrude funkcijom i u konačnici scale funkcijom. Dodao sam tekst (kojeg se nije tražilo u zadatku) kao objašnjenje onoga što model treba predstavljati. Možemo također vidjeti da nisam dodavao pozadinu i da sam postavio svjetlo.
+
+<br>
+
 ###### [Rješenja zadataka (GDrive)](https://drive.google.com/drive/folders/1hVNdehkqnn4de1y2HtSa9nU6-OBvo4uJ?usp=sharing)
 
 <br>

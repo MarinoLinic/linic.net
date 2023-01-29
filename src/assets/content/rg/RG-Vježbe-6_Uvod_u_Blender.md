@@ -17,6 +17,10 @@ Očekujem da će postati još zanimljivije.
 
 <br>
 
+Izrađivao sam ovaj model kombinacijom 3D pravokutnika. Izradio sam jedan stup pa kopirao nekoliko puta dok nisam dobio konačni oblik. Bilo je zanimljivo pokušati uključiti i teksturu, a svjetlo sam postavio kao "sunce" s desne strane. Iza sam stavio ogledalo zbog estetskih razloga: nadam se da to ne odvraća od originalne koncepcije i ideje iza zadatka.
+
+<br>
+
 ###### [Rješenja zadataka (GDrive)](https://drive.google.com/drive/folders/1D71nBhpNIcH9Vnv8_W9UjcKoyUcCRhOw?usp=sharing)
 
 <br>

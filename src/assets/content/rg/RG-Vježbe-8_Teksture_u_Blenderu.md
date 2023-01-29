@@ -17,6 +17,10 @@ Vrlo poučno i zanimljivo.
 
 <br>
 
+U ovom zadatku sam se odlučio za zamućenu HDR pozadinu trave. Pozadina se nalazi na Google Disku. Kada sam napravio kuglu, otišao sam u prozor za shadere i izradio površinu čiji proces se može vidjeti na drugoj slici. Dodao sam roskastu boju.
+
+<br>
+
 ###### [Rješenja zadataka (GDrive)](https://drive.google.com/drive/folders/1CcdcDWcuh3NtqU5ciiNY1DoW02MmeWuO?usp=sharing)
 
 <br>

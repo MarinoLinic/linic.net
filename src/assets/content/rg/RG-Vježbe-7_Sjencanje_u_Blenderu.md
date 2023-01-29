@@ -17,6 +17,10 @@ Može se dodati razne atribute.
 
 <br>
 
+U ovoj vježbi mi je najdraže bilo poigravati se sa elementima sjenčanja u Blenderu. Napravio sam prvu kuglu u jednoj od tri boje i kopirao iduće dvije s istim atributima. Za svaku novu kuglu definirao sam novu "boju" i promijenio u novoj boji RGB vrijednost tako da liči na ono što se traži u zadatku. Svjetlo sam stavio iz jedne točke i renderirao sa i bez njega. Između ostaloga sam i izgladio kugle sa modifierom tako da ne izgledaju kao da imaju poligone. Također sam zbog estetskih razloga i znatiželje uključio iza ogledalo pa izgleda kao da se na slici nalazi više od 3 kugle: to je opcionalni element i nije napomenut u vježbama. Nadam se da ne odvraća od originalnog zadatka.
+
+<br>
+
 ###### [Rješenja zadataka (GDrive)](https://drive.google.com/drive/folders/1UrcnRFvrNzAimcGpYdjYB3AEwzC2-thQ?usp=sharing)
 
 <br>
