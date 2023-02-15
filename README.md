@@ -19,3 +19,4 @@ $ npm run dev
 - React Router
 - Axios
 - ReCharts
+- MDX

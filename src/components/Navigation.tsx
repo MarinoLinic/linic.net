@@ -10,7 +10,7 @@ const Navigation = () => {
 				<div className="flex flex-col md:flex-row">
 					{[
 						['Resume/CV', '/cv'],
-						['Računalna grafika', '/rg'],
+						['Portfolio', '/portfolio'],
 						['Countdown', '/countdown'],
 						['Neto kalkulator', '/porez-na-dohodak']
 					].map(([title, url]) => (
