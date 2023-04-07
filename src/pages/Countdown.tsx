@@ -29,8 +29,6 @@ const Countdown = (props: props) => {
 			const minutes: number = Math.floor((timeLeft % (60 * 60 * 1000)) / (1000 * 60))
 			const seconds: number = Math.floor((timeLeft % (60 * 1000)) / 1000)
 
-			console.log(hours)
-
 			if (timeLeft < 0) {
 				// Stop Timer
 				clearInterval(interval.current)
