@@ -2,21 +2,35 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
+const key = import.meta.env.VITE_UNSPLASH_KEY
+
 const About = () => {
 	const [iNat, setINat] = useState({
-		observations_count: 1410,
-		species_count: 708,
-		identifications_count: 1408,
+		observations_count: 1694,
+		species_count: 810,
+		identifications_count: 5295,
 		login_exact: 'marinolinic',
 		created_at: '2022-05-17T22:58:06+00:00',
 		icon_url: 'https://static.inaturalist.org/attachments/users/icons/5691431/medium.jpg?1655436998'
 	}) as any
 
+	const [unsplash, setUnsplash] = useState({
+		views: 2412109,
+		downloads: 11820
+	}) as any
+
 	useEffect(() => {
 		const fetchData = async () => {
-			const result = await axios('https://api.inaturalist.org/v1/users/5691431')
+			const inat = await axios('https://api.inaturalist.org/v1/users/5691431')
 
-			setINat(result.data.results[0])
+			const unsp = await axios.get('https://api.unsplash.com/users/marinolinic/statistics', {
+				headers: {
+					Authorization: 'Client-ID ' + key
+				}
+			})
+
+			setINat(inat.data.results[0])
+			setUnsplash({ views: unsp.data.views.total, downloads: unsp.data.downloads.total })
 		}
 
 		fetchData()
@@ -130,6 +144,14 @@ const About = () => {
 						<strong> over a million views and 5k downloads </strong>on my photos. I also have an old
 						<a href="https://www.viewbug.com/member/MarinoLinic"> ViewBug account </a>from when I was a teenager.
 					</p>
+					<br />
+					<h5>
+						Views on Unsplash: <span className="text-secondary">{Number(unsplash.views).toLocaleString()}</span>
+					</h5>
+					<h5>
+						Downloads on Unsplash:{' '}
+						<span className="text-secondary">{Number(unsplash.downloads).toLocaleString()}</span>
+					</h5>
 					<br />
 					<p>
 						But I think a proper way to show my photography would actually be to display a video I filmed on my
