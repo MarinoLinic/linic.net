@@ -21,7 +21,7 @@ const prirez_gradovi: any = {
 const SalaryCalculator = () => {
 	const [brutoPlaca, setBrutoPlaca] = useState(1000)
 	const [koeficijent, setKoeficijent] = useState(0)
-	const [grad, setGrad] = useState(prirez_gradovi['Zagreb'])
+	const [grad, setGrad] = useState(prirez_gradovi['Zagreb (18%)'])
 
 	let currency = '€'
 
