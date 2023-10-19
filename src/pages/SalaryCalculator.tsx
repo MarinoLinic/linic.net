@@ -163,7 +163,9 @@ const SalaryCalculator = () => {
 					<option value={grad}>{grad}</option>
 				))}
 			</select>
-			<p>Koeficijent (invaliditet, djeca)</p>
+			<p>
+				Koeficijent (invaliditet, djeca) <a href="https://i.imgur.com/cLqPuOE.png">?</a>
+			</p>
 			<input
 				className="bg-text text-primary mb-4 text-center font-extrabold text-2xl md:text-3xl"
 				type="text"
