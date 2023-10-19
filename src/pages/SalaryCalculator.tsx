@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom'
 import SalaryChart from '../components/SalaryChart'
 
 const prirez_gradovi: any = {
-	Zagreb: 0.18,
-	Split: 0.15,
-	Rijeka: 0.14,
-	Osijek: 0.13,
-	Zadar: 0.12,
-	'Velika gorica': 0.12,
-	Pula: 0.12,
-	'Slavonski brod': 0.06,
-	Karlovac: 0.09,
-	Varaždin: 0.075,
-	Sisak: 0.1,
-	Dubrovnik: 0.1,
-	'Bez prireza': 0
+	'Zagreb (18%)': 0.18,
+	'Split (15%)': 0.15,
+	'Rijeka (14%)': 0.14,
+	'Osijek (13%)': 0.13,
+	'Zadar (12%)': 0.12,
+	'Velika gorica (12%)': 0.12,
+	'Pula (12%)': 0.12,
+	'Slavonski brod (6%)': 0.06,
+	'Karlovac (9%)': 0.09,
+	'Varaždin (7.5%)': 0.075,
+	'Sisak (10%)': 0.1,
+	'Dubrovnik (10%)': 0.1,
+	'Bez prireza (0%)': 0
 }
 
 const SalaryCalculator = () => {
@@ -113,9 +113,9 @@ const SalaryCalculator = () => {
 	]
 
 	const secondStats = [
-		['my-0 text-text', 'text-text', 'Stopa mirovinskog (čl. 62.):', '20%', ''],
+		['my-0 text-text', 'text-text', 'Stopa mirovinskog (čl. 62):', '20%', ''],
 		['my-0 text-text', 'text-quarternary', 'Iznos plaće nakon mirovinskog:', brutoPlaca * 0.8, currency],
-		['my-0 text-text', 'text-text', 'Neoporezivi minimalac (čl. 14.):', 530.9, currency],
+		['my-0 text-text', 'text-text', 'Neoporezivi minimalac (čl. 14):', 530.9, currency],
 		[
 			'my-0 text-text',
 			'text-secondary',
@@ -130,8 +130,8 @@ const SalaryCalculator = () => {
 		[
 			'my-0 text-text',
 			'text-secondary',
-			'Iznos poreza + prireza:',
-			((brutoPlaca * 0.8 - 530.9) * 0.2 * (1 + grad)).toFixed(2),
+			'Iznos prireza:',
+			-((brutoPlaca * 0.8 - 530.9) * 0.2 - (brutoPlaca * 0.8 - 530.9) * 0.2 * (1 + grad)).toFixed(2),
 			currency
 		],
 		[
@@ -195,7 +195,7 @@ const SalaryCalculator = () => {
 			{/* Calculation */}
 			<div>
 				{secondStats.map(([margin, color, desc, value, currency]) => (
-					<div key={desc} className={`${margin}`}>
+					<div key={desc} className={`${margin} text-base`}>
 						{desc}{' '}
 						<span className={`${color}`}>
 							{value} {currency}
