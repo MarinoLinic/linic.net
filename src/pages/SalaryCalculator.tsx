@@ -137,7 +137,7 @@ const SalaryCalculator = () => {
 		[
 			'my-0 text-text',
 			'text-secondary',
-			'Iznos prireza' + ' (' + grad * 100 + '%) :',
+			'Iznos prireza' + ' (' + (grad * 100).toFixed(0) + '%) :',
 			-((brutoPlaca * 0.8 - 530.9) * 0.2 - (brutoPlaca * 0.8 - 530.9) * 0.2 * (1 + grad)).toFixed(2),
 			currency
 		],
