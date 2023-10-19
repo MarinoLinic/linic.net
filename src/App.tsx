@@ -22,11 +22,13 @@ function App() {
 
 				<Route
 					path="/countdown"
-					element={<Countdown date="October 13, 2023, 00:00" title="Time until Marino's 24th birthday" />}
+					element={<Countdown date="October 13, 2024, 00:00" title="Time until Marino's 25th birthday" />}
 				/>
 
-				<Route path="/cz" element={<Countdown date="June 14, 2023, 07:35" title="Time until bus ride to CZ" />} />
-				<Route path="/czz" element={<Countdown date="June 14, 2023, 20:05" title="Time until arrival to CZ" />} />
+				<Route
+					path="/dk"
+					element={<Countdown date="October 28, 2023, 08:30" title="Time until plane ride to DK" />}
+				/>
 
 				<Route path="/portfolio" element={<Portfolio />} />
 

@@ -67,7 +67,7 @@ const SalaryChart = ({ dataArr }: any) => {
 						<ReferenceLine
 							x={dataArr[0].datapointS}
 							stroke="#eb6171"
-							label={{ value: `${dataArr[0].datapointN.toFixed(2)} kn`, fill: '#eb6171', dy: -60, dx: 65 }}
+							label={{ value: `${dataArr[0].datapointN.toFixed(2)} €`, fill: '#eb6171', dy: -60, dx: 65 }}
 							ifOverflow="extendDomain"
 						/>
 					</AreaChart>
