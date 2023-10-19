@@ -5,7 +5,7 @@ import SalaryChart from '../components/SalaryChart'
 const prirez_gradovi: any = {
 	'Zagreb (18%)': 0.18,
 	'Split (15%)': 0.15,
-	'Rijeka (14%)': 0.14,
+	'Rijeka (13%)': 0.13,
 	'Osijek (13%)': 0.13,
 	'Zadar (12%)': 0.12,
 	'Velika gorica (12%)': 0.12,
@@ -26,7 +26,7 @@ const prirez_gradovi: any = {
 }
 
 const SalaryCalculator = () => {
-	const [brutoPlaca, setBrutoPlaca] = useState(1000)
+	const [brutoPlaca, setBrutoPlaca] = useState(1300)
 	const [koeficijent, setKoeficijent] = useState(0)
 	const [grad, setGrad] = useState(prirez_gradovi['Zagreb (18%)'])
 
@@ -153,7 +153,10 @@ const SalaryCalculator = () => {
 	return (
 		<div className="flex flex-col items-center mt-16 text-xl font-semibold leading-relaxed">
 			<h2 className="mb-4 text-text text-center">Porez na dohodak u Hrvatskoj</h2>
-			<p>Grad (prirez)</p>
+			<p>
+				Grad (prirez){' '}
+				<a href="https://www.rrif.hr/pregled_stopa_prireza_porezu_na_dohodak-5-strucnainformacija/">?</a>
+			</p>
 			<select
 				title="gradovi"
 				name="gradovi"
@@ -174,7 +177,7 @@ const SalaryCalculator = () => {
 				placeholder={koeficijent.toString()}
 				onChange={(e) => setKoeficijent(parseFloat(e.target.value))}
 			/>
-			<p>Bruto iznos</p>
+			<p>Bruto iznos (EUR)</p>
 			<input
 				className="bg-text text-primary mb-8 text-center font-extrabold text-2xl md:text-3xl"
 				type="text"
