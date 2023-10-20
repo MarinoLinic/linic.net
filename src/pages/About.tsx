@@ -37,13 +37,15 @@ const About = () => {
 		fetchData()
 	}, [])
 
+	const [loading, setLoading] = useState(true)
+
 	const age: number = 24
 	const habitat: string = 'Copenhagen, Denmark'
 	const habitatAddition: string | undefined = ', where I moved recently'
 	const iNatDate = new Date(iNat.created_at)
 
 	return (
-		<>
+		<div className={loading ? 'hidden' : ''}>
 			<Navigation />
 
 			<div className="flex flex-col items-center justify-center md:mt-16 mt-8 md:mx-0 mx-8">
@@ -52,7 +54,7 @@ const About = () => {
 						<h1>About</h1>
 					</div>
 					<div className="my-4">
-						<img src="https://i.imgur.com/W7VlpVE.jpg" alt="Images of me." />
+						<img src="https://i.imgur.com/W7VlpVE.jpg" alt="Images of me." onLoad={() => setLoading(false)} />
 					</div>
 					<section>
 						<div>
@@ -236,7 +238,7 @@ const About = () => {
 					<br />
 				</div>
 			</div>
-		</>
+		</div>
 	)
 }
 

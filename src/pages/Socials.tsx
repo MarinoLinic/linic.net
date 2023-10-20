@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
+import Navigation from '../components/Navigation'
 
 const Socials = () => {
-	const [loading, setLoading] = useState(false)
+	const [loading, setLoading] = useState(true)
 
 	let links = [
 		['', 'Facebook', 'https://www.facebook.com/marino.linic'],
@@ -21,12 +22,15 @@ const Socials = () => {
 
 	return (
 		<>
+			<Navigation />
+
 			<div className={loading ? 'hidden' : ''}>
-				<main className="flex flex-col justify-center items-center my-16 md:my-28">
+				<main className="flex flex-col justify-center items-center my-8 md:my-14">
 					<img
 						src="https://i.imgur.com/YWpVRdK.jpg"
 						alt="Picture of me."
 						className="w-36 h-36 rounded-full mb-4"
+						onLoad={() => setLoading(false)}
 					/>
 					<div className="flex flex-col max-w-sm w-10/12">
 						{links.map(([img, text, url]) => (
