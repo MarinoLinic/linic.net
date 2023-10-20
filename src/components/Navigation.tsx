@@ -14,7 +14,7 @@ const Navigation = () => {
 					<div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`} id="mobile-menu">
 						{[
 							['About', '/about'],
-							['Resume/CV', '/cv'],
+							['Résumé/CV', '/cv'],
 							['Portfolio', '/portfolio'],
 							['Countdown', '/countdown'],
 							['Neto kalkulator', '/porez-na-dohodak']
@@ -32,15 +32,35 @@ const Navigation = () => {
 					<div className="hidden md:flex">
 						{[
 							['About', '/about'],
-							['Resume/CV', '/cv'],
+							['Résumé/CV', '/cv'],
 							['Portfolio', '/portfolio'],
-							['Countdown', '/countdown'],
-							['Neto kalkulator', '/porez-na-dohodak']
+							[
+								'Projects',
+								[
+									['Countdown', '/countdown'],
+									['Neto kalkulator', '/porez-na-dohodak']
+								]
+							]
 						].map(([title, url]) => (
 							<div key={title} className="px-2">
-								<Link to={url} className="text-text">
-									{title}
-								</Link>
+								{Array.isArray(url) ? (
+									<div>
+										{title}
+										<div className="ml-2">
+											{url.map(([subTitle, subUrl]) => (
+												<div key={subTitle}>
+													<Link to={subUrl} className="text-text">
+														{subTitle}
+													</Link>
+												</div>
+											))}
+										</div>
+									</div>
+								) : (
+									<Link to={url} className="text-text">
+										{title}
+									</Link>
+								)}
 							</div>
 						))}
 					</div>

@@ -24,14 +24,14 @@ const About = () => {
 		const fetchData = async () => {
 			const inat = await axios('https://api.inaturalist.org/v1/users/5691431')
 
-			const unsp = await axios.get('https://api.unsplash.com/users/marinolinic/statistics', {
-				headers: {
-					Authorization: 'Client-ID ' + key
-				}
-			})
+			// const unsp = await axios.get('https://api.unsplash.com/users/marinolinic/statistics', {
+			// 	headers: {
+			// 		Authorization: 'Client-ID ' + key
+			// 	}
+			// })
 
 			setINat(inat.data.results[0])
-			setUnsplash({ views: unsp.data.views.total, downloads: unsp.data.downloads.total })
+			// setUnsplash({ views: unsp.data.views.total, downloads: unsp.data.downloads.total })
 		}
 
 		fetchData()
@@ -60,9 +60,10 @@ const About = () => {
 						<div>
 							<p>
 								I am {age} years old and currently reside in {habitat}
-								{habitatAddition}. I'm learning Danish. I love TypeScript, React, Node, and all things web,
-								including work on the backend.{' '}
+								{habitatAddition}. I'm learning Danish!{' '}
 							</p>
+							<br />
+							<p>I love TypeScript, React, Node, and all things web, including work on the backend. </p>
 							<p>
 								<br></br>
 								<p>
@@ -187,7 +188,7 @@ const About = () => {
 							<i>
 								<a href="https://www.inaturalist.org/observations/117533411">Trigonidium cicindeloides</a>
 							</i>
-							. It turned out this was the first confirmation of the species' existence in Croatia in 50 years. My
+							. It turned out to be the first confirmation of the species' existence in Croatia in 50 years. My
 							name appears in{' '}
 							<a href="https://zenodo.org/record/5993822#:~:text=Otok%2C%20Bra%C4%8D%2C%20Molat)%20(-,Lini%C4%87%2014.VIII.2014,-%2C%20Rebrina%20%26%20Brigi%C4%87%2019">
 								The first annotated checklist of Croatian crickets and grasshoppers
