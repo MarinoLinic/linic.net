@@ -23,11 +23,15 @@ const Socials = () => {
 		<>
 			<div className={loading ? 'hidden' : ''}>
 				<main className="flex flex-col justify-center items-center my-16 md:my-28">
-					<img src="/ml2.jpg" alt="Picture of me" className="w-36 h-36 rounded-full mb-4" />
+					<img
+						src="https://i.imgur.com/YWpVRdK.jpg"
+						alt="Picture of me."
+						className="w-36 h-36 rounded-full mb-4"
+					/>
 					<div className="flex flex-col max-w-sm w-10/12">
 						{links.map(([img, text, url]) => (
 							<a className="text-text my-2" href={url}>
-								<button className="w-full">{text}</button>
+								<button className="w-full bg-slate-600 hover:text-stone-200 hover:border-stone-200">{text}</button>
 							</a>
 						))}
 					</div>
