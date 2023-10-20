@@ -33,36 +33,26 @@ const Navigation = () => {
 						{[
 							['About', '/about'],
 							['Résumé/CV', '/cv'],
-							['Portfolio', '/portfolio'],
-							[
-								'Projects',
-								[
-									['Countdown', '/countdown'],
-									['Neto kalkulator', '/porez-na-dohodak']
-								]
-							]
+							['Portfolio', '/portfolio']
 						].map(([title, url]) => (
 							<div key={title} className="px-2">
-								{Array.isArray(url) ? (
-									<div>
-										{title}
-										<div className="ml-2">
-											{url.map(([subTitle, subUrl]) => (
-												<div key={subTitle}>
-													<Link to={subUrl} className="text-text">
-														{subTitle}
-													</Link>
-												</div>
-											))}
-										</div>
-									</div>
-								) : (
-									<Link to={url} className="text-text">
-										{title}
-									</Link>
-								)}
+								<Link to={url} className="text-text">
+									{title}
+								</Link>
 							</div>
 						))}
+						<div>
+							{[
+								['Countdown', '/countdown'],
+								['Neto kalkulator', '/porez-na-dohodak']
+							].map(([subTitle, subUrl]) => (
+								<div key={subTitle}>
+									<Link to={subUrl} className="text-text">
+										{subTitle}
+									</Link>
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
 			</div>
