@@ -42,7 +42,9 @@ const Navigation = () => {
 							</div>
 						))}
 						<div>
+							<p>⤵</p>
 							{[
+								['Chronica Omnium', '/portfolio'],
 								['Countdown', '/countdown'],
 								['Neto kalkulator', '/porez-na-dohodak']
 							].map(([subTitle, subUrl]) => (
