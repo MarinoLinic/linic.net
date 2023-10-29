@@ -98,9 +98,9 @@ const About = () => {
 						<br />
 						<p>
 							I started programming right about the time I started university. My knowledge is substantially
-							derived from self-study. I remember when—right around the time I enrolled—I downloaded a small C++
-							jumping game with ~400 lines of code. I spent that weekend completely glued to my screen: I was
-							editing and playing around with the code, only to end up set for the next month of the semester
+							derived from self-study. I remember when—right around the time I enrolled—I downloaded a small
+							jumping game with ~400 lines of C++. I spent that weekend completely glued to my screen: I was
+							editing and playing around with the code only to end up set for the next month of the semester
 							without having to pay any attention to my C++ course. Stuff like that really pays off.
 						</p>
 						<br />
