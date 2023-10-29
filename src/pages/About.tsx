@@ -16,8 +16,8 @@ const About = () => {
 	}) as any
 
 	const [unsplash, setUnsplash] = useState({
-		views: 4221214,
-		downloads: 18363
+		views: 4283596,
+		downloads: 18751
 	}) as any
 
 	useEffect(() => {
@@ -63,13 +63,11 @@ const About = () => {
 								{habitatAddition}. I'm learning Danish!{' '}
 							</p>
 							<br />
-							<p>I love TypeScript, React, Node, and all things web, including work on the backend. </p>
+							<p>I love TypeScript, Python, React, SQL, and all things web and programming. </p>
+							<br></br>
 							<p>
-								<br></br>
-								<p>
-									I graduated from the University of Rijeka with a{' '}
-									<strong>bachelor's degreee in Informatics</strong> on September 27, 2023.
-								</p>
+								I graduated from the University of Rijeka with a <strong>bachelor's degreee in Informatics</strong>{' '}
+								on September 27, 2023.
 							</p>
 						</div>
 					</section>
@@ -94,19 +92,27 @@ const About = () => {
 					<br />
 
 					<section>
-						<h2>Computer Science - Newfound Love</h2>
+						<h2>Computer Science - THE Thing</h2>
+						<br />
+						<img src="https://i.imgur.com/kQPDGhl.jpg" alt="A snippet of my code." />
 						<br />
 						<p>
 							I started programming right about the time I started university. My knowledge is substantially
 							derived from self-study. I remember when—right around the time I enrolled—I downloaded a small C++
-							jumping game with ~400 lines of code. I spent that weekend, completely glued to my screen, editing
-							and playing around with the code, only to end up set for the next month of the semester without
-							having to pay any attention to my C++ course. Stuff like that really pays off!
+							jumping game with ~400 lines of code. I spent that weekend completely glued to my screen: I was
+							editing and playing around with the code, only to end up set for the next month of the semester
+							without having to pay any attention to my C++ course. Stuff like that really pays off.
 						</p>
 						<br />
 						<p>
 							I started getting into web development during my study and made a collection of projects you can see
 							at <Link to="/portfolio">/portfolio</Link>.
+						</p>
+						<br />
+						<p>
+							I love the freedom that comes with coding, and it has been able to capture my attention better than
+							any other field. I would love to gain experience in a professional environment and seriously look
+							forward to my first job.
 						</p>
 						<br />
 						<p>
@@ -147,7 +153,7 @@ const About = () => {
 					<br />
 
 					<section>
-						<h2>Photography - Though I Wish I Could Draw</h2>
+						<h2>Photography - Childhood Addiction 1</h2>
 						<br />
 						<img src="https://i.imgur.com/pNEK2NN.jpg" alt="An image of fish." />
 						<br />
@@ -173,7 +179,7 @@ const About = () => {
 					<br />
 
 					<section>
-						<h2>Zoology - Childhood Addiction</h2>
+						<h2>Zoology - Childhood Addiction 2</h2>
 						<br />
 						<img
 							alt="Me with a cat snake."
@@ -209,7 +215,8 @@ const About = () => {
 									{' '}
 									{iNat.species_count} species{' '}
 								</a>
-								while helping with {iNat.identifications_count} identifications.
+								while helping with {iNat.identifications_count} identifications. (These statistics are fetched
+								dynamically.)
 							</p>
 						</div>
 						<br />

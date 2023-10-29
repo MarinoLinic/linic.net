@@ -11,7 +11,7 @@ const Navigation = () => {
 					<img src="/logo.svg" alt="Marino Linic logo" className="w-8 border-0" />
 				</a>
 				<div className="flex flex-col md:flex-row">
-					<div className={`md:hidden ${isMenuOpen ? 'block' : 'hidden'}`} id="mobile-menu">
+					<div className={`2xl:hidden ${isMenuOpen ? 'block' : 'hidden'}`} id="mobile-menu">
 						{[
 							['About', '/about'],
 							['Résumé/CV', '/cv'],
@@ -26,10 +26,10 @@ const Navigation = () => {
 							</div>
 						))}
 					</div>
-					<button className="md:hidden block" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+					<button className="2xl:hidden block" onClick={() => setIsMenuOpen(!isMenuOpen)}>
 						☰
 					</button>
-					<div className="hidden md:flex">
+					<div className="hidden 2xl:flex">
 						{[
 							['About', '/about'],
 							['Résumé/CV', '/cv'],
