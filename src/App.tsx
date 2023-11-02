@@ -7,6 +7,7 @@ import CV from './components/CV'
 import SalaryCalculator from './pages/SalaryCalculator'
 import NotFound from './pages/NotFound'
 import Socials from './pages/Socials'
+import TimeVisualization from './pages/TimeVisualization'
 
 function App() {
 	return (
@@ -35,6 +36,8 @@ function App() {
 				<Route path="/porez-na-dohodak" element={<SalaryCalculator />} />
 				<Route path="/porez" element={<Navigate to="/porez-na-dohodak" />} />
 				<Route path="/salary" element={<Navigate to="/porez-na-dohodak" />} />
+
+				<Route path="/visualization/:years/:months/:weeks/:startDate" element={<TimeVisualization />} />
 
 				<Route path="*" element={<NotFound />} />
 			</Routes>
