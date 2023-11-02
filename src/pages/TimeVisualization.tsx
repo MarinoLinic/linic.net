@@ -32,9 +32,9 @@ const TimeVisualization = () => {
 		const squares = []
 		for (let i = 0; i < totalWeeks; i++) {
 			if (i < passedWeeks) {
-				squares.push(<Square key={i} filled />)
+				squares.push(<Square key={i} filled index={i} />)
 			} else {
-				squares.push(<Square key={i} />)
+				squares.push(<Square key={i} index={i} />)
 			}
 		}
 		return squares
