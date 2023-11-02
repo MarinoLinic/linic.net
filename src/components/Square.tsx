@@ -2,11 +2,11 @@
 import React, { useState } from 'react'
 
 const Square = ({ filled, index }: any) => {
-	const [hovered, setHovered] = useState(false)
+	const [clicked, setClicked] = useState(false)
 	const weekNumber = index + 1
 
-	const toggleHover = () => {
-		setHovered(!hovered)
+	const handleClick = () => {
+		setClicked(!clicked)
 	}
 
 	return (
@@ -15,15 +15,14 @@ const Square = ({ filled, index }: any) => {
 				width: '20px',
 				height: '20px',
 				backgroundColor: filled ? 'red' : 'white',
-				border: '1px solid black',
+				border: `solid ${clicked === true ? 'blue 2px' : 'black 1px'}`,
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
 				position: 'relative'
 			}}
-			onMouseEnter={toggleHover}
-			onMouseLeave={toggleHover}>
-			{hovered && (
+			onClick={handleClick}>
+			{clicked && (
 				<div
 					style={{
 						position: 'absolute',
