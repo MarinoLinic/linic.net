@@ -3,6 +3,7 @@ import Salary from '../assets/content/portfolio/salary.mdx'
 import Clicker from '../assets/content/portfolio/clicker.mdx'
 import Photography from '../assets/content/portfolio/photography.mdx'
 import Flappy from '../assets/content/portfolio/flappy.mdx'
+import Fidit from '../assets/content/portfolio/fidit.mdx'
 import Other from '../assets/content/portfolio/other.mdx'
 
 const PortfolioList = () => {
@@ -14,6 +15,10 @@ const PortfolioList = () => {
 				<hr />
 				<br /> <br />
 				<Salary />
+				<br /> <br />
+				<hr />
+				<br /> <br />
+				<Fidit />
 				<br /> <br />
 				<hr />
 				<br /> <br />
