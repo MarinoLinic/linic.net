@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom'
 
-## Chronica Omnium — Curated History of the World
+## Chronica Omnium — Curated History of the World [2023]
+Technologies: Vite, React, TypeScript, Python, CSS, Leaflet, Plotly
 <br/>
-This project is not yet completed, and the CSS is not yet well-made for screens with a width below 2000 px; I also excluded events prior to 753 BCE for now from showing on the main page. It consists of displaying a JSON file (accompanied by a few others to deal with categories) compiled from a CSV I personally filled with over 500 historical events and over a dozen attributes with the goal of making sense of world history in a particularly compressed manner. I used Python scripts for Wikipedia scraping and much of the logic of a would-be backend, as well as some recursive algorithms to add some columns based on existing data, and then used React to display all of the data.
+This project is not complete, and isn't intended for screen sizes below 2000 px; I also momentarily excluded events prior to 753 BCE. The project displays one large JSON file compiled from a CSV I personally filled with over 500 historical events (goal: 2000) and over a dozen attributes with the purpose of making sense of world history. By compressing and prioritizing events, I can allow people to more easily have a general picture they can use as a reference frame for memorizing whatever other piece of historical information they encounter afterwards. Context is immensely pertinent for being able to retain information within a field. 
+<br/>
+I used Python scripts for Wikipedia scraping and much of the logic of a would-be backend, as well as some recursive algorithms to add some columns based on existing data, and then used React to display all of the data.
 <br/>
 On the frontend side, I created features such as custom URLs (React Router's useParams hook), filtering options based on various attributes (you can see the options if you click on "Settings" on the page, <a href="https://i.imgur.com/P5Ie7qW.png">like so</a>), scrollbar page percentage counting, using props to send data to Plotly charts and Leaflet's maps, conditional showcasing, useState and useEffect hooks, and of course the existing CSS design.
 <br/>
+Even though development is on pause, I am excited about this tool, and intend to use it as an educational resource.
 <img src="https://i.imgur.com/9pQOLNv.jpg" />
 <br/>
 <a href="https://world-history-test.netlify.app/">The site is live at this URL</a>. Source code is available <a href="https://github.com/MarinoLinic/chronica-omnium">here</a>. You may see a very early [XLSX version](https://docs.google.com/spreadsheets/d/1fzc67WveqqNbZZohmLSg8ERfQ_rPP-YJSuce0c1j-uc/edit?usp=sharing) I uploaded online.
