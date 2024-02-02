@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Clock from '../components/Clock'
+import Clock from '../components/Countdown_Clock'
 import Circles from '../components/Circles'
 import { clockString } from '../utils/functions/clockString'
 

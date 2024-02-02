@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import SalaryChart from '../components/SalaryChart'
+import SalaryChart from '../components/SalaryCalculator_SalaryChart'
 
 const prirez_gradovi: any = {
 	'Zagreb (18%)': 0.18,

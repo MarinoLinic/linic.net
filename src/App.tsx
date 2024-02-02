@@ -37,7 +37,7 @@ function App() {
 				<Route path="/porez" element={<Navigate to="/porez-na-dohodak" />} />
 				<Route path="/salary" element={<Navigate to="/porez-na-dohodak" />} />
 
-				<Route path="/visualization/:years/:months/:weeks/:startDate" element={<TimeVisualization />} />
+				<Route path="/time-visualization/:startDate/:endDate" element={<TimeVisualization />} />
 
 				<Route path="*" element={<NotFound />} />
 			</Routes>

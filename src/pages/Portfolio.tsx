@@ -1,4 +1,4 @@
-import PortfolioList from '../components/PortfolioList'
+import PortfolioList from '../components/Portfolio_PortfolioList'
 import Navigation from '../components/Navigation'
 
 const Portfolio = () => {

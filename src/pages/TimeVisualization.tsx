@@ -1,7 +1,8 @@
 // TimeVisualization.js
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import Square from '../components/Square'
+import Square from '../components/TimeVisualization_Square'
+import { timeConversion } from '../utils/functions/timeConversion'
 
 interface Params {
 	years: string
@@ -11,22 +12,35 @@ interface Params {
 }
 
 const TimeVisualization = () => {
-	const { years, months, weeks, startDate }: any = useParams() // fix TS
+	const { startDate, endDate }: any = useParams() // fix TS
 
 	const [passedWeeks, setPassedWeeks] = useState(0)
 	const [totalWeeks, setTotalWeeks] = useState(0)
 
 	useEffect(() => {
 		const today = new Date()
-		const inputDate = new Date(startDate) // Assuming startDate is in the format 'YYYY-MM-DD'
+		const inputStartDate = new Date(startDate) // Assuming startDate is in the format 'YYYY-MM-DD'
+		const inputEndDate = new Date(endDate) // Assuming endDate is in the format 'YYYY-MM-DD'
 
-		const timeDiff = today.getTime() - inputDate.getTime()
-		const weeksPassed = Math.floor(timeDiff / (1000 * 3600 * 24 * 7)) // Calculate weeks
-		setPassedWeeks(weeksPassed)
+		// Calculating miliseconds
+		const totalDiff = inputEndDate.getTime() - inputStartDate.getTime()
+		const passedDiff = today.getTime() - inputStartDate.getTime()
 
-		const totalWeeksCount = years * 52 + months * 4 + parseInt(weeks) // Assuming 1 year has 52 weeks and 1 month has 4 weeks
-		setTotalWeeks(totalWeeksCount)
-	}, [startDate, years, months, weeks])
+		// Creating time objects
+		const timeTotal = timeConversion(totalDiff)
+		const timePassed = timeConversion(passedDiff)
+		const timeLeft = timeConversion(totalDiff - passedDiff)
+
+		// Testing via console.log
+		console.log('Percentage passed:', (passedDiff / totalDiff) * 100) // testing
+		console.log(timeLeft)
+		console.log(timePassed)
+		console.log(timeTotal)
+
+		// State
+		setPassedWeeks(timePassed.weeks)
+		setTotalWeeks(timeTotal.weeks)
+	}, [startDate, endDate])
 
 	const renderSquares = () => {
 		const squares = []
