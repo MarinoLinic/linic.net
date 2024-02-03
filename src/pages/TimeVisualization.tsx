@@ -29,6 +29,8 @@ const TimeVisualization = () => {
 	const timeElapsed = timeConversionFloor(elapsedDiff)
 	const timeLeft = timeConversionCeil(totalDiff - elapsedDiff)
 
+	const percentElapsed = ((elapsedDiff / totalDiff) * 100).toFixed(2)
+
 	// ------------------- Rendering the visualization
 
 	const renderSquares = (total: any, elapsed: any, unit: any) => {
@@ -91,9 +93,14 @@ const TimeVisualization = () => {
 				<h2 className="md:my-8 my-4 text-center text-quarnary">
 					{startDate} ... to ... {endDate}
 				</h2>
-				<h4 className="md:my-8 text-center text-quarternary">
-					Percent elapsed: {((elapsedDiff / totalDiff) * 100).toFixed(2)}%
-				</h4>
+				<div className="md:my-8 text-center flex-col justify-center items-center">
+					<h4 className="my-2 text-quarternary">Percent elapsed:</h4>
+					<section className="w-full flex justify-center">
+						<div className="md:w-3/5 w-2/3 bg-text rounded-md">
+							<div className={`bg-quarternary rounded-md w-[${parseInt(percentElapsed)}%]`}>{percentElapsed}%</div>
+						</div>
+					</section>
+				</div>
 				<div className="md:visible md:flex md:flex-row md:justify-between hidden">
 					<section>
 						<TimeTable timeObj={timeTotal} desc="total" chosen={dateOptionChosen.total} />
