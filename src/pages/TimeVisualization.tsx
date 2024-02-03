@@ -31,13 +31,13 @@ const TimeVisualization = () => {
 
 	// ------------------- Rendering the visualization
 
-	const renderSquares = (total: any, elapsed: any) => {
+	const renderSquares = (total: any, elapsed: any, unit: any) => {
 		const squares = []
 		for (let i = 0; i < total; i++) {
 			if (i < elapsed) {
-				squares.push(<Square key={i} filled index={i} />)
+				squares.push(<Square key={i} filled index={i} unit={unit} />)
 			} else {
-				squares.push(<Square key={i} index={i} />)
+				squares.push(<Square key={i} index={i} unit={unit} />)
 			}
 		}
 		return squares
@@ -49,21 +49,37 @@ const TimeVisualization = () => {
 	const [dateOptionChosen, setDateOptionChosen] = useState({
 		total: timeTotal.weeks,
 		elapsed: timeElapsed.weeks,
-		left: timeLeft.weeks
+		left: timeLeft.weeks,
+		unit: 'Week'
 	})
 
 	function toggleDate(chosen: any) {
 		if (chosen === 'Days') {
-			setDateOptionChosen({ total: timeTotal.days, elapsed: timeElapsed.days, left: timeLeft.days })
+			setDateOptionChosen({ total: timeTotal.days, elapsed: timeElapsed.days, left: timeLeft.days, unit: 'Day' })
 		}
 		if (chosen === 'Weeks') {
-			setDateOptionChosen({ total: timeTotal.weeks, elapsed: timeElapsed.weeks, left: timeLeft.weeks })
+			setDateOptionChosen({
+				total: timeTotal.weeks,
+				elapsed: timeElapsed.weeks,
+				left: timeLeft.weeks,
+				unit: 'Weel'
+			})
 		}
 		if (chosen === 'Months') {
-			setDateOptionChosen({ total: timeTotal.months, elapsed: timeElapsed.months, left: timeLeft.months })
+			setDateOptionChosen({
+				total: timeTotal.months,
+				elapsed: timeElapsed.months,
+				left: timeLeft.months,
+				unit: 'Month'
+			})
 		}
 		if (chosen === 'Years') {
-			setDateOptionChosen({ total: timeTotal.years, elapsed: timeElapsed.years, left: timeLeft.years })
+			setDateOptionChosen({
+				total: timeTotal.years,
+				elapsed: timeElapsed.years,
+				left: timeLeft.years,
+				unit: 'Year'
+			})
 		}
 	}
 
@@ -101,7 +117,9 @@ const TimeVisualization = () => {
 					</select>
 				</div>
 			</div>
-			<div className="flex flex-wrap">{renderSquares(dateOptionChosen.total, dateOptionChosen.elapsed)}</div>
+			<div className="flex flex-wrap">
+				{renderSquares(dateOptionChosen.total, dateOptionChosen.elapsed, dateOptionChosen.unit)}
+			</div>
 		</div>
 	)
 }

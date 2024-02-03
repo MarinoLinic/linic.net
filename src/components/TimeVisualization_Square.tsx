@@ -1,7 +1,7 @@
 // Square.js
 import React, { useState } from 'react'
 
-const Square = ({ filled, index }: any) => {
+const Square = ({ filled, index, unit }: any) => {
 	const [clicked, setClicked] = useState(false)
 	const weekNumber = index + 1
 
@@ -35,7 +35,7 @@ const Square = ({ filled, index }: any) => {
 						borderRadius: '5px',
 						fontSize: '12px'
 					}}>
-					Week: {weekNumber}
+					{unit}: {weekNumber}
 				</div>
 			)}
 		</div>

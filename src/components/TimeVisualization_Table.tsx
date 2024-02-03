@@ -3,9 +3,9 @@ const TimeTable = ({ timeObj, desc, chosen }: any) => {
 		<section>
 			{Object.entries(timeObj)
 				.slice(1)
-				.map(([key, value]) => (
-					<p key={key} className={`${chosen == value ? 'text-quarnary' : ''}`}>
-						{key.charAt(0).toUpperCase() + key.slice(1)} {desc}: {value}
+				.map(([key, value]: any) => (
+					<p key={key} className={`${chosen === value ? 'text-quarnary' : ''}`}>
+						{key.charAt(0).toUpperCase() + key.slice(1)} {desc}: {value.toLocaleString()}
 					</p>
 				))}
 		</section>
