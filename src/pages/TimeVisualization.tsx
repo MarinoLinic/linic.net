@@ -84,23 +84,18 @@ const TimeVisualization = () => {
 		}
 	}
 
-	// // ------------------- Updating every x seconds
+	// ------------------- Updating every x seconds
 
-	// const [time, setTime] = useState(Date.now())
+	const [time, setTime] = useState(Date.now())
 
-	// useEffect(() => {
-	// 	const interval = setInterval(() => setTime(Date.now()), 1000)
-	// 	return () => {
-	// 		clearInterval(interval)
-	// 	}
-	// }, [])
+	useEffect(() => {
+		const interval = setInterval(() => setTime(Date.now()), 8000)
+		return () => {
+			clearInterval(interval)
+		}
+	}, [])
 
 	// ------------------- JSX
-
-	const percentNum = parseFloat(percentElapsed)
-	console.log(typeof percentNum)
-
-	let percentString = 'w-[' + percentElapsed + '%]'
 
 	return (
 		<div className="md:mx-48 md:my-12 mx-4 my-4">
@@ -116,14 +111,14 @@ const TimeVisualization = () => {
 								style={{
 									backgroundColor: '#eb6171',
 									borderRadius: '0.375rem',
-									width: `calc(${parseInt(percentElapsed)}%)`
+									width: `calc(${parseFloat(percentElapsed)}%)`
 								}}>
 								{percentElapsed}%
 							</div>
 						</div>
 					</div>
 				</div>
-				<div className="md:visible md:flex md:flex-row md:justify-between hidden">
+				<div className="md:visible md:flex md:flex-row md:justify-around hidden">
 					<section>
 						<TimeTable timeObj={timeTotal} desc="total" chosen={dateOptionChosen.total} />
 					</section>
