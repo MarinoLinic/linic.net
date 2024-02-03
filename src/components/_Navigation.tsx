@@ -17,6 +17,7 @@ const Navigation = () => {
 							['Résumé/CV', '/cv'],
 							['Portfolio', '/portfolio'],
 							['Countdown', '/countdown'],
+							['Time visualizer', '/time-visualization'],
 							['Neto kalkulator', '/porez-na-dohodak']
 						].map(([title, url]) => (
 							<div key={title} className="px-2">
@@ -46,6 +47,7 @@ const Navigation = () => {
 							{[
 								['Chronica Omnium', '/portfolio'],
 								['Countdown', '/countdown'],
+								['Time visualizer', '/time-visualization'],
 								['Neto kalkulator', '/porez-na-dohodak']
 							].map(([subTitle, subUrl]) => (
 								<div key={subTitle}>

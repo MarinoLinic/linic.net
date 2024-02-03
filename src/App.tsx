@@ -7,6 +7,7 @@ import CV from './components/_CV'
 import SalaryCalculator from './pages/SalaryCalculator'
 import NotFound from './pages/NotFound'
 import Socials from './pages/Socials'
+import TimeVisualizationChoose from './pages/TimeVisualization_Choose'
 import TimeVisualization from './pages/TimeVisualization'
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
 				<Route path="/porez" element={<Navigate to="/porez-na-dohodak" />} />
 				<Route path="/salary" element={<Navigate to="/porez-na-dohodak" />} />
 
+				<Route path="/time-visualization" element={<TimeVisualizationChoose />} />
 				<Route path="/time-visualization/start=:startDate&end=:endDate" element={<TimeVisualization />} />
 
 				<Route path="*" element={<NotFound />} />
