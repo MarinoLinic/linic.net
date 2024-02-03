@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Navigation from '../components/Navigation'
+import Navigation from '../components/_Navigation'
 
 const key = import.meta.env.VITE_UNSPLASH_KEY
 

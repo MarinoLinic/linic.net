@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Square from '../components/TimeVisualization_Square'
+import TimeTable from '../components/TimeVisualization_Table'
 import { timeConversion } from '../utils/functions/timeConversion'
 
 interface Params {
@@ -12,8 +13,8 @@ interface Params {
 const TimeVisualization = () => {
 	const { startDate, endDate }: any = useParams() // fix TS
 
-	const [passedWeeks, setPassedWeeks] = useState(0)
-	const [totalWeeks, setTotalWeeks] = useState(0)
+	const dateOptions = ['Days', 'Weeks', 'Months', 'Years']
+	const [dateOptionChosen, setDateOptionChosen] = useState('Weeks')
 
 	// ------------------- Date calculation
 
@@ -23,29 +24,19 @@ const TimeVisualization = () => {
 
 	// Calculating miliseconds
 	const totalDiff = inputEndDate.getTime() - inputStartDate.getTime()
-	const passedDiff = today.getTime() - inputStartDate.getTime()
+	const elapsedDiff = today.getTime() - inputStartDate.getTime()
 
 	// Creating time objects
 	const timeTotal = timeConversion(totalDiff)
-	const timePassed = timeConversion(passedDiff)
-	const timeLeft = timeConversion(totalDiff - passedDiff)
-
-	// Testing via console.log
-	console.log('Percentage passed:', (passedDiff / totalDiff) * 100)
-
-	// ------------------- Updating state
-
-	useEffect(() => {
-		setPassedWeeks(timePassed.weeks)
-		setTotalWeeks(timeTotal.weeks)
-	}, [startDate, endDate])
+	const timeElapsed = timeConversion(elapsedDiff)
+	const timeLeft = timeConversion(totalDiff - elapsedDiff)
 
 	// ------------------- Rendering the visualization
 
-	const renderSquares = () => {
+	const renderSquares = (total: any, elapsed: any) => {
 		const squares = []
-		for (let i = 0; i < totalWeeks; i++) {
-			if (i < passedWeeks) {
+		for (let i = 0; i < total; i++) {
+			if (i < elapsed) {
 				squares.push(<Square key={i} filled index={i} />)
 			} else {
 				squares.push(<Square key={i} index={i} />)
@@ -57,36 +48,38 @@ const TimeVisualization = () => {
 	// ------------------- JSX
 
 	return (
-		<div className="mx-48 my-12">
-			<div className="my-8">
-				<h2 className="text-center my-8">
+		<div className="md:mx-48 md:my-12 mx-4 my-4">
+			<div className="md:my-8 my-4">
+				<h2 className="md:my-8 my-4 text-center text-quarnary">
 					{startDate} ... to ... {endDate}
 				</h2>
-				<div className="flex flex-row justify-between">
+				<h4 className="md:my-8 text-center text-quarternary">
+					Percent elapsed: {((elapsedDiff / totalDiff) * 100).toFixed(2)}%
+				</h4>
+				<div className="md:visible md:flex md:flex-row md:justify-between hidden">
 					<section>
-						{Object.entries(timeTotal).map(([key, value]) => (
-							<p key={key}>
-								{'Total ' + key.charAt(0).toUpperCase() + key.slice(1)}: {value}
-							</p>
-						))}
+						<TimeTable timeObj={timeTotal} desc="total" />
 					</section>
 					<section>
-						{Object.entries(timePassed).map(([key, value]) => (
-							<p key={key}>
-								{'Passed ' + key.charAt(0).toUpperCase() + key.slice(1)}: {value}
-							</p>
-						))}
+						<TimeTable timeObj={timeElapsed} desc="elapsed" />
 					</section>
 					<section>
-						{Object.entries(timeLeft).map(([key, value]) => (
-							<p key={key}>
-								{'Left ' + key.charAt(0).toUpperCase() + key.slice(1)}: {value}
-							</p>
-						))}
+						<TimeTable timeObj={timeLeft} desc="left" />
 					</section>
 				</div>
+				<div className="flex justify-center my-4">
+					<select
+						title="Date Options"
+						name="dateOptions"
+						className="bg-text text-primary text-center font-extrabold"
+						onChange={(e) => setDateOptionChosen(e.target.value)}>
+						{dateOptions.map((index) => (
+							<option value={index}>{index}</option>
+						))}
+					</select>
+				</div>
 			</div>
-			<div style={{ display: 'flex', flexWrap: 'wrap' }}>{renderSquares()}</div>
+			<div className="flex flex-wrap">{renderSquares(timeTotal.weeks, timeElapsed.weeks)}</div>
 		</div>
 	)
 }

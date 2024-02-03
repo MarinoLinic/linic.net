@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import Loader from './Loader'
+import Loader from './_Loader'
 
 const CV = () => {
 	useEffect(() => {

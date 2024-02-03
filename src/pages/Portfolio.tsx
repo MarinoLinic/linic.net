@@ -1,5 +1,5 @@
 import PortfolioList from '../components/Portfolio_PortfolioList'
-import Navigation from '../components/Navigation'
+import Navigation from '../components/_Navigation'
 
 const Portfolio = () => {
 	return (

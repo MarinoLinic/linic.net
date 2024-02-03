@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Navigation from '../components/Navigation'
+import Navigation from '../components/_Navigation'
 
 const Socials = () => {
 	const [loading, setLoading] = useState(true)

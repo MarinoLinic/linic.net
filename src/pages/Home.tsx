@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Circles from '../components/Circles'
-import Navigation from '../components/Navigation'
+import Circles from '../components/_Circles'
+import Navigation from '../components/_Navigation'
 import { handleMouseOver, handleMouseOut } from '../utils/functions/handleMouseOver'
 
 const Home = () => {
