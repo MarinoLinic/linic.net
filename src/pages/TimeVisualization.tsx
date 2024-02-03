@@ -111,7 +111,9 @@ const TimeVisualization = () => {
 								style={{
 									backgroundColor: '#eb6171',
 									borderRadius: '0.375rem',
-									width: `calc(${parseFloat(percentElapsed)}%)`
+									/* adding max value to be 100, since it will always be the smaller of thw two
+									with a larger number */
+									width: `calc(${Math.min(parseFloat(percentElapsed), 100)}%)`
 								}}>
 								{percentElapsed}%
 							</div>
