@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Square from '../components/TimeVisualization_Square'
 import TimeTable from '../components/TimeVisualization_Table'
-import { timeConversion } from '../utils/functions/timeConversion'
+import { timeConversionFloor, timeConversionCeil } from '../utils/functions/timeConversion'
 
 interface Params {
 	startDate: string
@@ -25,9 +25,9 @@ const TimeVisualization = () => {
 	const elapsedDiff = today.getTime() - inputStartDate.getTime()
 
 	// Creating time objects
-	const timeTotal = timeConversion(totalDiff)
-	const timeElapsed = timeConversion(elapsedDiff)
-	const timeLeft = timeConversion(totalDiff - elapsedDiff)
+	const timeTotal = timeConversionCeil(totalDiff)
+	const timeElapsed = timeConversionFloor(elapsedDiff)
+	const timeLeft = timeConversionCeil(totalDiff - elapsedDiff)
 
 	// ------------------- Rendering the visualization
 
