@@ -12,7 +12,6 @@ interface Params {
 
 const TimeVisualization = () => {
 	const { startDate, endDate }: any = useParams() // fix TS
-	console.log('Test')
 
 	// ------------------- Date calculation
 
@@ -85,7 +84,23 @@ const TimeVisualization = () => {
 		}
 	}
 
+	// // ------------------- Updating every x seconds
+
+	// const [time, setTime] = useState(Date.now())
+
+	// useEffect(() => {
+	// 	const interval = setInterval(() => setTime(Date.now()), 1000)
+	// 	return () => {
+	// 		clearInterval(interval)
+	// 	}
+	// }, [])
+
 	// ------------------- JSX
+
+	const percentNum = parseFloat(percentElapsed)
+	console.log(typeof percentNum)
+
+	let percentString = 'w-[' + percentElapsed + '%]'
 
 	return (
 		<div className="md:mx-48 md:my-12 mx-4 my-4">
@@ -93,13 +108,20 @@ const TimeVisualization = () => {
 				<h2 className="md:my-8 my-4 text-center text-quarnary">
 					{startDate} ... to ... {endDate}
 				</h2>
-				<div className="md:my-8 text-center flex-col justify-center items-center">
+				<div className="md:my-8 text-center">
 					<h4 className="my-2 text-quarternary">Percent elapsed:</h4>
-					<section className="w-full flex justify-center">
-						<div className="md:w-3/5 w-2/3 bg-text rounded-md">
-							<div className={`bg-quarternary rounded-md w-[${parseInt(percentElapsed)}%]`}>{percentElapsed}%</div>
+					<div className="w-full flex justify-center">
+						<div className="w-1/2 bg-text rounded-md">
+							<div
+								style={{
+									backgroundColor: '#eb6171',
+									borderRadius: '0.375rem',
+									width: `calc(${parseInt(percentElapsed)}%)`
+								}}>
+								{percentElapsed}%
+							</div>
 						</div>
-					</section>
+					</div>
 				</div>
 				<div className="md:visible md:flex md:flex-row md:justify-between hidden">
 					<section>

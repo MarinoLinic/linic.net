@@ -14,7 +14,7 @@ const Square = ({ filled, index, unit }: any) => {
 			style={{
 				width: '20px',
 				height: '20px',
-				backgroundColor: filled ? 'red' : 'white',
+				backgroundColor: filled ? '#eb6171' : 'white',
 				border: `solid ${clicked === true ? 'blue 2px' : 'black 1px'}`,
 				display: 'flex',
 				alignItems: 'center',
