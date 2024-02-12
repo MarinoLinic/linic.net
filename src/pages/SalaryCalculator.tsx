@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SalaryChart from '../components/SalaryCalculator_SalaryChart'
 
-const prirez_gradovi: any = {
+const prirez_gradovi: Record<string, number> = {
 	'Zagreb (18%)': 0.18,
 	'Split (15%)': 0.15,
 	'Rijeka (13%)': 0.13,

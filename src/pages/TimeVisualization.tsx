@@ -106,14 +106,11 @@ const TimeVisualization = () => {
 				<div className="md:my-8 text-center">
 					<h4 className="my-2 text-quarternary">Percent elapsed:</h4>
 					<div className="w-full flex justify-center">
-						<div className="w-1/2 bg-text rounded-md">
+						<div className="w-1/2 bg-text rounded-md overflow-hidden">
 							<div
 								style={{
 									backgroundColor: '#eb6171',
-									borderRadius: '0.375rem',
-									/* adding max value to be 100, since it will always be the smaller of thw two
-									with a larger number */
-									width: `calc(${Math.min(parseFloat(percentElapsed), 100)}%)`
+									width: `calc(${parseFloat(percentElapsed)}%)`
 								}}>
 								{percentElapsed}%
 							</div>
@@ -135,7 +132,7 @@ const TimeVisualization = () => {
 					<select
 						title="Date Options"
 						name="dateOptions"
-						className="bg-text text-primary text-center font-extrabold"
+						className="bg-text text-primary text-center font-extrabold rounded-md"
 						onChange={(e) => toggleDate(e.target.value)}>
 						{dateOptions.map((index) => (
 							<option value={index}>{index}</option>
