@@ -110,7 +110,7 @@ const TimeVisualization = () => {
 							<div
 								style={{
 									backgroundColor: '#eb6171',
-									width: `calc(${parseFloat(percentElapsed)}%)`
+									width: `${parseFloat(percentElapsed)}%`
 								}}>
 								{percentElapsed}%
 							</div>
