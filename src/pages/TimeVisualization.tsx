@@ -5,11 +5,13 @@ import Square from '../components/TimeVisualization_Square'
 import TimeTable from '../components/TimeVisualization_Table'
 import { timeConversionFloor, timeConversionCeil } from '../utils/functions/timeConversion'
 
+type RouteParams = {
+	startDate: string
+	endDate: string
+}
+
 const TimeVisualization = () => {
-	const { startDate = '1999-10-13', endDate = '2079-10-13' } = useParams<{
-		startDate?: string
-		endDate?: string
-	}>()
+	const { startDate = '1999-10-13', endDate = '2079-10-13' } = useParams<RouteParams>()
 
 	// ------------------- Date calculation
 
