@@ -4,7 +4,7 @@ import Loader from './_Loader'
 const CV = () => {
 	useEffect(() => {
 		if (typeof window !== 'undefined') {
-			window.location.href = 'https://drive.google.com/file/d/1jsVgAzWsNqjsLoU98-ROOF7SjNWPai7E/view?usp=sharing'
+			window.location.href = 'https://drive.google.com/file/d/1stck_UD2-hou52xonZVw2vUvJRqh9od4/view?usp=sharing'
 		}
 	}, [])
 	return (
