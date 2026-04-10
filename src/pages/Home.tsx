@@ -2,12 +2,11 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Circles from '../components/_Circles'
 import Navigation from '../components/_Navigation'
-import { handleMouseOver, handleMouseOut } from '../utils/functions/handleMouseOver'
 
 const Home = () => {
-	const [count, setCount] = useState(() => {
-		let cond = localStorage.getItem('Clicks') ? JSON.parse(localStorage.getItem('Clicks')!) : 0
-		return cond
+	const [count, setCount] = useState<number>(() => {
+		const saved = localStorage.getItem('Clicks')
+		return saved ? JSON.parse(saved) : 0
 	})
 
 	const [isHovering, setIsHovering] = useState(false)
@@ -23,19 +22,11 @@ const Home = () => {
 				<Navigation />
 				<div className="flex flex-col items-center justify-center h-[60vh] md:h-[80vh]">
 					{isHovering ? (
-						<h5
-							onMouseOut={() => {
-								handleMouseOut(setIsHovering)
-							}}
-							className="text-secondary uppercase cursor-default">
+						<h5 onMouseOut={() => setIsHovering(false)} className="text-secondary uppercase cursor-default">
 							& musician, photographer
 						</h5>
 					) : (
-						<h5
-							onMouseOver={() => {
-								handleMouseOver(setIsHovering)
-							}}
-							className="text-quarternary uppercase cursor-default">
+						<h5 onMouseOver={() => setIsHovering(true)} className="text-quarternary uppercase cursor-default">
 							Junior web developer
 						</h5>
 					)}

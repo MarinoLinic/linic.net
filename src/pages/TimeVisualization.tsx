@@ -1,5 +1,4 @@
-// TimeVisualization.js
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Square from '../components/TimeVisualization_Square'
 import TimeTable from '../components/TimeVisualization_Table'

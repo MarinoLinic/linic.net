@@ -1,14 +1,14 @@
 import '../styles/rainbow.css'
 
-interface props {
+interface Props {
 	title: string
-	timerDays: string
-	timerHours: string
-	timerMinutes: string
-	timerSeconds: string
+	timerDays?: string
+	timerHours?: string
+	timerMinutes?: string
+	timerSeconds?: string
 }
 
-const Clock = ({ title, timerDays, timerHours, timerMinutes, timerSeconds }: props) => {
+const Clock = ({ title, timerDays = '10', timerHours = '10', timerMinutes = '10', timerSeconds = '10' }: Props) => {
 	return (
 		<div className="flex flex-col items-center justify-center text-center px-8">
 			<h2 className="mb-10 text-white opacity-30">{title}</h2>
@@ -35,13 +35,6 @@ const Clock = ({ title, timerDays, timerHours, timerMinutes, timerSeconds }: pro
 			</div>
 		</div>
 	)
-}
-
-Clock.defaultProps = {
-	timerDays: '10',
-	timerHours: '10',
-	timerMinutes: '10',
-	timerSeconds: '10'
 }
 
 export default Clock

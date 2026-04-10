@@ -1,5 +1,4 @@
-// Square.js
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const Square = ({ filled, index, unit }: any) => {
 	const [clicked, setClicked] = useState(false)

@@ -28,7 +28,3 @@ module.exports = {
 	},
 	plugins: []
 }
-
-// dfd
-// #27252F
-// #242424

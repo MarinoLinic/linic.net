@@ -15,13 +15,13 @@ const prirez_gradovi: Record<string, number> = {
 	'Varaždin (7.5%)': 0.075,
 	'Sisak (10%)': 0.1,
 	'Dubrovnik (10%)': 0.1,
-	'8%': 0.8,
-	'7%': 0.7,
-	'5%': 0.5,
-	'4%': 0.4,
-	'3%': 0.3,
-	'2%': 0.2,
-	'1%': 0.1,
+	'8%': 0.08,
+	'7%': 0.07,
+	'5%': 0.05,
+	'4%': 0.04,
+	'3%': 0.03,
+	'2%': 0.02,
+	'1%': 0.01,
 	'Bez prireza (0%)': 0
 }
 
@@ -30,7 +30,7 @@ const SalaryCalculator = () => {
 	const [koeficijent, setKoeficijent] = useState(0)
 	const [grad, setGrad] = useState(prirez_gradovi['Zagreb (18%)'])
 
-	let currency = '€'
+	const currency = '€'
 
 	function brutoHandler(input: number) {
 		if (isNaN(input)) setBrutoPlaca(0)
@@ -61,14 +61,14 @@ const SalaryCalculator = () => {
 		return izracun // neto
 	}
 
-	let netoPlaca = izracun_place(brutoPlaca, koeficijent, grad)
+	const netoPlaca = izracun_place(brutoPlaca, koeficijent, grad)
 
 	const gradovi = Object.keys(prirez_gradovi)
 
 	/////
 
 	const osnovica = 331.81
-	let statistike: any = [
+	const statistike: any[] = [
 		{
 			bruto: 1,
 			postotak: (20).toFixed(2),

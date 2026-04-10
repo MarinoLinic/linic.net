@@ -1,13 +1,13 @@
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 const TimeVisualizationChoose = () => {
+	const navigate = useNavigate()
 	const [start, setStart] = useState('1999-10-13')
 	const [end, setEnd] = useState('2079-10-13')
 
 	function handleSubmit() {
-		const urlT = `time-visualization/start=${start}&end=${end}`
-		window.location.href = urlT
+		navigate(`/time-visualization/start=${start}&end=${end}`)
 	}
 
 	return (

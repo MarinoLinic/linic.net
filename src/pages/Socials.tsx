@@ -1,23 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Navigation from '../components/_Navigation'
 
 const Socials = () => {
 	const [loading, setLoading] = useState(true)
 
-	let links = [
-		['', 'Facebook', 'https://www.facebook.com/marino.linic'],
-		['', 'Twitter', 'https://twitter.com/MarinoLinic'],
-		['', 'Instagram', 'https://instagram.com/marino.linic'],
-		['', 'LinkedIn', 'https://www.linkedin.com/in/marino-linic/'],
-		['', 'GitHub', 'https://github.com/MarinoLinic'],
-		['', 'Unsplash', 'https://unsplash.com/@marinolinic'],
-		['', 'iNaturalist', 'https://www.inaturalist.org/people/5691431'],
-		['', 'Medium', 'https://marinolinic.medium.com/'],
-		['', 'Goodreads', 'https://www.goodreads.com/user/show/76388574-marino-lini'],
-		['', 'Wikipedia', 'https://en.wikipedia.org/wiki/User:LinicMarino'],
-		['', 'YouTube (programming)', 'https://www.youtube.com/channel/UC-TXTkze3ZC7WBtzg6Z99jg'],
-		['', 'YouTube (music)', 'https://www.youtube.com/channel/UC1nUn8ThCuFM_8VZijqnXyQ'],
-		['', 'YouTube (entomology)', 'https://www.youtube.com/channel/UC_VLETxZwt9He99CBEMPXXg']
+	const links = [
+		['Facebook', 'https://www.facebook.com/marino.linic'],
+		['Twitter', 'https://twitter.com/MarinoLinic'],
+		['Instagram', 'https://instagram.com/marino.linic'],
+		['LinkedIn', 'https://www.linkedin.com/in/marino-linic/'],
+		['GitHub', 'https://github.com/MarinoLinic'],
+		['Unsplash', 'https://unsplash.com/@marinolinic'],
+		['iNaturalist', 'https://www.inaturalist.org/people/5691431'],
+		['Medium', 'https://marinolinic.medium.com/'],
+		['Goodreads', 'https://www.goodreads.com/user/show/76388574-marino-lini'],
+		['Wikipedia', 'https://en.wikipedia.org/wiki/User:LinicMarino'],
+		['YouTube (programming)', 'https://www.youtube.com/channel/UC-TXTkze3ZC7WBtzg6Z99jg'],
+		['YouTube (music)', 'https://www.youtube.com/channel/UC1nUn8ThCuFM_8VZijqnXyQ'],
+		['YouTube (entomology)', 'https://www.youtube.com/channel/UC_VLETxZwt9He99CBEMPXXg']
 	]
 
 	return (
@@ -33,7 +33,7 @@ const Socials = () => {
 						onLoad={() => setLoading(false)}
 					/>
 					<div className="flex flex-col max-w-sm w-10/12">
-						{links.map(([img, text, url]) => (
+						{links.map(([text, url]) => (
 							<a className="text-text my-2" href={url}>
 								<button className="w-full bg-slate-600 hover:text-stone-200 hover:border-stone-200">{text}</button>
 							</a>
