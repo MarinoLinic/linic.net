@@ -64,7 +64,7 @@ const TimeVisualization = () => {
 
 	// ------------------- Rendering the visualization
 
-	const MAX_SQUARES = 40000
+	const MAX_SQUARES = 50000
 
 	const squares = useMemo(() => {
 		const { total, elapsed, unit } = dateOptionChosen
