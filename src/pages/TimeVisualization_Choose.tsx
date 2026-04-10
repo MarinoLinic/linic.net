@@ -17,22 +17,22 @@ const TimeVisualizationChoose = () => {
 			<h2 className="text-text">Time Visualizer</h2>
 			<form className="flex flex-col gap-4 w-full max-w-xs">
 				<div className="flex flex-col gap-1">
-					<label className="text-sm text-muted uppercase tracking-wider">Start (YYYY-MM-DD)</label>
+					<label className="text-xs text-muted uppercase tracking-wider">Start date</label>
 					<input
-						className="bg-surface border border-white/10 text-text text-center rounded-lg px-4 py-2 font-mono"
-						type="text"
+						className="bg-surface border border-white/10 text-text text-center rounded-lg px-4 py-2 font-mono hover:border-tertiary/50 transition-colors"
+						type="date"
+						value={start}
 						required
-						placeholder={start}
 						onChange={(e) => setStart(e.target.value)}
 					/>
 				</div>
 				<div className="flex flex-col gap-1">
-					<label className="text-sm text-muted uppercase tracking-wider">End (YYYY-MM-DD)</label>
+					<label className="text-xs text-muted uppercase tracking-wider">End date</label>
 					<input
-						className="bg-surface border border-white/10 text-text text-center rounded-lg px-4 py-2 font-mono"
-						type="text"
+						className="bg-surface border border-white/10 text-text text-center rounded-lg px-4 py-2 font-mono hover:border-tertiary/50 transition-colors"
+						type="date"
+						value={end}
 						required
-						placeholder={end}
 						onChange={(e) => setEnd(e.target.value)}
 					/>
 				</div>
