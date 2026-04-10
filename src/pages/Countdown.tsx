@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Clock from '../components/Countdown_Clock'
 import Circles from '../components/_Circles'
+import BackButton from '../components/_BackButton'
 import { clockString } from '../utils/functions/clockString'
 
 interface Props {
@@ -49,6 +50,7 @@ const Countdown = ({ date, title }: Props) => {
 
 	return (
 		<div className="flex items-center justify-center h-[80vh] md:h-screen">
+			<BackButton />
 			<div>
 				<Clock
 					title={title}

@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import BackButton from '../components/_BackButton'
 
 const TimeVisualizationChoose = () => {
 	const navigate = useNavigate()
@@ -7,45 +8,38 @@ const TimeVisualizationChoose = () => {
 	const [end, setEnd] = useState('2079-10-13')
 
 	function handleSubmit() {
-		navigate(`/time-visualization/start=${start}&end=${end}`)
+		navigate(`/time-visualization/result?start=${start}&end=${end}`)
 	}
 
 	return (
-		<div className="my-8 flex-col">
-			<div className="flex justify-evenly">
-				<form>
-					<div>
-						<div className="flex flex-col my-4">
-							<label>START (YYYY-MM-DD):</label>
-							<input
-								className="text-center text-primary"
-								type="text"
-								required
-								placeholder={start}
-								onChange={(e) => setStart(e.target.value)}
-							/>
-						</div>
-						<div className="flex flex-col my-4">
-							<label>END (YYYY-MM-DD):</label>
-							<input
-								className="text-center text-primary"
-								type="text"
-								required
-								placeholder={end}
-								onChange={(e) => setEnd(e.target.value)}
-							/>
-						</div>
-					</div>
-				</form>
-			</div>
-			<div className="w-full text-center">
-				<button
-					onClick={() => {
-						handleSubmit()
-					}}>
-					Submit
+		<div className="flex flex-col items-center justify-center min-h-[60vh] gap-6">
+			<BackButton />
+			<h2 className="text-text">Time Visualizer</h2>
+			<form className="flex flex-col gap-4 w-full max-w-xs">
+				<div className="flex flex-col gap-1">
+					<label className="text-sm text-muted uppercase tracking-wider">Start (YYYY-MM-DD)</label>
+					<input
+						className="bg-surface border border-white/10 text-text text-center rounded-lg px-4 py-2 font-mono"
+						type="text"
+						required
+						placeholder={start}
+						onChange={(e) => setStart(e.target.value)}
+					/>
+				</div>
+				<div className="flex flex-col gap-1">
+					<label className="text-sm text-muted uppercase tracking-wider">End (YYYY-MM-DD)</label>
+					<input
+						className="bg-surface border border-white/10 text-text text-center rounded-lg px-4 py-2 font-mono"
+						type="text"
+						required
+						placeholder={end}
+						onChange={(e) => setEnd(e.target.value)}
+					/>
+				</div>
+				<button type="button" onClick={handleSubmit} className="mt-2 border-tertiary/40 hover:border-tertiary">
+					Visualize →
 				</button>
-			</div>
+			</form>
 		</div>
 	)
 }

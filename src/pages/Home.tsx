@@ -18,9 +18,9 @@ const Home = () => {
 
 	return (
 		<>
-			<div className={loading ? 'hidden' : ''}>
+			<div className={loading ? 'hidden' : 'min-h-screen flex flex-col'}>
 				<Navigation />
-				<div className="flex flex-col items-center justify-center h-[60vh] md:h-[80vh]">
+				<div className="flex flex-col items-center justify-center flex-1">
 					{isHovering ? (
 						<h5 onMouseOut={() => setIsHovering(false)} className="text-secondary uppercase cursor-default">
 							& musician, photographer

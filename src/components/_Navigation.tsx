@@ -1,65 +1,56 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+const navLinks = [
+	['About', '/about'],
+	['Portfolio', '/portfolio'],
+	['Résumé/CV', '/cv'],
+	['Countdown', '/countdown'],
+	['Time visualizer', '/time-visualization'],
+	['Neto kalkulator', '/porez-na-dohodak']
+]
+
 const Navigation = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 
 	return (
-		<nav className="md:sticky md:top-0 pt-8">
-			<div className="flex flex-wrap container justify-between mx-auto px-6 md:px-0">
-				<a href="/">
-					<img src="/logo.svg" alt="Marino Linic logo" className="w-8 border-0" />
-				</a>
-				<div className="flex flex-col md:flex-row">
-					<div className={`2xl:hidden ${isMenuOpen ? 'block' : 'hidden'}`} id="mobile-menu">
-						{[
-							['About', '/about'],
-							['Résumé/CV', '/cv'],
-							['Portfolio', '/portfolio'],
-							['Countdown', '/countdown'],
-							['Time visualizer', '/time-visualization'],
-							['Neto kalkulator', '/porez-na-dohodak']
-						].map(([title, url]) => (
-							<div key={title} className="px-2">
-								<Link to={url} className="text-text">
-									{title}
-								</Link>
-							</div>
-						))}
-					</div>
-					<button className="2xl:hidden block" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-						☰
-					</button>
-					<div className="hidden 2xl:flex">
-						{[
-							['About', '/about'],
-							['Résumé/CV', '/cv'],
-							['Portfolio', '/portfolio']
-						].map(([title, url]) => (
-							<div key={title} className="px-2">
-								<Link to={url} className="text-text">
-									{title}
-								</Link>
-							</div>
-						))}
-						<div>
-							<p>⤵</p>
-							{[
-								['Chronica Omnium', '/portfolio'],
-								['Countdown', '/countdown'],
-								['Time visualizer', '/time-visualization'],
-								['Neto kalkulator', '/porez-na-dohodak']
-							].map(([subTitle, subUrl]) => (
-								<div key={subTitle}>
-									<Link to={subUrl} className="text-text">
-										{subTitle}
-									</Link>
-								</div>
-							))}
-						</div>
-					</div>
+		<nav className="sticky top-0 z-50 border-b border-white/5 backdrop-blur-md bg-background/85">
+			<div className="flex items-center justify-between max-w-5xl mx-auto px-6 py-4">
+				<Link to="/">
+					<img src="/logo.svg" alt="Marino Linic logo" className="w-8 border-0 hover:border-0" />
+				</Link>
+
+				{/* Desktop links */}
+				<div className="hidden md:flex items-center gap-6">
+					{navLinks.map(([title, url]) => (
+						<Link key={title} to={url} className="text-sm text-muted hover:text-text transition-colors font-medium">
+							{title}
+						</Link>
+					))}
 				</div>
+
+				{/* Mobile toggle */}
+				<button
+					className="md:hidden border-white/10 text-base px-3 py-1"
+					onClick={() => setIsMenuOpen(!isMenuOpen)}>
+					{isMenuOpen ? '✕' : '☰'}
+				</button>
 			</div>
+
+			{/* Mobile menu */}
+			{isMenuOpen && (
+				<div className="md:hidden border-t border-white/5 px-6 py-4 flex flex-col gap-4">
+					{navLinks.map(([title, url]) => (
+						<Link
+							key={title}
+							to={url}
+							className="text-sm text-muted hover:text-text transition-colors font-medium"
+							onClick={() => setIsMenuOpen(false)}>
+							{title}
+						</Link>
+					))}
+				</div>
+			)}
 		</nav>
 	)
 }

@@ -5,13 +5,16 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				primary: '#393f5f',
-				secondary: '#ffe69d',
-				tertiary: '#646cff',
-				quarternary: '#eb6171',
-				quarnary: '#d65f9e',
-				background: '#27252F',
-				text: '#dedede',
+				background: '#0c0b14',
+				surface: '#181626',
+				primary: '#2d2a46',
+				secondary: '#ffd166',
+				tertiary: '#7c70ff',
+				quarternary: '#ff5c7c',
+				quarnary: '#d94fc0',
+				accent: '#4ecdc4',
+				text: '#f0eef8',
+				muted: '#8c8aa8',
 				dimWhite: 'rgba(255, 255, 255, 0.7)',
 				dimBlue: 'rgba(9, 151, 124, 0.1)'
 			},

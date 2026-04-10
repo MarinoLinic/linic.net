@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SalaryChart from '../components/SalaryCalculator_SalaryChart'
+import BackButton from '../components/_BackButton'
 
 const prirez_gradovi: Record<string, number> = {
 	'Zagreb (18%)': 0.18,
@@ -124,7 +125,8 @@ const SalaryCalculator = () => {
 	]
 
 	return (
-		<div className="flex flex-col items-center mt-16 text-xl font-semibold leading-relaxed">
+		<div className="flex flex-col items-center pt-12 pb-8 min-h-screen text-xl font-semibold leading-relaxed">
+			<BackButton />
 			<h2 className="mb-4 text-text text-center">Porez na dohodak u Hrvatskoj</h2>
 			<p>
 				Grad (prirez){' '}

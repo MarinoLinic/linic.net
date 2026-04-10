@@ -1,16 +1,14 @@
 import { useState, useEffect, useMemo } from 'react'
-import { useParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 import Square from '../components/TimeVisualization_Square'
 import TimeTable from '../components/TimeVisualization_Table'
+import BackButton from '../components/_BackButton'
 import { timeConversionFloor, timeConversionCeil } from '../utils/functions/timeConversion'
 
-type RouteParams = {
-	startDate: string
-	endDate: string
-}
-
 const TimeVisualization = () => {
-	const { startDate = '1999-10-13', endDate = '2079-10-13' } = useParams<RouteParams>()
+	const [searchParams] = useSearchParams()
+	const startDate = searchParams.get('start') ?? '1999-10-13'
+	const endDate = searchParams.get('end') ?? '2079-10-13'
 
 	// ------------------- Date calculation
 
@@ -80,6 +78,7 @@ const TimeVisualization = () => {
 
 	return (
 		<div className="md:mx-48 md:my-12 mx-4 my-4">
+			<BackButton />
 			<div className="md:my-8 my-4">
 				<h2 className="md:my-8 my-4 text-center text-quarnary">
 					{startDate} ... to ... {endDate}

@@ -1,5 +1,13 @@
+import BackButton from '../components/_BackButton'
+
 const NotFound = () => {
-	return <p>404! Page not found.</p>
+	return (
+		<div className="flex flex-col items-center justify-center h-screen gap-4">
+			<BackButton />
+			<h1 className="text-quarternary">404</h1>
+			<p className="text-muted">Page not found.</p>
+		</div>
+	)
 }
 
 export default NotFound

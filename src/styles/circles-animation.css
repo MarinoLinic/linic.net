@@ -13,10 +13,21 @@
 	list-style: none;
 	width: 20px;
 	height: 20px;
-	background: rgba(255, 255, 255, 0.2);
+	background: rgba(255, 255, 255, 0.12);
 	animation: animate 25s linear infinite;
 	bottom: -150px;
 }
+
+.circles li:nth-child(1) { background: rgba(124, 112, 255, 0.22); }
+.circles li:nth-child(2) { background: rgba(255, 92, 124, 0.18); }
+.circles li:nth-child(3) { background: rgba(78, 205, 196, 0.18); }
+.circles li:nth-child(4) { background: rgba(124, 112, 255, 0.15); }
+.circles li:nth-child(5) { background: rgba(255, 255, 255, 0.10); }
+.circles li:nth-child(6) { background: rgba(217, 79, 192, 0.15); }
+.circles li:nth-child(7) { background: rgba(124, 112, 255, 0.12); }
+.circles li:nth-child(8) { background: rgba(255, 209, 102, 0.12); }
+.circles li:nth-child(9) { background: rgba(78, 205, 196, 0.12); }
+.circles li:nth-child(10) { background: rgba(217, 79, 192, 0.18); }
 
 .circles li:nth-child(1) {
 	left: 25%;
