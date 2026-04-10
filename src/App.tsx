@@ -24,7 +24,7 @@ function App() {
 
 				<Route
 					path="/countdown"
-					element={<Countdown date="October 13, 2024, 00:00" title="Time until Marino's 25th birthday" />}
+					element={<Countdown date="October 13, 2026, 00:00" title="Time until Marino's 27th birthday" />}
 				/>
 
 				<Route

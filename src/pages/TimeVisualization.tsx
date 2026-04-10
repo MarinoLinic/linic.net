@@ -1,133 +1,129 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useCallback } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import Square from '../components/TimeVisualization_Square'
-import TimeTable from '../components/TimeVisualization_Table'
+import SquaresGrid from '../components/TimeVisualization_Square'
 import BackButton from '../components/_BackButton'
 import { timeConversionFloor, timeConversionCeil } from '../utils/functions/timeConversion'
+
+type ClickKey = 'years' | 'months' | 'weeks' | 'days'
+type InfoKey  = 'decades' | 'hours' | 'minutes' | 'seconds'
+
+interface Row { label: string; key: ClickKey | InfoKey; unit?: string }
+
+const allRows: Row[] = [
+	{ label: 'Decades', key: 'decades' },
+	{ label: 'Years',   key: 'years',   unit: 'Year'  },
+	{ label: 'Months',  key: 'months',  unit: 'Month' },
+	{ label: 'Weeks',   key: 'weeks',   unit: 'Week'  },
+	{ label: 'Days',    key: 'days',    unit: 'Day'   },
+	{ label: 'Hours',   key: 'hours'   },
+	{ label: 'Minutes', key: 'minutes' },
+	{ label: 'Seconds', key: 'seconds' },
+]
+
+type ClickRow = Row & { unit: string }
+const unitRows = allRows.filter((r): r is ClickRow => r.unit !== undefined)
+
+const formatDate = (dateStr: string) => {
+	const [y, m, d] = dateStr.split('-').map(Number)
+	return new Date(y, m - 1, d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })
+}
 
 const TimeVisualization = () => {
 	const [searchParams] = useSearchParams()
 	const startDate = searchParams.get('start') ?? '1999-10-13'
-	const endDate = searchParams.get('end') ?? '2079-10-13'
+	const endDate   = searchParams.get('end')   ?? '2079-10-13'
 
-	// ------------------- Date calculation
+	const today         = new Date()
+	const totalDiff     = new Date(endDate).getTime()   - new Date(startDate).getTime()
+	const elapsedDiff   = today.getTime()               - new Date(startDate).getTime()
 
-	const today = new Date()
-	const inputStartDate = new Date(startDate) // YYYY-MM-DD
-	const inputEndDate = new Date(endDate) // YYYY-MM-DD
-
-	// Calculating miliseconds
-	const totalDiff = inputEndDate.getTime() - inputStartDate.getTime()
-	const elapsedDiff = today.getTime() - inputStartDate.getTime()
-
-	// Creating time objects
-	const timeTotal = timeConversionCeil(totalDiff)
+	const timeTotal   = timeConversionCeil(totalDiff)
 	const timeElapsed = timeConversionFloor(elapsedDiff)
-	const timeLeft = timeConversionCeil(totalDiff - elapsedDiff)
+	const timeLeft    = timeConversionCeil(totalDiff - elapsedDiff)
 
 	const percentElapsed = ((elapsedDiff / totalDiff) * 100).toFixed(2)
 
-	// ------------------- State stuff
+	const [chosen, setChosen] = useState<ClickRow>(unitRows[2])
+	const handleSelect = useCallback((_n: number | null) => {}, [])
 
-	const dateOptions = ['Weeks', 'Months', 'Years', 'Days']
-	const [dateOptionChosen, setDateOptionChosen] = useState({
-		total: timeTotal.weeks,
-		elapsed: timeElapsed.weeks,
-		left: timeLeft.weeks,
-		unit: 'Week'
-	})
-
-	function toggleDate(chosen: string) {
-		if (chosen === 'Days') {
-			setDateOptionChosen({ total: timeTotal.days, elapsed: timeElapsed.days, left: timeLeft.days, unit: 'Day' })
-		} else if (chosen === 'Weeks') {
-			setDateOptionChosen({ total: timeTotal.weeks, elapsed: timeElapsed.weeks, left: timeLeft.weeks, unit: 'Week' })
-		} else if (chosen === 'Months') {
-			setDateOptionChosen({ total: timeTotal.months, elapsed: timeElapsed.months, left: timeLeft.months, unit: 'Month' })
-		} else if (chosen === 'Years') {
-			setDateOptionChosen({ total: timeTotal.years, elapsed: timeElapsed.years, left: timeLeft.years, unit: 'Year' })
-		}
-	}
-
-	// ------------------- Updating every x seconds
-
-	const [time, setTime] = useState(Date.now())
-
-	useEffect(() => {
-		const interval = setInterval(() => setTime(Date.now()), 8000)
-		return () => {
-			clearInterval(interval)
-		}
-	}, [])
-
-	// ------------------- Rendering the visualization
-
-	const MAX_SQUARES = 50000
-
-	const squares = useMemo(() => {
-		const { total, elapsed, unit } = dateOptionChosen
-		if (total > MAX_SQUARES) return null
-		const result = []
-		for (let i = 0; i < total; i++) {
-			result.push(<Square key={i} filled={i < elapsed} index={i} unit={unit} />)
-		}
-		return result
-	}, [dateOptionChosen, time])
-
-	// ------------------- JSX
+	type TObj = Record<ClickKey | InfoKey, number>
+	const tot = timeTotal   as unknown as TObj
+	const elp = timeElapsed as unknown as TObj
+	const lft = timeLeft   as unknown as TObj
 
 	return (
 		<div className="max-w-5xl mx-auto px-4 md:px-12 pt-16 pb-12 min-h-screen">
 			<BackButton />
-			<div className="md:my-8 my-4">
-				<h2 className="md:my-8 my-4 text-center text-quarnary">
-					{startDate} ... to ... {endDate}
-				</h2>
-				<div className="md:my-8 text-center">
-					<h4 className="my-2 text-quarternary">Percent elapsed:</h4>
-					<div className="w-full flex justify-center">
-						<div className="w-1/2 bg-text rounded-md overflow-hidden">
-							<div
-								style={{
-									backgroundColor: '#eb6171',
-									width: `${parseFloat(percentElapsed)}%`
-								}}>
-								{percentElapsed}%
-							</div>
-						</div>
+
+			<div className="md:my-8 my-4 space-y-6">
+
+				<div className="text-center space-y-1">
+					<p className="text-muted text-sm uppercase tracking-widest font-mono">time range</p>
+					<h2 className="text-text">{formatDate(startDate)} — {formatDate(endDate)}</h2>
+				</div>
+
+				<div className="max-w-sm mx-auto space-y-2">
+					<div className="flex justify-between text-xs text-muted font-mono">
+						<span>{formatDate(startDate)}</span>
+						<span className="text-tertiary font-semibold">{percentElapsed}%</span>
+						<span>{formatDate(endDate)}</span>
+					</div>
+					<div className="relative h-1.5 bg-primary rounded-full overflow-hidden">
+						<div
+							className="absolute inset-y-0 left-0 rounded-full bg-tertiary"
+							style={{ width: `${parseFloat(percentElapsed)}%` }}
+						/>
 					</div>
 				</div>
-				<div className="md:visible md:flex md:flex-row md:justify-around hidden">
-					<section>
-						<TimeTable timeObj={timeTotal} desc="total" chosen={dateOptionChosen.total} />
-					</section>
-					<section>
-						<TimeTable timeObj={timeElapsed} desc="elapsed" chosen={dateOptionChosen.elapsed} />
-					</section>
-					<section>
-						<TimeTable timeObj={timeLeft} desc="left" chosen={dateOptionChosen.left} />
-					</section>
+
+				<div className="hidden md:block">
+					<table className="w-full text-sm border-collapse">
+						<thead>
+							<tr>
+								<th className="text-left py-2 text-xs font-mono text-muted uppercase tracking-wider w-20" />
+								<th className="text-right py-2 text-xs font-mono text-muted uppercase tracking-wider">Total</th>
+								<th className="text-right py-2 text-xs font-mono text-tertiary uppercase tracking-wider">Elapsed</th>
+								<th className="text-right py-2 text-xs font-mono text-muted uppercase tracking-wider">Left</th>
+							</tr>
+						</thead>
+						<tbody>
+							{allRows.map(row => {
+								const clickable = row.unit !== undefined
+								const active    = clickable && chosen.unit === row.unit
+								return (
+									<tr
+										key={row.key}
+										onClick={clickable ? () => setChosen(row as ClickRow) : undefined}
+										className={`border-t border-white/5 transition-colors ${clickable ? 'cursor-pointer hover:bg-white/5' : 'opacity-50'} ${active ? 'text-tertiary' : 'text-muted'}`}
+									>
+										<td className="py-2 font-mono text-xs uppercase tracking-wider">{row.label}</td>
+										<td className="py-2 text-right font-mono">{tot[row.key].toLocaleString()}</td>
+										<td className={`py-2 text-right font-mono font-semibold ${active ? 'text-tertiary' : ''}`}>{elp[row.key].toLocaleString()}</td>
+										<td className="py-2 text-right font-mono">{lft[row.key].toLocaleString()}</td>
+									</tr>
+								)
+							})}
+						</tbody>
+					</table>
 				</div>
-				<div className="flex justify-center my-4 mt-6">
+
+				<div className="flex justify-center md:hidden">
 					<select
-						title="Date Options"
-						name="dateOptions"
-						className="bg-text text-primary text-center font-extrabold rounded-md"
-						onChange={(e) => toggleDate(e.target.value)}>
-						{dateOptions.map((option) => (
-							<option key={option} value={option}>{option}</option>
-						))}
+						className="bg-surface border border-white/10 text-text text-center rounded-lg px-4 py-1.5 text-sm cursor-pointer hover:border-tertiary/50 transition-colors outline-none"
+						value={chosen.label}
+						onChange={e => setChosen(unitRows.find(r => r.label === e.target.value) ?? unitRows[2])}>
+						{unitRows.map(r => <option key={r.label} value={r.label} className="bg-surface">{r.label}</option>)}
 					</select>
 				</div>
+
 			</div>
-			<div className="flex flex-wrap">
-				{squares ?? (
-					<p className="text-quarternary">
-						Too many squares to display ({dateOptionChosen.total.toLocaleString()} {dateOptionChosen.unit}s).
-						Choose Weeks, Months, or Years instead.
-					</p>
-				)}
-			</div>
+
+			<SquaresGrid
+				total={tot[chosen.key]}
+				elapsed={elp[chosen.key]}
+				unit={chosen.unit}
+				onSelect={handleSelect}
+			/>
 		</div>
 	)
 }

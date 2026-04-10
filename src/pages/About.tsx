@@ -34,7 +34,7 @@ const FadeSection = ({ children }: { children: ReactNode }) => {
 	)
 }
 
-const AnimatedStat = ({ value, label }: { value: number; label: string }) => {
+const AnimatedStat = ({ value, label, href }: { value: number; label: string; href?: string }) => {
 	const [count, setCount] = useState(0)
 	const [started, setStarted] = useState(false)
 	const ref = useRef<HTMLSpanElement>(null)
@@ -65,7 +65,9 @@ const AnimatedStat = ({ value, label }: { value: number; label: string }) => {
 
 	return (
 		<p>
-			{label}: <span ref={ref} className="text-secondary font-semibold">{count.toLocaleString()}</span>
+			{label}: {href
+		? <a href={href} className="text-accent font-semibold hover:underline"><span ref={ref}>{count.toLocaleString()}</span></a>
+		: <span ref={ref} className="text-accent font-semibold">{count.toLocaleString()}</span>}
 		</p>
 	)
 }
@@ -122,8 +124,7 @@ const About = () => {
 				className="fixed top-0 left-0 h-[2px] z-50 pointer-events-none"
 				style={{
 					width: `${progress}%`,
-					background: 'linear-gradient(to right, #7c70ff, #ff5c7c, #d94fc0)',
-					transition: 'width 0.1s linear'
+					background: 'linear-gradient(to right, #7c70ff, #ff5c7c, #d94fc0)'
 				}}
 			/>
 
@@ -211,10 +212,10 @@ const About = () => {
 				<FadeSection>
 					<h2>Zoology</h2>
 					<img
-						alt="Me with a cat snake."
-						className="md:object-cover object-scale-down w-full h-auto"
-						src="https://i.imgur.com/3RfaRwt.jpg"
-					/>
+					alt="Me with a cat snake."
+					className="md:object-cover object-scale-down w-full h-auto"
+					src="https://i.imgur.com/3RfaRwt.jpg"
+				/>
 					<p>Zoology shaped my childhood and early adolescence.</p>
 					<p>
 						When I was 14, I stumbled upon a male specimen of{' '}
@@ -232,12 +233,9 @@ const About = () => {
 						</a>.
 					</p>
 					<p>
-						In 2022, I registered my account on iNaturalist as{' '}
-						<a href="https://www.inaturalist.org/people/marinolinic">{iNat.login_exact}</a> and documented{' '}
-						<a href="https://www.inaturalist.org/lifelists/marinolinic?view=tree">{iNat.species_count} species</a>{' '}
-						while helping with {iNat.identifications_count} identifications. (Live count!)
+						In 2022, I registered on <a href="https://www.inaturalist.org/people/marinolinic">iNaturalist</a> and have been documenting species and contributing identifications ever since:
 					</p>
-					<AnimatedStat value={iNat.species_count} label="Species documented on iNaturalist" />
+					<AnimatedStat value={iNat.species_count} label="Species documented" href="https://www.inaturalist.org/lifelists/marinolinic?view=tree" />
 					<AnimatedStat value={iNat.identifications_count} label="Identifications contributed" />
 					<p>Here's one of the last videos I made:</p>
 					<iframe

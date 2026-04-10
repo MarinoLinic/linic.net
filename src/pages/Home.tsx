@@ -27,11 +27,11 @@ const Home = () => {
 						</h5>
 					) : (
 						<h5 onMouseOver={() => setIsHovering(true)} className="text-quarternary uppercase cursor-default">
-							Junior web developer
+							Web developer
 						</h5>
 					)}
 
-					<h1 className="cursor-default">Marino Linić</h1>
+					<h1 className="cursor-default mt-2">Marino Linić</h1>
 					<div className="my-4 flex justify-center">
 						<img
 							src="ml.jpg"

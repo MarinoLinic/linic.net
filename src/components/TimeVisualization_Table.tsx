@@ -4,7 +4,7 @@ const TimeTable = ({ timeObj, desc, chosen }: any) => {
 			{Object.entries(timeObj)
 				.slice(1)
 				.map(([key, value]: any) => (
-					<p key={key} className={`${chosen === value ? 'text-quarnary' : ''}`}>
+					<p key={key} className={`${chosen === value ? 'text-tertiary font-medium' : 'text-muted'}`}>
 						{key.charAt(0).toUpperCase() + key.slice(1)} {desc}: {value.toLocaleString()}
 					</p>
 				))}
