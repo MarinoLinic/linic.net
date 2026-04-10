@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import Square from '../components/TimeVisualization_Square'
 import TimeTable from '../components/TimeVisualization_Table'
@@ -29,20 +29,6 @@ const TimeVisualization = () => {
 
 	const percentElapsed = ((elapsedDiff / totalDiff) * 100).toFixed(2)
 
-	// ------------------- Rendering the visualization
-
-	const renderSquares = (total: any, elapsed: any, unit: any) => {
-		const squares = []
-		for (let i = 0; i < total; i++) {
-			if (i < elapsed) {
-				squares.push(<Square key={i} filled index={i} unit={unit} />)
-			} else {
-				squares.push(<Square key={i} index={i} unit={unit} />)
-			}
-		}
-		return squares
-	}
-
 	// ------------------- State stuff
 
 	const dateOptions = ['Weeks', 'Months', 'Years', 'Days']
@@ -53,33 +39,15 @@ const TimeVisualization = () => {
 		unit: 'Week'
 	})
 
-	function toggleDate(chosen: any) {
+	function toggleDate(chosen: string) {
 		if (chosen === 'Days') {
 			setDateOptionChosen({ total: timeTotal.days, elapsed: timeElapsed.days, left: timeLeft.days, unit: 'Day' })
-		}
-		if (chosen === 'Weeks') {
-			setDateOptionChosen({
-				total: timeTotal.weeks,
-				elapsed: timeElapsed.weeks,
-				left: timeLeft.weeks,
-				unit: 'Weel'
-			})
-		}
-		if (chosen === 'Months') {
-			setDateOptionChosen({
-				total: timeTotal.months,
-				elapsed: timeElapsed.months,
-				left: timeLeft.months,
-				unit: 'Month'
-			})
-		}
-		if (chosen === 'Years') {
-			setDateOptionChosen({
-				total: timeTotal.years,
-				elapsed: timeElapsed.years,
-				left: timeLeft.years,
-				unit: 'Year'
-			})
+		} else if (chosen === 'Weeks') {
+			setDateOptionChosen({ total: timeTotal.weeks, elapsed: timeElapsed.weeks, left: timeLeft.weeks, unit: 'Week' })
+		} else if (chosen === 'Months') {
+			setDateOptionChosen({ total: timeTotal.months, elapsed: timeElapsed.months, left: timeLeft.months, unit: 'Month' })
+		} else if (chosen === 'Years') {
+			setDateOptionChosen({ total: timeTotal.years, elapsed: timeElapsed.years, left: timeLeft.years, unit: 'Year' })
 		}
 	}
 
@@ -93,6 +61,20 @@ const TimeVisualization = () => {
 			clearInterval(interval)
 		}
 	}, [])
+
+	// ------------------- Rendering the visualization
+
+	const MAX_SQUARES = 40000
+
+	const squares = useMemo(() => {
+		const { total, elapsed, unit } = dateOptionChosen
+		if (total > MAX_SQUARES) return null
+		const result = []
+		for (let i = 0; i < total; i++) {
+			result.push(<Square key={i} filled={i < elapsed} index={i} unit={unit} />)
+		}
+		return result
+	}, [dateOptionChosen, time])
 
 	// ------------------- JSX
 
@@ -133,14 +115,19 @@ const TimeVisualization = () => {
 						name="dateOptions"
 						className="bg-text text-primary text-center font-extrabold rounded-md"
 						onChange={(e) => toggleDate(e.target.value)}>
-						{dateOptions.map((index) => (
-							<option value={index}>{index}</option>
+						{dateOptions.map((option) => (
+							<option key={option} value={option}>{option}</option>
 						))}
 					</select>
 				</div>
 			</div>
 			<div className="flex flex-wrap">
-				{renderSquares(dateOptionChosen.total, dateOptionChosen.elapsed, dateOptionChosen.unit)}
+				{squares ?? (
+					<p className="text-quarternary">
+						Too many squares to display ({dateOptionChosen.total.toLocaleString()} {dateOptionChosen.unit}s).
+						Choose Weeks, Months, or Years instead.
+					</p>
+				)}
 			</div>
 		</div>
 	)

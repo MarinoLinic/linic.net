@@ -25,47 +25,49 @@ const prirez_gradovi: Record<string, number> = {
 	'Bez prireza (0%)': 0
 }
 
+interface Stat {
+	label: string
+	value: string | number
+	suffix?: string
+	labelClass?: string
+	valueClass?: string
+}
+
+const StatRow = ({ label, value, suffix = '', labelClass = '', valueClass = '' }: Stat) => (
+	<div className={labelClass}>
+		{label} <span className={valueClass}>{value}{suffix ? ` ${suffix}` : ''}</span>
+	</div>
+)
+
+function izracun_place(bruto: number, koeficijent: number, prirez: number): number {
+	if (isNaN(koeficijent) || koeficijent < 0) koeficijent = 0
+
+	const osnovica_eur = 331.81
+	const mirovinsko_stopa = 0.2 // 15% + 5%
+	const minimalac_eur = 530.9
+	const porezna_granica_eur = 3981.69
+	const odbitak = koeficijent * osnovica_eur + minimalac_eur
+	const mirovinsko = bruto * mirovinsko_stopa
+	const porez = bruto - mirovinsko - odbitak < porezna_granica_eur ? 0.2 : 0.3
+
+	return bruto - mirovinsko > odbitak
+		? bruto - mirovinsko - (bruto - mirovinsko - odbitak) * porez * (1 + prirez)
+		: bruto - mirovinsko
+}
+
 const SalaryCalculator = () => {
 	const [brutoPlaca, setBrutoPlaca] = useState(1300)
 	const [koeficijent, setKoeficijent] = useState(0)
 	const [grad, setGrad] = useState(prirez_gradovi['Zagreb (18%)'])
 
 	const currency = '€'
+	const gradovi = Object.keys(prirez_gradovi)
 
 	function brutoHandler(input: number) {
-		if (isNaN(input)) setBrutoPlaca(0)
-		else setBrutoPlaca(input)
-	}
-
-	function izracun_place(bruto: number, koeficijent: number, prirez: number) {
-		// sanitization (incomplete)
-		// add percentage if 0 entered, and add default value elsewhere if bruto is NaN (empty)
-		if (isNaN(koeficijent) || koeficijent < 0) koeficijent = 0
-
-		let porez, izracun
-		let osnovica_eur = 331.81
-		let mirovinsko_stopa = 0.15 + 0.05 // 20%
-		let minimalac_eur = 530.9
-		let porezna_granica_eur = 3981.69
-		let odbitak = koeficijent * osnovica_eur + minimalac_eur
-		let mirovinsko = bruto * mirovinsko_stopa
-
-		// određivanje stope poreza
-		porez = bruto - mirovinsko - odbitak < porezna_granica_eur ? 0.2 : 0.3
-
-		// ne oporezuje se ništa ispod neto koji je manji ili odgovara odbitku
-		if (bruto - mirovinsko > odbitak) {
-			izracun = bruto - mirovinsko - (bruto - mirovinsko - odbitak) * porez * (1 + prirez)
-		} else izracun = bruto - mirovinsko
-
-		return izracun // neto
+		setBrutoPlaca(isNaN(input) ? 0 : input)
 	}
 
 	const netoPlaca = izracun_place(brutoPlaca, koeficijent, grad)
-
-	const gradovi = Object.keys(prirez_gradovi)
-
-	/////
 
 	const osnovica = 331.81
 	const statistike: any[] = [
@@ -80,74 +82,45 @@ const SalaryCalculator = () => {
 		}
 	]
 	for (let i = 1; i < 25; i++) {
-		let net = izracun_place(osnovica * i, koeficijent, grad)
-		let percent = (100 - (net / (osnovica * i)) * 100).toFixed(2)
-		let obj = {
-			bruto: osnovica * i,
-			postotak: percent,
-			neto: net,
-			razlika: osnovica * i - net
-		}
-		statistike.push(obj)
+		const net = izracun_place(osnovica * i, koeficijent, grad)
+		const percent = (100 - (net / (osnovica * i)) * 100).toFixed(2)
+		statistike.push({ bruto: osnovica * i, postotak: percent, neto: net, razlika: osnovica * i - net })
 
 		if (osnovica * (i + 1) > brutoPlaca && osnovica * i < brutoPlaca) {
-			let ff = {
+			statistike.push({
 				bruto: brutoPlaca,
 				postotak: (100 - (netoPlaca / brutoPlaca) * 100).toFixed(2),
 				neto: parseFloat(netoPlaca.toFixed(2)),
 				razlika: parseFloat((brutoPlaca - netoPlaca).toFixed(2))
-			}
-			statistike.push(ff)
+			})
 		}
 	}
 
-	/////
+	const nakonMirovinskog = brutoPlaca * 0.8
+	const oporeziviBruto = nakonMirovinskog - 530.9
+	const prirezPostotak = (grad * 100).toFixed(0)
 
-	const mainStats = [
-		['my-0 text-text', 'text-text', 'Bruto mjesečno:', brutoPlaca.toFixed(2), currency],
-		['my-0 text-text', 'text-tertiary', 'Neto mjesečno:', netoPlaca.toFixed(2), currency],
-		['my-0 text-text', 'text-quarternary', 'Mjesečna razlika:', (netoPlaca - brutoPlaca).toFixed(2), currency],
-		[
-			'my-4 text-secondary',
-			'text-secondary',
-			'Sveukupni porez:',
-			`${(100 - (netoPlaca / brutoPlaca) * 100).toFixed(2)}%`,
-			'plaće'
-		],
-		['my-0 text-text', 'text-text', 'Bruto godišnje:', (brutoPlaca * 12).toFixed(2), currency],
-		['my-0 text-text', 'text-text', 'Neto godišnje:', (netoPlaca * 12).toFixed(2), currency],
-		['my-0 text-text', 'text-text', 'Godišnja razlika:', (netoPlaca * 12 - brutoPlaca * 12).toFixed(2), currency]
+	const mainStats: Stat[] = [
+		{ label: 'Bruto mjesečno:', value: brutoPlaca.toFixed(2), suffix: currency },
+		{ label: 'Neto mjesečno:', value: netoPlaca.toFixed(2), suffix: currency, valueClass: 'text-tertiary' },
+		{ label: 'Mjesečna razlika:', value: (netoPlaca - brutoPlaca).toFixed(2), suffix: currency, valueClass: 'text-quarternary' },
+		{ label: 'Sveukupni porez:', value: `${(100 - (netoPlaca / brutoPlaca) * 100).toFixed(2)}%`, suffix: 'plaće', labelClass: 'my-4 text-secondary', valueClass: 'text-secondary' },
+		{ label: 'Bruto godišnje:', value: (brutoPlaca * 12).toFixed(2), suffix: currency },
+		{ label: 'Neto godišnje:', value: (netoPlaca * 12).toFixed(2), suffix: currency },
+		{ label: 'Godišnja razlika:', value: (netoPlaca * 12 - brutoPlaca * 12).toFixed(2), suffix: currency }
 	]
 
-	const secondStats = [
-		['my-0 text-text', 'text-text', 'Stopa mirovinskog (čl. 62):', '20%', ''],
-		['my-0 text-text', 'text-quarternary', 'Iznos plaće nakon mirovinskog:', brutoPlaca * 0.8, currency],
-		['my-0 text-text', 'text-text', 'Neoporezivi minimalac (čl. 14):', 530.9, currency],
-		[
-			'my-0 text-text',
-			'text-secondary',
-			'Iznos za oporezivanje (koeficijent = 0):',
-			brutoPlaca * 0.8 - 530.9,
-			currency
-		],
-		['my-0 text-text', 'text-text', 'Stopa poreza:', '20%', ''],
-		['my-0 text-text', 'text-text', 'Stopa poreza je 30% (čl. 24) nakon:', 3981.69, currency],
-		['my-0 text-primary', 'text-text', '(^ Može varirati po mjestu prebivališta - Poglavlje IV.)', '', ''],
-		['my-0 text-text', 'text-secondary', 'Iznos poreza:', ((brutoPlaca * 0.8 - 530.9) * 0.2).toFixed(2), currency],
-		[
-			'my-0 text-text',
-			'text-secondary',
-			'Iznos prireza' + ' (' + (grad * 100).toFixed(0) + '%) :',
-			-((brutoPlaca * 0.8 - 530.9) * 0.2 - (brutoPlaca * 0.8 - 530.9) * 0.2 * (1 + grad)).toFixed(2),
-			currency
-		],
-		[
-			'my-0 text-text',
-			'text-quarternary',
-			'Konačni iznos plaće:',
-			`${(brutoPlaca * 0.8 - 530.9 - (brutoPlaca * 0.8 - 530.9) * 0.2 * (1 + grad) + 530.9).toFixed(2)}`,
-			currency
-		]
+	const secondStats: Stat[] = [
+		{ label: 'Stopa mirovinskog (čl. 62):', value: '20%' },
+		{ label: 'Iznos plaće nakon mirovinskog:', value: nakonMirovinskog, suffix: currency, valueClass: 'text-quarternary' },
+		{ label: 'Neoporezivi minimalac (čl. 14):', value: 530.9, suffix: currency },
+		{ label: 'Iznos za oporezivanje (koeficijent = 0):', value: oporeziviBruto, suffix: currency, valueClass: 'text-secondary' },
+		{ label: 'Stopa poreza:', value: '20%' },
+		{ label: 'Stopa poreza je 30% (čl. 24) nakon:', value: 3981.69, suffix: currency },
+		{ label: '(^ Može varirati po mjestu prebivališta - Poglavlje IV.)', value: '', labelClass: 'text-primary' },
+		{ label: 'Iznos poreza:', value: (oporeziviBruto * 0.2).toFixed(2), suffix: currency, valueClass: 'text-secondary' },
+		{ label: `Iznos prireza (${prirezPostotak}%):`, value: (oporeziviBruto * 0.2 * grad).toFixed(2), suffix: currency, valueClass: 'text-secondary' },
+		{ label: 'Konačni iznos plaće:', value: (oporeziviBruto - oporeziviBruto * 0.2 * (1 + grad) + 530.9).toFixed(2), suffix: currency, valueClass: 'text-quarternary' }
 	]
 
 	return (
@@ -162,8 +135,8 @@ const SalaryCalculator = () => {
 				name="gradovi"
 				className="bg-text text-primary mb-4 text-center font-extrabold text-xl md:text-2xl"
 				onChange={(e) => setGrad(prirez_gradovi[e.target.value])}>
-				{gradovi.map((grad, prirez) => (
-					<option value={grad}>{grad}</option>
+				{gradovi.map((grad) => (
+					<option key={grad} value={grad}>{grad}</option>
 				))}
 			</select>
 			<p>
@@ -189,13 +162,8 @@ const SalaryCalculator = () => {
 
 			{/* Stats */}
 			<div>
-				{mainStats.map(([margin, color, desc, value, currency]) => (
-					<div key={desc} className={`${margin}`}>
-						{desc}{' '}
-						<span className={`${color}`}>
-							{value} {currency}
-						</span>
-					</div>
+				{mainStats.map((stat) => (
+					<StatRow key={stat.label} {...stat} />
 				))}
 			</div>
 
@@ -205,14 +173,9 @@ const SalaryCalculator = () => {
 			</div>
 
 			{/* Calculation */}
-			<div>
-				{secondStats.map(([margin, color, desc, value, currency]) => (
-					<div key={desc} className={`${margin} text-base`}>
-						{desc}{' '}
-						<span className={`${color}`}>
-							{value} {currency}
-						</span>
-					</div>
+			<div className="text-base">
+				{secondStats.map((stat) => (
+					<StatRow key={stat.label} {...stat} />
 				))}
 			</div>
 
@@ -224,7 +187,7 @@ const SalaryCalculator = () => {
 						https://www.zakon.hr/z/85/Zakon-o-porezu-na-dohodak
 					</a>
 				</p>
-				<p className="">
+				<p>
 					Autor projekta: <Link to="/">Marino Linić</Link>
 				</p>
 			</div>
@@ -232,19 +195,6 @@ const SalaryCalculator = () => {
 	)
 }
 
-// TODO: Add key as prop
 // TODO: Add VAT
-
-/* 
-					['my-0 text-text', 'text-text', 'Bruto po satu:', (brutoPlaca / 22 / 8).toFixed(2), valuta],
-					['my-0 text-text', 'text-text', 'Neto po satu:', (netoPlaca / 22 / 8).toFixed(2), valuta],
-					[
-						'my-0 text-text',
-						'text-text',
-						'Razlika po satu:',
-						(netoPlaca / 22 / 8 - brutoPlaca / 22 / 8).toFixed(2),
-						valuta
-					],
-*/
 
 export default SalaryCalculator
