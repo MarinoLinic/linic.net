@@ -200,7 +200,7 @@ const About = () => {
 					<h2>Photography</h2>
 					<img src="https://i.imgur.com/pNEK2NN.jpg" alt="An image of fish." />
 					<p>
-						You can see my <a href="https://unsplash.com/MarinoLinic">Unsplash account</a> where my photographs are available for free under theCC license. I also have an old{' '}
+						You can see my <a href="https://unsplash.com/MarinoLinic">Unsplash account</a> where my photographs are available for free under the CC license. I also have an old{' '}
 						<a href="https://www.viewbug.com/member/MarinoLinic">ViewBug account</a>.
 					</p>
 					<AnimatedStat value={unsplash.views} label="Views on Unsplash" />
