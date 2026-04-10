@@ -5,8 +5,13 @@ const Portfolio = () => {
 	return (
 		<>
 			<Navigation />
-			<h1 className="mt-16 text-center text-quarnary">Marino Linić's Portfolio</h1>
-			<PortfolioList />
+			<div className="max-w-3xl mx-auto px-4 md:px-6 pb-20">
+				<div className="py-12">
+					<h1 className="text-text">Portfolio</h1>
+					<p className="text-muted mt-2">Projects from 2020 to present</p>
+				</div>
+				<PortfolioList />
+			</div>
 		</>
 	)
 }

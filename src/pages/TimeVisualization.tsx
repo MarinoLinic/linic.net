@@ -77,7 +77,7 @@ const TimeVisualization = () => {
 	// ------------------- JSX
 
 	return (
-		<div className="md:mx-48 md:my-12 mx-4 my-4">
+		<div className="max-w-5xl mx-auto px-4 md:px-12 pt-16 pb-12 min-h-screen">
 			<BackButton />
 			<div className="md:my-8 my-4">
 				<h2 className="md:my-8 my-4 text-center text-quarnary">
