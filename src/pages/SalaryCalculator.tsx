@@ -43,17 +43,51 @@ function izracun_place(bruto: number, koeficijent: number, prirez: number): numb
 		: bruto - mirovinsko
 }
 
+const perChildCoef = [0.7, 1.0, 1.4, 1.9, 2.5, 3.2, 4.0, 4.9, 5.9]
+
+function djeceKoef(n: number): number {
+	if (n <= 0) return 0
+	let total = 0
+	for (let i = 0; i < Math.min(n, 9); i++) total += perChildCoef[i]
+	if (n > 9) {
+		let prev = 5.9, inc = 1.1
+		for (let i = 10; i <= n; i++) { prev += inc; total += prev; inc += 0.1 }
+	}
+	return parseFloat(total.toFixed(1))
+}
+
+const Stepper = ({ label, value, onChange, min = 0 }: { label: string; value: number; onChange: (v: number) => void; min?: number }) => (
+	<div className="flex items-center justify-between">
+		<span className="text-muted text-sm">{label}</span>
+		<div className="flex items-center gap-3">
+			<button
+				type="button"
+				className="w-7 h-7 rounded-full border border-white/10 text-muted hover:text-text hover:border-white/20 font-mono text-sm flex items-center justify-center transition-colors"
+				onClick={() => onChange(Math.max(min, value - 1))}>−</button>
+			<span className="text-text font-mono w-4 text-center">{value}</span>
+			<button
+				type="button"
+				className="w-7 h-7 rounded-full border border-white/10 text-muted hover:text-text hover:border-white/20 font-mono text-sm flex items-center justify-center transition-colors"
+				onClick={() => onChange(value + 1)}>+</button>
+		</div>
+	</div>
+)
+
 const SalaryCalculator = () => {
 	const [brutoPlaca, setBrutoPlaca] = useState(1300)
-	const [koeficijent, setKoeficijent] = useState(0)
 	const [grad, setGrad] = useState(prirez_gradovi['Zagreb (18%)'])
+	const [djeca, setDjeca] = useState(0)
+	const [clanovi, setClanovi] = useState(0)
+	const [invalidnost, setInvalidnost] = useState(0)
+	const [invalidnost100, setInvalidnost100] = useState(0)
 
+	const koeficijent = parseFloat((djeceKoef(djeca) + clanovi * 0.7 + invalidnost * 0.4 + invalidnost100 * 1.5).toFixed(1))
 	const gradovi = Object.keys(prirez_gradovi)
 	const netoPlaca = izracun_place(brutoPlaca, koeficijent, grad)
 	const taxPercent = brutoPlaca > 0 ? (100 - (netoPlaca / brutoPlaca) * 100) : 0
 	const fmt = (n: number) => n.toFixed(2)
 
-	const safeKoef = isNaN(koeficijent) || koeficijent < 0 ? 0 : koeficijent
+	const safeKoef = koeficijent
 	const mirovinsko    = brutoPlaca * 0.2
 	const nakonMirov    = brutoPlaca * 0.8
 	const odbitak       = safeKoef * 331.81 + 530.9
@@ -98,45 +132,44 @@ const SalaryCalculator = () => {
 				</p>
 			</div>
 
-			<div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10 mb-6">
+			<div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10 mb-4">
 				<div className="flex-1">
 					<label className="text-xs text-muted uppercase tracking-wider block mb-1">Bruto plaća</label>
 					<div className="flex items-baseline gap-1">
 						<input
-							className="bg-transparent text-text font-bold outline-none w-full border-b border-white/10 pb-1 font-mono text-4xl md:text-5xl"
+							className="bg-transparent text-secondary font-bold outline-none w-full border-b border-secondary/20 pb-1 font-mono text-4xl md:text-5xl placeholder:text-secondary/30"
 							type="text" placeholder="1300" autoComplete="off"
 							onChange={(e) => setBrutoPlaca(isNaN(parseFloat(e.target.value)) ? 0 : parseFloat(e.target.value))}
 						/>
-						<span className="text-muted text-2xl font-mono">€</span>
+						<span className="text-secondary/50 text-2xl font-mono">€</span>
 					</div>
 				</div>
-				<div className="flex gap-6">
-					<div>
-						<label className="text-xs text-muted uppercase tracking-wider block mb-1">
-							Grad — prirez{' '}
-							<a href="https://www.rrif.hr/pregled_stopa_prireza_porezu_na_dohodak-5-strucnainformacija/">?</a>
-						</label>
-						<select
-							title="gradovi"
-							className="bg-transparent text-text font-semibold outline-none cursor-pointer w-full border-b border-white/10 pb-1 text-lg"
-							onChange={(e) => setGrad(prirez_gradovi[e.target.value])}>
-							{gradovi.map((g) => (
-								<option key={g} value={g} className="bg-background">{g}</option>
-							))}
-						</select>
-					</div>
-					<div>
-						<label className="text-xs text-muted uppercase tracking-wider block mb-1">
-							Koeficijent{' '}
-							<a href="https://i.imgur.com/cLqPuOE.png">?</a>
-						</label>
-						<input
-							className="bg-transparent text-text font-semibold outline-none w-24 border-b border-white/10 pb-1 font-mono text-lg"
-							type="text" placeholder="0" autoComplete="off"
-							onChange={(e) => setKoeficijent(parseFloat(e.target.value))}
-						/>
-					</div>
+				<div>
+					<label className="text-xs text-muted uppercase tracking-wider block mb-1">
+						Grad — prirez{' '}
+						<a href="https://www.rrif.hr/pregled_stopa_prireza_porezu_na_dohodak-5-strucnainformacija/">?</a>
+					</label>
+					<select
+						title="gradovi"
+						className="bg-transparent text-text font-semibold outline-none cursor-pointer w-full border-b border-white/10 pb-1 text-lg"
+						onChange={(e) => setGrad(prirez_gradovi[e.target.value])}>
+						{gradovi.map((g) => (
+							<option key={g} value={g} className="bg-background">{g}</option>
+						))}
+					</select>
 				</div>
+			</div>
+
+			<div className="space-y-2 mb-6">
+				<p className="text-xs text-muted uppercase tracking-wider mb-2">
+					Osobni odbitak{' '}
+					<a href="https://i.imgur.com/cLqPuOE.png">?</a>
+					{koeficijent > 0 && <span className="text-text font-mono normal-case ml-2">koef. {koeficijent.toFixed(1)}</span>}
+				</p>
+				<Stepper label="Uzdržavana djeca" value={djeca} onChange={setDjeca} />
+				<Stepper label="Uzdržavani članovi obitelji" value={clanovi} onChange={setClanovi} />
+				<Stepper label="Invalidnost (koef. 0,4)" value={invalidnost} onChange={setInvalidnost} />
+				<Stepper label="Invalidnost 100% (koef. 1,5)" value={invalidnost100} onChange={setInvalidnost100} />
 			</div>
 
 			<hr className="opacity-10 mb-10" />
@@ -144,7 +177,7 @@ const SalaryCalculator = () => {
 			<div className="flex flex-col md:flex-row md:items-end gap-4 md:gap-12 mb-4">
 				<div>
 					<p className="text-muted text-xs uppercase tracking-widest mb-2">Bruto</p>
-					<p className="text-text text-5xl md:text-6xl font-bold font-mono leading-none">{fmt(brutoPlaca)}€</p>
+					<p className="text-secondary text-5xl md:text-6xl font-bold font-mono leading-none">{fmt(brutoPlaca)}€</p>
 				</div>
 				<span className="text-quarternary text-3xl md:text-4xl font-bold font-mono">→</span>
 				<div>
@@ -159,7 +192,7 @@ const SalaryCalculator = () => {
 
 			<p className="text-muted leading-relaxed">
 				Godišnje: <span className="text-tertiary font-mono font-semibold text-lg">{fmt(netoPlaca * 12)}€</span> neto
-				od <span className="text-text font-mono">{fmt(brutoPlaca * 12)}€</span> bruto
+				od <span className="text-secondary/80 font-mono">{fmt(brutoPlaca * 12)}€</span> bruto
 				——— gubiš <span className="text-quarternary font-mono font-semibold text-lg">{fmt((brutoPlaca - netoPlaca) * 12)}€</span> godišnje
 			</p>
 
@@ -196,9 +229,13 @@ const SalaryCalculator = () => {
 						Neoporezivi dio plaće koji se ne oporezuje. Osnovni odbitak: <span className="text-text font-mono">530,90€</span>.
 					</p>
 					{safeKoef > 0 && (
-						<p className="text-muted text-sm mb-1">
-							Koeficijent (invaliditet, djeca...): {safeKoef} × 331,81€ = <span className="text-text font-mono">{fmt(safeKoef * 331.81)}€</span>
-						</p>
+						<div className="text-muted text-sm mb-1 space-y-0.5">
+							{djeca > 0 && <p>Djeca ({djeca}): koef. <span className="text-text font-mono">{djeceKoef(djeca).toFixed(1)}</span></p>}
+							{clanovi > 0 && <p>Uzdržavani članovi ({clanovi}): koef. <span className="text-text font-mono">{(clanovi * 0.7).toFixed(1)}</span></p>}
+							{invalidnost > 0 && <p>Invalidnost ({invalidnost}): koef. <span className="text-text font-mono">{(invalidnost * 0.4).toFixed(1)}</span></p>}
+							{invalidnost100 > 0 && <p>Invalidnost 100% ({invalidnost100}): koef. <span className="text-text font-mono">{(invalidnost100 * 1.5).toFixed(1)}</span></p>}
+							<p>Ukupni koef. <span className="text-text font-mono">{koeficijent.toFixed(1)}</span> × 331,81€ = <span className="text-text font-mono">{fmt(koeficijent * 331.81)}€</span></p>
+						</div>
 					)}
 					<p className="text-muted text-sm mb-3">
 						Ukupni odbitak: <span className="text-text font-mono">{fmt(odbitak)}€</span>.
