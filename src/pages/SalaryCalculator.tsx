@@ -172,8 +172,7 @@ const SalaryCalculator = () => {
 
 			<div className="space-y-2 mb-6">
 				<p className="text-xs text-muted uppercase tracking-wider mb-2">
-					{t.personalAllowanceLabel}{' '}
-					<a href="https://i.imgur.com/cLqPuOE.png">?</a>
+					{t.personalAllowanceLabel}
 					{koeficijent > 0 && <span className="text-text font-mono normal-case ml-2">{t.coefLabel} {koeficijent.toFixed(1)}</span>}
 				</p>
 				<Stepper label={t.dependentChildren} value={djeca} onChange={setDjeca} />
