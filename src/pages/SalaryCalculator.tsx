@@ -99,7 +99,7 @@ const SalaryCalculator = () => {
 	}
 
 	return (
-		<div className="max-w-3xl mx-auto px-4 md:px-8 pt-16 pb-12 min-h-screen">
+		<div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 pt-10 md:pt-16 pb-12 min-h-screen">
 			<BackButton />
 
 			<div className="mb-10">
@@ -112,16 +112,16 @@ const SalaryCalculator = () => {
 				</p>
 			</div>
 
-			<div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10 mb-4">
-				<div className="flex-1">
+			<div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 md:items-end mb-4">
+				<div>
 					<label className="text-xs text-muted uppercase tracking-wider block mb-1">Bruto plaća</label>
 					<div className="flex items-baseline gap-1">
 						<input
-							className="bg-transparent text-secondary font-bold outline-none w-full border-b border-secondary/20 pb-1 font-mono text-4xl md:text-5xl placeholder:text-secondary/30"
+							className="bg-transparent text-secondary font-bold outline-none w-full border-b border-secondary/20 pb-1 font-mono text-3xl sm:text-4xl md:text-5xl placeholder:text-secondary/30"
 							type="text" placeholder="1300" autoComplete="off"
 							onChange={(e) => setBrutoPlaca(isNaN(parseFloat(e.target.value)) ? 0 : parseFloat(e.target.value))}
 						/>
-						<span className="text-secondary/50 text-2xl font-mono">€</span>
+						<span className="text-secondary/50 text-xl sm:text-2xl font-mono">€</span>
 					</div>
 				</div>
 				<div>
@@ -129,14 +129,14 @@ const SalaryCalculator = () => {
 						Porezne stope općine/grada{' '}
 						<a href="https://www.zakon.hr/z/85/Zakon-o-porezu-na-dohodak">čl. 19.a</a>
 					</label>
-					<div className="flex items-center gap-3">
+					<div className="flex items-center gap-2 sm:gap-3">
 						<div className="flex items-baseline gap-1">
 							<input
 								className="bg-transparent text-text font-semibold outline-none w-14 border-b border-white/10 pb-1 text-lg font-mono text-center"
 								type="number" value={nizaStopa} min={15} max={23} step={0.5}
 								onChange={(e) => setNizaStopa(parseFloat(e.target.value) || 0)}
 							/>
-							<span className="text-muted text-sm">% niža</span>
+							<span className="text-muted text-xs sm:text-sm">% niža</span>
 						</div>
 						<span className="text-muted">/</span>
 						<div className="flex items-baseline gap-1">
@@ -145,7 +145,7 @@ const SalaryCalculator = () => {
 								type="number" value={visaStopa} min={25} max={33} step={0.5}
 								onChange={(e) => setVisaStopa(parseFloat(e.target.value) || 0)}
 							/>
-							<span className="text-muted text-sm">% viša</span>
+							<span className="text-muted text-xs sm:text-sm">% viša</span>
 						</div>
 					</div>
 				</div>
@@ -165,27 +165,38 @@ const SalaryCalculator = () => {
 
 			<hr className="opacity-10 mb-10" />
 
-			<div className="flex flex-col md:flex-row md:items-end gap-4 md:gap-12 mb-4">
-				<div>
-					<p className="text-muted text-xs uppercase tracking-widest mb-2">Bruto</p>
-					<p className="text-secondary text-5xl md:text-6xl font-bold font-mono leading-none">{fmt(brutoPlaca)}€</p>
+			<div className="grid grid-cols-[1fr_auto_1fr] items-end gap-3 sm:gap-6 md:gap-10 mb-6">
+				<div className="min-w-0">
+					<p className="text-muted text-xs uppercase tracking-widest mb-1">Bruto</p>
+					<p className="text-secondary text-3xl sm:text-4xl md:text-5xl font-bold font-mono leading-none truncate">{fmt(brutoPlaca)}€</p>
 				</div>
-				<span className="text-quarternary text-3xl md:text-4xl font-bold font-mono">→</span>
-				<div>
-					<p className="text-muted text-xs uppercase tracking-widest mb-2">Neto</p>
-					<p className="text-tertiary text-5xl md:text-6xl font-bold font-mono leading-none">{fmt(netoPlaca)}€</p>
+				<span className="text-quarternary text-xl sm:text-2xl md:text-3xl font-bold font-mono pb-1">→</span>
+				<div className="min-w-0">
+					<p className="text-muted text-xs uppercase tracking-widest mb-1">Neto</p>
+					<p className="text-tertiary text-3xl sm:text-4xl md:text-5xl font-bold font-mono leading-none truncate">{fmt(netoPlaca)}€</p>
 				</div>
 			</div>
 
-			<span className="text-quarternary text-2xl md:text-3xl font-bold font-mono">−{fmt(brutoPlaca - netoPlaca)}€</span>
-			<span className="text-quarternary text-lg font-mono ml-2">({taxPercent.toFixed(1)}%)</span>
-			<p className="text-muted text-xs uppercase tracking-widest mt-1 mb-10">izgubljeno mjesečno</p>
+			<div className="flex items-baseline gap-2 flex-wrap">
+				<span className="text-quarternary text-xl sm:text-2xl md:text-3xl font-bold font-mono">−{fmt(brutoPlaca - netoPlaca)}€</span>
+				<span className="text-quarternary text-sm sm:text-base font-mono">({taxPercent.toFixed(1)}%)</span>
+				<span className="text-muted text-xs uppercase tracking-widest">izgubljeno mjesečno</span>
+			</div>
 
-			<p className="text-muted leading-relaxed">
-				Godišnje: <span className="text-tertiary font-mono font-semibold text-lg">{fmt(netoPlaca * 12)}€</span> neto
-				od <span className="text-secondary/80 font-mono">{fmt(brutoPlaca * 12)}€</span> bruto
-				——— gubiš <span className="text-quarternary font-mono font-semibold text-lg">{fmt((brutoPlaca - netoPlaca) * 12)}€</span> godišnje
-			</p>
+			<div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-6 mt-8 mb-2">
+				<div>
+					<p className="text-muted text-xs uppercase tracking-widest mb-1">Godišnje neto</p>
+					<p className="text-tertiary font-mono font-semibold text-lg">{fmt(netoPlaca * 12)}€</p>
+				</div>
+				<div>
+					<p className="text-muted text-xs uppercase tracking-widest mb-1">Godišnje bruto</p>
+					<p className="text-secondary/80 font-mono font-semibold text-lg">{fmt(brutoPlaca * 12)}€</p>
+				</div>
+				<div>
+					<p className="text-muted text-xs uppercase tracking-widest mb-1">Godišnji gubitak</p>
+					<p className="text-quarternary font-mono font-semibold text-lg">{fmt((brutoPlaca - netoPlaca) * 12)}€</p>
+				</div>
+			</div>
 
 			<hr className="opacity-10 my-12" />
 
@@ -194,26 +205,26 @@ const SalaryCalculator = () => {
 			<hr className="opacity-10 my-12" />
 
 			<h3 className="text-text mb-1">Kako se izračunava?</h3>
-			<p className="text-muted text-sm mb-10">Korak-po-korak izračun za zadani unos.</p>
+			<p className="text-muted text-sm mb-8">Korak-po-korak izračun za zadani unos.</p>
 
-			<div className="space-y-10">
+			<div className="space-y-8 sm:space-y-10">
 				<div>
-					<div className="flex items-center gap-2 mb-2">
-						<span className="text-muted font-mono text-sm">01</span>
-						<span className="text-text font-semibold">Mirovinsko osiguranje</span>
-						<span className="text-muted font-mono text-xs">čl. 62</span>
+					<div className="flex items-baseline gap-2 mb-2 flex-wrap">
+						<span className="text-muted font-mono text-xs">01</span>
+						<span className="text-text font-semibold text-sm sm:text-base">Mirovinsko osiguranje</span>
+						<span className="text-muted font-mono text-xs">čl. 23</span>
 					</div>
 					<p className="text-muted text-sm mb-3">
 						20% bruto plaće odlazi u mirovinsko osiguranje — 15% u I. stup i 5% u II. stup.
 					</p>
-					<p className="text-quarternary text-3xl font-bold font-mono">−{fmt(mirovinsko)}€</p>
+					<p className="text-quarternary text-2xl sm:text-3xl font-bold font-mono">−{fmt(mirovinsko)}€</p>
 					<p className="text-muted text-sm font-mono mt-1">preostaje {fmt(nakonMirov)}€</p>
 				</div>
 
 				<div>
-					<div className="flex items-center gap-2 mb-2">
-						<span className="text-muted font-mono text-sm">02</span>
-						<span className="text-text font-semibold">Osobni odbitak</span>
+					<div className="flex items-baseline gap-2 mb-2 flex-wrap">
+						<span className="text-muted font-mono text-xs">02</span>
+						<span className="text-text font-semibold text-sm sm:text-base">Osobni odbitak</span>
 						<span className="text-muted font-mono text-xs">čl. 14</span>
 					</div>
 					<p className="text-muted text-sm mb-1">
@@ -235,21 +246,21 @@ const SalaryCalculator = () => {
 					{oporezivaBaza > 0 ? (
 						<>
 							<p className="text-muted text-sm font-mono">{fmt(nakonMirov)}€ − {fmt(odbitak)}€ =</p>
-							<p className="text-secondary text-3xl font-bold font-mono">{fmt(oporezivaBaza)}€</p>
+							<p className="text-secondary text-2xl sm:text-3xl font-bold font-mono">{fmt(oporezivaBaza)}€</p>
 							<p className="text-muted text-sm font-mono mt-1">oporeziva baza</p>
 						</>
 					) : (
 						<>
-							<p className="text-success text-3xl font-bold font-mono">Nema poreza</p>
+							<p className="text-success text-2xl sm:text-3xl font-bold font-mono">Nema poreza</p>
 							<p className="text-muted text-sm font-mono mt-1">prihod ispod odbitka — neto = {fmt(nakonMirov)}€</p>
 						</>
 					)}
 				</div>
 
 				<div>
-					<div className="flex items-center gap-2 mb-2">
-						<span className="text-muted font-mono text-sm">03</span>
-						<span className="text-text font-semibold">Porez na dohodak</span>
+					<div className="flex items-baseline gap-2 mb-2 flex-wrap">
+						<span className="text-muted font-mono text-xs">03</span>
+						<span className="text-text font-semibold text-sm sm:text-base">Porez na dohodak</span>
 						<span className="text-muted font-mono text-xs">čl. 19.a / čl. 24</span>
 					</div>
 					<p className="text-muted text-sm mb-3">
@@ -264,31 +275,31 @@ const SalaryCalculator = () => {
 							<p>{fmt(oporezivaBaza - MJESECNA_GRANICA)}€ × {visaStopa}% = {fmt(porezVisi)}€</p>
 						</div>
 					)}
-					<p className="text-quarternary text-3xl font-bold font-mono">−{fmt(iznosPoreza)}€</p>
+					<p className="text-quarternary text-2xl sm:text-3xl font-bold font-mono">−{fmt(iznosPoreza)}€</p>
 				</div>
 			</div>
 
-			<hr className="opacity-10 my-12" />
+			<hr className="opacity-10 my-8 sm:my-12" />
 
 			<h3 className="text-text mb-6">Ukupno</h3>
 			<div className="space-y-3 mb-4">
 				<div className="flex justify-between items-baseline">
-					<span className="text-muted">Mirovinsko (I. + II. stup)</span>
-					<span className="text-quarternary font-mono font-bold text-xl">−{fmt(mirovinsko)}€</span>
+					<span className="text-muted text-sm sm:text-base">Mirovinsko (I. + II. stup)</span>
+					<span className="text-quarternary font-mono font-bold text-base sm:text-xl">−{fmt(mirovinsko)}€</span>
 				</div>
 				<div className="flex justify-between items-baseline">
-					<span className="text-muted">Porez na dohodak</span>
-					<span className="text-quarternary font-mono font-bold text-xl">−{fmt(iznosPoreza)}€</span>
+					<span className="text-muted text-sm sm:text-base">Porez na dohodak</span>
+					<span className="text-quarternary font-mono font-bold text-base sm:text-xl">−{fmt(iznosPoreza)}€</span>
 				</div>
 				<hr className="opacity-10" />
 				<div className="flex justify-between items-baseline">
-					<span className="text-muted">Ukupna davanja</span>
-					<span className="text-quarternary font-mono font-bold text-2xl">−{fmt(ukupnoOdbici)}€</span>
+					<span className="text-muted text-sm sm:text-base">Ukupna davanja</span>
+					<span className="text-quarternary font-mono font-bold text-xl sm:text-2xl">−{fmt(ukupnoOdbici)}€</span>
 				</div>
 			</div>
 			<div className="flex justify-between items-baseline mt-6">
 				<span className="text-text text-lg font-semibold">Neto plaća</span>
-				<span className="text-tertiary font-mono font-bold text-3xl">{fmt(netoPlaca)}€</span>
+				<span className="text-tertiary font-mono font-bold text-2xl sm:text-3xl">{fmt(netoPlaca)}€</span>
 			</div>
 
 			<hr className="opacity-10 my-12" />
