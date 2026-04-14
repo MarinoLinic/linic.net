@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import SalaryChart from '../components/SalaryCalculator_SalaryChart'
 import BackButton from '../components/_BackButton'
@@ -57,12 +57,26 @@ const SalaryCalculator = () => {
 	const t = salaryTranslations[(lang === 'en' ? 'en' : 'hr') as SalaryLang]
 
 	const [brutoPlaca, setBrutoPlaca] = useState(2000)
-	const [nizaStopa, setNizaStopa] = useState(23)
-	const [visaStopa, setVisaStopa] = useState(33)
+	const [nizaStopa, setNizaStopa] = useState(() => {
+		const saved = localStorage.getItem('salaryTaxNizaStopa')
+		return saved ? parseFloat(saved) : 23
+	})
+	const [visaStopa, setVisaStopa] = useState(() => {
+		const saved = localStorage.getItem('salaryTaxVisaStopa')
+		return saved ? parseFloat(saved) : 33
+	})
 	const [djeca, setDjeca] = useState(0)
 	const [clanovi, setClanovi] = useState(0)
 	const [invalidnost, setInvalidnost] = useState(0)
 	const [invalidnost100, setInvalidnost100] = useState(0)
+
+	useEffect(() => {
+		localStorage.setItem('salaryTaxNizaStopa', nizaStopa.toString())
+	}, [nizaStopa])
+
+	useEffect(() => {
+		localStorage.setItem('salaryTaxVisaStopa', visaStopa.toString())
+	}, [visaStopa])
 
 	const koeficijent = parseFloat((djeceKoef(djeca) + clanovi * 0.5 + invalidnost * 0.3 + invalidnost100 * 1.0).toFixed(1))
 	const nizaStopaDecimal = nizaStopa / 100
