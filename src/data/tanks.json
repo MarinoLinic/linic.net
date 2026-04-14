@@ -1,0 +1,22 @@
+[
+	{
+		"id": "nobleza-7l",
+		"name": "Nobleza 7L freshwater aquarium",
+		"type": "aquarium",
+		"volume": "7L",
+		"brand": "Nobleza",
+		"category": "freshwater",
+		"img": ["aquarium1"],
+		"vid": []
+	},
+	{
+		"id": "nobleza-14l",
+		"name": "Nobleza 14L freshwater aquarium",
+		"type": "aquarium",
+		"volume": "14L",
+		"brand": "Nobleza",
+		"category": "saltwater",
+		"img": [],
+		"vid": []
+	}
+]

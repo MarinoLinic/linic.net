@@ -7,7 +7,8 @@ const navLinks = [
 	['Résumé/CV', '/cv'],
 	['Countdown', '/countdown'],
 	['Time visualizer', '/time-visualization'],
-	['Neto kalkulator', '/porez-na-dohodak']
+	['Neto kalkulator', '/porez-na-dohodak'],
+	['Pets', '/pets']
 ]
 
 const Navigation = () => {
