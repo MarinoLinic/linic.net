@@ -179,37 +179,44 @@ const Bubbles = () => {
 	)
 }
 
-/* ── image with jpg/JPG fallback ─────────────────────────── */
+/* ── image: WebP-first → jpg → JPG fallback, lazy by default ── */
 
 const AnimalImage = ({
 	name,
 	alt,
 	className,
 	style,
-	onClick
+	onClick,
+	priority = false,
+	thumb = false
 }: {
 	name: string
 	alt: string
 	className?: string
 	style?: React.CSSProperties
 	onClick?: () => void
+	priority?: boolean
+	thumb?: boolean
 }) => {
-	const [ext, setExt] = useState('jpg')
-	const [failed, setFailed] = useState(false)
+	const baseName = thumb ? `${name}-thumb` : name
+	const [srcIdx, setSrcIdx] = useState(0)
 
-	if (failed) return null
+	useEffect(() => { setSrcIdx(0) }, [name, thumb])
+
+	const sources = [`/pets/${baseName}.webp`, `/pets/${name}.jpg`, `/pets/${name}.JPG`]
+
+	if (srcIdx >= sources.length) return null
 
 	return (
 		<img
-			src={`/pets/${name}.${ext}`}
+			src={sources[srcIdx]}
 			alt={alt}
 			className={className}
 			style={style}
 			onClick={onClick}
-			onError={() => {
-				if (ext === 'jpg') setExt('JPG')
-				else setFailed(true)
-			}}
+			loading={priority ? 'eager' : 'lazy'}
+			decoding="async"
+			onError={() => setSrcIdx((i) => i + 1)}
 		/>
 	)
 }
@@ -321,6 +328,7 @@ const Lightbox = ({
 				>
 					<AnimalImage name={slide.name} alt={organism}
 						className="max-h-[80vh] w-auto mx-auto rounded-xl object-contain border-0 hover:border-0 select-none"
+						priority
 						style={{
 							transform: zoomed ? `scale(${ZOOM_SCALE})` : 'scale(1)',
 							transformOrigin: origin,
@@ -416,7 +424,7 @@ const TankModal = ({ tank, allAnimals, onClose, onOpenGallery }: {
 											className="shrink-0 rounded-lg overflow-hidden border border-white/10 hover:border-accent/50 transition-colors p-0 bg-transparent"
 											onClick={() => onOpenGallery(tankSlides, i, tank.name)}>
 											<AnimalImage name={im} alt={`${tank.name} ${i + 1}`}
-												className="h-14 w-20 object-cover border-0 hover:border-0 rounded-none" />
+												className="h-14 w-20 object-cover border-0 hover:border-0 rounded-none" thumb />
 										</button>
 									))}
 								</div>
@@ -619,7 +627,7 @@ const AnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 									className="shrink-0 rounded-lg overflow-hidden border border-white/10 hover:border-accent/50 transition-colors p-0 bg-transparent"
 									onClick={() => onOpenGallery(slides, i, animal.organism)}>
 									<AnimalImage name={im} alt={`${animal.organism} ${i + 1}`}
-										className="h-16 w-24 object-cover border-0 hover:border-0 rounded-none" />
+										className="h-16 w-24 object-cover border-0 hover:border-0 rounded-none" thumb />
 								</button>
 							))}
 							{animal.vid.length > 0 && slides.filter(s => s.type === 'video').map((s, vi) => {
@@ -628,7 +636,7 @@ const AnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 								<button key={`vid-${vi}`}
 									className="shrink-0 w-24 h-16 rounded-lg overflow-hidden border border-white/10 hover:border-accent/50 transition-colors p-0 bg-transparent relative"
 									onClick={() => onOpenGallery(slides, animal.img.length + vi, animal.organism)}>
-									<img src={`https://img.youtube.com/vi/${vidId}/mqdefault.jpg`} alt="Video" className="w-full h-full object-cover border-0 hover:border-0 rounded-none" />
+									<img src={`https://img.youtube.com/vi/${vidId}/mqdefault.jpg`} alt="Video" className="w-full h-full object-cover border-0 hover:border-0 rounded-none" loading="lazy" decoding="async" />
 									<div className="absolute inset-0 bg-black/30 flex items-center justify-center">
 										<span className="text-white text-lg drop-shadow">&#9654;</span>
 									</div>
@@ -755,7 +763,7 @@ const FormerAnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 									className="shrink-0 rounded-lg overflow-hidden border border-white/10 hover:border-white/30 transition-colors p-0 bg-transparent"
 									onClick={() => onOpenGallery(slides, i, animal.organism)}>
 									<AnimalImage name={im} alt={`${animal.organism} ${i + 1}`}
-										className="h-16 w-24 object-cover border-0 hover:border-0 rounded-none" />
+										className="h-16 w-24 object-cover border-0 hover:border-0 rounded-none" thumb />
 								</button>
 							))}
 							{animal.vid.length > 0 && slides.filter(s => s.type === 'video').map((s, vi) => {
@@ -764,7 +772,7 @@ const FormerAnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 								<button key={`vid-${vi}`}
 									className="shrink-0 w-24 h-16 rounded-lg overflow-hidden border border-white/10 hover:border-white/30 transition-colors p-0 bg-transparent relative"
 									onClick={() => onOpenGallery(slides, animal.img.length + vi, animal.organism)}>
-									<img src={`https://img.youtube.com/vi/${vidId}/mqdefault.jpg`} alt="Video" className="w-full h-full object-cover border-0 hover:border-0 rounded-none" />
+									<img src={`https://img.youtube.com/vi/${vidId}/mqdefault.jpg`} alt="Video" className="w-full h-full object-cover border-0 hover:border-0 rounded-none" loading="lazy" decoding="async" />
 									<div className="absolute inset-0 bg-black/30 flex items-center justify-center">
 										<span className="text-white text-lg drop-shadow">&#9654;</span>
 									</div>
@@ -939,6 +947,7 @@ const Animals = () => {
 															name={tank.img[0]}
 															alt={tank.name}
 															className="w-full h-full object-cover border-0 hover:border-0 rounded-none"
+															thumb
 														/>
 													</div>
 												) : (
