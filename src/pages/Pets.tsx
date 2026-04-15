@@ -814,6 +814,32 @@ const Animals = () => {
 		setGallery({ slides, index, organism })
 	}, [])
 
+	const tocRef = useRef<HTMLElement>(null)
+	const tocClickRef = useRef(false)
+
+	const handleTocClick = useCallback((id: string) => {
+		tocClickRef.current = true
+		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+		setTimeout(() => { tocClickRef.current = false }, 800)
+	}, [])
+
+	useEffect(() => {
+		if (tocClickRef.current) return
+		const nav = tocRef.current
+		if (!activeId || !nav) return
+		const active = nav.querySelector(`[data-toc-id="${activeId}"]`) as HTMLElement | null
+		if (!active) return
+		const navRect = nav.getBoundingClientRect()
+		const elRect = active.getBoundingClientRect()
+		const elCenter = elRect.top + elRect.height / 2
+		const topThreshold = navRect.top + navRect.height * 0.2
+		const bottomThreshold = navRect.top + navRect.height * 0.8
+		if (elCenter < topThreshold || elCenter > bottomThreshold) {
+			const target = active.offsetTop - nav.clientHeight / 2 + active.offsetHeight / 2
+			nav.scrollTo({ top: Math.max(0, target), behavior: 'smooth' })
+		}
+	}, [activeId])
+
 	const currentLabel = useMemo(() => {
 		if (!activeId) return ''
 		const tank = tanks.find(t => t.id === activeId)
@@ -988,7 +1014,7 @@ const Animals = () => {
 				</main>
 
 				{/* ── desktop table of contents ─────────────── */}
-				<nav className="hidden lg:block fixed right-6 top-24 w-48 max-h-[calc(100vh-8rem)] overflow-y-auto toc-scroll">
+				<nav ref={tocRef} className="hidden lg:block fixed right-6 top-24 bottom-24 w-48 overflow-y-auto toc-scroll">
 					<p className="text-muted/40 text-[10px] uppercase tracking-widest mb-3 font-medium">On this page</p>
 					{tanks.map(tank => {
 						const ta = allAnimals.filter(a => a.tank === tank.id && a.organism)
@@ -998,7 +1024,8 @@ const Animals = () => {
 							<div key={tank.id} className="mb-4">
 								<a
 									href={`#${tank.id}`}
-									onClick={(e) => { e.preventDefault(); document.getElementById(tank.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
+									onClick={(e) => { e.preventDefault(); handleTocClick(tank.id) }}
+									data-toc-id={tank.id}
 									className={`block text-xs font-semibold py-1 transition-colors ${activeId === tank.id ? 'text-accent' : 'text-muted/60 hover:text-muted'}`}
 								>
 									{tank.name}
@@ -1007,8 +1034,8 @@ const Animals = () => {
 									{act.map(a => {
 										const slug = animalSlug(a.organism)
 										return (
-											<a key={slug} href={`#${slug}`}
-												onClick={(e) => { e.preventDefault(); document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
+											<a key={slug} href={`#${slug}`} data-toc-id={slug}
+												onClick={(e) => { e.preventDefault(); handleTocClick(slug) }}
 												className={`block text-[11px] py-0.5 transition-colors truncate ${activeId === slug ? 'text-accent' : 'text-muted/40 hover:text-muted/70'}`}>
 												{a.organism}
 											</a>
@@ -1020,8 +1047,8 @@ const Animals = () => {
 									{fmr.map(a => {
 										const slug = animalSlug(a.organism)
 										return (
-											<a key={slug} href={`#${slug}`}
-												onClick={(e) => { e.preventDefault(); document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
+											<a key={slug} href={`#${slug}`} data-toc-id={slug}
+												onClick={(e) => { e.preventDefault(); handleTocClick(slug) }}
 												className={`block text-[11px] py-0.5 transition-colors truncate ${activeId === slug ? 'text-accent/60' : 'text-muted/25 hover:text-muted/40'}`}>
 												{a.organism}
 											</a>
@@ -1048,7 +1075,7 @@ const Animals = () => {
 								return (
 									<div key={tank.id} className="mb-3">
 										<a href={`#${tank.id}`}
-											onClick={(e) => { e.preventDefault(); document.getElementById(tank.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); setTocOpen(false) }}
+											onClick={(e) => { e.preventDefault(); handleTocClick(tank.id); setTocOpen(false) }}
 											className={`block text-xs font-semibold py-1 transition-colors ${activeId === tank.id ? 'text-accent' : 'text-muted/60 hover:text-muted'}`}>
 											{tank.name}
 										</a>
@@ -1057,7 +1084,7 @@ const Animals = () => {
 												const slug = animalSlug(a.organism)
 												return (
 													<a key={slug} href={`#${slug}`}
-														onClick={(e) => { e.preventDefault(); document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); setTocOpen(false) }}
+														onClick={(e) => { e.preventDefault(); handleTocClick(slug); setTocOpen(false) }}
 														className={`block text-[11px] py-0.5 transition-colors truncate ${activeId === slug ? 'text-accent' : 'text-muted/40 hover:text-muted/70'}`}>
 														{a.organism}
 													</a>
@@ -1070,7 +1097,7 @@ const Animals = () => {
 												const slug = animalSlug(a.organism)
 												return (
 													<a key={slug} href={`#${slug}`}
-														onClick={(e) => { e.preventDefault(); document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); setTocOpen(false) }}
+														onClick={(e) => { e.preventDefault(); handleTocClick(slug); setTocOpen(false) }}
 														className={`block text-[11px] py-0.5 transition-colors truncate ${activeId === slug ? 'text-accent/60' : 'text-muted/25 hover:text-muted/40'}`}>
 														{a.organism}
 													</a>
