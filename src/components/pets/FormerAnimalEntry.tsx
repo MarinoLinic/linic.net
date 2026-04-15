@@ -1,12 +1,10 @@
 import { useState, useMemo } from 'react'
 import type { Animal, GallerySlide } from '../../types/pets'
 import { buildSlides, typeIcon } from '../../utils/pets'
-import FadeIn from './FadeIn'
 import AnimalImage from './AnimalImage'
 
-const FormerAnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
+const FormerAnimalEntry = ({ animal, tankCategory, onOpenGallery }: {
 	animal: Animal
-	index: number
 	tankCategory: string
 	onOpenGallery: (slides: GallerySlide[], startIndex: number, organism: string) => void
 }) => {
@@ -15,11 +13,10 @@ const FormerAnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 	const [imgIdx, setImgIdx] = useState(0)
 
 	return (
-		<FadeIn delay={index * 50}>
-			<article
-				className="rounded-2xl border border-white/8 overflow-hidden grayscale opacity-50"
-				style={{ background: 'linear-gradient(160deg, rgba(13,33,55,0.5) 0%, rgba(12,11,20,0.7) 100%)' }}
-			>
+		<article
+			className="rounded-2xl border border-white/8 overflow-hidden grayscale opacity-50"
+			style={{ background: 'linear-gradient(160deg, rgba(13,33,55,0.5) 0%, rgba(12,11,20,0.7) 100%)' }}
+		>
 				{/* hero image */}
 				{animal.img.length > 0 && (
 					<div className="relative group/img cursor-pointer" onClick={() => onOpenGallery(slides, imgIdx, animal.organism)}>
@@ -59,7 +56,7 @@ const FormerAnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 
 				<div className="p-6 sm:p-8">
 					{animal.img.length === 0 && (
-						<span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-white/5 text-muted/60 border border-white/8 inline-block mb-3">
+						<span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-white/5 text-muted/60 inline-block mb-3">
 							{tankCategory}
 						</span>
 					)}
@@ -133,7 +130,6 @@ const FormerAnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 					)}
 				</div>
 			</article>
-		</FadeIn>
 	)
 }
 

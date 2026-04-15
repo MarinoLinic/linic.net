@@ -17,6 +17,7 @@ import animalsData from '../data/pets.json'
 const Animals = () => {
 	const tanks = tanksData as Tank[]
 	const allAnimals = animalsData as Animal[]
+	const rafRef = useRef<number>(0)
 	const [activeTank, setActiveTank] = useState<Tank | null>(null)
 	const [gallery, setGallery] = useState<{ slides: GallerySlide[]; index: number; organism: string } | null>(null)
 	const [showTable, setShowTable] = useState(false)
@@ -27,20 +28,23 @@ const Animals = () => {
 
 	useEffect(() => {
 		const onScroll = () => {
-			const el = document.documentElement
-			const scrolled = el.scrollTop
-			const total = el.scrollHeight - el.clientHeight
-			setProgress(total > 0 ? (scrolled / total) * 100 : 0)
+			cancelAnimationFrame(rafRef.current)
+			rafRef.current = requestAnimationFrame(() => {
+				const el = document.documentElement
+				const scrolled = el.scrollTop
+				const total = el.scrollHeight - el.clientHeight
+				setProgress(total > 0 ? (scrolled / total) * 100 : 0)
 
-			const tocEls = document.querySelectorAll('[data-toc]')
-			let current = ''
-			for (const tocEl of tocEls) {
-				if ((tocEl as HTMLElement).getBoundingClientRect().top <= 120) current = tocEl.id
-			}
-			setActiveId(current)
+				const tocEls = document.querySelectorAll('[data-toc]')
+				let current = ''
+				for (const tocEl of tocEls) {
+					if ((tocEl as HTMLElement).getBoundingClientRect().top <= 120) current = tocEl.id
+				}
+				setActiveId(current)
+			})
 		}
 		window.addEventListener('scroll', onScroll, { passive: true })
-		return () => window.removeEventListener('scroll', onScroll)
+		return () => { window.removeEventListener('scroll', onScroll); cancelAnimationFrame(rafRef.current) }
 	}, [])
 
 	const openGallery = useCallback((slides: GallerySlide[], index: number, organism: string) => {
@@ -172,6 +176,7 @@ const Animals = () => {
 															name={tank.img[0]}
 															alt={tank.name}
 															className="w-full h-full object-cover border-0 hover:border-0 rounded-none"
+															wrapperClassName="h-full"
 															thumb
 														/>
 													</div>
@@ -214,9 +219,9 @@ const Animals = () => {
 
 								{/* active animals — vertical feed */}
 								<div className="space-y-6">
-									{active.map((animal, i) => (
+									{active.map((animal) => (
 									<div key={animal.organism} id={animalSlug(animal.organism)} data-toc>
-										<AnimalEntry animal={animal} index={i} tankCategory={tank.category} onOpenGallery={openGallery} />
+										<AnimalEntry animal={animal} tankCategory={tank.category} onOpenGallery={openGallery} />
 									</div>
 								))}
 								</div>
@@ -234,9 +239,9 @@ const Animals = () => {
 											</div>
 										</FadeIn>
 										<div className="space-y-6">
-											{former.map((animal, i) => (
+											{former.map((animal) => (
 										<div key={animal.organism} id={animalSlug(animal.organism)} data-toc>
-											<FormerAnimalEntry animal={animal} index={i} tankCategory={tank.category} onOpenGallery={openGallery} />
+											<FormerAnimalEntry animal={animal} tankCategory={tank.category} onOpenGallery={openGallery} />
 										</div>
 									))}
 										</div>

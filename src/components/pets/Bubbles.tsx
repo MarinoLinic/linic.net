@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 const Bubbles = () => {
 	const bubbles = useMemo(
 		() =>
-			Array.from({ length: 22 }, (_, i) => ({
+			Array.from({ length: 12 }, (_, i) => ({
 				id: i,
 				left: Math.random() * 100,
 				size: 3 + Math.random() * 6,
@@ -26,7 +26,8 @@ const Bubbles = () => {
 						width: b.size,
 						height: b.size,
 						background: `radial-gradient(circle at 30% 30%, rgba(78, 205, 196, ${b.opacity + 0.08}), rgba(78, 205, 196, ${b.opacity * 0.25}))`,
-						animation: `bubbleRise ${b.duration}s ease-in ${b.delay}s infinite`
+						willChange: 'transform',
+				animation: `bubbleRise ${b.duration}s ease-in ${b.delay}s infinite`
 					}}
 				/>
 			))}

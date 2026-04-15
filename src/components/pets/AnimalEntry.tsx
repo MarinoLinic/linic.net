@@ -1,12 +1,10 @@
 import { useState, useMemo } from 'react'
 import type { Animal, GallerySlide } from '../../types/pets'
 import { getTimeSince, formatDate, buildSlides, functionAccent, functionBadge, typeIcon } from '../../utils/pets'
-import FadeIn from './FadeIn'
 import AnimalImage from './AnimalImage'
 
-const AnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
+const AnimalEntry = ({ animal, tankCategory, onOpenGallery }: {
 	animal: Animal
-	index: number
 	tankCategory: string
 	onOpenGallery: (slides: GallerySlide[], startIndex: number, organism: string) => void
 }) => {
@@ -26,15 +24,14 @@ const AnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 	})()
 
 	return (
-		<FadeIn delay={index * 50}>
-			<article
-				className="rounded-2xl border border-white/8 overflow-hidden transition-all duration-300
-					hover:border-white/15 hover:shadow-lg hover:shadow-accent/5"
-				style={{
-					background: 'linear-gradient(160deg, rgba(13,33,55,0.7) 0%, rgba(12,11,20,0.85) 100%)',
-					borderLeft: `3px solid ${accent}`
-				}}
-			>
+		<article
+			className="rounded-2xl border border-white/8 overflow-hidden transition-all duration-300
+				hover:border-white/15 hover:shadow-lg hover:shadow-accent/5"
+			style={{
+				background: 'linear-gradient(160deg, rgba(13,33,55,0.7) 0%, rgba(12,11,20,0.85) 100%)',
+				borderLeft: `3px solid ${accent}`
+			}}
+		>
 				{/* hero image */}
 				{animal.img.length > 0 && (
 					<div className="relative group/img cursor-pointer" onClick={() => onOpenGallery(slides, imgIdx, animal.organism)}>
@@ -74,7 +71,7 @@ const AnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 
 				<div className="p-6 sm:p-8">
 					{animal.img.length === 0 && (
-						<span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-white/5 text-muted/60 border border-white/8 inline-block mb-3">
+						<span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-white/5 text-muted/60 inline-block mb-3">
 							{tankCategory}
 						</span>
 					)}
@@ -181,7 +178,6 @@ const AnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 
 				</div>
 			</article>
-		</FadeIn>
 	)
 }
 

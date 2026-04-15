@@ -121,6 +121,30 @@ hr {
 	border-color: rgba(255, 255, 255, 0.08);
 }
 
+@keyframes img-shimmer {
+	0% { transform: translateX(-100%); }
+	100% { transform: translateX(100%); }
+}
+
+.img-skeleton {
+	background: rgba(255, 255, 255, 0.04);
+	position: relative;
+	overflow: hidden;
+}
+.img-skeleton::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.07) 50%,
+		transparent 100%
+	);
+	transform: translateX(-100%);
+	animation: img-shimmer 1.8s ease-in-out infinite;
+}
+
 input[type='date']::-webkit-calendar-picker-indicator {
 	filter: invert(0.7);
 	cursor: pointer;

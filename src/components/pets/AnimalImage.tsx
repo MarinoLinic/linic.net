@@ -4,6 +4,7 @@ const AnimalImage = ({
 	name,
 	alt,
 	className,
+	wrapperClassName,
 	style,
 	onClick,
 	priority = false,
@@ -12,6 +13,7 @@ const AnimalImage = ({
 	name: string
 	alt: string
 	className?: string
+	wrapperClassName?: string
 	style?: React.CSSProperties
 	onClick?: () => void
 	priority?: boolean
@@ -19,24 +21,32 @@ const AnimalImage = ({
 }) => {
 	const baseName = thumb ? `${name}-thumb` : name
 	const [srcIdx, setSrcIdx] = useState(0)
+	const [loaded, setLoaded] = useState(false)
 
-	useEffect(() => { setSrcIdx(0) }, [name, thumb])
+	useEffect(() => { setSrcIdx(0); setLoaded(false) }, [name, thumb])
 
 	const sources = [`/pets/${baseName}.webp`, `/pets/${name}.jpg`, `/pets/${name}.JPG`]
 
 	if (srcIdx >= sources.length) return null
 
 	return (
-		<img
-			src={sources[srcIdx]}
-			alt={alt}
-			className={className}
-			style={style}
-			onClick={onClick}
-			loading={priority ? 'eager' : 'lazy'}
-			decoding="async"
-			onError={() => setSrcIdx((i) => i + 1)}
-		/>
+		<div
+			className={`relative overflow-hidden ${wrapperClassName ?? ''}`}
+			style={!loaded && !thumb ? { minHeight: '240px' } : undefined}
+		>
+			{!loaded && <div className="absolute inset-0 img-skeleton" />}
+			<img
+				src={sources[srcIdx]}
+				alt={alt}
+				className={`${className ?? ''} transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+				style={style}
+				onClick={onClick}
+				loading={priority ? 'eager' : 'lazy'}
+				decoding="async"
+				onLoad={() => setLoaded(true)}
+				onError={() => setSrcIdx((i) => i + 1)}
+			/>
+		</div>
 	)
 }
 
