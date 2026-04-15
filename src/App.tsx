@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound'
 import Socials from './pages/Socials'
 import TimeVisualizationChoose from './pages/TimeVisualization_Choose'
 import TimeVisualization from './pages/TimeVisualization'
-import Pets from './pages/Pets'
+import Animals from './pages/Pets'
 
 function App() {
 	return (
@@ -43,7 +43,8 @@ function App() {
 				<Route path="/time-visualization" element={<TimeVisualizationChoose />} />
 				<Route path="/time-visualization/result" element={<TimeVisualization />} />
 
-				<Route path="/pets" element={<Pets />} />
+				<Route path="/animals" element={<Animals />} />
+				<Route path="/pets" element={<Navigate to="/animals" />} />
 
 				<Route path="*" element={<NotFound />} />
 			</Routes>
