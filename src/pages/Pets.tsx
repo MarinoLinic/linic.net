@@ -28,6 +28,7 @@ interface Pet {
 	hereSince: string
 	img: string[]
 	vid: string[]
+	description: string
 }
 
 /* ── helpers ─────────────────────────────────────────────── */
@@ -72,7 +73,8 @@ const functionAccent: Record<string, string> = {
 	grazer: '#10b981',
 	scavenger: '#eab308',
 	'filter-feeder': '#0ea5e9',
-	producer: '#84cc16'
+	producer: '#84cc16',
+	carnivore: '#ef4444'
 }
 
 const functionBadge: Record<string, string> = {
@@ -80,7 +82,8 @@ const functionBadge: Record<string, string> = {
 	grazer: 'bg-emerald-500/15 text-emerald-300',
 	scavenger: 'bg-yellow-500/15 text-yellow-300',
 	'filter-feeder': 'bg-sky-500/15 text-sky-300',
-	producer: 'bg-lime-500/15 text-lime-300'
+	producer: 'bg-lime-500/15 text-lime-300',
+	carnivore: 'bg-red-500/15 text-red-300'
 }
 
 /* ── fade-in on scroll ───────────────────────────────────── */
@@ -497,6 +500,12 @@ const PetEntry = ({ pet, index, onOpenGallery }: {
 					</div>
 
 					{/* info rows */}
+					{pet.description && (
+						<p className="text-sm text-muted/90 leading-relaxed mb-5">
+							{pet.description}
+						</p>
+					)}
+
 					<div className="space-y-3 text-sm">
 						<div className="flex items-baseline gap-2">
 							<span className="text-muted w-24 shrink-0">Here since</span>
@@ -607,6 +616,12 @@ const FormerPetEntry = ({ pet, index, onOpenGallery }: {
 							{pet.domesticity}
 						</span>
 					</div>
+
+					{pet.description && (
+						<p className="text-sm text-muted/70 leading-relaxed mb-5">
+							{pet.description}
+						</p>
+					)}
 
 					{/* info rows — no origin, no here_since */}
 					<div className="space-y-3 text-sm">
