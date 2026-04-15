@@ -12,7 +12,8 @@
 		"location": "Zagreb",
 		"hereSince": "2026-01-09",
 		"img": ["swordtail1", "swordtail2", "swordtail3"],
-		"vid": []
+		"vid": [],
+		"description": "A livebearer named for the elongated lower tail fin of the male, which resembles a sword. Active and colourful, it adapts readily to a wide range of water conditions. Native to Central America, from Mexico to Honduras."
 	},
 	{
 		"tank": "nobleza-7l",
@@ -27,7 +28,8 @@
 		"location": "Zagreb",
 		"hereSince": "2026-02-24",
 		"img": ["catfish1", "catfish2", "catfish3", "catfish4"],
-		"vid": []
+		"vid": [],
+		"description": "A small armoured catfish covered in bony plates, with distinctive bushy tentacles around the mouth that become more pronounced in males. An excellent algae grazer that also rasps biofilm off surfaces. Native to the Amazon basin in South America."
 	},
 	{
 		"tank": "nobleza-7l",
@@ -42,7 +44,8 @@
 		"location": "Zagreb",
 		"hereSince": "2026-04-09",
 		"img": ["nerite1"],
-		"vid": []
+		"vid": [],
+		"description": "A small, hardy snail with a distinctive shell bearing spike-like projections. A voracious algae grazer that will not overpopulate a tank, as it cannot reproduce in freshwater. Native to brackish and freshwater streams of Southeast Asia and the Indo-Pacific."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -57,7 +60,8 @@
 		"location": "Northern Adriatic",
 		"hereSince": "2026-03-05",
 		"img": ["shrimp1", "shrimp2", "shrimp3", "shrimp4", "shrimp5", "shrimp6"],
-		"vid": []
+		"vid": [],
+		"description": "A small, semi-transparent shrimp commonly found sheltering in crevices and under rocks in intertidal zones. An opportunistic scavenger that helps keep the tank clean. Native to the northeastern Atlantic and Mediterranean, including the Adriatic Sea."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -72,7 +76,8 @@
 		"location": "Northern Adriatic",
 		"hereSince": "2026-03-05",
 		"img": ["xantho1", "xantho2", "xantho3"],
-		"vid": ["https://www.youtube.com/watch?v=clvoGxCPT9k", "https://www.youtube.com/watch?v=UMA0btBMPHE"]
+		"vid": ["https://www.youtube.com/watch?v=clvoGxCPT9k", "https://www.youtube.com/watch?v=UMA0btBMPHE"],
+		"description": "A robust, slow-moving crab with powerful claws and a mottled brown shell patterned like a jaguar's coat. Largely nocturnal, it hides under rocks during the day. Native to the Mediterranean and eastern Atlantic coast."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -87,7 +92,8 @@
 		"location": "Northern Adriatic",
 		"hereSince": "2026-03-05",
 		"img": ["porcelain1", "porcelain2", "porcelain3", "porcelain4", "porcelain5", "porcelain6"],
-		"vid": []
+		"vid": [],
+		"description": "A flat, fan-shaped crab covered in fine hairs that give it a furry appearance. Despite resembling true crabs, it is more closely related to squat lobsters. It feeds by sweeping fine particles from the water with feathery appendages. Native to the northeastern Atlantic and Mediterranean."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -102,7 +108,8 @@
 		"location": "Northern Adriatic",
 		"hereSince": "2026-03-05",
 		"img": ["hermit1", "hermit2", "hermit3", "hermit4"],
-		"vid": []
+		"vid": [],
+		"description": "A medium-sized hermit crab with striking red and blue banded legs. It occupies empty gastropod shells for protection and will readily swap shells as it grows. An active and curious scavenger. Native to the Mediterranean and eastern Atlantic, from the British Isles to West Africa."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -117,7 +124,8 @@
 		"location": "Northern Adriatic",
 		"hereSince": "2025-09-02",
 		"img": ["brittle1", "brittle2"],
-		"vid": []
+		"vid": [],
+		"description": "A large, long-armed brittle star with a central disc and five flexible, serpentine arms that it uses to drag itself across surfaces. Mostly nocturnal and secretive, spending the day hidden under rocks. Native to the Mediterranean and eastern Atlantic."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -132,7 +140,8 @@
 		"location": "Northern Adriatic",
 		"hereSince": "2026-03-05",
 		"img": ["mutabilis1", "mutabilis2", "mutabilis3", "mutabilis4"],
-		"vid": []
+		"vid": [],
+		"description": "A small, conical snail with a highly variable shell pattern ranging from striped to plain grey or green. A diligent grazer of microalgae and biofilm on hard surfaces. Native to the Mediterranean and Black Sea."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -147,7 +156,8 @@
 		"location": "Northern Adriatic",
 		"hereSince": "2026-03-05",
 		"img": ["divaricata1", "divaricata2", "divaricata3", "divaricata4"],
-		"vid": ["https://www.youtube.com/watch?v=VhZHRr7tKsw"]
+		"vid": ["https://www.youtube.com/watch?v=VhZHRr7tKsw"],
+		"description": "A small topshell snail with a flattened, slightly umbilicate shell decorated with fine zigzag or branching lines. Grazes on algae and biofilm in rocky intertidal and shallow subtidal habitats. Native to the Mediterranean and Black Sea."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -162,7 +172,8 @@
 		"location": "Northern Adriatic",
 		"hereSince": "2025-09-02",
 		"img": ["limpet1", "limpet2", "limpet3", "limpet4", "limpet5"],
-		"vid": []
+		"vid": [],
+		"description": "A conical, ribbed limpet that clamps firmly to rocky surfaces with its muscular foot. It grazes algae in a home territory it returns to after each feeding excursion. Native to the Mediterranean and the adjacent eastern Atlantic."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -177,7 +188,8 @@
 		"location": "Central Adriatic",
 		"hereSince": "2025-07-20",
 		"img": ["whelk1", "whelk2", "whelk3"],
-		"vid": []
+		"vid": [],
+		"description": "A tiny, elongated snail with a tightly coiled, reticulated shell resembling a miniature auger. Often found in dense aggregations grazing algae and detritus on seagrass and rocky substrates. Native to the Mediterranean, Black Sea, and eastern Atlantic."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -192,7 +204,8 @@
 		"location": "Central Adriatic",
 		"hereSince": "2025-07-20",
 		"img": ["chiton1", "chiton2"],
-		"vid": []
+		"vid": [],
+		"description": "A primitive mollusc with eight overlapping shell plates surrounded by a muscular girdle, allowing it to curl into a ball when dislodged. It grazes microalgae and biofilm from rock surfaces at night. Native to the Mediterranean and adjacent Atlantic coasts."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -207,7 +220,8 @@
 		"location": "Central Adriatic",
 		"hereSince": "2025-07-20",
 		"img": ["bristleworm1", "bristleworm2", "bristleworm3", "bristleworm4"],
-		"vid": []
+		"vid": [],
+		"description": "An active, segmented polychaete worm with paddle-like appendages along its body that it uses for swimming and crawling. It has eversible jaws and is an opportunistic predator and scavenger. Widely distributed across the northeastern Atlantic and Mediterranean."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -222,7 +236,8 @@
 		"location": "Zagreb",
 		"hereSince": "2025-07-25",
 		"img": ["copepod1", "copepod2", "copepod3"],
-		"vid": ["https://www.youtube.com/watch?v=3lj1RS0oRHU"]
+		"vid": ["https://www.youtube.com/watch?v=3lj1RS0oRHU"],
+		"description": "A tiny, brightly coloured harpacticoid copepod that moves in characteristic jerky hops. An extremely hardy species that tolerates a wide range of salinities and temperatures. It grazes on detritus, algae, and bacteria, making it a valuable part of a clean-up crew. Native to coastal rock pools along the Pacific coast of North America."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -237,7 +252,8 @@
 		"location": "Central Adriatic",
 		"hereSince": "2025-07-20",
 		"img": ["spirorbid1"],
-		"vid": []
+		"vid": [],
+		"description": "A tiny tube-dwelling polychaete that secretes a coiled, chalky white shell tightly cemented to hard substrates such as rocks, shells, and algae. It extends delicate feathery tentacles to filter particles from the water. Native to the northeastern Atlantic and Mediterranean."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -252,7 +268,8 @@
 		"location": "Central Adriatic",
 		"hereSince": "2025-07-20",
 		"img": ["coralline1", "coralline2", "coralline3"],
-		"vid": []
+		"vid": [],
+		"description": "A calcified red alga that forms hard, pink-to-purple crusts on rocks and shells. It grows very slowly but is highly resistant to grazing, and plays an important ecological role as a substrate stabiliser and settlement cue for invertebrate larvae. Found in marine waters worldwide, including the Mediterranean."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -267,7 +284,8 @@
 		"location": "Central Adriatic",
 		"hereSince": "2025-07-20",
 		"img": ["blenny1", "blenny2", "blenny3", "blenny4"],
-		"vid": []
+		"vid": [],
+		"description": "A colourful, scaleless fish named for the male's vivid blue and orange head markings during breeding season. It perches on rocks using its pelvic fins as props and is highly territorial. Native to the Mediterranean and eastern Atlantic, from Portugal to the Black Sea."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -282,7 +300,8 @@
 		"location": "Central Adriatic",
 		"hereSince": "2025-07-20",
 		"img": ["goby1"],
-		"vid": []
+		"vid": [],
+		"description": "A small, bottom-dwelling goby with cryptic colouring that blends into gravel and rocky substrates. Like all gobies, its pelvic fins are fused into a sucker-like disc used to anchor itself in currents. Native to the Mediterranean, including the Adriatic Sea."
 	},
 	{
 		"tank": "nobleza-14l",
@@ -297,6 +316,7 @@
 		"location": "Central Adriatic",
 		"hereSince": "2025-07-20",
 		"img": ["monodont1"],
-		"vid": ["https://www.youtube.com/watch?v=83ZDjMvksZ0"]
+		"vid": ["https://www.youtube.com/watch?v=83ZDjMvksZ0"],
+		"description": "A robust, top-shaped snail with a thick, smooth shell that varies from greenish to dark grey. It grazes algae on sun-exposed rocky shores and can tolerate considerable heat and desiccation. Native to the Mediterranean and the adjacent eastern Atlantic."
 	}
 ]
