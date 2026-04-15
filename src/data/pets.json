@@ -12,7 +12,7 @@
 		"domesticity": "domestic",
 		"location": "Zagreb",
 		"hereSince": "2026-01-09",
-		"img": ["swordtail1", "swordtail2", "swordtail3"],
+		"img": ["swordtail1", "swordtail2"],
 		"vid": ["https://www.youtube.com/watch?v=YCUjYltYMa4"],
 		"description": "A livebearer named for the elongated lower tail fin of the male, which resembles a sword. Active and colorful, it adapts readily to a wide range of water conditions. Native to Central America, from Mexico to Honduras."
 	},
@@ -335,7 +335,7 @@
 		"domesticity": "wild",
 		"location": "Central Adriatic",
 		"hereSince": "2025-07-20",
-		"img": ["phorcus1"],
+		"img": [],
 		"vid": ["https://www.youtube.com/watch?v=83ZDjMvksZ0"],
 		"description": "A robust, top-shaped snail with a thick, smooth shell that varies from greenish to dark grey. It grazes algae on sun-exposed rocky shores and can tolerate considerable heat and desiccation. Native to the Mediterranean and the adjacent eastern Atlantic."
 	}

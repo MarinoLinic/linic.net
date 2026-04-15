@@ -103,6 +103,10 @@ const typeIcon: Record<string, string> = {
 	alga: '\u{1F33F}'
 }
 
+function animalSlug(name: string): string {
+	return 'a-' + name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '')
+}
+
 /* ── fade-in on scroll ───────────────────────────────────── */
 
 const FadeIn = ({ children, delay = 0 }: { children: ReactNode; delay?: number }) => {
@@ -528,6 +532,11 @@ const AnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 				)}
 
 				<div className="p-6 sm:p-8">
+					{animal.img.length === 0 && (
+						<span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-white/5 text-muted/60 border border-white/8 inline-block mb-3">
+							{tankCategory}
+						</span>
+					)}
 					{/* name + count */}
 					<div className="flex items-start justify-between gap-4 mb-1">
 						<h3 className="text-text text-xl sm:text-2xl font-bold leading-tight">{animal.organism}</h3>
@@ -543,7 +552,7 @@ const AnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 
 					{/* trait badges */}
 					<div className="flex flex-wrap items-center gap-2 mb-6">
-						<span className="w-7 h-7 flex items-center justify-center rounded-full bg-white/5 border border-white/8 text-sm leading-none" title={animal.type}>
+						<span className="text-base leading-none cursor-default select-none" title={animal.type}>
 							{typeIcon[animal.type] || '\u{1F4A7}'}
 						</span>
 						<span className={`text-xs font-semibold rounded-full px-3 py-1 ${badge}`}>
@@ -603,7 +612,7 @@ const AnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 					</div>
 
 					{/* thumbnail strip for gallery (images + video) */}
-					{totalMedia > 1 && (
+					{(animal.img.length > 1 || animal.vid.length > 0) && (
 						<div className="flex gap-2 mt-6 overflow-x-auto pb-1">
 							{animal.img.map((im, i) => (
 								<button key={im}
@@ -629,14 +638,6 @@ const AnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 						</div>
 					)}
 
-					{/* video-only (no images) */}
-					{animal.img.length === 0 && animal.vid.length > 0 && (
-						<button
-							className="mt-5 rounded-lg border border-accent/20 bg-accent/5 px-4 py-2 text-sm text-accent font-semibold hover:bg-accent/10 transition-colors"
-							onClick={() => onOpenGallery(slides, 0, animal.organism)}>
-							&#9654; Watch video{animal.vid.length > 1 ? 's' : ''}
-						</button>
-					)}
 				</div>
 			</article>
 		</FadeIn>
@@ -699,6 +700,11 @@ const FormerAnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 				)}
 
 				<div className="p-6 sm:p-8">
+					{animal.img.length === 0 && (
+						<span className="text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-white/5 text-muted/60 border border-white/8 inline-block mb-3">
+							{tankCategory}
+						</span>
+					)}
 					{/* name + "no longer kept" */}
 					<div className="flex items-start justify-between gap-4 mb-1">
 						<h3 className="text-text text-xl sm:text-2xl font-bold leading-tight">{animal.organism}</h3>
@@ -710,7 +716,7 @@ const FormerAnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 
 					{/* trait badges */}
 					<div className="flex flex-wrap items-center gap-2 mb-6">
-						<span className="w-7 h-7 flex items-center justify-center rounded-full bg-white/5 border border-white/8 text-sm leading-none opacity-60" title={animal.type}>
+						<span className="text-base leading-none cursor-default select-none opacity-60" title={animal.type}>
 							{typeIcon[animal.type] || '\u{1F4A7}'}
 						</span>
 						<span className="text-xs font-semibold rounded-full px-3 py-1 bg-white/5 text-muted">
@@ -742,7 +748,7 @@ const FormerAnimalEntry = ({ animal, index, tankCategory, onOpenGallery }: {
 					</div>
 
 					{/* thumbnail strip */}
-					{totalMedia > 1 && (
+					{(animal.img.length > 1 || animal.vid.length > 0) && (
 						<div className="flex gap-2 mt-6 overflow-x-auto pb-1">
 							{animal.img.map((im, i) => (
 								<button key={im}
@@ -782,14 +788,50 @@ const Animals = () => {
 	const [gallery, setGallery] = useState<{ slides: GallerySlide[]; index: number; organism: string } | null>(null)
 	const [showTable, setShowTable] = useState(false)
 	const activeAnimals = useMemo(() => allAnimals.filter(a => a.count !== '0'), [allAnimals])
+	const [progress, setProgress] = useState(0)
+	const [activeId, setActiveId] = useState('')
+	const [tocOpen, setTocOpen] = useState(false)
+
+	useEffect(() => {
+		const onScroll = () => {
+			const el = document.documentElement
+			const scrolled = el.scrollTop
+			const total = el.scrollHeight - el.clientHeight
+			setProgress(total > 0 ? (scrolled / total) * 100 : 0)
+
+			const tocEls = document.querySelectorAll('[data-toc]')
+			let current = ''
+			for (const tocEl of tocEls) {
+				if ((tocEl as HTMLElement).getBoundingClientRect().top <= 120) current = tocEl.id
+			}
+			setActiveId(current)
+		}
+		window.addEventListener('scroll', onScroll, { passive: true })
+		return () => window.removeEventListener('scroll', onScroll)
+	}, [])
 
 	const openGallery = useCallback((slides: GallerySlide[], index: number, organism: string) => {
 		setGallery({ slides, index, organism })
 	}, [])
 
+	const currentLabel = useMemo(() => {
+		if (!activeId) return ''
+		const tank = tanks.find(t => t.id === activeId)
+		if (tank) return tank.name
+		const a = allAnimals.find(x => animalSlug(x.organism) === activeId)
+		if (a) return a.organism
+		return ''
+	}, [activeId, tanks, allAnimals])
+
 	return (
 		<>
+			<div
+				className="fixed top-0 left-0 h-[2px] z-50 pointer-events-none"
+				style={{ width: `${progress}%`, background: 'linear-gradient(to right, #7c70ff, #ff5c7c, #d94fc0)' }}
+			/>
 			<style>{`
+				.toc-scroll::-webkit-scrollbar { display: none; }
+				.toc-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 				@keyframes bubbleRise {
 					0%   { transform: translateY(0) translateX(0); opacity: 0; }
 					10%  { opacity: 1; }
@@ -827,30 +869,30 @@ const Animals = () => {
 						<FadeIn>
 						<h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
 							<span className="bg-gradient-to-r from-accent via-accent-light to-cyan-300 bg-clip-text text-transparent">
-								Animals I Keep
+								Animals
 							</span>
 						</h1>
 					</FadeIn>
 					<FadeIn delay={100}>
 						<p className="text-muted max-w-lg mx-auto text-base">
 							A collection of organisms I keep — currently{' '}
-							<button onClick={() => setShowTable(true)} className="text-accent font-semibold hover:text-accent-light transition-colors cursor-pointer">
+							<span onClick={() => setShowTable(true)} className="text-accent font-semibold hover:text-accent-light transition-colors cursor-pointer underline decoration-accent/30 underline-offset-2 hover:decoration-accent/60">
 								{activeAnimals.length} species
-							</button>.
+							</span>.
 						</p>
 					</FadeIn>
 					</div>
 				</header>
 
 				{/* ── tank sections ─────────────────────────────── */}
-				<main className="max-w-3xl mx-auto px-6 pb-20">
+				<main className="max-w-3xl mx-auto px-6 pb-28 lg:pb-20">
 					{tanks.map((tank) => {
 						const tankAnimals = allAnimals.filter((p) => p.tank === tank.id && p.organism)
 						const active = tankAnimals.filter((p) => p.count !== '0')
 						const former = tankAnimals.filter((p) => p.count === '0')
 
 						return (
-							<section key={tank.id} className="mb-20">
+							<section key={tank.id} id={tank.id} data-toc className="mb-20">
 								{/* tank header */}
 								<FadeIn>
 									<button
@@ -913,8 +955,10 @@ const Animals = () => {
 								{/* active animals — vertical feed */}
 								<div className="space-y-6">
 									{active.map((animal, i) => (
-										<AnimalEntry key={animal.organism} animal={animal} index={i} tankCategory={tank.category} onOpenGallery={openGallery} />
-									))}
+									<div key={animal.organism} id={animalSlug(animal.organism)} data-toc>
+										<AnimalEntry animal={animal} index={i} tankCategory={tank.category} onOpenGallery={openGallery} />
+									</div>
+								))}
 								</div>
 
 								{/* former animals */}
@@ -931,8 +975,10 @@ const Animals = () => {
 										</FadeIn>
 										<div className="space-y-6">
 											{former.map((animal, i) => (
-												<FormerAnimalEntry key={animal.organism} animal={animal} index={i} tankCategory={tank.category} onOpenGallery={openGallery} />
-											))}
+										<div key={animal.organism} id={animalSlug(animal.organism)} data-toc>
+											<FormerAnimalEntry animal={animal} index={i} tankCategory={tank.category} onOpenGallery={openGallery} />
+										</div>
+									))}
 										</div>
 									</div>
 								)}
@@ -940,7 +986,111 @@ const Animals = () => {
 						)
 					})}
 				</main>
+
+				{/* ── desktop table of contents ─────────────── */}
+				<nav className="hidden lg:block fixed right-6 top-24 w-48 max-h-[calc(100vh-8rem)] overflow-y-auto toc-scroll">
+					<p className="text-muted/40 text-[10px] uppercase tracking-widest mb-3 font-medium">On this page</p>
+					{tanks.map(tank => {
+						const ta = allAnimals.filter(a => a.tank === tank.id && a.organism)
+						const act = ta.filter(a => a.count !== '0')
+						const fmr = ta.filter(a => a.count === '0')
+						return (
+							<div key={tank.id} className="mb-4">
+								<a
+									href={`#${tank.id}`}
+									onClick={(e) => { e.preventDefault(); document.getElementById(tank.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
+									className={`block text-xs font-semibold py-1 transition-colors ${activeId === tank.id ? 'text-accent' : 'text-muted/60 hover:text-muted'}`}
+								>
+									{tank.name}
+								</a>
+								<div className="border-l border-white/8 ml-1 pl-3 space-y-px">
+									{act.map(a => {
+										const slug = animalSlug(a.organism)
+										return (
+											<a key={slug} href={`#${slug}`}
+												onClick={(e) => { e.preventDefault(); document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
+												className={`block text-[11px] py-0.5 transition-colors truncate ${activeId === slug ? 'text-accent' : 'text-muted/40 hover:text-muted/70'}`}>
+												{a.organism}
+											</a>
+										)
+									})}
+									{fmr.length > 0 && (
+										<p className="text-[9px] text-muted/25 uppercase tracking-wider mt-1.5 mb-0.5">Former</p>
+									)}
+									{fmr.map(a => {
+										const slug = animalSlug(a.organism)
+										return (
+											<a key={slug} href={`#${slug}`}
+												onClick={(e) => { e.preventDefault(); document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }}
+												className={`block text-[11px] py-0.5 transition-colors truncate ${activeId === slug ? 'text-accent/60' : 'text-muted/25 hover:text-muted/40'}`}>
+												{a.organism}
+											</a>
+										)
+									})}
+								</div>
+							</div>
+						)
+					})}
+				</nav>
 			</div>
+
+			{/* ── mobile TOC ─────────────────────────────────── */}
+			{tocOpen && <div className="lg:hidden fixed inset-0 z-30" onClick={() => setTocOpen(false)} />}
+			{currentLabel && (
+				<div className="lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-40">
+					{tocOpen && (
+						<div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-72 max-h-[60vh] overflow-y-auto rounded-2xl border border-white/10 p-4 shadow-xl toc-scroll"
+							style={{ background: 'rgba(13,22,40,0.95)', backdropFilter: 'blur(12px)' }}>
+							{tanks.map(tank => {
+								const ta = allAnimals.filter(a => a.tank === tank.id && a.organism)
+								const act = ta.filter(a => a.count !== '0')
+								const fmr = ta.filter(a => a.count === '0')
+								return (
+									<div key={tank.id} className="mb-3">
+										<a href={`#${tank.id}`}
+											onClick={(e) => { e.preventDefault(); document.getElementById(tank.id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); setTocOpen(false) }}
+											className={`block text-xs font-semibold py-1 transition-colors ${activeId === tank.id ? 'text-accent' : 'text-muted/60 hover:text-muted'}`}>
+											{tank.name}
+										</a>
+										<div className="border-l border-white/8 ml-1 pl-3 space-y-px">
+											{act.map(a => {
+												const slug = animalSlug(a.organism)
+												return (
+													<a key={slug} href={`#${slug}`}
+														onClick={(e) => { e.preventDefault(); document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); setTocOpen(false) }}
+														className={`block text-[11px] py-0.5 transition-colors truncate ${activeId === slug ? 'text-accent' : 'text-muted/40 hover:text-muted/70'}`}>
+														{a.organism}
+													</a>
+												)
+											})}
+											{fmr.length > 0 && (
+												<p className="text-[9px] text-muted/25 uppercase tracking-wider mt-1.5 mb-0.5">Former</p>
+											)}
+											{fmr.map(a => {
+												const slug = animalSlug(a.organism)
+												return (
+													<a key={slug} href={`#${slug}`}
+														onClick={(e) => { e.preventDefault(); document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth', block: 'start' }); setTocOpen(false) }}
+														className={`block text-[11px] py-0.5 transition-colors truncate ${activeId === slug ? 'text-accent/60' : 'text-muted/25 hover:text-muted/40'}`}>
+														{a.organism}
+													</a>
+												)
+											})}
+										</div>
+									</div>
+								)
+							})}
+						</div>
+					)}
+					<button
+						onClick={() => setTocOpen(!tocOpen)}
+						className="flex items-center gap-2 px-4 py-2.5 rounded-full backdrop-blur-md border border-white/10 text-sm shadow-lg transition-colors hover:border-white/20"
+						style={{ background: 'rgba(13,22,40,0.9)' }}>
+						<span className="text-muted/60 truncate max-w-[180px]">{currentLabel}</span>
+						<span className="text-muted/40 text-[10px]">{tocOpen ? '\u25BC' : '\u25B2'}</span>
+					</button>
+				</div>
+			)}
 
 			{/* lightbox */}
 			{gallery && (
