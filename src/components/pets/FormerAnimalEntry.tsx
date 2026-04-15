@@ -25,6 +25,7 @@ const FormerAnimalEntry = ({ animal, tankCategory, onOpenGallery }: {
 							name={animal.img[imgIdx]}
 							alt={animal.organism}
 							className="w-full max-h-[300px] object-cover border-0 hover:border-0 rounded-none"
+							wrapperClassName="max-h-[300px]"
 						/>
 						<div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/30 transition-colors flex items-center justify-center">
 							<span className="text-white/0 group-hover/img:text-white/90 transition-colors text-sm font-medium tracking-wide">

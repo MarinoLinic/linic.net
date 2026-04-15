@@ -56,8 +56,14 @@ const Animals = () => {
 
 	const handleTocClick = useCallback((id: string) => {
 		tocClickRef.current = true
-		document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-		setTimeout(() => { tocClickRef.current = false }, 800)
+		const el = document.getElementById(id)
+		if (!el) return
+		el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+		// Correction: images loading above may shift layout during smooth scroll
+		setTimeout(() => {
+			el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+			setTimeout(() => { tocClickRef.current = false }, 800)
+		}, 800)
 	}, [])
 
 	useEffect(() => {

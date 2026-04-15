@@ -32,7 +32,7 @@ const AnimalImage = ({
 	return (
 		<div
 			className={`relative overflow-hidden ${wrapperClassName ?? ''}`}
-			style={!loaded && !thumb ? { minHeight: '240px' } : undefined}
+			style={!loaded && !thumb ? { aspectRatio: '4/3' } : undefined}
 		>
 			{!loaded && <div className="absolute inset-0 img-skeleton" />}
 			<img
