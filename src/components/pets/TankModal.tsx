@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 import type { Tank, Animal, GallerySlide } from '../../types/pets'
-import { buildSlides } from '../../utils/pets'
+import { buildSlides, animalSlug } from '../../utils/pets'
 import AnimalImage from './AnimalImage'
 
-const TankModal = ({ tank, allAnimals, onClose, onOpenGallery }: {
+const TankModal = ({ tank, allAnimals, onClose, onOpenGallery, onNavigateToSpecies }: {
 	tank: Tank
 	allAnimals: Animal[]
 	onClose: () => void
 	onOpenGallery: (slides: GallerySlide[], startIndex: number, organism: string) => void
+	onNavigateToSpecies: (slug: string) => void
 }) => {
 	useEffect(() => {
 		const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -101,9 +102,10 @@ const TankModal = ({ tank, allAnimals, onClose, onOpenGallery }: {
 							<p className="text-muted text-xs uppercase tracking-wider mb-3">Inhabitants &middot; {inhabitants.length} species</p>
 							<div className="space-y-2">
 								{inhabitants.map(a => (
-									<div key={a.organism} className="flex items-center justify-between gap-3 text-sm rounded-lg px-3 py-2 bg-white/3 border border-white/5">
+									<div key={a.organism} className="flex items-center justify-between gap-3 text-sm rounded-lg px-3 py-2 bg-white/3 border border-white/5 cursor-pointer hover:bg-white/5 transition-colors"
+										onClick={() => onNavigateToSpecies(animalSlug(a.organism))}>
 										<div className="min-w-0">
-											<p className="text-text truncate">{a.organism}</p>
+											<p className="text-accent truncate">{a.organism}</p>
 											<p className="text-muted text-xs italic truncate">{a.species}</p>
 										</div>
 										<span className="shrink-0 text-accent text-xs font-semibold">&times;{a.count}</span>

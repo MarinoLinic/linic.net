@@ -50,11 +50,11 @@ const AnimalEntry = ({ animal, tankCategory, onOpenGallery }: {
 						{animal.img.length > 1 && (
 							<>
 								<button onClick={(e) => { e.stopPropagation(); setImgIdx(i => (i - 1 + animal.img.length) % animal.img.length) }}
-									className="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-white/70 hover:text-white text-2xl w-9 h-9 flex items-center justify-center rounded-full bg-black/60 border border-white/10 hover:border-white/30 transition-colors">
+									className="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-white/80 hover:text-white text-lg w-7 h-7 sm:text-xl sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-black/60 border border-white/15 hover:border-white/30 transition-colors">
 									&#8249;
 								</button>
 								<button onClick={(e) => { e.stopPropagation(); setImgIdx(i => (i + 1) % animal.img.length) }}
-									className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-white/70 hover:text-white text-2xl w-9 h-9 flex items-center justify-center rounded-full bg-black/60 border border-white/10 hover:border-white/30 transition-colors">
+									className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-white/80 hover:text-white text-lg w-7 h-7 sm:text-xl sm:w-8 sm:h-8 flex items-center justify-center rounded-full bg-black/60 border border-white/15 hover:border-white/30 transition-colors">
 									&#8250;
 								</button>
 							</>

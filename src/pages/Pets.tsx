@@ -34,10 +34,11 @@ const Animals = () => {
 				const total = el.scrollHeight - el.clientHeight
 				setProgress(total > 0 ? (scrolled / total) * 100 : 0)
 
+				const threshold = window.innerHeight * 0.45
 				const tocEls = document.querySelectorAll('[data-toc]')
 				let current = ''
 				for (const tocEl of tocEls) {
-					if ((tocEl as HTMLElement).getBoundingClientRect().top <= 120) current = tocEl.id
+					if ((tocEl as HTMLElement).getBoundingClientRect().top <= threshold) current = tocEl.id
 				}
 				setActiveId(current)
 			})
@@ -366,7 +367,8 @@ const Animals = () => {
 			)}
 
 			{/* tank detail modal */}
-			{activeTank && <TankModal tank={activeTank} allAnimals={allAnimals} onClose={() => setActiveTank(null)} onOpenGallery={openGallery} />}
+			{activeTank && <TankModal tank={activeTank} allAnimals={allAnimals} onClose={() => setActiveTank(null)} onOpenGallery={openGallery}
+				onNavigateToSpecies={(slug: string) => { setActiveTank(null); setTimeout(() => handleTocClick(slug), 50) }} />}
 
 			{showTable && (
 				<div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setShowTable(false)}>
@@ -387,17 +389,17 @@ const Animals = () => {
 							</button>
 						</div>
 						<div className="overflow-auto px-6 pb-6">
-							<table className="w-full text-sm">
+							<table className="w-full text-[11px] sm:text-sm">
 								<thead>
-									<tr className="text-muted text-xs uppercase tracking-wider border-b border-white/10">
-										<th className="text-left py-2 pr-4 font-medium">Tank</th>
-										<th className="text-left py-2 pr-4 font-medium">Type</th>
-										<th className="text-left py-2 pr-4 font-medium">Name</th>
-										<th className="text-left py-2 pr-4 font-medium">Species</th>
-										<th className="text-right py-2 pr-4 font-medium">Count</th>
-										<th className="text-left py-2 pr-4 font-medium">Function</th>
-										<th className="text-left py-2 pr-4 font-medium">Family</th>
-										<th className="text-left py-2 font-medium">Kept for</th>
+									<tr className="text-muted text-[10px] sm:text-xs uppercase tracking-wider border-b border-white/10">
+										<th className="text-left py-1.5 sm:py-2 pr-2 sm:pr-4 font-medium">Tank</th>
+										<th className="text-left py-1.5 sm:py-2 pr-2 sm:pr-4 font-medium">Type</th>
+										<th className="text-left py-1.5 sm:py-2 pr-2 sm:pr-4 font-medium">Name</th>
+										<th className="text-left py-1.5 sm:py-2 pr-2 sm:pr-4 font-medium">Species</th>
+										<th className="text-right py-1.5 sm:py-2 pr-2 sm:pr-4 font-medium">Count</th>
+										<th className="text-left py-1.5 sm:py-2 pr-2 sm:pr-4 font-medium">Function</th>
+										<th className="text-left py-1.5 sm:py-2 pr-2 sm:pr-4 font-medium">Family</th>
+										<th className="text-left py-1.5 sm:py-2 font-medium">Kept for</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -405,15 +407,15 @@ const Animals = () => {
 										const t = tanks.find(tk => tk.id === a.tank)
 										return (
 											<tr key={a.organism} className="border-b border-white/5 hover:bg-white/3 transition-colors">
-												<td className="py-2.5 pr-4 text-muted whitespace-nowrap">{t?.name || a.tank}</td>
-												<td className="py-2.5 pr-4 text-muted">{a.type}</td>
-												<td className="py-2.5 pr-4 text-text">{a.organism}</td>
-												<td className="py-2.5 pr-4 text-muted italic">{a.species}</td>
-												<td className="py-2.5 pr-4 text-accent text-right">{a.count}</td>
-												<td className="py-2.5 pr-4 text-muted">{a.function}</td>
-												<td className="py-2.5 pr-4 text-muted">{a.family}</td>
-												<td className="py-2.5 text-muted whitespace-nowrap">{getTimeSince(a.hereSince)}</td>
-											</tr>
+											<td className="py-1.5 sm:py-2.5 pr-2 sm:pr-4 text-muted whitespace-nowrap">{t?.name || a.tank}</td>
+											<td className="py-1.5 sm:py-2.5 pr-2 sm:pr-4 text-muted">{a.type}</td>
+											<td className="py-1.5 sm:py-2.5 pr-2 sm:pr-4 text-accent hover:text-accent-light cursor-pointer" onClick={() => { setShowTable(false); handleTocClick(animalSlug(a.organism)) }}>{a.organism}</td>
+											<td className="py-1.5 sm:py-2.5 pr-2 sm:pr-4 text-muted italic">{a.species}</td>
+											<td className="py-1.5 sm:py-2.5 pr-2 sm:pr-4 text-accent text-right">{a.count}</td>
+											<td className="py-1.5 sm:py-2.5 pr-2 sm:pr-4 text-muted">{a.function}</td>
+											<td className="py-1.5 sm:py-2.5 pr-2 sm:pr-4 text-muted">{a.family}</td>
+											<td className="py-1.5 sm:py-2.5 text-muted whitespace-nowrap">{getTimeSince(a.hereSince)}</td>
+										</tr>
 										)
 									})}
 								</tbody>
