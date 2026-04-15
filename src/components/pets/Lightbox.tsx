@@ -67,7 +67,7 @@ const Lightbox = ({
 
 	return (
 		<div className="fixed inset-0 z-[60] flex items-center justify-center" onClick={() => { if (zoomed) setZoomed(false); else onClose() }}>
-			<div className="absolute inset-0 bg-black/85 backdrop-blur-md" />
+			<div className="absolute inset-0 bg-black/95" />
 
 			<button onClick={onClose}
 				className="absolute top-5 right-5 z-10 text-white/60 hover:text-white text-2xl w-10 h-10 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:border-white/30 transition-colors">

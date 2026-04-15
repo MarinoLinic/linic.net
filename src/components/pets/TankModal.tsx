@@ -24,7 +24,7 @@ const TankModal = ({ tank, allAnimals, onClose, onOpenGallery }: {
 
 	return (
 		<div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
-			<div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+			<div className="absolute inset-0 bg-black/80" />
 			<div
 				className="relative max-w-md w-full max-h-[85vh] rounded-2xl border border-accent/30 overflow-hidden flex flex-col"
 				style={{ background: 'linear-gradient(135deg, #0d2137 0%, #0a1628 50%, #0d1f3c 100%)' }}
@@ -61,7 +61,7 @@ const TankModal = ({ tank, allAnimals, onClose, onOpenGallery }: {
 									</span>
 								</div>
 								{tankSlides.length > 1 && (
-									<div className="absolute bottom-2 right-2 bg-black/50 backdrop-blur-sm rounded-lg px-2 py-0.5 text-xs text-white/80 font-medium">
+									<div className="absolute bottom-2 right-2 bg-black/70 rounded-lg px-2 py-0.5 text-xs text-white/80 font-medium">
 										1 / {tankSlides.length}
 									</div>
 								)}

@@ -29,6 +29,10 @@ const AnimalImage = ({
 
 	if (srcIdx >= sources.length) return null
 
+	const isWebp = srcIdx === 0 && !thumb
+	const srcSet = isWebp ? `/pets/${name}-mobile.webp 800w, /pets/${name}.webp 1200w` : undefined
+	const sizes = isWebp ? '(max-width: 768px) 100vw, 768px' : undefined
+
 	return (
 		<div
 			className={`relative overflow-hidden ${wrapperClassName ?? ''}`}
@@ -37,6 +41,8 @@ const AnimalImage = ({
 			{!loaded && <div className="absolute inset-0 img-skeleton" />}
 			<img
 				src={sources[srcIdx]}
+				srcSet={srcSet}
+				sizes={sizes}
 				alt={alt}
 				className={`${className ?? ''} transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
 				style={style}

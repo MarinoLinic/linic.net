@@ -35,20 +35,20 @@ const FormerAnimalEntry = ({ animal, tankCategory, onOpenGallery }: {
 						{animal.img.length > 1 && (
 							<>
 								<button onClick={(e) => { e.stopPropagation(); setImgIdx(i => (i - 1 + animal.img.length) % animal.img.length) }}
-									className="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-white/70 hover:text-white text-2xl w-9 h-9 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-sm border border-white/10 hover:border-white/30 transition-colors">
+									className="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-white/70 hover:text-white text-2xl w-9 h-9 flex items-center justify-center rounded-full bg-black/60 border border-white/10 hover:border-white/30 transition-colors">
 									&#8249;
 								</button>
 								<button onClick={(e) => { e.stopPropagation(); setImgIdx(i => (i + 1) % animal.img.length) }}
-									className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-white/70 hover:text-white text-2xl w-9 h-9 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-sm border border-white/10 hover:border-white/30 transition-colors">
+									className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-white/70 hover:text-white text-2xl w-9 h-9 flex items-center justify-center rounded-full bg-black/60 border border-white/10 hover:border-white/30 transition-colors">
 									&#8250;
 								</button>
 							</>
 						)}
-						<span className="absolute top-3 left-3 text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-black/40 backdrop-blur-sm text-white/60 border border-white/10">
+						<span className="absolute top-3 left-3 text-[10px] uppercase tracking-wider font-semibold px-2 py-0.5 rounded-md bg-black/60 text-white/60 border border-white/10">
 							{tankCategory}
 						</span>
 						{animal.img.length > 1 && (
-							<div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm rounded-lg px-2.5 py-1 text-xs text-white/80 font-medium">
+							<div className="absolute bottom-3 right-3 bg-black/70 rounded-lg px-2.5 py-1 text-xs text-white/80 font-medium">
 								{imgIdx + 1} / {animal.img.length}
 							</div>
 						)}

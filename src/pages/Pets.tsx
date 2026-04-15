@@ -3,7 +3,6 @@ import Navigation from '../components/_Navigation'
 import type { Tank, Animal, GallerySlide } from '../types/pets'
 import { getTimeSince, animalSlug } from '../utils/pets'
 import FadeIn from '../components/pets/FadeIn'
-import Bubbles from '../components/pets/Bubbles'
 import AnimalImage from '../components/pets/AnimalImage'
 import Lightbox from '../components/pets/Lightbox'
 import TankModal from '../components/pets/TankModal'
@@ -101,19 +100,11 @@ const Animals = () => {
 			<style>{`
 				.toc-scroll::-webkit-scrollbar { display: none; }
 				.toc-scroll { -ms-overflow-style: none; scrollbar-width: none; }
-				@keyframes bubbleRise {
-					0%   { transform: translateY(0) translateX(0); opacity: 0; }
-					10%  { opacity: 1; }
-					90%  { opacity: 1; }
-					100% { transform: translateY(-105vh) translateX(20px); opacity: 0; }
-				}
 				@keyframes shimmer {
 					0%, 100% { opacity: 0.03; }
 					50%      { opacity: 0.07; }
 				}
 			`}</style>
-
-			<Bubbles />
 
 			<div className="relative z-10 min-h-screen">
 				<Navigation />
@@ -167,8 +158,8 @@ const Animals = () => {
 									<button
 										onClick={() => setActiveTank(tank)}
 										className="w-full text-left mb-10 group/tank rounded-2xl border border-accent/20
-											hover:border-accent/50 p-5 sm:p-6 transition-all duration-300
-											hover:shadow-lg hover:shadow-accent/5"
+									hover:border-accent/50 p-5 sm:p-6 transition-colors duration-300
+									hover:shadow-lg hover:shadow-accent/5"
 										style={{
 											background:
 												'linear-gradient(135deg, rgba(78,205,196,0.06) 0%, rgba(13,33,55,0.5) 50%, rgba(78,205,196,0.03) 100%)'
@@ -312,7 +303,7 @@ const Animals = () => {
 				<div className="lg:hidden fixed bottom-4 left-1/2 -translate-x-1/2 z-40">
 					{tocOpen && (
 						<div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-72 max-h-[60vh] overflow-y-auto rounded-2xl border border-white/10 p-4 shadow-xl toc-scroll"
-							style={{ background: 'rgba(13,22,40,0.95)', backdropFilter: 'blur(12px)' }}>
+							style={{ background: 'rgba(13,22,40,0.97)' }}>
 							{tanks.map(tank => {
 								const ta = allAnimals.filter(a => a.tank === tank.id && a.organism)
 								const act = ta.filter(a => a.count !== '0')
@@ -356,8 +347,8 @@ const Animals = () => {
 					)}
 					<button
 						onClick={() => setTocOpen(!tocOpen)}
-						className="flex items-center gap-2 px-4 py-2.5 rounded-full backdrop-blur-md border border-white/10 text-sm shadow-lg transition-colors hover:border-white/20"
-						style={{ background: 'rgba(13,22,40,0.9)' }}>
+						className="flex items-center gap-2 px-4 py-2.5 rounded-full border border-white/10 text-sm shadow-lg transition-colors hover:border-white/20"
+						style={{ background: 'rgba(13,22,40,0.95)' }}>
 						<span className="text-muted/60 truncate max-w-[180px]">{currentLabel}</span>
 						<span className="text-muted/40 text-[10px]">{tocOpen ? '\u25BC' : '\u25B2'}</span>
 					</button>
@@ -379,7 +370,7 @@ const Animals = () => {
 
 			{showTable && (
 				<div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={() => setShowTable(false)}>
-					<div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+					<div className="absolute inset-0 bg-black/80" />
 					<div
 						className="relative max-w-5xl w-full max-h-[85vh] rounded-2xl border border-accent/30 overflow-hidden flex flex-col"
 						style={{ background: 'linear-gradient(135deg, #0d2137 0%, #0a1628 50%, #0d1f3c 100%)' }}

@@ -8,6 +8,8 @@ const INPUT_DIR = join(__dirname, '..', 'public', 'pets')
 
 const FULL_WIDTH = 1200
 const FULL_WEBP_QUALITY = 82
+const MOBILE_WIDTH = 800
+const MOBILE_WEBP_QUALITY = 78
 const THUMB_WIDTH = 400
 const THUMB_WEBP_QUALITY = 75
 
@@ -28,9 +30,10 @@ async function main() {
 		const inputPath = join(INPUT_DIR, file)
 
 		const fullWebp = join(INPUT_DIR, `${stem}.webp`)
+		const mobileWebp = join(INPUT_DIR, `${stem}-mobile.webp`)
 		const thumbWebp = join(INPUT_DIR, `${stem}-thumb.webp`)
 
-		const [fullExists, thumbExists] = await Promise.all([exists(fullWebp), exists(thumbWebp)])
+		const [fullExists, mobileExists, thumbExists] = await Promise.all([exists(fullWebp), exists(mobileWebp), exists(thumbWebp)])
 
 		const tasks = []
 
@@ -41,6 +44,16 @@ async function main() {
 					.webp({ quality: FULL_WEBP_QUALITY })
 					.toFile(fullWebp)
 					.then(() => console.log(`  ✓ ${stem}.webp`))
+			)
+		}
+
+		if (!mobileExists) {
+			tasks.push(
+				sharp(inputPath)
+					.resize(MOBILE_WIDTH, undefined, { withoutEnlargement: true })
+					.webp({ quality: MOBILE_WEBP_QUALITY })
+					.toFile(mobileWebp)
+					.then(() => console.log(`  ✓ ${stem}-mobile.webp`))
 			)
 		}
 
