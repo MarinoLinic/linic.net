@@ -166,6 +166,10 @@ const AnimalEntry = ({ animal, tankCategory, onOpenGallery }: {
 							</span>
 						</div>
 						<div className="flex items-baseline gap-2">
+							<span className="text-muted w-24 shrink-0">Life stage</span>
+							<span className="text-text">{animal.life_stage}</span>
+						</div>
+						<div className="flex items-baseline gap-2">
 							<span className="text-muted w-24 shrink-0">Origin</span>
 							<span className="text-text">{animal.location}</span>
 						</div>

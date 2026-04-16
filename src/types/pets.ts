@@ -20,6 +20,7 @@ export interface Animal {
 	family: string
 	function: string
 	type: string
+	life_stage: string
 	longevity: string
 	diurnality: string
 	domesticity: string

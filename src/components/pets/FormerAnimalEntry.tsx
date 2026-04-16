@@ -122,6 +122,10 @@ const FormerAnimalEntry = ({ animal, tankCategory, onOpenGallery }: {
 								{animal.longevity === 'indefinite' ? 'indefinite' : `${animal.longevity} years`}
 							</span>
 						</div>
+						<div className="flex items-baseline gap-2">
+							<span className="text-muted w-24 shrink-0">Life stage</span>
+							<span className="text-muted">{animal.life_stage}</span>
+						</div>
 					</div>
 
 					{/* thumbnail strip */}
