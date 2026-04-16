@@ -21,7 +21,7 @@ function App() {
 
 				<Route path="/socials" element={<Socials />} />
 
-				<Route path="/cv" element={<CV />} />
+				<Route path="/cv" element={<NotFound />} />
 
 				<Route
 					path="/countdown"
