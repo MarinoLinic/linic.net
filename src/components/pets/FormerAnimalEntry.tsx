@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import type { Animal, GallerySlide } from '../../types/pets'
 import { buildSlides, typeIcon } from '../../utils/pets'
 import AnimalImage from './AnimalImage'
@@ -11,6 +11,27 @@ const FormerAnimalEntry = ({ animal, tankCategory, onOpenGallery }: {
 	const slides = useMemo(() => buildSlides(animal.img, animal.vid), [animal.img, animal.vid])
 	const totalMedia = slides.length
 	const [imgIdx, setImgIdx] = useState(0)
+
+	const thumbRef = useRef<HTMLDivElement>(null)
+	const [thumbEdge, setThumbEdge] = useState({ left: false, right: false })
+
+	const updateThumbEdge = useCallback(() => {
+		const el = thumbRef.current
+		if (!el) return
+		setThumbEdge({
+			left: el.scrollLeft > 2,
+			right: el.scrollLeft + el.clientWidth < el.scrollWidth - 2
+		})
+	}, [])
+
+	useEffect(() => {
+		updateThumbEdge()
+		const el = thumbRef.current
+		if (!el) return
+		const ro = new ResizeObserver(updateThumbEdge)
+		ro.observe(el)
+		return () => ro.disconnect()
+	}, [updateThumbEdge])
 
 	return (
 		<article
@@ -105,28 +126,38 @@ const FormerAnimalEntry = ({ animal, tankCategory, onOpenGallery }: {
 
 					{/* thumbnail strip */}
 					{(animal.img.length > 1 || animal.vid.length > 0) && (
-						<div className="flex gap-2 mt-6 overflow-x-auto pb-1">
-							{animal.img.map((im, i) => (
-								<button key={im}
-									className="shrink-0 rounded-lg overflow-hidden border border-white/10 hover:border-white/30 transition-colors p-0 bg-transparent"
-									onClick={() => onOpenGallery(slides, i, animal.organism)}>
-									<AnimalImage name={im} alt={`${animal.organism} ${i + 1}`}
-										className="h-16 w-24 object-cover border-0 hover:border-0 rounded-none" thumb />
-								</button>
-							))}
-							{animal.vid.length > 0 && slides.filter(s => s.type === 'video').map((s, vi) => {
-							const vidId = s.type === 'video' ? s.url.split('/embed/')[1] : ''
-							return (
-								<button key={`vid-${vi}`}
-									className="shrink-0 w-24 h-16 rounded-lg overflow-hidden border border-white/10 hover:border-white/30 transition-colors p-0 bg-transparent relative"
-									onClick={() => onOpenGallery(slides, animal.img.length + vi, animal.organism)}>
-									<img src={`https://img.youtube.com/vi/${vidId}/mqdefault.jpg`} alt="Video" className="w-full h-full object-cover border-0 hover:border-0 rounded-none" loading="lazy" decoding="async" />
-									<div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-										<span className="text-white text-lg drop-shadow">&#9654;</span>
-									</div>
-								</button>
-							)
-						})}
+						<div className="relative mt-6">
+							{thumbEdge.left && (
+								<div className="absolute left-0 top-0 bottom-1 w-10 z-10 pointer-events-none"
+									style={{ background: 'linear-gradient(to right, #0c0b14, transparent)' }} />
+							)}
+							{thumbEdge.right && (
+								<div className="absolute right-0 top-0 bottom-1 w-10 z-10 pointer-events-none"
+									style={{ background: 'linear-gradient(to left, #0c0b14, transparent)' }} />
+							)}
+							<div ref={thumbRef} className="flex gap-2 overflow-x-auto pb-1" onScroll={updateThumbEdge}>
+								{animal.img.map((im, i) => (
+									<button key={im}
+										className="shrink-0 rounded-lg overflow-hidden border border-white/10 hover:border-white/30 transition-colors p-0 bg-transparent"
+										onClick={() => onOpenGallery(slides, i, animal.organism)}>
+										<AnimalImage name={im} alt={`${animal.organism} ${i + 1}`}
+											className="h-16 w-24 object-cover border-0 hover:border-0 rounded-none" thumb />
+									</button>
+								))}
+								{animal.vid.length > 0 && slides.filter(s => s.type === 'video').map((s, vi) => {
+									const vidId = s.type === 'video' ? s.url.split('/embed/')[1] : ''
+									return (
+										<button key={`vid-${vi}`}
+											className="shrink-0 w-24 h-16 rounded-lg overflow-hidden border border-white/10 hover:border-white/30 transition-colors p-0 bg-transparent relative"
+											onClick={() => onOpenGallery(slides, animal.img.length + vi, animal.organism)}>
+											<img src={`https://img.youtube.com/vi/${vidId}/mqdefault.jpg`} alt="Video" className="w-full h-full object-cover border-0 hover:border-0 rounded-none" loading="lazy" decoding="async" />
+											<div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+												<span className="text-white text-lg drop-shadow">&#9654;</span>
+											</div>
+										</button>
+									)
+								})}
+							</div>
 						</div>
 					)}
 				</div>
