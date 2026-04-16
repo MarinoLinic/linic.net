@@ -145,7 +145,7 @@
 	},
 	{
 		"tank": "nobleza-14l",
-		"count": "2",
+		"count": "3",
 		"organism": "Variable topshell",
 		"species": "Phorcus mutabilis",
 		"family": "Trochidae",
@@ -163,7 +163,7 @@
 	},
 	{
 		"tank": "nobleza-14l",
-		"count": "6",
+		"count": "5",
 		"organism": "Divaricate topshell",
 		"species": "Steromphala divaricata",
 		"family": "Trochidae",
