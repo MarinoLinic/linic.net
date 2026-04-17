@@ -8,6 +8,18 @@ import {
 	Geography,
 } from 'react-simple-maps'
 
+/* ── flag image helper ─────────────────────────────── */
+
+function getFlagUrl(iso: string): string {
+	// Historical country codes → use a fallback icon
+	const historical = ['AH', 'SU', 'CS', 'YU']
+	if (historical.includes(iso)) {
+		return 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20"><rect fill="%23333" width="30" height="20"/><text x="15" y="15" font-size="12" text-anchor="middle" fill="%23888">🏛️</text></svg>'
+	}
+	// FlagCDN: w40 = 40px width, keeps aspect ratio
+	return `https://flagcdn.com/w40/${iso.toLowerCase()}.png`
+}
+
 /* ── types ──────────────────────────────────────────── */
 
 interface Coin {
@@ -605,9 +617,13 @@ const Coins = () => {
 									<div className="flex items-center gap-3 mb-6 mt-2">
 										<div className="h-px flex-1" style={{ background: STEAMPUNK_BORDER }} />
 										<div className="flex items-center gap-3 shrink-0">
-											<span className="text-xl" role="img" aria-label={country}>
-												{getFlagEmoji(countryCoins[0].iso)}
-											</span>
+											<img
+												src={getFlagUrl(countryCoins[0].iso)}
+												alt={country}
+												title={country}
+												className="w-6 h-auto rounded-sm shadow-sm pointer-events-none"
+												loading="lazy"
+											/>
 											<h2
 												className="text-lg sm:text-xl font-bold"
 												style={{ color: STEAMPUNK_TEXT }}
@@ -777,7 +793,13 @@ const Coins = () => {
 								}}
 							>
 								<span className="flex items-center gap-1.5 truncate">
-									<span className="text-[10px]">{getFlagEmoji(countriesMap.get(country)![0].iso)}</span>
+									<img
+										src={getFlagUrl(countriesMap.get(country)![0].iso)}
+										alt={country}
+										title={country}
+										className="w-4 h-auto rounded-sm pointer-events-none"
+										loading="lazy"
+									/>
 									{country}
 								</span>
 								<span className="text-[9px] opacity-60">{count}</span>
@@ -832,7 +854,12 @@ const Coins = () => {
 										}}
 									>
 										<span className="flex items-center gap-1.5 truncate">
-											<span className="text-[10px]">{getFlagEmoji(countriesMap.get(country)![0].iso)}</span>
+											<img
+												src={getFlagUrl(countriesMap.get(country)![0].iso)}
+												alt={country}
+												className="w-4 h-auto rounded-sm"
+												loading="lazy"
+											/>
 											{country}
 										</span>
 										<span className="text-[9px] opacity-60">{count}</span>
@@ -858,26 +885,5 @@ const Coins = () => {
 	)
 }
 
-/* ── flag emoji helper ──────────────────────────────── */
-
-function getFlagEmoji(iso: string): string {
-	// Historical country codes → use a fallback
-	const fallbacks: Record<string, string> = {
-		AH: '🏛️', // Austria-Hungary
-		SU: '☭',  // USSR — no official flag emoji
-		CS: '🏛️', // Czechoslovakia
-		YU: '🏛️', // Yugoslavia
-	}
-	if (fallbacks[iso]) return fallbacks[iso]
-
-	// Standard ISO 3166-1 alpha-2 → regional indicator
-	if (iso.length !== 2) return '🌍'
-	const codePoints = [...iso.toUpperCase()].map(c => 0x1f1e6 + c.charCodeAt(0) - 65)
-	try {
-		return String.fromCodePoint(...codePoints)
-	} catch {
-		return '🌍'
-	}
-}
 
 export default Coins
