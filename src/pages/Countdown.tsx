@@ -10,37 +10,99 @@ interface Props {
 }
 
 const Countdown = ({ date, title }: Props) => {
-	const [timerDays, setTimerDays] = useState('')
-	const [timerHours, setTimerHours] = useState('')
-	const [timerMinutes, setTimerMinutes] = useState('')
-	const [timerSeconds, setTimerSeconds] = useState('')
+	const [timerYears, setTimerYears] = useState('00')
+	const [timerMonths, setTimerMonths] = useState('00')
+	const [timerDays, setTimerDays] = useState('00')
+	const [timerHours, setTimerHours] = useState('00')
+	const [timerMinutes, setTimerMinutes] = useState('00')
+	const [timerSeconds, setTimerSeconds] = useState('00')
+
+	const [showYears, setShowYears] = useState(false)
+	const [showMonths, setShowMonths] = useState(false)
+	const [showDays, setShowDays] = useState(false)
 
 	const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
+	const calculateTimeLeft = (targetDate: Date) => {
+		const now = new Date()
+		const timeLeft = targetDate.getTime() - now.getTime()
+
+		if (timeLeft < 0) {
+			return {
+				years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0,
+				showYears: false, showMonths: false, showDays: false
+			}
+		}
+
+		// Calculate years and months
+		let years = targetDate.getFullYear() - now.getFullYear()
+		let months = targetDate.getMonth() - now.getMonth()
+		let days = targetDate.getDate() - now.getDate()
+		let hours = targetDate.getHours() - now.getHours()
+		let minutes = targetDate.getMinutes() - now.getMinutes()
+		let seconds = targetDate.getSeconds() - now.getSeconds()
+
+		// Handle negative values by borrowing
+		if (seconds < 0) {
+			seconds += 60
+			minutes--
+		}
+		if (minutes < 0) {
+			minutes += 60
+			hours--
+		}
+		if (hours < 0) {
+			hours += 24
+			days--
+		}
+		if (days < 0) {
+			const lastMonth = new Date(targetDate.getFullYear(), targetDate.getMonth(), 0)
+			days += lastMonth.getDate()
+			months--
+		}
+		if (months < 0) {
+			months += 12
+			years--
+		}
+
+		// Determine what to show
+		const showYears = years > 0
+		const showMonths = years > 0 || months > 0
+		const showDays = years > 0 || months > 0 || days > 0
+
+		return { years, months, days, hours, minutes, seconds, showYears, showMonths, showDays }
+	}
+
 	useEffect(() => {
-		const countDownDate = new Date(date).getTime()
+		const countDownDate = new Date(date)
+		
+		// Calculate initial values immediately
+		const timeData = calculateTimeLeft(countDownDate)
+		
+		setTimerYears(clockString(timeData.years))
+		setTimerMonths(clockString(timeData.months))
+		setTimerDays(clockString(timeData.days))
+		setTimerHours(clockString(timeData.hours))
+		setTimerMinutes(clockString(timeData.minutes))
+		setTimerSeconds(clockString(timeData.seconds))
+		
+		setShowYears(timeData.showYears)
+		setShowMonths(timeData.showMonths)
+		setShowDays(timeData.showDays)
 
 		intervalRef.current = setInterval(() => {
-			const now = new Date().getTime()
-			const timeLeft = countDownDate - now
-
-			const days = Math.floor(timeLeft / (24 * 60 * 60 * 1000))
-			const hours = Math.floor((timeLeft % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60))
-			const minutes = Math.floor((timeLeft % (60 * 60 * 1000)) / (1000 * 60))
-			const seconds = Math.floor((timeLeft % (60 * 1000)) / 1000)
-
-			if (timeLeft < 0) {
-				clearInterval(intervalRef.current!)
-				setTimerDays(clockString(0))
-				setTimerHours(clockString(0))
-				setTimerMinutes(clockString(0))
-				setTimerSeconds(clockString(0))
-			} else {
-				setTimerDays(clockString(days))
-				setTimerHours(clockString(hours))
-				setTimerMinutes(clockString(minutes))
-				setTimerSeconds(clockString(seconds))
-			}
+			const timeData = calculateTimeLeft(countDownDate)
+			
+			setTimerYears(clockString(timeData.years))
+			setTimerMonths(clockString(timeData.months))
+			setTimerDays(clockString(timeData.days))
+			setTimerHours(clockString(timeData.hours))
+			setTimerMinutes(clockString(timeData.minutes))
+			setTimerSeconds(clockString(timeData.seconds))
+			
+			setShowYears(timeData.showYears)
+			setShowMonths(timeData.showMonths)
+			setShowDays(timeData.showDays)
 		}, 1000)
 
 		return () => {
@@ -54,12 +116,25 @@ const Countdown = ({ date, title }: Props) => {
 			<div>
 				<Clock
 					title={title}
+					timerYears={timerYears}
+					timerMonths={timerMonths}
 					timerDays={timerDays}
 					timerHours={timerHours}
 					timerMinutes={timerMinutes}
 					timerSeconds={timerSeconds}
+					showYears={showYears}
+					showMonths={showMonths}
+					showDays={showDays}
 				/>
-				<h5 className="pt-10 text-secondary text-center">{date}</h5>
+				<div className="mt-10 flex items-center justify-center gap-3 text-muted/50">
+					<div className="h-px w-8 bg-current" />
+					<span className="text-[10px] font-semibold tracking-[0.2em] uppercase">
+						{new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+						{' · '}
+						{new Date(date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+					</span>
+					<div className="h-px w-8 bg-current" />
+				</div>
 			</div>
 			<Circles />
 		</div>
