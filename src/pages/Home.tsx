@@ -18,7 +18,7 @@ const Home = () => {
 
 	return (
 		<>
-			<div className={loading ? 'hidden' : 'min-h-screen flex flex-col'}>
+			<div className={loading ? 'hidden' : 'min-h-dvh flex flex-col'}>
 				<Navigation />
 				<div className="flex flex-col items-center justify-center flex-1">
 					{isHovering ? (

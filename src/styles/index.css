@@ -5,6 +5,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.min-h-dvh {
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+
 :root {
 	font-family: Poppins, Inter, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 24px;
