@@ -82,15 +82,9 @@ function buildGeoToCoinMap(coinCountries: string[]): Map<string, string[]> {
 	return map
 }
 
-/* unique coin types per country (ignoring duplicates by copies) */
+/* count every coin row as unique */
 function getUniqueTypes(coins: Coin[]) {
-	const seen = new Set<string>()
-	return coins.filter(c => {
-		const key = `${c.country}|${c.currency}|${c['denom.']}|${c.amount}|${c.commemorative}`
-		if (seen.has(key)) return false
-		seen.add(key)
-		return true
-	})
+	return coins
 }
 
 /* ── Numista image URL builder ─────────────────────── */
@@ -529,7 +523,7 @@ const Coins = () => {
 															const direct = count
 															const hist = uniqueCountByGeoName.get(`__hist__${geoName}`) || 0
 															const parts: string[] = []
-															if (direct > 0) parts.push(`${direct} type${direct !== 1 ? 's' : ''}`)
+															if (direct > 0) parts.push(`${direct} coin${direct !== 1 ? 's' : ''}`)
 															if (hist > 0) parts.push(`${hist} historical`)
 															setTooltipContent(`${geoName}: ${parts.join(' + ')}`)
 														}
@@ -570,7 +564,7 @@ const Coins = () => {
 									background: `linear-gradient(to right, #32280a, ${STEAMPUNK_COPPER}, ${STEAMPUNK_GOLD})`
 								}} />
 								<span className="text-[10px]" style={{ color: STEAMPUNK_MUTED }}>{maxCount}+</span>
-								<span className="text-[10px] ml-2" style={{ color: STEAMPUNK_MUTED }}>coin types</span>
+								<span className="text-[10px] ml-2" style={{ color: STEAMPUNK_MUTED }}>coins</span>
 							</div>
 						</div>
 					</FadeIn>
@@ -582,8 +576,7 @@ const Coins = () => {
 						<div className="flex flex-wrap justify-center gap-6 text-center">
 							{[
 								{ label: 'Countries', value: countries.length },
-								{ label: 'Unique types', value: totalUnique },
-								{ label: 'Total coins', value: coins.length },
+								{ label: 'Coins', value: totalUnique },
 								{ label: 'Oldest', value: oldestYear },
 								{ label: 'Newest', value: newestYear },
 							].map(s => (
@@ -638,7 +631,7 @@ const Coins = () => {
 													color: STEAMPUNK_GOLD,
 												}}
 											>
-												{uniqueCount} type{uniqueCount !== 1 ? 's' : ''}
+												{uniqueCount} coin{uniqueCount !== 1 ? 's' : ''}
 											</span>
 										</div>
 										<div className="h-px flex-1" style={{ background: STEAMPUNK_BORDER }} />
