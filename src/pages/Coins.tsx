@@ -6,6 +6,7 @@ import {
 	ComposableMap,
 	Geographies,
 	Geography,
+	ZoomableGroup,
 } from 'react-simple-maps'
 
 /* ── flag image helper ─────────────────────────────── */
@@ -126,6 +127,8 @@ const Coins = () => {
 	const [tooltipContent, setTooltipContent] = useState('')
 	const [imgErrors, setImgErrors] = useState<Set<string>>(new Set())
 	const [hasImages, setHasImages] = useState(false)
+	const [mapZoom, setMapZoom] = useState(1)
+	const [mapCenter, setMapCenter] = useState<[number, number]>([0, 0])
 
 	/* ── check if coin images directory has content ── */
 	useEffect(() => {
@@ -499,6 +502,27 @@ const Coins = () => {
 								</div>
 							)}
 
+							{/* zoom controls */}
+							<div className="absolute top-3 left-3 z-10 flex flex-col gap-1">
+								<button
+									onClick={() => setMapZoom(z => Math.min(z * 1.5, 8))}
+									className="steampunk-btn"
+									title="Zoom in"
+								>+</button>
+								<button
+									onClick={() => setMapZoom(z => Math.max(z / 1.5, 1))}
+									className="steampunk-btn"
+									title="Zoom out"
+								>−</button>
+								{mapZoom > 1.05 && (
+									<button
+										onClick={() => { setMapZoom(1); setMapCenter([0, 0]) }}
+										className="steampunk-btn"
+										title="Reset view"
+									>↺</button>
+								)}
+							</div>
+
 							{filterCountry && (
 								<button
 									onClick={() => setFilterCountry(null)}
@@ -518,64 +542,79 @@ const Coins = () => {
 								height={400}
 								style={{ width: '100%', height: 'auto' }}
 							>
-								<Geographies geography={GEO_URL}>
-									{({ geographies }) =>
-										geographies.map((geo) => {
-											const geoName = geo.properties?.name || ''
-											const count = getGeoCount(geoName)
-											const hasCoin = hasGeoCoins(geoName)
+								<ZoomableGroup
+									zoom={mapZoom}
+									center={mapCenter}
+									onMoveEnd={({ coordinates, zoom: newZoom }) => {
+										setMapCenter(coordinates)
+										setMapZoom(newZoom)
+									}}
+									maxZoom={8}
+								>
+									<Geographies geography={GEO_URL}>
+										{({ geographies }) =>
+											geographies.map((geo) => {
+												const geoName = geo.properties?.name || ''
+												const count = getGeoCount(geoName)
+												const hasCoin = hasGeoCoins(geoName)
 
-											return (
-												<Geography
-													key={geo.rsmKey}
-													geography={geo}
-													onMouseEnter={() => {
-														if (hasCoin) {
-															const direct = count
-															const hist = uniqueCountByGeoName.get(`__hist__${geoName}`) || 0
-															const parts: string[] = []
-															if (direct > 0) parts.push(`${direct} coin${direct !== 1 ? 's' : ''}`)
-															if (hist > 0) parts.push(`${hist} historical`)
-															setTooltipContent(`${geoName}: ${parts.join(' + ')}`)
-														}
-													}}
-													onMouseLeave={() => setTooltipContent('')}
-													onClick={() => handleMapClick(geo)}
-													style={{
-														default: {
-															fill: getCountryColor(geoName),
-															stroke: 'rgba(201,168,76,0.12)',
-															strokeWidth: 0.5,
-															outline: 'none',
-															cursor: hasCoin ? 'pointer' : 'default',
-														},
-														hover: {
-															fill: hasCoin ? STEAMPUNK_GOLD : '#222218',
-															stroke: 'rgba(201,168,76,0.3)',
-															strokeWidth: 0.8,
-															outline: 'none',
-															cursor: hasCoin ? 'pointer' : 'default',
-														},
-														pressed: {
-															fill: STEAMPUNK_COPPER,
-															outline: 'none',
-														},
-													}}
-												/>
-											)
-										})
-									}
-								</Geographies>
+												return (
+													<Geography
+														key={geo.rsmKey}
+														geography={geo}
+														onMouseEnter={() => {
+															if (hasCoin) {
+																const direct = count
+																const hist = uniqueCountByGeoName.get(`__hist__${geoName}`) || 0
+																const parts: string[] = []
+																if (direct > 0) parts.push(`${direct} coin${direct !== 1 ? 's' : ''}`)
+																if (hist > 0) parts.push(`${hist} historical`)
+																setTooltipContent(`${geoName}: ${parts.join(' + ')}`)
+															}
+														}}
+														onMouseLeave={() => setTooltipContent('')}
+														onClick={() => handleMapClick(geo)}
+														style={{
+															default: {
+																fill: getCountryColor(geoName),
+																stroke: 'rgba(201,168,76,0.12)',
+																strokeWidth: 0.5,
+																outline: 'none',
+																cursor: hasCoin ? 'pointer' : 'default',
+															},
+															hover: {
+																fill: hasCoin ? STEAMPUNK_GOLD : '#222218',
+																stroke: 'rgba(201,168,76,0.3)',
+																strokeWidth: 0.8,
+																outline: 'none',
+																cursor: hasCoin ? 'pointer' : 'default',
+															},
+															pressed: {
+																fill: STEAMPUNK_COPPER,
+																outline: 'none',
+															},
+														}}
+													/>
+												)
+											})
+										}
+									</Geographies>
+								</ZoomableGroup>
 							</ComposableMap>
 
 							{/* legend */}
-							<div className="flex items-center justify-center gap-4 pb-3 px-4">
-								<span className="text-[10px]" style={{ color: STEAMPUNK_MUTED }}>0</span>
-								<div className="h-2 w-32 rounded-full" style={{
-									background: `linear-gradient(to right, #32280a, ${STEAMPUNK_COPPER}, ${STEAMPUNK_GOLD})`
-								}} />
-								<span className="text-[10px]" style={{ color: STEAMPUNK_MUTED }}>{maxCount}+</span>
-								<span className="text-[10px] ml-2" style={{ color: STEAMPUNK_MUTED }}>coins</span>
+							<div className="flex flex-col items-center gap-1 pb-3 pt-1 px-4">
+								<div className="flex items-center justify-center gap-4">
+									<span className="text-[10px]" style={{ color: STEAMPUNK_MUTED }}>0</span>
+									<div className="h-2 w-32 rounded-full" style={{
+										background: `linear-gradient(to right, #32280a, ${STEAMPUNK_COPPER}, ${STEAMPUNK_GOLD})`
+									}} />
+									<span className="text-[10px]" style={{ color: STEAMPUNK_MUTED }}>{maxCount}+</span>
+									<span className="text-[10px] ml-2" style={{ color: STEAMPUNK_MUTED }}>coins</span>
+								</div>
+								<span className="text-[9px]" style={{ color: 'rgba(201,168,76,0.35)' }}>
+									Scroll or pinch to zoom · Drag to pan
+								</span>
 							</div>
 						</div>
 					</FadeIn>
