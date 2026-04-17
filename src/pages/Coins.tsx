@@ -657,19 +657,11 @@ const Coins = () => {
 					].map((item) => {
 						if (item._type === 'H') {
 							return (
-								<div key={item._id} id={item._id} data-toc className="mb-8 mt-2">
-									<div className="flex items-center gap-3">
-										<div className="h-px flex-1" style={{ background: `linear-gradient(to right, transparent, ${STEAMPUNK_BORDER})` }} />
-										<div className="flex items-center gap-2 px-4 py-1.5 rounded-full" style={{
-											border: `1px solid rgba(201,168,76,0.2)`,
-											background: 'rgba(201,168,76,0.04)',
-										}}>
-											<span className="text-[11px] uppercase tracking-widest font-semibold" style={{ color: STEAMPUNK_COPPER }}>
-												{item._label}
-											</span>
-										</div>
-										<div className="h-px flex-1" style={{ background: `linear-gradient(to left, transparent, ${STEAMPUNK_BORDER})` }} />
-									</div>
+								<div key={item._id} id={item._id} data-toc className="mb-6 mt-8 flex items-center gap-3">
+									<div className="w-[3px] h-4 rounded-full shrink-0" style={{ background: STEAMPUNK_COPPER, opacity: 0.65 }} />
+									<span className="text-[11px] uppercase tracking-widest font-semibold" style={{ color: STEAMPUNK_MUTED }}>
+										{item._label}
+									</span>
 								</div>
 							)
 						}
