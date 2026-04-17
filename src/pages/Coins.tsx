@@ -224,10 +224,18 @@ const Coins = () => {
 	const oldestYear = useMemo(() => Math.min(...coins.map(c => c.year)), [coins])
 	const newestYear = useMemo(() => Math.max(...coins.map(c => c.year)), [coins])
 
-	const filteredCountries = useMemo(() => {
-		if (!filterCountry) return countries
-		return countries.filter(c => c === filterCountry)
-	}, [countries, filterCountry])
+	const historicalList = useMemo(() => countries.filter(c => HISTORICAL_COUNTRIES.includes(c)), [countries])
+	const modernList = useMemo(() => countries.filter(c => !HISTORICAL_COUNTRIES.includes(c)), [countries])
+
+	const historicalFiltered = useMemo(() => {
+		if (!filterCountry) return historicalList
+		return historicalList.filter(c => c === filterCountry)
+	}, [historicalList, filterCountry])
+
+	const modernFiltered = useMemo(() => {
+		if (!filterCountry) return modernList
+		return modernList.filter(c => c === filterCountry)
+	}, [modernList, filterCountry])
 
 	/* ── scroll tracking ───────────────────────────── */
 
@@ -288,6 +296,8 @@ const Coins = () => {
 
 	const currentLabel = useMemo(() => {
 		if (!activeId) return ''
+		if (activeId === 'historical') return 'Historical States'
+		if (activeId === 'modern') return 'Modern States'
 		const country = countries.find(c => countrySlug(c) === activeId)
 		return country || ''
 	}, [activeId, countries])
@@ -641,7 +651,29 @@ const Coins = () => {
 
 				{/* ── coin list by country ──────────────────── */}
 				<main className="max-w-3xl mx-auto px-6 pb-28 lg:pb-20">
-					{filteredCountries.map((country) => {
+					{[
+						...(historicalFiltered.length > 0 ? [{ _type: 'H' as const, _id: 'historical', _label: 'Historical States' }, ...historicalFiltered.map(name => ({ _type: 'C' as const, name }))] : []),
+						...(modernFiltered.length > 0 ? [{ _type: 'H' as const, _id: 'modern', _label: 'Modern States' }, ...modernFiltered.map(name => ({ _type: 'C' as const, name }))] : []),
+					].map((item) => {
+						if (item._type === 'H') {
+							return (
+								<div key={item._id} id={item._id} data-toc className="mb-8 mt-2">
+									<div className="flex items-center gap-3">
+										<div className="h-px flex-1" style={{ background: `linear-gradient(to right, transparent, ${STEAMPUNK_BORDER})` }} />
+										<div className="flex items-center gap-2 px-4 py-1.5 rounded-full" style={{
+											border: `1px solid rgba(201,168,76,0.2)`,
+											background: 'rgba(201,168,76,0.04)',
+										}}>
+											<span className="text-[11px] uppercase tracking-widest font-semibold" style={{ color: STEAMPUNK_COPPER }}>
+												{item._label}
+											</span>
+										</div>
+										<div className="h-px flex-1" style={{ background: `linear-gradient(to left, transparent, ${STEAMPUNK_BORDER})` }} />
+									</div>
+								</div>
+							)
+						}
+						const country = item.name
 						const countryCoins = countriesMap.get(country)!
 						const slug = countrySlug(country)
 						const uniqueCount = uniqueCountByCountry.get(country) || 0
@@ -822,35 +854,53 @@ const Coins = () => {
 					<p className="text-[10px] uppercase tracking-widest mb-3 font-medium" style={{ color: 'rgba(201,168,76,0.3)' }}>
 						Countries
 					</p>
-					{countries.map(country => {
-						const slug = countrySlug(country)
-						const count = uniqueCountByCountry.get(country) || 0
-						return (
+					{[
+						{ id: 'historical', label: 'Historical', list: historicalList },
+						{ id: 'modern', label: 'Modern', list: modernList },
+					].map(({ id, label, list }) => (
+						<div key={id} className="mb-4">
 							<a
-								key={slug}
-								href={`#${slug}`}
-								onClick={(e) => { e.preventDefault(); handleTocClick(slug) }}
-								data-toc-id={slug}
-								className="flex items-center justify-between py-1 text-xs transition-colors"
-								style={{
-									color: activeId === slug ? STEAMPUNK_GOLD : STEAMPUNK_MUTED,
-									fontWeight: activeId === slug ? 600 : 400,
-								}}
+								href={`#${id}`}
+								onClick={(e) => { e.preventDefault(); handleTocClick(id) }}
+								data-toc-id={id}
+								className="block text-[10px] uppercase tracking-widest font-semibold py-1 mb-1"
+								style={{ color: activeId === id ? STEAMPUNK_GOLD : 'rgba(201,168,76,0.35)' }}
 							>
-								<span className="flex items-center gap-1.5 truncate">
-									<img
-										src={getFlagUrl(countriesMap.get(country)![0].iso)}
-										alt={country}
-										title={country}
-										className="w-4 h-auto rounded-sm pointer-events-none"
-										loading="lazy"
-									/>
-									{country}
-								</span>
-								<span className="text-[9px] opacity-60">{count}</span>
+								{label}
 							</a>
-						)
-					})}
+							<div style={{ borderLeft: `1px solid rgba(201,168,76,0.12)`, marginLeft: '2px', paddingLeft: '10px' }}>
+								{list.map(country => {
+									const slug = countrySlug(country)
+									const count = uniqueCountByCountry.get(country) || 0
+									return (
+										<a
+											key={slug}
+											href={`#${slug}`}
+											onClick={(e) => { e.preventDefault(); handleTocClick(slug) }}
+											data-toc-id={slug}
+											className="flex items-center justify-between py-0.5 text-xs transition-colors"
+											style={{
+												color: activeId === slug ? STEAMPUNK_GOLD : STEAMPUNK_MUTED,
+												fontWeight: activeId === slug ? 600 : 400,
+											}}
+										>
+											<span className="flex items-center gap-1.5 truncate">
+												<img
+													src={getFlagUrl(countriesMap.get(country)![0].iso)}
+													alt={country}
+													title={country}
+													className="w-4 h-auto rounded-sm pointer-events-none"
+													loading="lazy"
+												/>
+												{country}
+											</span>
+											<span className="text-[9px] opacity-60">{count}</span>
+										</a>
+									)
+								})}
+							</div>
+						</div>
+					))}
 				</nav>
 
 				{/* ── scroll to top/bottom buttons ──────────── */}
@@ -884,48 +934,65 @@ const Coins = () => {
 								background: 'rgba(26,21,16,0.97)',
 								border: `1px solid ${STEAMPUNK_BORDER}`,
 							}}>
-							{countries.map(country => {
-								const slug = countrySlug(country)
-								const count = uniqueCountByCountry.get(country) || 0
-								return (
-									<a
-										key={slug}
-										href={`#${slug}`}
-										onClick={(e) => { e.preventDefault(); handleTocClick(slug); setTocOpen(false) }}
-										className="flex items-center justify-between py-1.5 text-xs transition-colors"
-										style={{
-											color: activeId === slug ? STEAMPUNK_GOLD : STEAMPUNK_MUTED,
-											fontWeight: activeId === slug ? 600 : 400,
-										}}
-									>
-										<span className="flex items-center gap-1.5 truncate">
-											<img
-												src={getFlagUrl(countriesMap.get(country)![0].iso)}
-												alt={country}
-												className="w-4 h-auto rounded-sm"
-												loading="lazy"
-											/>
-											{country}
-										</span>
-										<span className="text-[9px] opacity-60">{count}</span>
-									</a>
-								)
-							})}
-						</div>
-					)}
-					<button
-						onClick={() => setTocOpen(!tocOpen)}
-						className="flex items-center gap-2 px-4 py-2.5 rounded-full text-sm shadow-lg transition-colors"
-						style={{
-							background: 'rgba(26,21,16,0.95)',
-							border: `1px solid ${STEAMPUNK_BORDER}`,
-							color: STEAMPUNK_GOLD,
-						}}>
-						<span className="truncate max-w-[180px]" style={{ color: STEAMPUNK_MUTED }}>{currentLabel}</span>
-						<span className="text-[10px]" style={{ color: 'rgba(201,168,76,0.4)' }}>{tocOpen ? '▼' : '▲'}</span>
-					</button>
-				</div>
-			)}
+								{[
+									{ id: 'historical', label: 'Historical', list: historicalList },
+									{ id: 'modern', label: 'Modern', list: modernList },
+								].map(({ id, label, list }) => (
+									<div key={id} className="mb-3">
+										<a
+											href={`#${id}`}
+											onClick={(e) => { e.preventDefault(); handleTocClick(id); setTocOpen(false) }}
+											className="block text-[10px] uppercase tracking-widest font-semibold py-1 mb-1"
+											style={{ color: activeId === id ? STEAMPUNK_GOLD : 'rgba(201,168,76,0.35)' }}
+										>
+											{label}
+										</a>
+										<div style={{ borderLeft: `1px solid rgba(201,168,76,0.12)`, marginLeft: '2px', paddingLeft: '10px' }}>
+											{list.map(country => {
+												const slug = countrySlug(country)
+												const count = uniqueCountByCountry.get(country) || 0
+												return (
+													<a
+														key={slug}
+														href={`#${slug}`}
+														onClick={(e) => { e.preventDefault(); handleTocClick(slug); setTocOpen(false) }}
+														className="flex items-center justify-between py-1 text-xs transition-colors"
+														style={{
+															color: activeId === slug ? STEAMPUNK_GOLD : STEAMPUNK_MUTED,
+															fontWeight: activeId === slug ? 600 : 400,
+														}}
+													>
+														<span className="flex items-center gap-1.5 truncate">
+															<img
+																src={getFlagUrl(countriesMap.get(country)![0].iso)}
+																alt={country}
+																className="w-4 h-auto rounded-sm"
+																loading="lazy"
+															/>
+															{country}
+														</span>
+														<span className="text-[9px] opacity-60">{count}</span>
+													</a>
+												)
+											})}
+										</div>
+									</div>
+								))}
+							</div>
+						)}
+						<button
+							onClick={() => setTocOpen(!tocOpen)}
+							className="flex items-center gap-2 px-4 py-2.5 rounded-full text-sm shadow-lg transition-colors"
+							style={{
+								background: 'rgba(26,21,16,0.95)',
+								border: `1px solid ${STEAMPUNK_BORDER}`,
+								color: STEAMPUNK_GOLD,
+							}}>
+							<span className="truncate max-w-[180px]" style={{ color: STEAMPUNK_MUTED }}>{currentLabel}</span>
+							<span className="text-[10px]" style={{ color: 'rgba(201,168,76,0.4)' }}>{tocOpen ? '▼' : '▲'}</span>
+						</button>
+					</div>
+				)}
 		</>
 	)
 }
