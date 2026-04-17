@@ -10,6 +10,7 @@ import Socials from './pages/Socials'
 import TimeVisualizationChoose from './pages/TimeVisualization_Choose'
 import TimeVisualization from './pages/TimeVisualization'
 import Animals from './pages/Pets'
+import Coins from './pages/Coins'
 
 function App() {
 	return (
@@ -45,6 +46,8 @@ function App() {
 
 				<Route path="/animals" element={<Animals />} />
 				<Route path="/pets" element={<Navigate to="/animals" />} />
+
+				<Route path="/coins" element={<Coins />} />
 
 				<Route path="*" element={<NotFound />} />
 			</Routes>

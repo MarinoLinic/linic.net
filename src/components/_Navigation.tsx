@@ -10,7 +10,8 @@ const navItems: NavItem[] = [
 	{ type: 'link', title: 'Portfolio', url: '/portfolio' },
 	{ type: 'link', title: 'Résumé/CV', url: '/cv' },
 	{ type: 'group', title: 'Collections', items: [
-		{ title: 'Animals', url: '/animals' }
+		{ title: 'Animals', url: '/animals' },
+		{ title: 'Coins', url: '/coins' }
 	]},
 	{ type: 'group', title: 'Projects', items: [
 		{ title: 'Countdown', url: '/countdown' },
