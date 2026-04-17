@@ -119,7 +119,7 @@ const SalaryCalculator = () => {
 	}
 
 	return (
-		<div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 pt-10 md:pt-16 pb-12 min-h-screen">
+		<div className="max-w-3xl mx-auto px-4 sm:px-6 md:px-8 pt-16 pb-12 min-h-screen">
 			<BackButton />
 
 			<div className="mb-10">
