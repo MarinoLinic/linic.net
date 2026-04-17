@@ -737,7 +737,7 @@ const Coins = () => {
 													<div>Denomination</div>
 													<div className="text-right">Value</div>
 													<div className="text-center">Year</div>
-													<div className="hidden sm:block text-center">Mag.</div>
+													<div className="hidden sm:block text-center">Magnetic</div>
 													<div className="text-center">Notes</div>
 												</div>
 
@@ -795,10 +795,7 @@ const Coins = () => {
 															{/* magnetic (desktop) */}
 															<div className="hidden sm:flex justify-center">
 																{coin.magnetic === 'yes' && (
-																	<span className="text-[10px] px-1.5 py-0.5 rounded" style={{
-																		background: 'rgba(184,115,51,0.15)',
-																		color: STEAMPUNK_COPPER,
-																	}}>mag</span>
+																	<span style={{ color: STEAMPUNK_GOLD }}>✓</span>
 																)}
 															</div>
 
