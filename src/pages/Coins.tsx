@@ -52,10 +52,14 @@ const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
  * We map our coin country names → topojson country names so the choropleth
  * can color countries correctly (including historical entities).
  */
+// Historical entities that no longer exist (their coins map to successor states)
+const HISTORICAL_COUNTRIES = ['Austria-Hungary', 'Russian Empire', 'USSR', 'Czechoslovakia', 'Yugoslavia']
+
+// Country name mappings for world-atlas@2 (name-based matching)
 const COIN_TO_GEO: Record<string, string[]> = {
 	'Austria-Hungary': ['Austria'],
 	'Russian Empire': ['Russia'],
-	'USSR': ['Russia'],
+	'USSR': ['Russia', 'Ukraine', 'Belarus', 'Estonia', 'Latvia', 'Lithuania', 'Moldova', 'Georgia', 'Armenia', 'Azerbaijan', 'Kazakhstan', 'Uzbekistan', 'Kyrgyzstan', 'Tajikistan', 'Turkmenistan'],
 	'Czechoslovakia': ['Czechia', 'Czech Republic', 'Slovakia'],
 	'Yugoslavia': ['Serbia', 'Bosnia and Herzegovina', 'Bosnia and Herz.', 'Croatia', 'Slovenia', 'Montenegro', 'North Macedonia', 'Macedonia', 'Kosovo'],
 	'United Kingdom': ['United Kingdom', 'England'],
@@ -169,12 +173,19 @@ const Coins = () => {
 		for (const [country, countryCoins] of countriesMap) {
 			const count = getUniqueTypes(countryCoins).length
 			const geoNames = COIN_TO_GEO[country]
-			if (geoNames) {
+			const isHistorical = HISTORICAL_COUNTRIES.includes(country)
+			if (isHistorical && geoNames) {
 				// Historical entity: mark each successor with this country's count
 				// but track separately so it doesn't add to the modern country's count
 				for (const gn of geoNames) {
 					const key = `__hist__${gn}`
 					map.set(key, (map.get(key) || 0) + count)
+				}
+			} else if (geoNames) {
+				// Modern country with name mapping: store under ALL mapped geo names
+				// so world-atlas can find us regardless of which variation it uses
+				for (const gn of geoNames) {
+					map.set(gn, (map.get(gn) || 0) + count)
 				}
 			} else {
 				// Modern country: direct mapping
