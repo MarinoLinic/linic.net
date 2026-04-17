@@ -441,21 +441,20 @@ const Coins = () => {
 									WebkitBackgroundClip: 'text',
 									WebkitTextFillColor: 'transparent',
 								}}>
-									Coin Collection
+									Coins
 								</span>
 							</h1>
 						</FadeIn>
 						<FadeIn delay={100}>
 							<p style={{ color: STEAMPUNK_MUTED }} className="max-w-lg mx-auto text-base">
-								A numismatic atlas spanning{' '}
+								My numismatic collection spanning{' '}
 								<span style={{ color: STEAMPUNK_GOLD }} className="font-semibold">
 									{countries.length} countries
 								</span>{' '}
-								&amp;{' '}
+								and{' '}
 								<span style={{ color: STEAMPUNK_GOLD }} className="font-semibold">
 									{totalUnique} unique coins
-								</span>{' '}
-								— from imperial empires to modern euro mints.
+								</span>.{' '}
 							</p>
 						</FadeIn>
 					</div>
