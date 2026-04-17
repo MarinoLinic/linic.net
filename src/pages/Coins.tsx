@@ -658,112 +658,114 @@ const Coins = () => {
 											</div>
 										</FadeIn>
 
-										<div className="rounded-xl overflow-hidden" style={{
+										<div className="rounded-xl overflow-x-auto" style={{
 											border: `1px solid ${STEAMPUNK_BORDER}`,
 											background: `linear-gradient(135deg, rgba(26,21,16,0.8), rgba(15,13,9,0.9))`,
 										}}>
-											{/* header */}
-											<div className="grid grid-cols-[48px_1fr_80px_60px_60px] sm:grid-cols-[48px_1fr_100px_80px_80px_80px] gap-2 px-3 py-2 text-[10px] uppercase tracking-wider font-medium"
-												style={{ color: STEAMPUNK_MUTED, borderBottom: `1px solid ${STEAMPUNK_BORDER}` }}>
-												<div></div>
-												<div>Denomination</div>
-												<div className="text-right">Value</div>
-												<div className="text-center">Year</div>
-												<div className="hidden sm:block text-center">Mag.</div>
-												<div className="text-center">Notes</div>
-											</div>
+											<div className="min-w-[400px]">
+												{/* header */}
+												<div className="grid grid-cols-[48px_1fr_80px_60px_60px] sm:grid-cols-[48px_1fr_100px_80px_80px_80px] gap-2 px-3 py-2 text-[10px] uppercase tracking-wider font-medium"
+													style={{ color: STEAMPUNK_MUTED, borderBottom: `1px solid ${STEAMPUNK_BORDER}` }}>
+													<div></div>
+													<div>Denomination</div>
+													<div className="text-right">Value</div>
+													<div className="text-center">Year</div>
+													<div className="hidden sm:block text-center">Mag.</div>
+													<div className="text-center">Notes</div>
+												</div>
 
-											{currencyCoins.map((coin, i) => {
-												const coinKey = `${coin.country}-${coin.amount}-${coin['denom.']}-${coin.year}-${coin.commemorative}`
-												const imgUrl = getCoinImageUrl(coin)
-												const hasImgError = imgErrors.has(coinKey)
+												{currencyCoins.map((coin, i) => {
+													const coinKey = `${coin.country}-${coin.amount}-${coin['denom.']}-${coin.year}-${coin.commemorative}`
+													const imgUrl = getCoinImageUrl(coin)
+													const hasImgError = imgErrors.has(coinKey)
 
-												return (
-													<div key={i}
-														className="coin-row grid grid-cols-[48px_1fr_80px_60px_60px] sm:grid-cols-[48px_1fr_100px_80px_80px_80px] gap-2 px-3 py-2 items-center transition-colors"
-														style={{ borderBottom: i < currencyCoins.length - 1 ? `1px solid rgba(201,168,76,0.08)` : 'none' }}>
+													return (
+														<div key={i}
+															className="coin-row grid grid-cols-[48px_1fr_80px_60px_60px] sm:grid-cols-[48px_1fr_100px_80px_80px_80px] gap-2 px-3 py-2 items-center transition-colors"
+															style={{ borderBottom: i < currencyCoins.length - 1 ? `1px solid rgba(201,168,76,0.08)` : 'none' }}>
 
-														{/* coin image */}
-														<div className="coin-img-wrapper">
-															{hasImages && !hasImgError ? (
-																<img
-																	src={imgUrl}
-																	alt={`${coin.amount} ${coin['denom.']}`}
-																	loading="lazy"
-																	onError={() => handleImgError(coinKey)}
-																/>
-															) : (
-																<a href={getCoinFallbackSearch(coin)} target="_blank" rel="noopener noreferrer"
-																	className="coin-placeholder" title="Search on Numista">
-																	{coin['sym.']}
-																</a>
-															)}
-														</div>
+															{/* coin image */}
+															<div className="coin-img-wrapper">
+																{hasImages && !hasImgError ? (
+																	<img
+																		src={imgUrl}
+																		alt={`${coin.amount} ${coin['denom.']}`}
+																		loading="lazy"
+																		onError={() => handleImgError(coinKey)}
+																	/>
+																) : (
+																	<a href={getCoinFallbackSearch(coin)} target="_blank" rel="noopener noreferrer"
+																		className="coin-placeholder" title="Search on Numista">
+																		{coin['sym.']}
+																	</a>
+																)}
+															</div>
 
-														{/* denomination */}
-														<div>
-															<span className="text-sm font-medium capitalize" style={{ color: STEAMPUNK_TEXT }}>
-																{coin['denom.']}
-															</span>
-															{coin.commemorative && (
-																<span className="block text-[10px] mt-0.5 italic" style={{ color: STEAMPUNK_COPPER }}>
-																	{coin.commemorative}
+															{/* denomination */}
+															<div>
+																<span className="text-sm font-medium capitalize" style={{ color: STEAMPUNK_TEXT }}>
+																	{coin['denom.']}
 																</span>
-															)}
-														</div>
+																{coin.commemorative && (
+																	<span className="block text-[10px] mt-0.5 italic" style={{ color: STEAMPUNK_COPPER }}>
+																		{coin.commemorative}
+																	</span>
+																)}
+															</div>
 
-														{/* value */}
-														<div className="text-right">
-															<span className="text-sm font-bold" style={{ color: STEAMPUNK_GOLD }}>
-																{coin.amount}
-															</span>
-														</div>
+															{/* value */}
+															<div className="text-right">
+																<span className="text-sm font-bold" style={{ color: STEAMPUNK_GOLD }}>
+																	{coin.amount}
+																</span>
+															</div>
 
-														{/* year */}
-														<div className="text-center text-sm" style={{ color: STEAMPUNK_TEXT }}>
-															{coin.year}
-														</div>
+															{/* year */}
+															<div className="text-center text-sm" style={{ color: STEAMPUNK_TEXT }}>
+																{coin.year}
+															</div>
 
-														{/* magnetic (desktop) */}
-														<div className="hidden sm:flex justify-center">
-															{coin.magnetic === 'yes' && (
-																<span className="text-[10px] px-1.5 py-0.5 rounded" style={{
-																	background: 'rgba(184,115,51,0.15)',
-																	color: STEAMPUNK_COPPER,
-																}}>mag</span>
-															)}
-														</div>
+															{/* magnetic (desktop) */}
+															<div className="hidden sm:flex justify-center">
+																{coin.magnetic === 'yes' && (
+																	<span className="text-[10px] px-1.5 py-0.5 rounded" style={{
+																		background: 'rgba(184,115,51,0.15)',
+																		color: STEAMPUNK_COPPER,
+																	}}>mag</span>
+																)}
+															</div>
 
-														{/* notes */}
-														<div className="flex justify-center gap-1 flex-wrap">
-															{coin.unc === 'yes' && (
-																<span className="text-[9px] px-1 py-0.5 rounded" style={{
-																	background: 'rgba(201,168,76,0.15)',
-																	color: STEAMPUNK_GOLD,
-																}}>UNC</span>
-															)}
-															{coin['corr.'] === 'y' && (
-																<span className="text-[9px] px-1 py-0.5 rounded" title="Worn / corroded appearance" style={{
-																	background: 'rgba(184,115,51,0.12)',
-																	color: STEAMPUNK_MUTED,
-																}}>worn</span>
-															)}
-															{coin.mint && (
-																<span className="text-[9px] px-1 py-0.5 rounded" style={{
-																	background: 'rgba(201,168,76,0.1)',
-																	color: STEAMPUNK_MUTED,
-																}}>⚒{coin.mint}</span>
-															)}
-															{coin.copies && (
-																<span className="text-[9px] px-1 py-0.5 rounded" style={{
-																	background: 'rgba(201,168,76,0.1)',
-																	color: STEAMPUNK_MUTED,
-																}}>×{Number(coin.copies) + 1}</span>
-															)}
+															{/* notes */}
+															<div className="flex justify-center gap-1 flex-wrap">
+																{coin.unc === 'yes' && (
+																	<span className="text-[9px] px-1 py-0.5 rounded" style={{
+																		background: 'rgba(201,168,76,0.15)',
+																		color: STEAMPUNK_GOLD,
+																	}}>UNC</span>
+																)}
+																{coin['corr.'] === 'y' && (
+																	<span className="text-[9px] px-1 py-0.5 rounded" title="Worn / corroded appearance" style={{
+																		background: 'rgba(184,115,51,0.12)',
+																		color: STEAMPUNK_MUTED,
+																	}}>worn</span>
+																)}
+																{coin.mint && (
+																	<span className="text-[9px] px-1 py-0.5 rounded" style={{
+																		background: 'rgba(201,168,76,0.1)',
+																		color: STEAMPUNK_MUTED,
+																	}}>⚒{coin.mint}</span>
+																)}
+																{coin.copies && (
+																	<span className="text-[9px] px-1 py-0.5 rounded" style={{
+																		background: 'rgba(201,168,76,0.1)',
+																		color: STEAMPUNK_MUTED,
+																	}}>×{Number(coin.copies) + 1}</span>
+																)}
+															</div>
 														</div>
-													</div>
-												)
-											})}
+													)
+												})}
+											</div>
 										</div>
 									</div>
 								))}
