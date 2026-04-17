@@ -477,7 +477,7 @@ const Coins = () => {
 						</FadeIn>
 						<FadeIn delay={100}>
 							<p style={{ color: STEAMPUNK_MUTED }} className="max-w-lg mx-auto text-base">
-								My numismatic collection spanning{' '}
+								A collection of coins I've acquired — {' '}
 								<span style={{ color: STEAMPUNK_GOLD }} className="font-semibold">
 									{countries.length} countries
 								</span>{' '}
