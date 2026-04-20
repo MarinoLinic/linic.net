@@ -1,0 +1,9 @@
+[
+	{ "id": "summary", "title": "Sažetak" },
+	{ "id": "experience", "title": "Radno iskustvo", "dataSource": "experience.json" },
+	{ "id": "projects", "title": "Projekti", "dataSource": "projects.json" },
+	{ "id": "education", "title": "Obrazovanje", "dataSource": "education.json" },
+	{ "id": "skills", "title": "Vještine", "dataSource": "skills.json" },
+	{ "id": "certifications", "title": "Certifikati", "dataSource": "certifications.json" },
+	{ "id": "languages", "title": "Jezici", "dataSource": "languages.json" }
+]

@@ -1,0 +1,9 @@
+[
+	{ "id": "summary", "title": "Summary" },
+	{ "id": "experience", "title": "Experience", "dataSource": "experience.json" },
+	{ "id": "projects", "title": "Projects", "dataSource": "projects.json" },
+	{ "id": "education", "title": "Education", "dataSource": "education.json" },
+	{ "id": "skills", "title": "Skills", "dataSource": "skills.json" },
+	{ "id": "certifications", "title": "Certifications", "dataSource": "certifications.json" },
+	{ "id": "languages", "title": "Languages", "dataSource": "languages.json" }
+]

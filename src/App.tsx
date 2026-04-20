@@ -3,7 +3,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Countdown from './pages/Countdown'
 import Portfolio from './pages/Portfolio'
-import CV from './components/_CV'
+import CV from './pages/CV'
 import SalaryCalculator from './pages/SalaryCalculator'
 import NotFound from './pages/NotFound'
 import Socials from './pages/Socials'
@@ -22,7 +22,7 @@ function App() {
 
 				<Route path="/socials" element={<Socials />} />
 
-				<Route path="/cv" element={<NotFound />} />
+				<Route path="/cv" element={<CV />} />
 
 				<Route
 					path="/countdown"

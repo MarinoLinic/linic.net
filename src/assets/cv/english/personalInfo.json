@@ -1,0 +1,40 @@
+{
+	"name": "Marino Linic",
+	"title": "",
+	"location": "Zagreb, Croatia",
+	"profileImage": "pic.jpg",
+	"contact": {
+		"email": {
+			"value": "marinolinic@gmail.com",
+			"included": true,
+			"tags": "frontend,backend,python,web,automation,testing,nontech"
+		},
+		"phone": {
+			"value": "+385977699443",
+			"included": true,
+			"tags": "frontend,backend,python,web,automation,testing,nontech"
+		},
+		"linkedin": {
+			"value": "www.linkedin.com/in/marino-linic",
+			"included": true,
+			"tags": "frontend,backend,python,web,automation,testing,nontech"
+		},
+		"github": {
+			"value": "github.com/MarinoLinic",
+			"included": false,
+			"tags": "backend,python,automation"
+		},
+		"website": {
+			"value": "linic.netlify.app",
+			"included": false,
+			"tags": "frontend,web,nontech"
+		}
+	},
+	"summaries": {
+		"general": "Developer with experience in web development, Python scripting, and web scraping. Completed an undergraduate degree in Informatics at the University of Rijeka, serving as a Python tutor and lab demonstrator. Proven ability to adapt and learn quickly in various technical and non-technical roles.",
+		"backend": "Backend-focused developer with experience in Python, web scraping, and data pipeline automation. Skilled in building robust server-side applications and managing infrastructure. Completed an undergraduate degree in Informatics with a focus on software engineering.",
+		"frontend": "Developer with a focus on frontend technologies, including JavaScript and React. Experience building responsive and user-friendly web applications. Completed an undergraduate degree in Informatics at the University of Rijeka.",
+		"python": "Python developer specializing in web scraping, automation, and GUI applications. Proven ability to architect and implement efficient, scalable Python solutions. Completed an undergraduate degree in Informatics where I served as a Python tutor.",
+		"nontech": "A communicative, responsible, and resourceful individual with experience working directly with people in customer support and promotional roles. Proven to be adaptable to diverse work environments, skilled in problem-solving, and enjoys creating a positive and pleasant atmosphere for all visitors. Speaks English fluently."
+	}
+}

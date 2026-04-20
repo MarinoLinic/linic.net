@@ -1,0 +1,68 @@
+[
+	{
+		"title": "Tutoring / Career Break",
+		"company": "Private",
+		"duration": "February 2025 - Present",
+		"location": "Zagreb, Croatia",
+		"descriptions": {
+			"general": "Teaching and looking after a child in a private household during morning hours.",
+			"backend": "Providing specialized tutoring and consultation in backend development concepts and technologies.",
+			"frontend": "Teaching modern frontend technologies, focusing on JavaScript, React, and best practices in web design.",
+			"python": "Offering dedicated Python tutoring for applications ranging from web scraping to data analysis and GUI development."
+		},
+		"included": true,
+		"tags": "backend,frontend,python,web,nontech"
+	},
+	{
+		"title": "Web Scraper Intern",
+		"company": "Tryp.com",
+		"duration": "September 2024 - December 2024",
+		"location": "Copenhagen, Denmark",
+		"descriptions": {
+			"general": "Developed and maintained web scraping scripts to gather data from various transport websites. Responsibilities included finding hidden APIs, filtering data, scheduling scraping tasks, and fixing bugs.",
+			"backend": "Engineered robust data pipelines for extracting transport data via APIs and direct scraping. Managed data filtering and insertion into databases, and automated scraping schedules.",
+			"python": "Utilized Python extensively with libraries like Selenium and BeautifulSoup for web scraping, data processing, and creating automation scripts.",
+			"automation": "Built and maintained an automated system using Selenium for ticket purchasing and created scheduled data collection pipelines to ensure data freshness."
+		},
+		"included": true,
+		"tags": "backend,python,automation,web"
+	},
+	{
+		"title": "Python Developer",
+		"company": "TruePlay",
+		"duration": "March 2024 - December 2024",
+		"location": "Copenhagen, Denmark",
+		"descriptions": {
+			"general": "Developed a Python GUI application for psychological evaluations, managed backend infrastructure, and contributed to a related React-based website.",
+			"backend": "Oversaw operations and infrastructure for a psychological evaluation software, ensuring stability and performance.",
+			"frontend": "Developed and maintained components for a client-facing website using JavaScript and React.",
+			"python": "Designed and implemented a comprehensive GUI application using PySimpleGUI, including a complex algorithm to assess tracking input for psychological analysis."
+		},
+		"included": true,
+		"tags": "backend,frontend,python,web,nontech"
+	},
+	{
+		"title": "Testing Automation Intern",
+		"company": "Own.Solutions",
+		"duration": "July 2022 - August 2022",
+		"location": "Rijeka, Croatia",
+		"descriptions": {
+			"general": "Implemented a dozen automated browser tests using the Selenium-based Katalon Studio for a retail application used by thousands of stores.",
+			"automation": "Developed comprehensive browser automation test suites with Selenium and Katalon Studio, significantly improving quality assurance efficiency.",
+			"testing": "Authored and maintained automated testing scripts for a large-scale retail application using Groovy, ensuring application reliability."
+		},
+		"included": true,
+		"tags": "automation,testing,web,nontech"
+	},
+	{
+		"title": "Face-to-Face Fundraiser",
+		"company": "UNICEF",
+		"duration": "June 2020 - February 2022",
+		"location": "Rijeka, Croatia",
+		"descriptions": {
+			"nontech": "Engaged with the public to raise awareness and funds for UNICEF campaigns, developing strong communication, persuasion, and interpersonal skills."
+		},
+		"included": false,
+		"tags": "nontech"
+	}
+]

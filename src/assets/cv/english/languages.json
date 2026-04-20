@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Croatian",
+		"proficiency": "Native",
+		"included": true,
+		"tags": "frontend,backend,python,web,automation,testing,nontech"
+	},
+	{
+		"name": "English",
+		"proficiency": "Native",
+		"included": true,
+		"tags": "frontend,backend,python,web,automation,testing,nontech"
+	}
+]

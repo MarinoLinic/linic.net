@@ -1,0 +1,14 @@
+[
+	{
+		"name": "Hrvatski",
+		"proficiency": "Izvorni govornik",
+		"included": true,
+		"tags": "frontend,backend,python,web,automation,testing,nontech"
+	},
+	{
+		"name": "Engleski",
+		"proficiency": "C2",
+		"included": true,
+		"tags": "frontend,backend,python,web,automation,testing,nontech"
+	}
+]

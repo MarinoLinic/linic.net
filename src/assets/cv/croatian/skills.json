@@ -1,0 +1,30 @@
+{
+	"Programski jezici": [
+		{ "name": "Python", "included": true, "tags": "backend,python,automation,web" },
+		{ "name": "JavaScript", "included": true, "tags": "frontend,backend,web" },
+		{ "name": "Groovy", "included": false, "tags": "testing,automation" },
+		{ "name": "HTML/CSS", "included": true, "tags": "frontend,web" },
+		{ "name": "SQL", "included": true, "tags": "backend" }
+	],
+	"Okviri i biblioteke": [
+		{ "name": "React", "included": true, "tags": "frontend,web" },
+		{ "name": "PySimpleGUI", "included": false, "tags": "python,backend" },
+		{ "name": "Selenium", "included": true, "tags": "automation,testing,python,web" },
+		{ "name": "BeautifulSoup", "included": false, "tags": "python,web,backend" },
+		{ "name": "Katalon Studio", "included": false, "tags": "testing,automation" }
+	],
+	"Alati i tehnologije": [
+		{ "name": "Git & GitHub", "included": true, "tags": "frontend,backend,python,web,automation,testing" },
+		{ "name": "Web Scraping", "included": true, "tags": "backend,python,automation,web" },
+		{ "name": "REST API", "included": true, "tags": "frontend,backend,web" },
+		{ "name": "Chrome DevTools", "included": true, "tags": "frontend,testing,web" },
+		{ "name": "PostgreSQL", "included": false, "tags": "backend" }
+	],
+	"Osobne vještine": [
+		{ "name": "Timski rad", "included": false, "tags": "nontech" },
+		{ "name": "Komunikacija", "included": false, "tags": "nontech" },
+		{ "name": "Podučavanje", "included": false, "tags": "nontech" },
+		{ "name": "Programiranje", "included": false, "tags": "nontech" },
+		{ "name": "Softver", "included": false, "tags": "nontech" }
+	]
+}

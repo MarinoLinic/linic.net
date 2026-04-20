@@ -1,0 +1,18 @@
+[
+	{
+		"degree": "Prvostupnik (Baccalaureus)",
+		"field": "Informatika",
+		"institution": "Sveučilište u Rijeci",
+		"duration": "2023",
+		"included": true,
+		"tags": "backend,frontend,python,web,automation,testing,nontech"
+	},
+	{
+		"degree": "International Baccalaureate (IB) dvojezična diploma",
+		"field": null,
+		"institution": "Nørre Gymnasium",
+		"duration": "",
+		"included": true,
+		"tags": "backend,frontend,python,web,automation,testing,nontech"
+	}
+]
