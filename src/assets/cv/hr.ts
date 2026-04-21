@@ -12,12 +12,11 @@ export const personalInfo = {
 		github:   { value: 'github.com/MarinoLinic',           included: false, tags: 'backend,frontend,python,web,automation,testing' },
 	},
 	summaries: {
-		all:      'Developer s iskustvom u web razvoju, Pythonu, automatizaciji i testiranju. Razvijao scraping pajplajnove, GUI aplikacije, frontend sučelja i automatizirane testove. Studirao informatiku na Sveučilištu u Rijeci, gdje sam radio kao Python tutor i laboratorijski demonstrator.',
-		general:  'Developer s iskustvom u web razvoju, Python skriptiranju i web scrapingu. Studirao informatiku na Sveučilištu u Rijeci, gdje sam radio kao Python tutor i laboratorijski demonstrator. Dobro se snalazim u tehničkim i netehničkim ulogama.',
-		backend:  'Developer s iskustvom u Pythonu, web scrapingu i data pajplajnovima. Pisao server-side skripte, radio s bazama podataka i upravljao backend infrastrukturom. Studirao informatiku na Sveučilištu u Rijeci s naglaskom na softversko inženjerstvo.',
-		frontend: 'Developer usmjeren na frontend tehnologije, primarno JavaScript i React. Gradio responzivna web sučelja i radio na stvarnim klijentskim projektima. Studirao informatiku na Sveučilištu u Rijeci.',
-		python:   'Python developer s naglaskom na web scraping, automatizaciju i desktop aplikacije. Studirao informatiku na Sveučilištu u Rijeci, gdje sam dvije godine radio kao Python tutor.',
-		nontech:  'Iskustvo u radu s klijentima kroz fundraising i korisničku podršku. Ugodan u radu s ljudima, miran u raznim situacijama i brz u prilagodbi novim okruženjima. Tečno govorim engleski.',
+		all:      'Developer s iskustvom u web razvoju, Pythonu, automatizaciji i testiranju. Razvijao sam scraping pajplajnove, GUI aplikacije, frontend sučelja i automatizirane testove. Studirao sam informatiku na Sveučilištu u Rijeci, gdje sam bio demonstrator za kolegij u Pythonu. Dobro se snalazim u tehničkim i netehničkim ulogama, a imam iskustva i s predavanjima.',
+		general:  'Developer s iskustvom u web razvoju, Python skriptiranju i web scrapingu. Studirao sam informatiku na Sveučilištu u Rijeci, gdje sam radio kao Python tutor i laboratorijski demonstrator. Dobro se snalazim u tehničkim i netehničkim ulogama. Imao sam iskustva i s predavanjima.',
+		backend:  'Developer s iskustvom u Pythonu, web scrapingu i data pajplajnovima. Pisao sam server-side skripte, radio sam s bazama podataka i upravljao backend infrastrukturom. Studirao sam informatiku na Sveučilištu u Rijeci, gdje sam bio demonstrator za kolegij u Pythonu.',
+		frontend: 'Developer usmjeren na frontend tehnologije, primarno JavaScript i React. Gradio sam web aplikacije i radio na stvarnim projektima. Studirao sam informatiku na Sveučilištu u Rijeci, gdje sam bio demonstrator za kolegij u Pythonu.',
+		nontech:  'Imam iskustvo u radu s klijentima kroz fundraising, korisničku podršku, rad na recepciji i administraciju. Ugodan sam u radu s ljudima, miran u raznim situacijama i brz u prilagodbi novim okruženjima. Tečno govorim engleski. Dobro se snalazim i u tehničkim ulogama, a imam iskustva i s predavanjima.',
 	},
 }
 
@@ -43,7 +42,7 @@ export const experience = [
 			general: 'Vodio sam i glumio u igrama za djecu i odrasle kroz 10 različitih scenarija. Uz to sam obavljao administrativne poslove. Imao sam ispunjen raspored i stekao dobru radnu etiku.',
 		},
 		included: false,
-		tags: 'nontech',
+		tags: 'nontech,frontend,backend',
 	},
 	{
 		title:    'Pauza u karijeri',
@@ -65,7 +64,7 @@ export const experience = [
 			general:    'Pisao sam i održavao scraping skripte za automatizirano prikupljanje transportnih podataka s raznih web stranica. Posao je uključivao pronalaženje skrivenih API-ja, filtriranje podataka, zakazivanje zadataka i ispravljanje bugova.',
 		},
 		included: true,
-		tags: 'backend,python,automation,web',
+		tags: 'backend,python,automation,web,frontend',
 	},
 	{
 		title:    'Python Developer',
@@ -109,7 +108,7 @@ export const experience = [
 			general:    'Napisao sam desetak automatiziranih testova koristeći Katalon Studio (Selenium) za aplikaciju koju koriste tisuće trgovina.',
 		},
 		included: true,
-		tags: 'automation,testing,web',
+		tags: 'automation,testing,web,frontend,backend',
 	},
 	{
 		title:    'Agent u korisničkoj podršci',

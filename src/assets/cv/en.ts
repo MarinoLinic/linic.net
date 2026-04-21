@@ -12,12 +12,11 @@ export const personalInfo = {
 		github:   { value: 'github.com/MarinoLinic',           included: false, tags: 'backend,frontend,python,web,automation,testing' },
 	},
 	summaries: {
-		all:      'Developer with experience in web development, Python, automation, and testing. Built scraping pipelines, GUI apps, frontend interfaces, and automated browser tests. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator.',
-		general:  'Developer with experience in web development, Python scripting, and web scraping. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator. Comfortable working in both technical and non-technical roles.',
-		backend:  'Developer with experience in Python, web scraping, and data pipelines. Built server-side scripts, worked with databases, and handled backend infrastructure. Studied Informatics at the University of Rijeka with a focus on software engineering.',
-		frontend: 'Developer focused on frontend technologies, primarily JavaScript and React. Built responsive web interfaces and worked on real client-facing projects. Studied Informatics at the University of Rijeka.',
-		python:   'Python developer with a focus on web scraping, automation, and desktop applications. Studied Informatics at the University of Rijeka, where I tutored Python for two years.',
-		nontech:  'Experienced in customer-facing roles including fundraising and support. Comfortable working with people, handling different situations calmly, and adapting quickly to new environments. Fluent in English.',
+		all:      'Developer with experience in web development, Python, automation, and testing. Built scraping pipelines, GUI apps, frontend interfaces, and automated browser tests. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator. Comfortable working in both technical and non-technical roles. I also have experience giving lectures.',
+		general:  'Developer with experience in web development, Python scripting, and web scraping. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator. Comfortable working in both technical and non-technical roles. I also have experience giving lectures.',
+		backend:  'Developer with experience in Python, web scraping, and data pipelines. Built server-side scripts, worked with databases, and handled backend infrastructure. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator.',
+		frontend: 'Developer focused on frontend technologies, primarily JavaScript and React. Built responsive web interfaces and worked on real projects. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator.',
+		nontech:  'Experienced in customer-facing roles including fundraising, greeting clients, and support. Comfortable working with people, handling different situations calmly, and adapting quickly to new environments. Fluent in English. I can work in both technical and non-technical roles. I also have experience giving lectures.',
 	},
 }
 
@@ -43,7 +42,7 @@ export const experience = [
 			general: 'Scare actor and gamemaster for a horror-themed escape room, running games for children and adults across 10 different scenarios. Also handled some administrative tasks. I had a busy working schedule and acquired a good work ethic.',
 		},
 		included: false,
-		tags: 'nontech',
+		tags: 'nontech,frontend,backend',
 	},
 	{
 		title:    'Career Break',
@@ -65,7 +64,7 @@ export const experience = [
 			general:    'Wrote and maintained scraping scripts to automate and collect transport data from various websites. Work included reverse-engineering hidden APIs, filtering data, scheduling tasks, and fixing bugs.',
 		},
 		included: true,
-		tags: 'backend,python,automation,web',
+		tags: 'backend,python,automation,web,frontend',
 	},
 	{
 		title:    'Python Developer',
@@ -109,7 +108,7 @@ export const experience = [
 			general:    'Wrote around a dozen automated browser tests using Katalon Studio (Selenium) for a retail application used by thousands of stores.',
 		},
 		included: true,
-		tags: 'automation,testing,web',
+		tags: 'automation,testing,web,frontend,backend',
 	},
 	{
 		title:    'Customer Service Representative',
