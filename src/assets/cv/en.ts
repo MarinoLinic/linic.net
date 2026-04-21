@@ -8,8 +8,8 @@ export const personalInfo = {
 		website:  { value: 'linic.net',                        included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
 		phone:    { value: '+385977699443',                    included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
 		email:    { value: 'marinolinic@gmail.com',            included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
-		linkedin: { value: 'www.linkedin.com/in/marino-linic', included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
-		github:   { value: 'github.com/MarinoLinic',           included: false, tags: 'backend,python,automation' },
+		linkedin: { value: 'linkedin.com/in/marino-linic',     included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
+		github:   { value: 'github.com/MarinoLinic',           included: false, tags: 'backend,frontend,python,web,automation,testing' },
 	},
 	summaries: {
 		all:      'Versatile developer and communicator with experience spanning web development, Python scripting, automation, testing, and customer-facing roles. Built web scraping pipelines, GUI applications, frontend interfaces, and automated testing suites. Completed an undergraduate degree in Informatics at the University of Rijeka, serving as a Python tutor and lab demonstrator.',
@@ -44,9 +44,10 @@ export const experience = [
 			backend:  'Providing specialized tutoring and consultation in backend development concepts and technologies.',
 			frontend: 'Teaching modern frontend technologies, focusing on JavaScript, React, and best practices in web design.',
 			python:   'Offering dedicated Python tutoring for applications ranging from web scraping to data analysis and GUI development.',
+			web:      'Tutoring in web development topics including JavaScript, React, HTML/CSS, and Python scripting, covering both frontend and backend web concepts.',
 		},
 		included: true,
-		tags: 'backend,frontend,python,web,nontech',
+		tags: 'backend,frontend,python,web',
 	},
 	{
 		title:    'Web Scraper Intern',
@@ -74,7 +75,7 @@ export const experience = [
 			python:   'Designed and implemented a comprehensive GUI application using PySimpleGUI, including a complex algorithm to assess tracking input for psychological analysis.',
 		},
 		included: true,
-		tags: 'backend,frontend,python,web,nontech',
+		tags: 'backend,frontend,python,web',
 	},
 	{
 		title:    'Testing Automation Intern',
@@ -87,7 +88,7 @@ export const experience = [
 			testing:    'Authored and maintained automated testing scripts for a large-scale retail application using Groovy, ensuring application reliability.',
 		},
 		included: true,
-		tags: 'automation,testing,web,nontech',
+		tags: 'automation,testing,web',
 	},
 	{
 		title:    'Face-to-Face Fundraiser',
@@ -117,14 +118,14 @@ export const projects = [
 		description:  'Developed a comprehensive Python framework for automated data extraction. This framework includes features for scheduling tasks, handling different website structures, and integrating with databases.',
 		technologies: 'Python, Selenium, BeautifulSoup, PostgreSQL',
 		included:     true,
-		tags:         'backend,python,automation',
+		tags:         'backend,python,automation,web',
 	},
 	{
 		title:        'PySimpleGUI Desktop Applications',
 		description:  'Created various desktop GUI applications using PySimpleGUI for tasks such as data analysis and user interaction, including a tool designed for psychological assessments.',
 		technologies: 'Python, PySimpleGUI, Data Analysis',
 		included:     true,
-		tags:         'python,backend',
+		tags:         'python',
 	},
 ]
 
@@ -152,14 +153,14 @@ export const education = [
 export const skills = {
 	'Programming': [
 		{ name: 'Python',      included: true,  tags: 'backend,python,automation,web' },
-		{ name: 'JavaScript',  included: true,  tags: 'frontend,backend,web' },
+		{ name: 'JavaScript',  included: true,  tags: 'frontend,web' },
 		{ name: 'Groovy',      included: false, tags: 'testing,automation' },
 		{ name: 'HTML/CSS',    included: true,  tags: 'frontend,web' },
-		{ name: 'SQL',         included: true,  tags: 'backend' },
+		{ name: 'SQL',         included: true,  tags: 'backend,python' },
 	],
 	'Frameworks & Libraries': [
 		{ name: 'React',          included: true,  tags: 'frontend,web' },
-		{ name: 'PySimpleGUI',    included: false, tags: 'python,backend' },
+		{ name: 'PySimpleGUI',    included: false, tags: 'python' },
 		{ name: 'Selenium',       included: true,  tags: 'automation,testing,python,web' },
 		{ name: 'BeautifulSoup',  included: false, tags: 'python,web,backend' },
 		{ name: 'Katalon Studio', included: false, tags: 'testing,automation' },
@@ -167,9 +168,9 @@ export const skills = {
 	'Tools & Technologies': [
 		{ name: 'Git & GitHub',    included: true,  tags: 'frontend,backend,python,web,automation,testing' },
 		{ name: 'Web Scraping',    included: true,  tags: 'backend,python,automation,web' },
-		{ name: 'REST APIs',       included: true,  tags: 'frontend,backend,web' },
+		{ name: 'REST APIs',       included: true,  tags: 'frontend,backend,python,web' },
 		{ name: 'Chrome DevTools', included: true,  tags: 'frontend,testing,web' },
-		{ name: 'PostgreSQL',      included: false, tags: 'backend' },
+		{ name: 'PostgreSQL',      included: false, tags: 'backend,python' },
 	],
 	'Personal': [
 		{ name: 'Teamwork',      included: false, tags: 'nontech' },
