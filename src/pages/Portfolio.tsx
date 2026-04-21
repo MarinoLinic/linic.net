@@ -1,19 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import PortfolioList from '../components/Portfolio_PortfolioList'
 import Navigation from '../components/_Navigation'
+import { PORTFOLIO_COPY } from '../data/portfolio'
 
 const Portfolio = () => {
+	const rafRef = useRef<number>(0)
 	const [progress, setProgress] = useState(0)
 
 	useEffect(() => {
 		const onScroll = () => {
-			const el = document.documentElement
-			const scrolled = el.scrollTop
-			const total = el.scrollHeight - el.clientHeight
-			setProgress(total > 0 ? (scrolled / total) * 100 : 0)
+			cancelAnimationFrame(rafRef.current)
+			rafRef.current = requestAnimationFrame(() => {
+				const el = document.documentElement
+				const scrolled = el.scrollTop
+				const total = el.scrollHeight - el.clientHeight
+				setProgress(total > 0 ? (scrolled / total) * 100 : 0)
+			})
 		}
 		window.addEventListener('scroll', onScroll, { passive: true })
-		return () => window.removeEventListener('scroll', onScroll)
+		return () => {
+			window.removeEventListener('scroll', onScroll)
+			cancelAnimationFrame(rafRef.current)
+		}
 	}, [])
 
 	return (
@@ -25,8 +33,8 @@ const Portfolio = () => {
 			<Navigation />
 			<div className="max-w-3xl mx-auto px-4 md:px-6 pb-20">
 				<div className="py-12">
-					<h1 className="text-text">Portfolio</h1>
-					<p className="text-muted mt-2">Projects from 2020 to present</p>
+					<h1 className="text-text">{PORTFOLIO_COPY.page.title}</h1>
+					<p className="text-muted mt-2">{PORTFOLIO_COPY.page.subtitle}</p>
 				</div>
 				<PortfolioList />
 			</div>
