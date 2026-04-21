@@ -16,7 +16,7 @@ const navItems: NavItem[] = [
 	{ type: 'group', title: 'Projects', items: [
 		{ title: 'Countdown', url: '/countdown' },
 		{ title: 'Time visualizer', url: '/time-visualization' },
-		{ title: 'Salary tax calculator', url: '/porez-na-dohodak' },
+		{ title: 'Income tax calculator', url: '/income-tax/hr' },
 	]},
 ]
 

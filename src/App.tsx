@@ -36,10 +36,12 @@ function App() {
 
 				<Route path="/portfolio" element={<Portfolio />} />
 
-				<Route path="/salary/:lang" element={<SalaryCalculator />} />
-				<Route path="/salary" element={<Navigate to="/salary/hr" />} />
-				<Route path="/porez-na-dohodak" element={<Navigate to="/salary/hr" />} />
-				<Route path="/porez" element={<Navigate to="/salary/hr" />} />
+				<Route path="/income-tax/:lang" element={<SalaryCalculator />} />
+				<Route path="/income-tax" element={<Navigate to="/income-tax/hr" />} />
+				<Route path="/salary/:lang" element={<Navigate to="/income-tax/:lang" replace />} />
+				<Route path="/salary" element={<Navigate to="/income-tax/hr" replace />} />
+				<Route path="/porez-na-dohodak" element={<Navigate to="/income-tax/hr" replace />} />
+				<Route path="/porez" element={<Navigate to="/income-tax/hr" replace />} />
 
 				<Route path="/time-visualization" element={<TimeVisualizationChoose />} />
 				<Route path="/time-visualization/result" element={<TimeVisualization />} />

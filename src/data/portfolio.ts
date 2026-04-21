@@ -122,7 +122,7 @@ export const PORTFOLIO_PROJECTS: PortfolioProject[] = [
 		],
 		image: 'https://i.imgur.com/peIAE6x.png',
 		links: [
-			{ label: 'Try it', url: '/porez-na-dohodak', internal: true },
+			{ label: 'Try it', url: '/income-tax/hr', internal: true },
 			{ label: 'GitHub', url: 'https://github.com/MarinoLinic/linic.net/blob/master/src/pages/SalaryCalculator.tsx' }
 		],
 		note: 'Screenshot may be outdated.'

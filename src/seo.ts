@@ -62,19 +62,19 @@ export const ROUTE_SEO: Record<string, PageSEO> = {
 		ogTitle: `Portfolio — ${SITE_NAME}`,
 		canonical: `${BASE_URL}/portfolio`,
 	},
-	'/salary/hr': {
+	'/income-tax/hr': {
 		title: `Kalkulator Plaće — ${SITE_NAME}`,
 		description:
 			"Besplatni kalkulator plaće i poreza na dohodak za Hrvatsku. Izračunajte bruto u neto plaću s obzirom na olakšice i gradske stope.",
 		ogTitle: `Kalkulator Plaće i Poreza — ${SITE_NAME}`,
-		canonical: `${BASE_URL}/salary/hr`,
+		canonical: `${BASE_URL}/income-tax/hr`,
 	},
-	'/salary/en': {
+	'/income-tax/en': {
 		title: `Croatian Salary Calculator — ${SITE_NAME}`,
 		description:
 			"Free Croatian salary and income tax calculator. Calculate net salary from gross, including personal allowances and city tax rates.",
 		ogTitle: `Croatian Salary Calculator — ${SITE_NAME}`,
-		canonical: `${BASE_URL}/salary/en`,
+		canonical: `${BASE_URL}/income-tax/en`,
 	},
 	'/time-visualization': {
 		title: `Time Visualizer — ${SITE_NAME}`,
@@ -115,9 +115,9 @@ export function getRouteSEO(path: string): PageSEO {
 	const exact = ROUTE_SEO[path]
 	if (exact) return { ...DEFAULT_SEO, ...exact }
 
-	// Fallback for /salary/* routes
-	if (path.startsWith('/salary/')) {
-		return { ...DEFAULT_SEO, ...ROUTE_SEO['/salary/en'] }
+	// Fallback for /income-tax/* routes
+	if (path.startsWith('/income-tax/')) {
+		return { ...DEFAULT_SEO, ...ROUTE_SEO['/income-tax/en'] }
 	}
 
 	// Default fallback
@@ -130,8 +130,8 @@ export const ALL_ROUTES = [
 	'/socials',
 	'/cv',
 	'/portfolio',
-	'/salary/hr',
-	'/salary/en',
+	'/income-tax/hr',
+	'/income-tax/en',
 	'/animals',
 	'/coins',
 ]

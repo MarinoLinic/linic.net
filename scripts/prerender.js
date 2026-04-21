@@ -51,17 +51,17 @@ const ROUTE_SEO = {
 		ogTitle: 'Portfolio — Marino Linić',
 		canonical: 'https://linic.net/portfolio',
 	},
-	'/salary/hr': {
+	'/income-tax/hr': {
 		title: 'Kalkulator Plaće — Marino Linić',
 		description: "Besplatni kalkulator plaće i poreza na dohodak za Hrvatsku. Izračunajte bruto u neto plaću s obzirom na olakšice i gradske stope.",
 		ogTitle: 'Kalkulator Plaće i Poreza — Marino Linić',
-		canonical: 'https://linic.net/salary/hr',
+		canonical: 'https://linic.net/income-tax/hr',
 	},
-	'/salary/en': {
+	'/income-tax/en': {
 		title: 'Croatian Salary Calculator — Marino Linić',
 		description: "Free Croatian salary and income tax calculator. Calculate net salary from gross, including personal allowances and city tax rates.",
 		ogTitle: 'Croatian Salary Calculator — Marino Linić',
-		canonical: 'https://linic.net/salary/en',
+		canonical: 'https://linic.net/income-tax/en',
 	},
 	'/animals': {
 		title: 'Animals — Marino Linić',
@@ -88,8 +88,8 @@ const ALL_ROUTES = [
 	'/socials',
 	'/cv',
 	'/portfolio',
-	'/salary/hr',
-	'/salary/en',
+	'/income-tax/hr',
+	'/income-tax/en',
 	'/animals',
 	'/coins',
 ]
@@ -97,7 +97,7 @@ const ALL_ROUTES = [
 function getRouteSEO(path) {
 	const exact = ROUTE_SEO[path]
 	if (exact) return exact
-	if (path.startsWith('/salary/')) return ROUTE_SEO['/salary/en']
+	if (path.startsWith('/income-tax/')) return ROUTE_SEO['/income-tax/en']
 	return {
 		title: 'Marino Linić',
 		description: "Marino Linic's official information hub and portfolio.",
