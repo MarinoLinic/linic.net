@@ -74,14 +74,15 @@ const SalaryCalculator = () => {
 	const t = salaryTranslations[(lang === 'en' ? 'en' : 'hr') as SalaryLang]
 
 	const [brutoPlaca, setBrutoPlaca] = useState(2000)
-	const [nizaStopa, setNizaStopa] = useState(() => {
-		const saved = localStorage.getItem('salaryTaxNizaStopa')
-		return saved ? parseFloat(saved) : 23
-	})
-	const [visaStopa, setVisaStopa] = useState(() => {
-		const saved = localStorage.getItem('salaryTaxVisaStopa')
-		return saved ? parseFloat(saved) : 33
-	})
+	const parseSaved = (key: string, fallback: number) => {
+		const saved = localStorage.getItem(key)
+		if (!saved) return fallback
+		const n = parseFloat(saved)
+		return isNaN(n) ? fallback : n
+	}
+
+	const [nizaStopa, setNizaStopa] = useState(() => parseSaved('salaryTaxNizaStopa', 23))
+	const [visaStopa, setVisaStopa] = useState(() => parseSaved('salaryTaxVisaStopa', 33))
 	const [selectedCity, setSelectedCity] = useState<string | null>(() => localStorage.getItem('salaryTaxCity'))
 	const [djeca, setDjeca] = useState(0)
 	const [clanovi, setClanovi] = useState(0)
@@ -206,7 +207,10 @@ const SalaryCalculator = () => {
 								onChange={(e) => {
 									const val = e.target.value
 									if (!val) setSelectedCity(null)
-									else applyCity(CITY_PRESETS.find(c => c.name === val)!)
+									else {
+										const city = CITY_PRESETS.find(c => c.name === val)
+										if (city) applyCity(city)
+									}
 								}}
 							>
 								<option value="" style={{ background: '#181626' }}>{t.cityPresetsPlaceholder}</option>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import Circles from '../components/_Circles'
 import Navigation from '../components/_Navigation'
@@ -8,15 +8,27 @@ const Home = () => {
 	usePageSEO()
 	const [count, setCount] = useState<number>(() => {
 		const saved = localStorage.getItem('Clicks')
-		return saved ? JSON.parse(saved) : 0
+		if (!saved) return 0
+		try {
+			const parsed = JSON.parse(saved)
+			return typeof parsed === 'number' ? parsed : 0
+		} catch {
+			return 0
+		}
 	})
 
 	const [isHovering, setIsHovering] = useState(false)
 	const [loading, setLoading] = useState(true)
+	const imgRef = useRef<HTMLImageElement>(null)
 
 	useEffect(() => {
 		localStorage.setItem('Clicks', JSON.stringify(count))
 	}, [count])
+
+	useEffect(() => {
+		const img = imgRef.current
+		if (img && img.complete) setLoading(false)
+	}, [])
 
 	return (
 		<>
@@ -36,6 +48,7 @@ const Home = () => {
 					<h1 className="cursor-default mt-2">Marino Linić</h1>
 					<div className="my-4 flex justify-center">
 						<img
+							ref={imgRef}
 							src="ml.jpg"
 							alt="Image of Marino Linic"
 							onLoad={() => setLoading(false)}

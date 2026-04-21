@@ -43,7 +43,7 @@ const TimeVisualization = () => {
 	const timeElapsed = timeConversionFloor(elapsedDiff)
 	const timeLeft    = timeConversionCeil(totalDiff - elapsedDiff)
 
-	const percentElapsed = ((elapsedDiff / totalDiff) * 100).toFixed(2)
+	const percentElapsed = totalDiff > 0 ? ((elapsedDiff / totalDiff) * 100).toFixed(2) : '0.00'
 
 	const [chosen, setChosen] = useState<ClickRow>(unitRows[2])
 	const handleSelect = useCallback((_n: number | null) => {}, [])

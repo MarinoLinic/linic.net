@@ -17,7 +17,7 @@ const TimeVisualizationChoose = () => {
 		<div className="flex flex-col items-center justify-center min-h-[60vh] gap-6">
 			<BackButton />
 			<h2 className="text-text">Time Visualizer</h2>
-			<form className="flex flex-col gap-4 w-full max-w-xs">
+			<form className="flex flex-col gap-4 w-full max-w-xs" onSubmit={(e) => { e.preventDefault(); handleSubmit() }}>
 				<div className="flex flex-col gap-1">
 					<label className="text-xs text-muted uppercase tracking-wider">Start date</label>
 					<input
@@ -38,7 +38,7 @@ const TimeVisualizationChoose = () => {
 						onChange={(e) => setEnd(e.target.value)}
 					/>
 				</div>
-				<button type="button" onClick={handleSubmit} className="mt-2 border-tertiary/40 hover:border-tertiary">
+				<button type="submit" className="mt-2 border-tertiary/40 hover:border-tertiary">
 					Visualize →
 				</button>
 			</form>
