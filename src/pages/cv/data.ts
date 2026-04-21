@@ -1,22 +1,6 @@
 import type { SectionConfig, PersonalInfo, ExperienceItem } from './types'
-
-// ─── CV data (static imports) ────────────────────────────────────
-import enSectionsRaw from '../../assets/cv/english/sections.json'
-import enPersonalInfo from '../../assets/cv/english/personalInfo.json'
-import enExperience from '../../assets/cv/english/experience.json'
-import enProjects from '../../assets/cv/english/projects.json'
-import enEducation from '../../assets/cv/english/education.json'
-import enSkills from '../../assets/cv/english/skills.json'
-import enCertifications from '../../assets/cv/english/certifications.json'
-import enLanguages from '../../assets/cv/english/languages.json'
-import hrSectionsRaw from '../../assets/cv/croatian/sections.json'
-import hrPersonalInfo from '../../assets/cv/croatian/personalInfo.json'
-import hrExperience from '../../assets/cv/croatian/experience.json'
-import hrProjects from '../../assets/cv/croatian/projects.json'
-import hrEducation from '../../assets/cv/croatian/education.json'
-import hrSkills from '../../assets/cv/croatian/skills.json'
-import hrCertifications from '../../assets/cv/croatian/certifications.json'
-import hrLanguages from '../../assets/cv/croatian/languages.json'
+import * as en from '../../assets/cv/en'
+import * as hr from '../../assets/cv/hr'
 export { default as cvPic } from '../../assets/cv/pic.jpg'
 
 // ─── Helpers ─────────────────────────────────────────────────────
@@ -53,18 +37,16 @@ function reorderSections(sections: any[]) {
 	}
 	return sections
 }
-const enSections = reorderSections(enSectionsRaw)
-const hrSections = reorderSections(hrSectionsRaw)
 
 // ─── Tag labels ──────────────────────────────────────────────────
 export const TAG_LABELS: Record<string, string> = {
-	frontend: 'Frontend',
-	backend: 'Backend',
-	python: 'Python',
-	web: 'Web',
+	frontend:   'Frontend',
+	backend:    'Backend',
+	python:     'Python',
+	web:        'Web',
 	automation: 'Automation',
-	testing: 'Testing',
-	nontech: 'Non-tech',
+	testing:    'Testing',
+	nontech:    'Non-tech',
 }
 
 // ─── Essential tags (shown by default in popup) ─────────────────
@@ -73,13 +55,13 @@ export const ESSENTIAL_TAGS = ['backend', 'frontend', 'nontech']
 // ─── Static data map ─────────────────────────────────────────────
 export const CV_DATA: Record<string, { sections: SectionConfig[]; personalInfo: PersonalInfo; dataMap: Record<string, any> }> = {
 	en: {
-		sections: enSections as SectionConfig[],
-		personalInfo: enPersonalInfo as unknown as PersonalInfo,
-		dataMap: { experience: enExperience, projects: enProjects, education: enEducation, skills: enSkills, certifications: enCertifications, languages: enLanguages },
+		sections:     reorderSections(en.sections) as SectionConfig[],
+		personalInfo: en.personalInfo as unknown as PersonalInfo,
+		dataMap: { experience: en.experience, projects: en.projects, education: en.education, skills: en.skills, certifications: en.certifications, languages: en.languages },
 	},
 	hr: {
-		sections: hrSections as SectionConfig[],
-		personalInfo: hrPersonalInfo as unknown as PersonalInfo,
-		dataMap: { experience: hrExperience, projects: hrProjects, education: hrEducation, skills: hrSkills, certifications: hrCertifications, languages: hrLanguages },
+		sections:     reorderSections(hr.sections) as SectionConfig[],
+		personalInfo: hr.personalInfo as unknown as PersonalInfo,
+		dataMap: { experience: hr.experience, projects: hr.projects, education: hr.education, skills: hr.skills, certifications: hr.certifications, languages: hr.languages },
 	},
 }
