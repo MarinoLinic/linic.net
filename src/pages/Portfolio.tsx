@@ -2,8 +2,10 @@ import { useState, useEffect, useRef } from 'react'
 import PortfolioList from '../components/Portfolio_PortfolioList'
 import Navigation from '../components/_Navigation'
 import { PORTFOLIO_COPY } from '../data/portfolio'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 const Portfolio = () => {
+	usePageSEO()
 	const rafRef = useRef<number>(0)
 	const [progress, setProgress] = useState(0)
 

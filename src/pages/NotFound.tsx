@@ -1,6 +1,8 @@
 import BackButton from '../components/_BackButton'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 const NotFound = () => {
+	usePageSEO()
 	return (
 		<div className="flex flex-col items-center justify-center h-screen gap-4">
 			<BackButton />

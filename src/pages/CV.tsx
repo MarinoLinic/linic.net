@@ -3,6 +3,7 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { CV_STYLES } from './cv/styles'
 import { CV_DATA, cvPic, TAG_LABELS, ESSENTIAL_TAGS, filterByTag, getDescription, getSummary } from './cv/cvdata'
 import type { ContactItem, SectionConfig, ExperienceItem, ProjectItem, EducationItem, SkillItem, LanguageItem } from './cv/types'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 // ─── Location colours ───────────────────────────────────────────
 const LOC_COLORS: Record<string, { dot: string; line: string; label: string }> = {
@@ -24,6 +25,7 @@ const getLocColor = (str: string) => {
 
 // ─── Component ───────────────────────────────────────────────────
 const CV = () => {
+	usePageSEO()
 	const [searchParams, setSearchParams] = useSearchParams()
 	const lang = searchParams.get('lang') || 'en'
 	const urlTag = searchParams.get('tag')

@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import SquaresGrid from '../components/TimeVisualization_Square'
 import BackButton from '../components/_BackButton'
 import { timeConversionFloor, timeConversionCeil } from '../utils/functions/timeConversion'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 type ClickKey = 'years' | 'months' | 'weeks' | 'days'
 type InfoKey  = 'decades' | 'hours' | 'minutes' | 'seconds'
@@ -29,6 +30,7 @@ const formatDate = (dateStr: string) => {
 }
 
 const TimeVisualization = () => {
+	usePageSEO()
 	const [searchParams] = useSearchParams()
 	const startDate = searchParams.get('start') ?? '1999-10-13'
 	const endDate   = searchParams.get('end')   ?? '2079-10-13'

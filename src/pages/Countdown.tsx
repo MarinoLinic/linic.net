@@ -3,6 +3,7 @@ import Clock from '../components/Countdown_Clock'
 import Circles from '../components/_Circles'
 import BackButton from '../components/_BackButton'
 import { clockString } from '../utils/functions/clockString'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 interface Props {
 	date: string
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const Countdown = ({ date, title }: Props) => {
+	usePageSEO()
 	const [timerYears, setTimerYears] = useState('00')
 	const [timerMonths, setTimerMonths] = useState('00')
 	const [timerDays, setTimerDays] = useState('00')

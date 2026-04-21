@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import Navigation from '../components/_Navigation'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 const Socials = () => {
+	usePageSEO()
 	const [loading, setLoading] = useState(true)
 
 	const links = [

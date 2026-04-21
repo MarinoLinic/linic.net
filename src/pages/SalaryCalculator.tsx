@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import SalaryChart from '../components/SalaryCalculator_SalaryChart'
 import BackButton from '../components/_BackButton'
 import { salaryTranslations, type SalaryLang } from '../i18n/salary'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 const OSOBNI_ODBITAK = 600.00
 const MIROVINSKO_STOPA = 0.20 // 15% I. stup + 5% II. stup
@@ -68,6 +69,7 @@ const Stepper = ({ label, value, onChange, min = 0 }: { label: string; value: nu
 )
 
 const SalaryCalculator = () => {
+	usePageSEO()
 	const { lang } = useParams<{ lang: string }>()
 	const t = salaryTranslations[(lang === 'en' ? 'en' : 'hr') as SalaryLang]
 

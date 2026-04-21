@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Navigation from '../components/_Navigation'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 const FadeSection = ({ children }: { children: ReactNode }) => {
 	const [visible, setVisible] = useState(false)
@@ -73,6 +74,7 @@ const AnimatedStat = ({ value, label, href }: { value: number; label: string; hr
 }
 
 const About = () => {
+	usePageSEO()
 	const [iNat, setINat] = useState({
 		observations_count: 2424,
 		species_count: 1051,

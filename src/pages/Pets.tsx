@@ -10,10 +10,12 @@ import AnimalEntry from '../components/pets/AnimalEntry'
 import FormerAnimalEntry from '../components/pets/FormerAnimalEntry'
 import tanksData from '../data/tanks.json'
 import animalsData from '../data/pets.json'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 /* ── main page ───────────────────────────────────────────── */
 
 const Animals = () => {
+	usePageSEO()
 	const tanks = tanksData as Tank[]
 	const allAnimals = animalsData as Animal[]
 	const rafRef = useRef<number>(0)

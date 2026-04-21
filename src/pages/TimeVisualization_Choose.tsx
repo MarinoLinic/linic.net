@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import BackButton from '../components/_BackButton'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 const TimeVisualizationChoose = () => {
+	usePageSEO()
 	const navigate = useNavigate()
 	const [start, setStart] = useState('1999-10-13')
 	const [end, setEnd] = useState('2079-10-13')

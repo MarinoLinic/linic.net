@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Circles from '../components/_Circles'
 import Navigation from '../components/_Navigation'
+import { usePageSEO } from '../hooks/usePageSEO'
 
 const Home = () => {
+	usePageSEO()
 	const [count, setCount] = useState<number>(() => {
 		const saved = localStorage.getItem('Clicks')
 		return saved ? JSON.parse(saved) : 0

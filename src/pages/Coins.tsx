@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import Navigation from '../components/_Navigation'
 import FadeIn from '../components/pets/FadeIn'
 import coinsData from '../data/coins.json'
+import { usePageSEO } from '../hooks/usePageSEO'
 import {
 	ComposableMap,
 	Geographies,
@@ -118,6 +119,7 @@ const STEAMPUNK_MUTED = '#8a7e6a'
 /* ── main component ─────────────────────────────────── */
 
 const Coins = () => {
+	usePageSEO()
 	const coins = coinsData as Coin[]
 	const rafRef = useRef<number>(0)
 	const [progress, setProgress] = useState(0)
