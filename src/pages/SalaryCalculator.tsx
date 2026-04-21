@@ -35,6 +35,21 @@ function djeceKoef(n: number): number {
 	return parseFloat(total.toFixed(1))
 }
 
+const CITY_PRESETS = [
+	{ name: 'Zagreb',         lower: 23.0, higher: 33.0 },
+	{ name: 'Split',          lower: 21.5, higher: 32.0 },
+	{ name: 'Rijeka',         lower: 20.0, higher: 25.0 },
+	{ name: 'Osijek',         lower: 20.0, higher: 30.0 },
+	{ name: 'Zadar',          lower: 20.0, higher: 30.0 },
+	{ name: 'Slavonski Brod', lower: 20.0, higher: 30.0 },
+	{ name: 'Pula',           lower: 22.0, higher: 32.0 },
+	{ name: 'Karlovac',       lower: 19.0, higher: 29.0 },
+	{ name: 'Varaždin',       lower: 21.0, higher: 32.0 },
+	{ name: 'Šibenik',        lower: 20.0, higher: 30.0 },
+	{ name: 'Sisak',          lower: 21.6, higher: 31.6 },
+	{ name: 'Velika Gorica',  lower: 20.0, higher: 30.0 },
+]
+
 const Stepper = ({ label, value, onChange, min = 0 }: { label: string; value: number; onChange: (v: number) => void; min?: number }) => (
 	<div className="flex items-center justify-between">
 		<span className="text-muted text-sm">{label}</span>
@@ -65,6 +80,7 @@ const SalaryCalculator = () => {
 		const saved = localStorage.getItem('salaryTaxVisaStopa')
 		return saved ? parseFloat(saved) : 33
 	})
+	const [selectedCity, setSelectedCity] = useState<string | null>(() => localStorage.getItem('salaryTaxCity'))
 	const [djeca, setDjeca] = useState(0)
 	const [clanovi, setClanovi] = useState(0)
 	const [invalidnost, setInvalidnost] = useState(0)
@@ -77,6 +93,17 @@ const SalaryCalculator = () => {
 	useEffect(() => {
 		localStorage.setItem('salaryTaxVisaStopa', visaStopa.toString())
 	}, [visaStopa])
+
+	useEffect(() => {
+		if (selectedCity) localStorage.setItem('salaryTaxCity', selectedCity)
+		else localStorage.removeItem('salaryTaxCity')
+	}, [selectedCity])
+
+	const handleNizaStopa = (v: number) => { setNizaStopa(v); setSelectedCity(null) }
+	const handleVisaStopa = (v: number) => { setVisaStopa(v); setSelectedCity(null) }
+	const applyCity = (city: typeof CITY_PRESETS[0]) => {
+		setNizaStopa(city.lower); setVisaStopa(city.higher); setSelectedCity(city.name)
+	}
 
 	const koeficijent = parseFloat((djeceKoef(djeca) + clanovi * 0.5 + invalidnost * 0.3 + invalidnost100 * 1.0).toFixed(1))
 	const nizaStopaDecimal = nizaStopa / 100
@@ -131,7 +158,7 @@ const SalaryCalculator = () => {
 				<p className="text-muted text-sm mt-1" dangerouslySetInnerHTML={{ __html: t.pageSubtitle('https://www.zakon.hr/z/85/Zakon-o-porezu-na-dohodak') }} />
 			</div>
 
-			<div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 md:items-end mb-4">
+			<div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 md:items-start mb-6">
 				<div>
 					<label className="text-xs text-muted uppercase tracking-wider block mb-1">{t.grossSalary}</label>
 					<div className="flex items-baseline gap-1">
@@ -148,12 +175,12 @@ const SalaryCalculator = () => {
 						{t.taxRatesLabel}{' '}
 						<a href="https://www.zakon.hr/z/85/Zakon-o-porezu-na-dohodak">{t.taxRatesArticle}</a>
 					</label>
-					<div className="flex items-center gap-2 sm:gap-3">
+					<div className="flex items-center gap-2 sm:gap-3 mb-3">
 						<div className="flex items-baseline gap-1">
 							<input
 								className="bg-transparent text-text font-semibold outline-none w-14 border-b border-white/10 pb-1 text-lg font-mono text-center"
 								type="number" value={nizaStopa} min={15} max={23} step={0.5}
-								onChange={(e) => setNizaStopa(parseFloat(e.target.value) || 0)}
+								onChange={(e) => handleNizaStopa(parseFloat(e.target.value) || 0)}
 							/>
 							<span className="text-muted text-xs sm:text-sm">{t.lowerPct}</span>
 						</div>
@@ -162,10 +189,41 @@ const SalaryCalculator = () => {
 							<input
 								className="bg-transparent text-text font-semibold outline-none w-14 border-b border-white/10 pb-1 text-lg font-mono text-center"
 								type="number" value={visaStopa} min={25} max={33} step={0.5}
-								onChange={(e) => setVisaStopa(parseFloat(e.target.value) || 0)}
+								onChange={(e) => handleVisaStopa(parseFloat(e.target.value) || 0)}
 							/>
 							<span className="text-muted text-xs sm:text-sm">{t.higherPct}</span>
 						</div>
+					</div>
+					<div className="flex items-center gap-2">
+						<label className="text-xs text-muted uppercase tracking-wider shrink-0">{t.cityPresetsLabel}</label>
+						<div className="relative">
+							<select
+								className="bg-surface border border-white/10 rounded text-xs font-mono text-muted outline-none py-0.5 pl-1.5 pr-6 appearance-none cursor-pointer hover:border-white/20 transition-colors"
+								style={{ colorScheme: 'dark' }}
+								value={selectedCity ?? ''}
+								onChange={(e) => {
+									const val = e.target.value
+									if (!val) setSelectedCity(null)
+									else applyCity(CITY_PRESETS.find(c => c.name === val)!)
+								}}
+							>
+								<option value="" style={{ background: '#181626' }}>{t.cityPresetsPlaceholder}</option>
+								{CITY_PRESETS.map(city => (
+									<option key={city.name} value={city.name} style={{ background: '#181626' }}>
+										{city.name} — {city.lower}% / {city.higher}%
+									</option>
+								))}
+							</select>
+							<span className="absolute right-1.5 top-1/2 -translate-y-1/2 text-muted text-[10px] pointer-events-none">▾</span>
+						</div>
+						<a
+							href="https://www.rrif.hr/stope_poreza_na_dohodak_za_isplate_od_1_sijecnja_2-13-strucnainformacija/"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-xs font-mono shrink-0"
+						>
+							{t.cityPresetsSource} ↗
+						</a>
 					</div>
 				</div>
 			</div>

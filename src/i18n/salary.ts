@@ -57,6 +57,9 @@ export interface SalaryTranslations {
 	chartTax: string
 	langSwitch: string
 	langSwitchPath: string
+	cityPresetsLabel: string
+	cityPresetsPlaceholder: string
+	cityPresetsSource: string
 }
 
 const hr: SalaryTranslations = {
@@ -116,6 +119,9 @@ const hr: SalaryTranslations = {
 	chartTax: 'porez',
 	langSwitch: 'English',
 	langSwitchPath: '/salary/en',
+	cityPresetsLabel: 'Grad',
+	cityPresetsPlaceholder: '— odaberi —',
+	cityPresetsSource: 'sve stope',
 }
 
 const en: SalaryTranslations = {
@@ -175,6 +181,9 @@ const en: SalaryTranslations = {
 	chartTax: 'tax',
 	langSwitch: 'Hrvatski',
 	langSwitchPath: '/salary/hr',
+	cityPresetsLabel: 'City',
+	cityPresetsPlaceholder: '— select —',
+	cityPresetsSource: 'all rates',
 }
 
 export const salaryTranslations: Record<SalaryLang, SalaryTranslations> = { hr, en }

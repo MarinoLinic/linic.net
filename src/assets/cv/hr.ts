@@ -43,7 +43,7 @@ export const experience = [
 			general: 'Vodio sam i glumio u igrama za djecu i odrasle kroz 10 različitih scenarija. Uz to sam obavljao administrativne poslove. Imao sam ispunjen raspored i stekao dobru radnu etiku.',
 		},
 		included: false,
-		tags: 'developer,nontech,frontend,backend',
+		tags: 'nontech,frontend,backend',
 	},
 	{
 		title:    'Pauza u karijeri',
