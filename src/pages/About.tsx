@@ -137,7 +137,7 @@ const About = () => {
 					<h1>About</h1>
 				</div>
 				<div className="my-4">
-					<img src="https://i.imgur.com/W7VlpVE.jpg" alt="Images of me." onLoad={() => setLoading(false)} />
+					<img src="https://i.imgur.com/e1iBy8L.png" alt="Image of me." onLoad={() => setLoading(false)} />
 				</div>
 
 				<FadeSection>

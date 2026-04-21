@@ -62,6 +62,13 @@ export const ROUTE_SEO: Record<string, PageSEO> = {
 		ogTitle: `Portfolio — ${SITE_NAME}`,
 		canonical: `${BASE_URL}/portfolio`,
 	},
+	'/countdown': {
+		title: `Countdown — ${SITE_NAME}`,
+		description:
+			"Live countdown timer to the 2028 US presidential election.",
+		ogTitle: `Countdown — ${SITE_NAME}`,
+		canonical: `${BASE_URL}/countdown`,
+	},
 	'/income-tax/hr': {
 		title: `Kalkulator Plaće — ${SITE_NAME}`,
 		description:

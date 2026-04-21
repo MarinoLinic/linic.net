@@ -51,6 +51,12 @@ const ROUTE_SEO = {
 		ogTitle: 'Portfolio — Marino Linić',
 		canonical: 'https://linic.net/portfolio',
 	},
+	'/countdown': {
+		title: 'Countdown — Marino Linić',
+		description: "Live countdown timer to the 2028 US presidential election.",
+		ogTitle: 'Countdown — Marino Linić',
+		canonical: 'https://linic.net/countdown',
+	},
 	'/income-tax/hr': {
 		title: 'Kalkulator Plaće — Marino Linić',
 		description: "Besplatni kalkulator plaće i poreza na dohodak za Hrvatsku. Izračunajte bruto u neto plaću s obzirom na olakšice i gradske stope.",
