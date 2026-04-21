@@ -67,6 +67,9 @@ export const TAG_LABELS: Record<string, string> = {
 	nontech: 'Non-tech',
 }
 
+// ─── Essential tags (shown by default in popup) ─────────────────
+export const ESSENTIAL_TAGS = ['backend', 'frontend', 'nontech']
+
 // ─── Static data map ─────────────────────────────────────────────
 export const CV_DATA: Record<string, { sections: SectionConfig[]; personalInfo: PersonalInfo; dataMap: Record<string, any> }> = {
 	en: {

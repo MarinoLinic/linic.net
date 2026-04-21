@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { CV_STYLES } from './cv/styles'
-import { CV_DATA, cvPic, TAG_LABELS, filterByTag, getDescription, getSummary } from './cv/data'
+import { CV_DATA, cvPic, TAG_LABELS, ESSENTIAL_TAGS, filterByTag, getDescription, getSummary } from './cv/data'
 import type { ContactItem, SectionConfig, ExperienceItem, ProjectItem, EducationItem, SkillItem, LanguageItem } from './cv/types'
 
 // ─── Component ───────────────────────────────────────────────────
@@ -11,6 +11,7 @@ const CV = () => {
 	const urlTag = searchParams.get('tag')
 	const tag = urlTag || 'all'
 	const [showTagPopup, setShowTagPopup] = useState(false)
+	const [showMoreTags, setShowMoreTags] = useState(false)
 
 	const langKey = lang === 'hr' ? 'hr' : 'en'
 	const { sections, personalInfo, dataMap } = CV_DATA[langKey]
@@ -189,13 +190,17 @@ const CV = () => {
 		}
 
 		if (!content) return null
+		const sectionClass = `cv-section${section.id === 'experience' ? ' cv-section-experience' : ''}`
 		return (
-			<div key={section.id} className="cv-section">
+			<div key={section.id} className={sectionClass}>
 				<h3 className="cv-section-title">{section.title}</h3>
 				{content}
 			</div>
 		)
 	}
+
+	const essentialTags = allTags.filter(t => ESSENTIAL_TAGS.includes(t))
+	const extraTags = allTags.filter(t => !ESSENTIAL_TAGS.includes(t))
 
 	return (
 		<>
@@ -205,27 +210,12 @@ const CV = () => {
 					<img src="/logo.svg" alt="Home" />
 				</Link>
 
-				<div className="cv-controls cv-no-print">
-					<button className="cv-filter-btn has-tag" onClick={() => setShowTagPopup(true)}>
-						<span className="cv-tag-badge">
-							{tag === 'all' ? (lang === 'en' ? 'All' : 'Sve') : (TAG_LABELS[tag] || tag)}
-							<span className="cv-tag-clear" onClick={e => { e.stopPropagation(); selectTag('all') }}>×</span>
-						</span>
-					</button>
-					<button className="cv-lang-btn" onClick={toggleLang}>
-						{lang === 'en' ? 'Hrvatski' : 'English'}
-					</button>
-					<button className="cv-download-btn" onClick={() => window.print()}>
-						{lang === 'en' ? 'Download as PDF' : 'Preuzmi kao PDF'}
-					</button>
-				</div>
-
 				{showTagPopup && (
-					<div className="cv-tag-overlay" onClick={() => setShowTagPopup(false)}>
+					<div className="cv-tag-overlay" onClick={() => { setShowTagPopup(false); setShowMoreTags(false) }}>
 						<div className="cv-tag-popup" onClick={e => e.stopPropagation()}>
 							<div className="cv-tag-popup-header">
 								<span className="cv-tag-popup-title">{lang === 'en' ? 'Filter by role' : 'Filtriraj po ulozi'}</span>
-								<button className="cv-tag-popup-close" onClick={() => setShowTagPopup(false)}>×</button>
+								<button className="cv-tag-popup-close" onClick={() => { setShowTagPopup(false); setShowMoreTags(false) }}>×</button>
 							</div>
 							<p className="cv-tag-popup-subtitle">
 								{lang === 'en'
@@ -236,15 +226,48 @@ const CV = () => {
 								<button className={`cv-tag-chip${tag === 'all' ? ' active' : ''}`} onClick={() => selectTag('all')}>
 									{lang === 'en' ? 'All' : 'Sve'}
 								</button>
-								{allTags.map(t => (
+								{essentialTags.map(t => (
 									<button key={t} className={`cv-tag-chip${tag === t ? ' active' : ''}`} onClick={() => selectTag(t)}>
 										{TAG_LABELS[t] || t}
 									</button>
 								))}
 							</div>
+							{extraTags.length > 0 && (
+								<>
+									<button className={`cv-tag-toggle${showMoreTags ? ' expanded' : ''}`} onClick={() => setShowMoreTags(!showMoreTags)}>
+										{showMoreTags
+											? (lang === 'en' ? 'Show less' : 'Prikaži manje')
+											: (lang === 'en' ? 'More specialties...' : 'Više specijalizacija...')}
+									</button>
+									{showMoreTags && (
+										<div className="cv-tag-grid">
+											{extraTags.map(t => (
+												<button key={t} className={`cv-tag-chip${tag === t ? ' active' : ''}`} onClick={() => selectTag(t)}>
+													{TAG_LABELS[t] || t}
+												</button>
+											))}
+										</div>
+									)}
+								</>
+							)}
 						</div>
 					</div>
 				)}
+
+				<div className="cv-toolbar cv-no-print">
+					<button className="cv-toolbar-btn cv-toolbar-filter" onClick={() => setShowTagPopup(true)}>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+						<span className="cv-toolbar-label">{lang === 'en' ? 'Filter' : 'Filtriraj'}: {tag === 'all' ? (lang === 'en' ? 'All' : 'Sve') : (TAG_LABELS[tag] || tag)}</span>
+					</button>
+					<button className="cv-toolbar-btn cv-toolbar-lang" onClick={toggleLang}>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+						<span className="cv-toolbar-label">{lang === 'en' ? 'Hrvatski' : 'English'}</span>
+					</button>
+					<button className="cv-toolbar-btn cv-toolbar-download" onClick={() => window.print()}>
+						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+						<span className="cv-toolbar-label">{lang === 'en' ? 'Download PDF' : 'Preuzmi PDF'}</span>
+					</button>
+				</div>
 
 				<div className="cv-container">
 					<div className="cv-content">
