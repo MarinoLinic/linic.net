@@ -603,13 +603,8 @@ export const CV_STYLES = `
 		max-width: 100%;
 		padding: 0 16px;
 	}
-	.cv-toolbar-label { display: none; }
-	.cv-back-btn {
-		top: auto;
-		bottom: 16px;
-		left: auto;
-		right: auto;
-	}
+	.cv-toolbar-btn { font-size: 10px !important; }
+	.cv-toolbar-btn svg { display: none; }
 }
 @media screen and (max-width: 480px) {
 	.cv-content { padding: 20px 16px; }

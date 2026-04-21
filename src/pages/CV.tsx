@@ -206,10 +206,6 @@ const CV = () => {
 		<>
 			<style>{CV_STYLES}</style>
 			<div className="cv-page">
-				<Link to="/" className="cv-back-btn cv-no-print">
-					<img src="/logo.svg" alt="Home" />
-				</Link>
-
 				{showTagPopup && (
 					<div className="cv-tag-overlay" onClick={() => { setShowTagPopup(false); setShowMoreTags(false) }}>
 						<div className="cv-tag-popup" onClick={e => e.stopPropagation()}>
@@ -253,6 +249,10 @@ const CV = () => {
 						</div>
 					</div>
 				)}
+
+				<Link to="/" className="cv-back-btn cv-no-print">
+					<img src="/logo.svg" alt="Home" />
+				</Link>
 
 				<div className="cv-toolbar cv-no-print">
 					<button className="cv-toolbar-btn cv-toolbar-filter" onClick={() => setShowTagPopup(true)}>
