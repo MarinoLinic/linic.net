@@ -4,13 +4,18 @@
 	"location": "Zagreb, Hrvatska",
 	"profileImage": "pic.jpg",
 	"contact": {
-		"email": {
-			"value": "marinolinic@gmail.com",
+		"website": {
+			"value": "linic.net",
 			"included": true,
 			"tags": "frontend,backend,python,web,automation,testing,nontech"
 		},
 		"phone": {
 			"value": "+385977699443",
+			"included": true,
+			"tags": "frontend,backend,python,web,automation,testing,nontech"
+		},
+		"email": {
+			"value": "marinolinic@gmail.com",
 			"included": true,
 			"tags": "frontend,backend,python,web,automation,testing,nontech"
 		},
@@ -23,14 +28,10 @@
 			"value": "github.com/MarinoLinic",
 			"included": false,
 			"tags": "backend,python,automation"
-		},
-		"website": {
-			"value": "linic.netlify.app",
-			"included": false,
-			"tags": "frontend,web,nontech"
 		}
 	},
 	"summaries": {
+		"all": "Svestrani developer i komunikator s iskustvom u web razvoju, Python skriptiranju, automatizaciji, testiranju i radu s klijentima. Razvijao web scraping cjevovode, GUI aplikacije, frontend sučelja i automatizirane testne pakete. Završio preddiplomski studij informatike na Sveučilištu u Rijeci, gdje je radio kao Python tutor i laboratorijski demonstrator.",
 		"general": "Developer s iskustvom u web razvoju, Python skriptiranju i web scrapingu. Završio preddiplomski studij informatike na Sveučilištu u Rijeci, gdje je radio kao Python tutor i laboratorijski demonstrator. Dokazano prilagodljiv i sposoban za brzo učenje u različitim tehničkim i netehničkim ulogama.",
 		"backend": "Backend developer s iskustvom u Pythonu, web scrapingu i automatizaciji podatkovnih cjevovoda. Vješt u izradi robusnih poslužiteljskih aplikacija i upravljanju infrastrukturom. Završio preddiplomski studij informatike s naglaskom na softverskom inženjerstvu.",
 		"frontend": "Developer usmjeren na frontend tehnologije, uključujući JavaScript i React. Iskustvo u izradi responzivnih i korisnički orijentiranih web aplikacija. Završio preddiplomski studij informatike na Sveučilištu u Rijeci.",

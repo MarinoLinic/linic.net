@@ -4,13 +4,18 @@
 	"location": "Zagreb, Croatia",
 	"profileImage": "pic.jpg",
 	"contact": {
-		"email": {
-			"value": "marinolinic@gmail.com",
+		"website": {
+			"value": "linic.net",
 			"included": true,
 			"tags": "frontend,backend,python,web,automation,testing,nontech"
 		},
 		"phone": {
 			"value": "+385977699443",
+			"included": true,
+			"tags": "frontend,backend,python,web,automation,testing,nontech"
+		},
+		"email": {
+			"value": "marinolinic@gmail.com",
 			"included": true,
 			"tags": "frontend,backend,python,web,automation,testing,nontech"
 		},
@@ -23,14 +28,10 @@
 			"value": "github.com/MarinoLinic",
 			"included": false,
 			"tags": "backend,python,automation"
-		},
-		"website": {
-			"value": "linic.netlify.app",
-			"included": false,
-			"tags": "frontend,web,nontech"
 		}
 	},
 	"summaries": {
+		"all": "Versatile developer and communicator with experience spanning web development, Python scripting, automation, testing, and customer-facing roles. Built web scraping pipelines, GUI applications, frontend interfaces, and automated testing suites. Completed an undergraduate degree in Informatics at the University of Rijeka, serving as a Python tutor and lab demonstrator.",
 		"general": "Developer with experience in web development, Python scripting, and web scraping. Completed an undergraduate degree in Informatics at the University of Rijeka, serving as a Python tutor and lab demonstrator. Proven ability to adapt and learn quickly in various technical and non-technical roles.",
 		"backend": "Backend-focused developer with experience in Python, web scraping, and data pipeline automation. Skilled in building robust server-side applications and managing infrastructure. Completed an undergraduate degree in Informatics with a focus on software engineering.",
 		"frontend": "Developer with a focus on frontend technologies, including JavaScript and React. Experience building responsive and user-friendly web applications. Completed an undergraduate degree in Informatics at the University of Rijeka.",
