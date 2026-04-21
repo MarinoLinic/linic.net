@@ -12,12 +12,12 @@ export const personalInfo = {
 		github:   { value: 'github.com/MarinoLinic',           included: false, tags: 'backend,frontend,python,web,automation,testing' },
 	},
 	summaries: {
-		all:      'Svestrani developer i komunikator s iskustvom u web razvoju, Python skriptiranju, automatizaciji, testiranju i radu s klijentima. Razvijao web scraping cjevovode, GUI aplikacije, frontend sučelja i automatizirane testne pakete. Završio preddiplomski studij informatike na Sveučilištu u Rijeci, gdje je radio kao Python tutor i laboratorijski demonstrator.',
-		general:  'Developer s iskustvom u web razvoju, Python skriptiranju i web scrapingu. Završio preddiplomski studij informatike na Sveučilištu u Rijeci, gdje je radio kao Python tutor i laboratorijski demonstrator. Dokazano prilagodljiv i sposoban za brzo učenje u različitim tehničkim i netehničkim ulogama.',
-		backend:  'Backend developer s iskustvom u Pythonu, web scrapingu i automatizaciji podatkovnih cjevovoda. Vješt u izradi robusnih poslužiteljskih aplikacija i upravljanju infrastrukturom. Završio preddiplomski studij informatike s naglaskom na softverskom inženjerstvu.',
-		frontend: 'Developer usmjeren na frontend tehnologije, uključujući JavaScript i React. Iskustvo u izradi responzivnih i korisnički orijentiranih web aplikacija. Završio preddiplomski studij informatike na Sveučilištu u Rijeci.',
-		python:   'Python developer specijaliziran za web scraping, automatizaciju i GUI aplikacije. Dokazana sposobnost arhitekture i implementacije učinkovitih, skalabilnih Python rješenja. Završio preddiplomski studij informatike gdje je radio kao Python tutor.',
-		nontech:  'Komunikativna, odgovorna i snalažljiva osoba s iskustvom u direktnom radu s ljudima kroz korisničku podršku i promotivne aktivnosti. Dokazano prilagodljiv različitim radnim okruženjima i vješt u rješavanju problema. Tečno govori engleski jezik.',
+		all:      'Developer s iskustvom u web razvoju, Pythonu, automatizaciji i testiranju. Razvijao scraping pajplajnove, GUI aplikacije, frontend sučelja i automatizirane testove. Studirao informatiku na Sveučilištu u Rijeci, gdje sam radio kao Python tutor i laboratorijski demonstrator.',
+		general:  'Developer s iskustvom u web razvoju, Python skriptiranju i web scrapingu. Studirao informatiku na Sveučilištu u Rijeci, gdje sam radio kao Python tutor i laboratorijski demonstrator. Dobro se snalazim u tehničkim i netehničkim ulogama.',
+		backend:  'Developer s iskustvom u Pythonu, web scrapingu i data pajplajnovima. Pisao server-side skripte, radio s bazama podataka i upravljao backend infrastrukturom. Studirao informatiku na Sveučilištu u Rijeci s naglaskom na softversko inženjerstvo.',
+		frontend: 'Developer usmjeren na frontend tehnologije, primarno JavaScript i React. Gradio responzivna web sučelja i radio na stvarnim klijentskim projektima. Studirao informatiku na Sveučilištu u Rijeci.',
+		python:   'Python developer s naglaskom na web scraping, automatizaciju i desktop aplikacije. Studirao informatiku na Sveučilištu u Rijeci, gdje sam dvije godine radio kao Python tutor.',
+		nontech:  'Iskustvo u radu s klijentima kroz fundraising i korisničku podršku. Ugodan u radu s ljudima, miran u raznim situacijama i brz u prilagodbi novim okruženjima. Tečno govorim engleski.',
 	},
 }
 
@@ -35,19 +35,15 @@ export const sections = [
 // ─── Experience ──────────────────────────────────────────────────
 export const experience = [
 	{
-		title:    'Poduke',
-		company:  'Privatno',
+		title:    'Pauza u karijeri',
+		company:  '',
 		duration: 'Veljača 2025. - danas',
 		location: 'Zagreb, Hrvatska',
 		descriptions: {
-			general:  'Podučavanje i briga o djetetu u privatnom kućanstvu u jutarnjim satima.',
-			backend:  'Pružanje specijaliziranih poduka i konzultacija iz koncepata i tehnologija backend razvoja.',
-			frontend: 'Podučavanje modernih frontend tehnologija, s naglaskom na JavaScript, React i najbolje prakse u web dizajnu.',
-			python:   'Nudenje posvećenih poduka iz Pythona za primjene u rasponu od web scrapinga do analize podataka i razvoja GUI aplikacija.',
-			web:      'Podučavanje web razvoja uključujući JavaScript, React, HTML/CSS i Python skriptiranje, s pokrivenošću frontend i backend web koncepata.',
+			general:  'Briga o djetetu u jutarnjim satima. Uzeo sam pauzu u karijeri zbog privatnih (obiteljskih) razloga. Navečer sam radio kao glumac strave, gamemaster i administrator u sobi bijega. Imao sam ispunjen raspored i stekao dobru radnu etiku.',
 		},
 		included: true,
-		tags: 'backend,frontend,python,web',
+		tags: 'backend,frontend,python,web,nontech',
 	},
 	{
 		title:    'Pripravnik za web scraping',
@@ -55,10 +51,10 @@ export const experience = [
 		duration: 'Rujan 2024. - Prosinac 2024.',
 		location: 'Kopenhagen, Danska',
 		descriptions: {
-			general:    'Razvijao i održavao skripte za web scraping za prikupljanje podataka s različitih transportnih web stranica. Odgovornosti su uključivale pronalaženje skrivenih API-ja, filtriranje podataka, zakazivanje zadataka struganja i ispravljanje grešaka.',
-			backend:    'Projektirao robusne podatkovne cjevovode za izdvajanje transportnih podataka putem API-ja i izravnog scrapinga. Upravljao filtriranjem podataka i unosom u baze podataka te automatiziranim rasporedima struganja.',
-			python:     'Intenzivno koristio Python s bibliotekama kao što su Selenium i BeautifulSoup za web scraping, obradu podataka i izradu skripti za automatizaciju.',
-			automation: 'Izradio i održavao automatizirani sustav pomoću Seleniuma za kupnju karata i stvorio planirane cjevovode za prikupljanje podataka kako bi se osigurala svježina podataka.',
+			general:    'Pisao i održavao scraping skripte za prikupljanje transportnih podataka s raznih web stranica. Posao je uključivao pronalaženje skrivenih API-ja, filtriranje podataka, zakazivanje zadataka i ispravljanje grešaka.',
+			backend:    'Gradio podatkovne pajplajnove za izdvajanje transportnih podataka putem API-ja i direktnog scrapinga. Upravljao filtriranjem podataka, unosom u baze i automatiziranim rasporedom.',
+			python:     'Koristio Python sa Seleniumom i BeautifulSoupom za web scraping, obradu podataka i automatizaciju.',
+			automation: 'Izgradio automatizirani sustav za kupnju karata pomoću Seleniuma i postavio planirane pajplajnove za redovito prikupljanje podataka.',
 		},
 		included: true,
 		tags: 'backend,python,automation,web',
@@ -69,10 +65,10 @@ export const experience = [
 		duration: 'Ožujak 2024. - Prosinac 2024.',
 		location: 'Kopenhagen, Danska',
 		descriptions: {
-			general:  'Razvio Python GUI aplikaciju za psihološke evaluacije, upravljao backend infrastrukturom i doprinosio povezanoj web stranici temeljenoj na Reactu.',
-			backend:  'Nadzirao operacije i infrastrukturu za softver za psihološku evaluaciju, osiguravajući stabilnost i performanse.',
-			frontend: 'Razvijao i održavao komponente za klijentsku web stranicu koristeći JavaScript i React.',
-			python:   'Dizajnirao i implementirao sveobuhvatnu GUI aplikaciju koristeći PySimpleGUI, uključujući složeni algoritam za procjenu unosa praćenja za psihološku analizu.',
+			general:  'Razvio Python GUI aplikaciju za psihološke procjene, pomagao u upravljanju backend infrastrukturom i radio na web stranici temeljenoj na Reactu.',
+			backend:  'Upravljao infrastrukturom za platformu za psihološke evaluacije i brinuo o njenoj stabilnosti i dostupnosti.',
+			frontend: 'Gradio i održavao komponente za klijentsku web stranicu u JavaScriptu i Reactu.',
+			python:   'Izgradio GUI aplikaciju u PySimpleGUI-u s prilagođenim algoritmom za procjenu praćenja za psihološke svrhe.',
 		},
 		included: true,
 		tags: 'backend,frontend,python,web',
@@ -83,9 +79,9 @@ export const experience = [
 		duration: 'Srpanj 2022. - Kolovoz 2022.',
 		location: 'Rijeka, Hrvatska',
 		descriptions: {
-			general:    'Implementirao desetak automatiziranih testova preglednika koristeći Katalon Studio temeljen na Seleniumu za maloprodajnu aplikaciju koju koriste tisuće trgovina.',
-			automation: 'Razvio sveobuhvatne pakete testova za automatizaciju preglednika sa Seleniumom i Katalon Studiom, značajno poboljšavajući učinkovitost osiguranja kvalitete.',
-			testing:    'Izrađivao i održavao automatizirane skripte za testiranje za veliku maloprodajnu aplikaciju koristeći Groovy, osiguravajući pouzdanost aplikacije.',
+			general:    'Napisao desetak automatiziranih testova preglednika koristeći Katalon Studio (temeljen na Seleniumu) za maloprodajnu aplikaciju koju koriste tisuće trgovina.',
+			automation: 'Pisao testove za automatizaciju preglednika sa Seleniumom i Katalon Studiom, poboljšavajući QA pokrivenost za veliku maloprodajnu aplikaciju.',
+			testing:    'Pisao i održavao automatizirane testne skripte u Groovyju za veliku maloprodajnu aplikaciju.',
 		},
 		included: true,
 		tags: 'automation,testing,web',
@@ -108,8 +104,8 @@ export const experience = [
 		duration: 'Lipanj 2020. - Veljača 2022.',
 		location: 'Rijeka, Hrvatska',
 		descriptions: {
-			general: 'Angažiran u radu s javnošću s ciljem podizanja svijesti i prikupljanja sredstava za UNICEF-ove kampanje, razvijajući snažne komunikacijske, uvjeravalačke i interpersonalne vještine.',
-			nontech: 'Angažiran u radu s javnošću s ciljem podizanja svijesti i prikupljanja sredstava za UNICEF-ove kampanje, razvijajući snažne komunikacijske, uvjeravalačke i interpersonalne vještine.',
+			general: 'Radio s javnošću na prikupljanju sredstava i podizanju svijesti za UNICEF-ove kampanje.',
+			nontech: 'Radio s javnošću na prikupljanju sredstava i podizanju svijesti za UNICEF-ove kampanje.',
 		},
 		included: false,
 		tags: 'nontech',
@@ -125,20 +121,6 @@ export const projects = [
 		included:     true,
 		tags:         'frontend,web',
 	},
-	{
-		title:        'Okvir za web scraping',
-		description:  'Razvijen sveobuhvatan Python okvir za automatizirano izdvajanje podataka. Okvir uključuje značajke za zakazivanje zadataka, rukovanje različitim strukturama web stranica i integraciju s bazama podataka.',
-		technologies: 'Python, Selenium, BeautifulSoup, PostgreSQL',
-		included:     true,
-		tags:         'backend,python,automation,web',
-	},
-	{
-		title:        'Desktop aplikacije u PySimpleGUI',
-		description:  'Izrađene različite desktop GUI aplikacije koristeći PySimpleGUI za zadatke poput analize podataka i interakcije s korisnikom, uključujući alat dizajniran za psihološke procjene.',
-		technologies: 'Python, PySimpleGUI, Data Analysis',
-		included:     true,
-		tags:         'python',
-	},
 ]
 
 // ─── Education ───────────────────────────────────────────────────
@@ -147,7 +129,7 @@ export const education = [
 		degree:      'Prvostupnik (Baccalaureus)',
 		field:       'Informatika',
 		institution: 'Sveučilište u Rijeci',
-		duration:    '2023',
+		duration:    '',
 		included:    true,
 		tags:        'backend,frontend,python,web,automation,testing,nontech',
 	},

@@ -12,12 +12,12 @@ export const personalInfo = {
 		github:   { value: 'github.com/MarinoLinic',           included: false, tags: 'backend,frontend,python,web,automation,testing' },
 	},
 	summaries: {
-		all:      'Versatile developer and communicator with experience spanning web development, Python scripting, automation, testing, and customer-facing roles. Built web scraping pipelines, GUI applications, frontend interfaces, and automated testing suites. Completed an undergraduate degree in Informatics at the University of Rijeka, serving as a Python tutor and lab demonstrator.',
-		general:  'Developer with experience in web development, Python scripting, and web scraping. Completed an undergraduate degree in Informatics at the University of Rijeka, serving as a Python tutor and lab demonstrator. Proven ability to adapt and learn quickly in various technical and non-technical roles.',
-		backend:  'Backend-focused developer with experience in Python, web scraping, and data pipeline automation. Skilled in building robust server-side applications and managing infrastructure. Completed an undergraduate degree in Informatics with a focus on software engineering.',
-		frontend: 'Developer with a focus on frontend technologies, including JavaScript and React. Experience building responsive and user-friendly web applications. Completed an undergraduate degree in Informatics at the University of Rijeka.',
-		python:   'Python developer specializing in web scraping, automation, and GUI applications. Proven ability to architect and implement efficient, scalable Python solutions. Completed an undergraduate degree in Informatics where I served as a Python tutor.',
-		nontech:  'A communicative, responsible, and resourceful individual with experience working directly with people in customer support and promotional roles. Proven to be adaptable to diverse work environments, skilled in problem-solving, and enjoys creating a positive and pleasant atmosphere for all visitors. Speaks English fluently.',
+		all:      'Developer with experience in web development, Python, automation, and testing. Built scraping pipelines, GUI apps, frontend interfaces, and automated browser tests. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator.',
+		general:  'Developer with experience in web development, Python scripting, and web scraping. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator. Comfortable working in both technical and non-technical roles.',
+		backend:  'Developer with experience in Python, web scraping, and data pipelines. Built server-side scripts, worked with databases, and handled backend infrastructure. Studied Informatics at the University of Rijeka with a focus on software engineering.',
+		frontend: 'Developer focused on frontend technologies, primarily JavaScript and React. Built responsive web interfaces and worked on real client-facing projects. Studied Informatics at the University of Rijeka.',
+		python:   'Python developer with a focus on web scraping, automation, and desktop applications. Studied Informatics at the University of Rijeka, where I tutored Python for two years.',
+		nontech:  'Experienced in customer-facing roles including fundraising and support. Comfortable working with people, handling different situations calmly, and adapting quickly to new environments. Fluent in English.',
 	},
 }
 
@@ -35,19 +35,15 @@ export const sections = [
 // ─── Experience ──────────────────────────────────────────────────
 export const experience = [
 	{
-		title:    'Tutoring / Career Break',
-		company:  'Private',
+		title:    'Career Break',
+		company:  '',
 		duration: 'February 2025 - Present',
 		location: 'Zagreb, Croatia',
 		descriptions: {
-			general:  'Teaching and looking after a child in a private household during morning hours.',
-			backend:  'Providing specialized tutoring and consultation in backend development concepts and technologies.',
-			frontend: 'Teaching modern frontend technologies, focusing on JavaScript, React, and best practices in web design.',
-			python:   'Offering dedicated Python tutoring for applications ranging from web scraping to data analysis and GUI development.',
-			web:      'Tutoring in web development topics including JavaScript, React, HTML/CSS, and Python scripting, covering both frontend and backend web concepts.',
+			general:  'Teaching and looking after child during morning hours. I needed to take a career break for private (family) reasons. In the evenings, I was a scare actor, gamemaster, and administrator in an escape room. I had a busy working schedule and acquired a good work ethic.',
 		},
 		included: true,
-		tags: 'backend,frontend,python,web',
+		tags: 'backend,frontend,python,web,nontech',
 	},
 	{
 		title:    'Web Scraper Intern',
@@ -55,10 +51,10 @@ export const experience = [
 		duration: 'September 2024 - December 2024',
 		location: 'Copenhagen, Denmark',
 		descriptions: {
-			general:    'Developed and maintained web scraping scripts to gather data from various transport websites. Responsibilities included finding hidden APIs, filtering data, scheduling scraping tasks, and fixing bugs.',
-			backend:    'Engineered robust data pipelines for extracting transport data via APIs and direct scraping. Managed data filtering and insertion into databases, and automated scraping schedules.',
-			python:     'Utilized Python extensively with libraries like Selenium and BeautifulSoup for web scraping, data processing, and creating automation scripts.',
-			automation: 'Built and maintained an automated system using Selenium for ticket purchasing and created scheduled data collection pipelines to ensure data freshness.',
+			general:    'Wrote and maintained scraping scripts to collect transport data from various websites. Work included reverse-engineering hidden APIs, filtering data, scheduling tasks, and fixing bugs.',
+			backend:    'Built data pipelines to extract transport data via APIs and direct scraping. Handled data filtering, database insertion, and automated scheduling.',
+			python:     'Used Python with Selenium and BeautifulSoup for web scraping, data processing, and automation.',
+			automation: 'Built an automated ticket purchasing system with Selenium and set up scheduled pipelines for regular data collection.',
 		},
 		included: true,
 		tags: 'backend,python,automation,web',
@@ -69,10 +65,10 @@ export const experience = [
 		duration: 'March 2024 - December 2024',
 		location: 'Copenhagen, Denmark',
 		descriptions: {
-			general:  'Developed a Python GUI application for psychological evaluations, managed backend infrastructure, and contributed to a related React-based website.',
-			backend:  'Oversaw operations and infrastructure for a psychological evaluation software, ensuring stability and performance.',
-			frontend: 'Developed and maintained components for a client-facing website using JavaScript and React.',
-			python:   'Designed and implemented a comprehensive GUI application using PySimpleGUI, including a complex algorithm to assess tracking input for psychological analysis.',
+			general:  'Built a Python GUI application for psychological assessments, helped manage backend infrastructure, and contributed to a React-based website.',
+			backend:  'Managed the infrastructure for a psychological evaluation platform, keeping it stable and running smoothly.',
+			frontend: 'Built and maintained components for a client-facing website in JavaScript and React.',
+			python:   'Built a GUI application in PySimpleGUI with a custom algorithm for tracking-based psychological assessment.',
 		},
 		included: true,
 		tags: 'backend,frontend,python,web',
@@ -83,12 +79,24 @@ export const experience = [
 		duration: 'July 2022 - August 2022',
 		location: 'Rijeka, Croatia',
 		descriptions: {
-			general:    'Implemented a dozen automated browser tests using the Selenium-based Katalon Studio for a retail application used by thousands of stores.',
-			automation: 'Developed comprehensive browser automation test suites with Selenium and Katalon Studio, significantly improving quality assurance efficiency.',
-			testing:    'Authored and maintained automated testing scripts for a large-scale retail application using Groovy, ensuring application reliability.',
+			general:    'Wrote around a dozen automated browser tests using Katalon Studio (Selenium-based) for a retail application used by thousands of stores.',
+			automation: 'Wrote browser automation tests with Selenium and Katalon Studio, improving QA coverage for a large retail application.',
+			testing:    'Wrote and maintained automated test scripts in Groovy for a large retail application.',
 		},
 		included: true,
 		tags: 'automation,testing,web',
+	},
+	{
+		title:    'Customer Support Agent',
+		company:  'Hrvatski Telekom',
+		duration: 'June 2021 - September 2021',
+		location: 'Rijeka, Croatia',
+		descriptions: {
+			general: 'Provided customer support as a call centre agent for bonbon.',
+			nontech: 'Provided customer support as a call centre agent for bonbon.',
+		},
+		included: false,
+		tags: 'nontech',
 	},
 	{
 		title:    'Face-to-Face Fundraiser',
@@ -96,8 +104,8 @@ export const experience = [
 		duration: 'June 2020 - February 2022',
 		location: 'Rijeka, Croatia',
 		descriptions: {
-			general: 'Engaged with the public to raise awareness and funds for UNICEF campaigns, developing strong communication, persuasion, and interpersonal skills.',
-			nontech: 'Engaged with the public to raise awareness and funds for UNICEF campaigns, developing strong communication, persuasion, and interpersonal skills.',
+			general: 'Worked face-to-face with the public to raise funds and awareness for UNICEF campaigns.',
+			nontech: 'Worked face-to-face with the public to raise funds and awareness for UNICEF campaigns.',
 		},
 		included: false,
 		tags: 'nontech',
@@ -112,20 +120,6 @@ export const projects = [
 		technologies: 'React, JavaScript, HTML5, CSS3, Netlify',
 		included:     true,
 		tags:         'frontend,web',
-	},
-	{
-		title:        'Web Scraping Framework',
-		description:  'Developed a comprehensive Python framework for automated data extraction. This framework includes features for scheduling tasks, handling different website structures, and integrating with databases.',
-		technologies: 'Python, Selenium, BeautifulSoup, PostgreSQL',
-		included:     true,
-		tags:         'backend,python,automation,web',
-	},
-	{
-		title:        'PySimpleGUI Desktop Applications',
-		description:  'Created various desktop GUI applications using PySimpleGUI for tasks such as data analysis and user interaction, including a tool designed for psychological assessments.',
-		technologies: 'Python, PySimpleGUI, Data Analysis',
-		included:     true,
-		tags:         'python',
 	},
 ]
 
@@ -183,8 +177,8 @@ export const skills = {
 
 // ─── Certifications ──────────────────────────────────────────────
 export const certifications = [
-	"DSC Europe '21 Certificate of Attendance",
-	'React (Basic) Skill Assessment Completion',
+	{ name: "DSC Europe '21 Certificate of Attendance",  included: true, tags: 'backend,frontend,python,web,automation,testing' },
+	{ name: 'React (Basic) Skill Assessment Completion', included: true, tags: 'frontend,web' },
 ]
 
 // ─── Languages ───────────────────────────────────────────────────
