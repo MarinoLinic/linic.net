@@ -202,7 +202,7 @@ export const CV_STYLES = `
 .cv-experience-item:not(:last-child),
 .cv-education-item:not(:last-child),
 .cv-project-item:not(:last-child) {
-	border-left: 1px solid var(--cv-border);
+	border-left: 1px solid var(--cv-timeline-line, var(--cv-border));
 }
 .cv-experience-item:last-child,
 .cv-education-item:last-child,
@@ -217,7 +217,7 @@ export const CV_STYLES = `
 	left: 0;
 	top: 0;
 	height: 11px;
-	border-left: 1px solid var(--cv-border);
+	border-left: 1px solid var(--cv-timeline-line, var(--cv-border));
 }
 .cv-section-title + .cv-experience-item:last-child::after,
 .cv-section-title + .cv-education-item:last-child::after,
@@ -230,7 +230,7 @@ export const CV_STYLES = `
 .cv-section-title + .cv-education-item,
 .cv-section-title + .cv-project-item {
 	padding-top: 14px;
-	border-left: 1px solid var(--cv-border);
+	border-left: 1px solid var(--cv-timeline-line, var(--cv-border));
 }
 .cv-section-title + .cv-experience-item:last-child,
 .cv-section-title + .cv-education-item:last-child,
@@ -249,7 +249,7 @@ export const CV_STYLES = `
 	content: '';
 	width: 7px;
 	height: 7px;
-	background: var(--cv-dot);
+	background: var(--cv-timeline-dot, var(--cv-dot));
 	border: 2px solid white;
 	border-radius: 50%;
 	position: absolute;
@@ -277,6 +277,10 @@ export const CV_STYLES = `
 	font-weight: 400;
 	margin-bottom: 6px;
 	letter-spacing: 0.01em;
+}
+.cv-item-location {
+	font-weight: 500;
+	color: var(--cv-text-secondary);
 }
 .cv-description {
 	color: var(--cv-text);

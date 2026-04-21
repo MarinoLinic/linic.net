@@ -4,6 +4,22 @@ import { CV_STYLES } from './cv/styles'
 import { CV_DATA, cvPic, TAG_LABELS, ESSENTIAL_TAGS, filterByTag, getDescription, getSummary } from './cv/data'
 import type { ContactItem, SectionConfig, ExperienceItem, ProjectItem, EducationItem, SkillItem, LanguageItem } from './cv/types'
 
+// ─── Location colours ───────────────────────────────────────────
+const LOC_COLORS: Record<string, { dot: string; line: string; label: string }> = {
+	'Zagreb':     { dot: '#9bafc8', line: '#dce8f2', label: '#7a98b4' },
+	'Copenhagen': { dot: '#c49090', line: '#f0dada', label: '#a86060' },
+	'Czechia':    { dot: '#a5a895', line: '#dfdfd0', label: '#828472' },
+	'Rijeka':     { dot: '#88b4a5', line: '#d0e8de', label: '#5f9080' },
+}
+const INST_LOC: Record<string, string> = {
+	'University of Rijeka': 'Rijeka',
+	'N\u00f8rre Gymnasium':      'Copenhagen',
+}
+const getLocColor = (str: string) => {
+	const key = Object.keys(LOC_COLORS).find(k => str.includes(k))
+	return key ? LOC_COLORS[key] : null
+}
+
 // ─── Component ───────────────────────────────────────────────────
 const CV = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -111,16 +127,23 @@ const CV = () => {
 				break
 			case 'experience': {
 				const items = filterByTag<ExperienceItem>(data, tag)
-				if (items.length) content = items.map((exp, i) => (
-					<div key={i} className="cv-experience-item">
-						<div className="cv-item-header">
-							<div className="cv-item-title">{exp.title}</div>
-							<div className="cv-item-subtitle">{exp.company}</div>
+				if (items.length) content = items.map((exp, i) => {
+					const lc = getLocColor(exp.location)
+					return (
+						<div key={i} className="cv-experience-item" style={lc ? { '--cv-timeline-dot': lc.dot, '--cv-timeline-line': lc.line } as React.CSSProperties : {}}>
+							<div className="cv-item-header">
+								<div className="cv-item-title">{exp.title}</div>
+								<div className="cv-item-subtitle">{exp.company}</div>
+							</div>
+							<div className="cv-item-meta">
+								<span>{exp.duration}</span>
+								{' | '}
+								<span className="cv-item-location" style={lc ? { color: lc.label } : {}}>{exp.location}</span>
+							</div>
+							<p className="cv-description">{getDescription(exp, tag)}</p>
 						</div>
-						<div className="cv-item-meta"><span>{exp.duration}</span> | <span>{exp.location}</span></div>
-						<p className="cv-description">{getDescription(exp, tag)}</p>
-					</div>
-				))
+					)
+				})
 				break
 			}
 			case 'projects': {
@@ -138,15 +161,18 @@ const CV = () => {
 			}
 			case 'education': {
 				const items = filterByTag<EducationItem>(data, tag)
-				if (items.length) content = items.map((edu, i) => (
-					<div key={i} className="cv-education-item">
-						<div className="cv-item-header">
-							<div className="cv-item-title">{edu.degree}{edu.field ? `, ${edu.field}` : ''}</div>
-							<div className="cv-item-subtitle">{edu.institution}</div>
+				if (items.length) content = items.map((edu, i) => {
+					const lc = getLocColor(INST_LOC[edu.institution] ?? edu.institution)
+					return (
+						<div key={i} className="cv-education-item" style={lc ? { '--cv-timeline-dot': lc.dot, '--cv-timeline-line': lc.line } as React.CSSProperties : {}}>
+							<div className="cv-item-header">
+								<div className="cv-item-title">{edu.degree}{edu.field ? `, ${edu.field}` : ''}</div>
+								<div className="cv-item-subtitle">{edu.institution}</div>
+							</div>
+							{edu.duration && <div className="cv-item-meta">{edu.duration}</div>}
 						</div>
-						{edu.duration && <div className="cv-item-meta">{edu.duration}</div>}
-					</div>
-				))
+					)
+				})
 				break
 			}
 			case 'skills': {
