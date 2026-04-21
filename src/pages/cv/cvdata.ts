@@ -40,6 +40,7 @@ function reorderSections(sections: any[]) {
 
 // ─── Tag labels ──────────────────────────────────────────────────
 export const TAG_LABELS: Record<string, string> = {
+	developer:  'Developer',
 	frontend:   'Frontend',
 	backend:    'Backend',
 	python:     'Python',
@@ -50,7 +51,7 @@ export const TAG_LABELS: Record<string, string> = {
 }
 
 // ─── Essential tags (shown by default in popup) ─────────────────
-export const ESSENTIAL_TAGS = ['backend', 'frontend', 'nontech']
+export const ESSENTIAL_TAGS = ['developer', 'backend', 'frontend', 'nontech']
 
 // ─── Static data map ─────────────────────────────────────────────
 export const CV_DATA: Record<string, { sections: SectionConfig[]; personalInfo: PersonalInfo; dataMap: Record<string, any> }> = {

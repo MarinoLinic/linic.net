@@ -5,14 +5,15 @@ export const personalInfo = {
 	location: 'Zagreb, Hrvatska',
 	profileImage: 'pic.jpg',
 	contact: {
-		website:  { value: 'linic.net',                        included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
-		phone:    { value: '+385977699443',                    included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
-		email:    { value: 'marinolinic@gmail.com',            included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
-		linkedin: { value: 'linkedin.com/in/marino-linic',     included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
-		github:   { value: 'github.com/MarinoLinic',           included: false, tags: 'backend,frontend,python,web,automation,testing' },
+		website:  { value: 'linic.net',                        included: true,  tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
+		phone:    { value: '+385977699443',                    included: true,  tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
+		email:    { value: 'marinolinic@gmail.com',            included: true,  tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
+		linkedin: { value: 'linkedin.com/in/marino-linic',     included: true,  tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
+		github:   { value: 'github.com/MarinoLinic',           included: false, tags: 'developer,backend,frontend,python,web,automation,testing' },
 	},
 	summaries: {
 		all:      'Developer s iskustvom u web razvoju, Pythonu, automatizaciji i testiranju. Razvijao sam scraping pajplajnove, GUI aplikacije, frontend sučelja i automatizirane testove. Studirao sam informatiku na Sveučilištu u Rijeci, gdje sam bio demonstrator za kolegij u Pythonu. Dobro se snalazim u tehničkim i netehničkim ulogama, a imam iskustva i s predavanjima.',
+		developer:   'Developer s iskustvom u web razvoju, Python skriptiranju i web scrapingu. Studirao sam informatiku na Sveučilištu u Rijeci, gdje sam radio kao Python tutor i laboratorijski demonstrator. Dobro se snalazim u tehničkim i netehničkim ulogama. Imam iskustva i s predavanjima.',
 		general:  'Developer s iskustvom u web razvoju, Python skriptiranju i web scrapingu. Studirao sam informatiku na Sveučilištu u Rijeci, gdje sam radio kao Python tutor i laboratorijski demonstrator. Dobro se snalazim u tehničkim i netehničkim ulogama. Imao sam iskustva i s predavanjima.',
 		backend:  'Developer s iskustvom u Pythonu, web scrapingu i data pajplajnovima. Pisao sam server-side skripte, radio sam s bazama podataka i upravljao backend infrastrukturom. Studirao sam informatiku na Sveučilištu u Rijeci, gdje sam bio demonstrator za kolegij u Pythonu.',
 		frontend: 'Developer usmjeren na frontend tehnologije, primarno JavaScript i React. Gradio sam web aplikacije i radio na stvarnim projektima. Studirao sam informatiku na Sveučilištu u Rijeci, gdje sam bio demonstrator za kolegij u Pythonu.',
@@ -42,7 +43,7 @@ export const experience = [
 			general: 'Vodio sam i glumio u igrama za djecu i odrasle kroz 10 različitih scenarija. Uz to sam obavljao administrativne poslove. Imao sam ispunjen raspored i stekao dobru radnu etiku.',
 		},
 		included: false,
-		tags: 'nontech,frontend,backend',
+		tags: 'developer,nontech,frontend,backend',
 	},
 	{
 		title:    'Pauza u karijeri',
@@ -51,9 +52,10 @@ export const experience = [
 		location: 'Zagreb, Hrvatska',
 		descriptions: {
 			general:  'Briga o djetetu u jutarnjim satima. Uzeo sam pauzu u karijeri zbog osobnih (obiteljskih) razloga.',
+			developer:   'Morao sam uzeti pauzu u karijeri (obiteljske obaveze) uz nastavak samostalnog razvoja. Možete pogledati moje projekte na https://linic.net/portfolio. Trenutno radim part-time u horror escape roomu gdje sam glumac i gamemaster. Bavim se i korisničkom podrškom i administracijom te sam stekao dobru radnu etiku zbog ispunjenog rasporeda.',
 		},
 		included: true,
-		tags: 'backend,frontend,python,web,nontech',
+		tags: 'developer,backend,frontend,python,web,nontech',
 	},
 	{
 		title:    'Pripravnik za web scraping',
@@ -64,7 +66,7 @@ export const experience = [
 			general:    'Pisao sam i održavao scraping skripte za automatizirano prikupljanje transportnih podataka s raznih web stranica. Posao je uključivao pronalaženje skrivenih API-ja, filtriranje podataka, zakazivanje zadataka i ispravljanje bugova.',
 		},
 		included: true,
-		tags: 'backend,python,automation,web,frontend',
+		tags: 'developer,backend,python,automation,web,frontend',
 	},
 	{
 		title:    'Python Developer',
@@ -75,7 +77,7 @@ export const experience = [
 			general:  'Razvio sam Python GUI aplikaciju za psihološku evaluaciju, pomagao sam u upravljanju backend infrastrukturom i radio sam na web stranici temeljenoj na Reactu.',
 		},
 		included: true,
-		tags: 'backend,frontend,python,web',
+		tags: 'developer,backend,frontend,python,web',
 	},
 	{
 		title:    'Kućni pomoćnik',
@@ -108,7 +110,7 @@ export const experience = [
 			general:    'Napisao sam desetak automatiziranih testova koristeći Katalon Studio (Selenium) za aplikaciju koju koriste tisuće trgovina.',
 		},
 		included: true,
-		tags: 'automation,testing,web,frontend,backend',
+		tags: 'developer,automation,testing,web,frontend,backend',
 	},
 	{
 		title:    'Agent u korisničkoj podršci',
@@ -130,7 +132,7 @@ export const experience = [
 			general: 'Radio sam s javnošću na prikupljanju sredstava i podizanju svijesti o UNICEF-ovim kampanjama. Pričao sam direktno s ljudima i dobio prodajne vještine.',
 		},
 		included: false,
-		tags: 'nontech',
+		tags: 'developer,nontech',
 	},
 	{
 		title:    'Prodavač',
@@ -163,7 +165,7 @@ export const projects = [
 		description:  'Moderna, responzivna portfolio web stranica izrađena u Reactu i postavljena na Netlify. Sadrži dinamički sadržaj i čist, korisnički orijentiran dizajn za prikaz projekata i vještina.',
 		technologies: 'React, JavaScript, HTML5, CSS3, Netlify',
 		included:     true,
-		tags:         'frontend,web',
+		tags:         'developer,frontend,web',
 	},
 ]
 
@@ -175,7 +177,7 @@ export const education = [
 		institution: 'Sveučilište u Rijeci',
 		duration:    '',
 		included:    true,
-		tags:        'backend,frontend,python,web,automation,testing,nontech',
+		tags:        'developer,backend,frontend,python,web,automation,testing,nontech',
 	},
 	{
 		degree:      'International Baccalaureate (IB) dvojezična diploma',
@@ -183,50 +185,51 @@ export const education = [
 		institution: 'Nørre Gymnasium',
 		duration:    '',
 		included:    true,
-		tags:        'backend,frontend,python,web,automation,testing,nontech',
+		tags:        'developer,backend,frontend,python,web,automation,testing,nontech',
 	},
 ]
 
 // ─── Skills ──────────────────────────────────────────────────────
 export const skills = {
 	'Programski jezici': [
-		{ name: 'Python',      included: true,  tags: 'backend,python,automation,web' },
-		{ name: 'JavaScript',  included: true,  tags: 'frontend,web' },
+		{ name: 'Python',      included: true,  tags: 'developer,backend,python,automation,web' },
+		{ name: 'JavaScript',  included: true,  tags: 'developer,frontend,web' },
 		{ name: 'Groovy',      included: false, tags: 'testing,automation' },
-		{ name: 'HTML/CSS',    included: true,  tags: 'frontend,web' },
-		{ name: 'SQL',         included: true,  tags: 'backend,python' },
+		{ name: 'HTML/CSS',    included: true,  tags: 'developer,frontend,web' },
+		{ name: 'SQL',         included: true,  tags: 'developer,backend,python' },
 	],
 	'Okviri i biblioteke': [
-		{ name: 'React',          included: true,  tags: 'frontend,web' },
-		{ name: 'PySimpleGUI',    included: false, tags: 'python' },
-		{ name: 'Selenium',       included: true,  tags: 'automation,testing,python,web' },
-		{ name: 'BeautifulSoup',  included: false, tags: 'python,web,backend' },
-		{ name: 'Katalon Studio', included: false, tags: 'testing,automation' },
+		{ name: 'React',          included: true,  tags: 'developer,frontend,web' },
+		{ name: 'PySimpleGUI',    included: false, tags: 'developer,python' },
+		{ name: 'Selenium',       included: true,  tags: 'developer,automation,testing,python,web' },
+		{ name: 'BeautifulSoup',  included: false, tags: 'developer,python,web,backend' },
+		{ name: 'Katalon Studio', included: false, tags: 'developer,testing,automation' },
 	],
 	'Alati i tehnologije': [
-		{ name: 'Git & GitHub',    included: true,  tags: 'frontend,backend,python,web,automation,testing' },
-		{ name: 'Web Scraping',    included: true,  tags: 'backend,python,automation,web' },
-		{ name: 'REST API',        included: true,  tags: 'frontend,backend,python,web' },
-		{ name: 'Chrome DevTools', included: true,  tags: 'frontend,testing,web' },
-		{ name: 'PostgreSQL',      included: false, tags: 'backend,python' },
+		{ name: 'Git & GitHub',    included: true,  tags: 'developer,frontend,backend,python,web,automation,testing' },
+		{ name: 'Web Scraping',    included: true,  tags: 'developer,backend,python,automation,web' },
+		{ name: 'REST API',        included: true,  tags: 'developer,frontend,backend,python,web' },
+		{ name: 'Chrome DevTools', included: true,  tags: 'developer,frontend,testing,web' },
+		{ name: 'PostgreSQL',      included: false, tags: 'developer,backend,python' },
 	],
 	'Osobne vještine': [
-		{ name: 'Timski rad',    included: false, tags: 'nontech' },
-		{ name: 'Komunikacija', included: false, tags: 'nontech' },
-		{ name: 'Podučavanje',  included: false, tags: 'nontech' },
-		{ name: 'Programiranje', included: false, tags: 'nontech' },
-		{ name: 'Softver',      included: false, tags: 'nontech' },
+		{ name: 'Zadovoljstvo korisnika', included: false, tags: 'developer,nontech' },
+		{ name: 'Prodaja',               included: false, tags: 'developer,nontech' },
+		{ name: 'Podučavanje',           included: false, tags: 'developer,nontech' },
+		{ name: 'Predavanja',            included: false, tags: 'developer,nontech' },
+		{ name: 'Programiranje',         included: false, tags: 'nontech' },
+		{ name: 'Softver',               included: false, tags: 'nontech' },
 	],
 }
 
 // ─── Certifications ──────────────────────────────────────────────
 export const certifications = [
-	{ name: 'Certifikat o sudjelovanju - DSC Europe \'21',          included: true, tags: 'backend,frontend,python,web,automation,testing' },
-	{ name: 'Potvrda o završenoj procjeni vještina - React (osnovno)', included: true, tags: 'frontend,web' },
+	{ name: 'Certifikat o sudjelovanju - DSC Europe \'21',          included: true, tags: 'developer,backend,frontend,python,web,automation,testing' },
+	{ name: 'Potvrda o završenoj procjeni vještina - React (osnovno)', included: true, tags: 'developer,frontend,web' },
 ]
 
 // ─── Languages ───────────────────────────────────────────────────
 export const languages = [
-	{ name: 'Hrvatski', proficiency: 'Izvorni govornik', included: true, tags: 'frontend,backend,python,web,automation,testing,nontech' },
-	{ name: 'Engleski', proficiency: 'C2',               included: true, tags: 'frontend,backend,python,web,automation,testing,nontech' },
+	{ name: 'Hrvatski', proficiency: 'Izvorni govornik', included: true, tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
+	{ name: 'Engleski', proficiency: 'C2',               included: true, tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
 ]

@@ -5,14 +5,15 @@ export const personalInfo = {
 	location: 'Zagreb, Croatia',
 	profileImage: 'pic.jpg',
 	contact: {
-		website:  { value: 'linic.net',                        included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
-		phone:    { value: '+385977699443',                    included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
-		email:    { value: 'marinolinic@gmail.com',            included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
-		linkedin: { value: 'linkedin.com/in/marino-linic',     included: true,  tags: 'frontend,backend,python,web,automation,testing,nontech' },
-		github:   { value: 'github.com/MarinoLinic',           included: false, tags: 'backend,frontend,python,web,automation,testing' },
+		website:  { value: 'linic.net',                        included: true,  tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
+		phone:    { value: '+385977699443',                    included: true,  tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
+		email:    { value: 'marinolinic@gmail.com',            included: true,  tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
+		linkedin: { value: 'linkedin.com/in/marino-linic',     included: true,  tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
+		github:   { value: 'github.com/MarinoLinic',           included: false, tags: 'developer,backend,frontend,python,web,automation,testing' },
 	},
 	summaries: {
 		all:      'Developer with experience in web development, Python, automation, and testing. Built scraping pipelines, GUI apps, frontend interfaces, and automated browser tests. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator. Comfortable working in both technical and non-technical roles. I also have experience giving lectures.',
+		developer:   'Developer with experience in web development, Python scripting, and web scraping. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator. Comfortable working in both technical and non-technical roles. I also have experience giving lectures.',
 		general:  'Developer with experience in web development, Python scripting, and web scraping. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator. Comfortable working in both technical and non-technical roles. I also have experience giving lectures.',
 		backend:  'Developer with experience in Python, web scraping, and data pipelines. Built server-side scripts, worked with databases, and handled backend infrastructure. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator.',
 		frontend: 'Developer focused on frontend technologies, primarily JavaScript and React. Built responsive web interfaces and worked on real projects. Studied Informatics at the University of Rijeka, where I tutored Python and worked as a lab demonstrator.',
@@ -51,9 +52,10 @@ export const experience = [
 		location: 'Zagreb, Croatia',
 		descriptions: {
 			general:  'Looking after a child in a private household during morning hours. Took a career break for personal (family) reasons.',
+			developer:   'Had to take a career break (family responsibilities) while continuing independent development work. You can see my many projects on https://linic.net/portfolio. Currently working part-time in a horror-themed escape room where I am a scare actor and gamemaster. I also handle customers and administration, and acquired a good work ethic due to the busy schedule.',
 		},
 		included: true,
-		tags: 'backend,frontend,python,web,nontech',
+		tags: 'developer,backend,frontend,python,web,nontech',
 	},
 	{
 		title:    'Web Scraper Intern',
@@ -64,7 +66,7 @@ export const experience = [
 			general:    'Wrote and maintained scraping scripts to automate and collect transport data from various websites. Work included reverse-engineering hidden APIs, filtering data, scheduling tasks, and fixing bugs.',
 		},
 		included: true,
-		tags: 'backend,python,automation,web,frontend',
+		tags: 'developer,backend,python,automation,web,frontend',
 	},
 	{
 		title:    'Python Developer',
@@ -75,7 +77,7 @@ export const experience = [
 			general:  'Built a Python GUI application for psychological assessments, helped manage backend infrastructure, and contributed to a React-based website.',
 		},
 		included: true,
-		tags: 'backend,frontend,python,web',
+		tags: 'developer,backend,frontend,python,web',
 	},
 	{
 		title:    'Housekeeper',
@@ -108,7 +110,7 @@ export const experience = [
 			general:    'Wrote around a dozen automated browser tests using Katalon Studio (Selenium) for a retail application used by thousands of stores.',
 		},
 		included: true,
-		tags: 'automation,testing,web,frontend,backend',
+		tags: 'developer,automation,testing,web,frontend,backend',
 	},
 	{
 		title:    'Customer Service Representative',
@@ -130,7 +132,7 @@ export const experience = [
 			general: 'Worked face-to-face with the public to raise funds and awareness for UNICEF campaigns. Talked directly with people and acquired sales skills.',
 		},
 		included: false,
-		tags: 'nontech',
+		tags: 'developer,nontech',
 	},
 	{
 		title:    'Retail Salesworker',
@@ -163,7 +165,7 @@ export const projects = [
 		description:  'A modern, responsive portfolio website built with React and deployed on Netlify. It features dynamic content and a clean, user-friendly design to showcase projects and skills.',
 		technologies: 'React, JavaScript, HTML5, CSS3, Netlify',
 		included:     true,
-		tags:         'frontend,web',
+		tags:         'developer,frontend,web',
 	},
 ]
 
@@ -175,7 +177,7 @@ export const education = [
 		institution: 'University of Rijeka',
 		duration:    '',
 		included:    true,
-		tags:        'backend,frontend,python,web,automation,testing,nontech',
+		tags:        'developer,backend,frontend,python,web,automation,testing,nontech',
 	},
 	{
 		degree:      'International Baccalaureate (IB) Bilingual Diploma',
@@ -183,50 +185,51 @@ export const education = [
 		institution: 'Nørre Gymnasium',
 		duration:    '',
 		included:    true,
-		tags:        'backend,frontend,python,web,automation,testing,nontech',
+		tags:        'developer,backend,frontend,python,web,automation,testing,nontech',
 	},
 ]
 
 // ─── Skills ──────────────────────────────────────────────────────
 export const skills = {
 	'Programming': [
-		{ name: 'Python',      included: true,  tags: 'backend,python,automation,web' },
-		{ name: 'JavaScript',  included: true,  tags: 'frontend,web' },
-		{ name: 'Groovy',      included: false, tags: 'testing,automation' },
-		{ name: 'HTML/CSS',    included: true,  tags: 'frontend,web' },
-		{ name: 'SQL',         included: true,  tags: 'backend,python' },
+		{ name: 'Python',     				 			included: true,  tags: 'developer,backend,python,automation,web' },
+		{ name: 'JavaScript', 				 			included: true,  tags: 'developer,frontend,web' },
+		{ name: 'Groovy',     				 			included: false, tags: 'testing,automation' },
+		{ name: 'HTML/CSS',   				 			included: true,  tags: 'developer,frontend,web' },
+		{ name: 'SQL',        				 			included: true,  tags: 'developer,backend,python' },
 	],
 	'Frameworks & Libraries': [
-		{ name: 'React',          included: true,  tags: 'frontend,web' },
-		{ name: 'PySimpleGUI',    included: false, tags: 'python' },
-		{ name: 'Selenium',       included: true,  tags: 'automation,testing,python,web' },
-		{ name: 'BeautifulSoup',  included: false, tags: 'python,web,backend' },
-		{ name: 'Katalon Studio', included: false, tags: 'testing,automation' },
+		{ name: 'React',          					included: true,  tags: 'developer,frontend,web' },
+		{ name: 'PySimpleGUI',   				 		included: false, tags: 'developer,python' },
+		{ name: 'Selenium',      				 		included: true,  tags: 'developer,automation,testing,python,web' },
+		{ name: 'BeautifulSoup', 				 		included: false, tags: 'developer,python,web,backend' },
+		{ name: 'Katalon Studio', 			 		included: false, tags: 'developer,testing,automation' },
 	],
 	'Tools & Technologies': [
-		{ name: 'Git & GitHub',    included: true,  tags: 'frontend,backend,python,web,automation,testing' },
-		{ name: 'Web Scraping',    included: true,  tags: 'backend,python,automation,web' },
-		{ name: 'REST APIs',       included: true,  tags: 'frontend,backend,python,web' },
-		{ name: 'Chrome DevTools', included: true,  tags: 'frontend,testing,web' },
-		{ name: 'PostgreSQL',      included: false, tags: 'backend,python' },
+		{ name: 'Git & GitHub',   				 	included: true,  tags: 'developer,frontend,backend,python,web,automation,testing' },
+		{ name: 'Web Scraping',   				 	included: true,  tags: 'developer,backend,python,automation,web' },
+		{ name: 'REST APIs',      				 	included: true,  tags: 'developer,frontend,backend,python,web' },
+		{ name: 'Chrome DevTools', 			 	 	included: true,  tags: 'developer,frontend,testing,web' },
+		{ name: 'PostgreSQL',     				 	included: false, tags: 'developer,backend,python' },
 	],
 	'Personal': [
-		{ name: 'Teamwork',      included: false, tags: 'nontech' },
-		{ name: 'Communication', included: false, tags: 'nontech' },
-		{ name: 'Tutoring',      included: false, tags: 'nontech' },
-		{ name: 'Programming',   included: false, tags: 'nontech' },
-		{ name: 'Software',      included: false, tags: 'nontech' },
+		{ name: 'Customer satisfaction',    included: false, tags: 'developer,nontech' },
+		{ name: 'Sales', 										included: false, tags: 'developer,nontech' },
+		{ name: 'Tutoring',      						included: false, tags: 'developer,nontech' },
+		{ name: 'Lecturing',      					included: false, tags: 'developer,nontech' },
+		{ name: 'Programming',   						included: false, tags: 'nontech' },
+		{ name: 'Software',      						included: false, tags: 'nontech' },
 	],
 }
 
 // ─── Certifications ──────────────────────────────────────────────
 export const certifications = [
-	{ name: "DSC Europe '21 Certificate of Attendance",  included: true, tags: 'backend,frontend,python,web,automation,testing' },
-	{ name: 'React (Basic) Skill Assessment Completion', included: true, tags: 'frontend,web' },
+	{ name: "DSC Europe '21 Certificate of Attendance",  included: true, tags: 'developer,backend,frontend,python,web,automation,testing' },
+	{ name: 'React (Basic) Skill Assessment Completion', included: true, tags: 'developer,frontend,web' },
 ]
 
 // ─── Languages ───────────────────────────────────────────────────
 export const languages = [
-	{ name: 'Croatian', proficiency: 'Native', included: true, tags: 'frontend,backend,python,web,automation,testing,nontech' },
-	{ name: 'English',  proficiency: 'C2',     included: true, tags: 'frontend,backend,python,web,automation,testing,nontech' },
+	{ name: 'Croatian', proficiency: 'Native', included: true, tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
+	{ name: 'English',  proficiency: 'C2',     included: true, tags: 'developer,frontend,backend,python,web,automation,testing,nontech' },
 ]

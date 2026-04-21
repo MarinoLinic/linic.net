@@ -1,15 +1,17 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { CV_STYLES } from './cv/styles'
-import { CV_DATA, cvPic, TAG_LABELS, ESSENTIAL_TAGS, filterByTag, getDescription, getSummary } from './cv/data'
+import { CV_DATA, cvPic, TAG_LABELS, ESSENTIAL_TAGS, filterByTag, getDescription, getSummary } from './cv/cvdata'
 import type { ContactItem, SectionConfig, ExperienceItem, ProjectItem, EducationItem, SkillItem, LanguageItem } from './cv/types'
 
 // ─── Location colours ───────────────────────────────────────────
 const LOC_COLORS: Record<string, { dot: string; line: string; label: string }> = {
-	'Zagreb':     { dot: '#9bafc8', line: '#dce8f2', label: '#7a98b4' },
-	'Copenhagen': { dot: '#c49090', line: '#f0dada', label: '#a86060' },
-	'Czechia':    { dot: '#a5a895', line: '#dfdfd0', label: '#828472' },
-	'Rijeka':     { dot: '#88b4a5', line: '#d0e8de', label: '#5f9080' },
+	'Zagreb':      { dot: '#9bafc8', line: '#dce8f2', label: '#7a98b4' },
+	'Copenhagen':  { dot: '#c49090', line: '#f0dada', label: '#a86060' },
+	'Kopenhagen':  { dot: '#c49090', line: '#f0dada', label: '#a86060' },
+	'Czechia':     { dot: '#a5a895', line: '#dfdfd0', label: '#828472' },
+	'\u010ce\u0161ka':      { dot: '#a5a895', line: '#dfdfd0', label: '#828472' },
+	'Rijeka':      { dot: '#88b4a5', line: '#d0e8de', label: '#5f9080' },
 }
 const INST_LOC: Record<string, string> = {
 	'University of Rijeka': 'Rijeka',
@@ -36,13 +38,9 @@ const CV = () => {
 	useEffect(() => {
 		if (searchParams.get('tag')) return
 		const saved = localStorage.getItem('cv-preferred-tag')
-		if (saved) {
-			const params = new URLSearchParams(searchParams)
-			params.set('tag', saved)
-			setSearchParams(params, { replace: true })
-		} else {
-			setShowTagPopup(true)
-		}
+		const params = new URLSearchParams(searchParams)
+		params.set('tag', saved || 'developer')
+		setSearchParams(params, { replace: true })
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
