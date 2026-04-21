@@ -113,7 +113,7 @@ const Countdown = ({ date, title }: Props) => {
 	}, [date])
 
 	return (
-		<div className="flex items-center justify-center h-[80vh] md:h-screen">
+		<div className="flex items-center justify-center min-h-dvh">
 			<BackButton />
 			<div>
 				<Clock
