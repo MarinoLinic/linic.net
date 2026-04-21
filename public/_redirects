@@ -1,2 +1,5 @@
-/*    /index.html   200
+# 1. Force the netlify subdomain to your custom domain
 https://linic.netlify.app/* https://www.linic.net/:splat  301!
+
+# 2. Handle your Single Page Application (SPA) routing
+/* /index.html  200
