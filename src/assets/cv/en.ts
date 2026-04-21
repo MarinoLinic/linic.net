@@ -35,12 +35,23 @@ export const sections = [
 // ─── Experience ──────────────────────────────────────────────────
 export const experience = [
 	{
+		title:    "Escape Room 'Scare Actor' & 'Gamemaster'",
+		company:  'Quest Room Zagreb',
+		duration: 'November 2025 - Present',
+		location: 'Zagreb, Croatia',
+		descriptions: {
+			general: 'Scare actor and gamemaster for a horror-themed escape room, running games for children and adults across 10 different scenarios. Also handled some administrative tasks. I had a busy working schedule and acquired a good work ethic.',
+		},
+		included: false,
+		tags: 'nontech',
+	},
+	{
 		title:    'Career Break',
 		company:  '',
 		duration: 'February 2025 - Present',
 		location: 'Zagreb, Croatia',
 		descriptions: {
-			general:  'Teaching and looking after child during morning hours. I needed to take a career break for private (family) reasons. In the evenings, I was a scare actor, gamemaster, and administrator in an escape room. I had a busy working schedule and acquired a good work ethic.',
+			general:  'Looking after a child in a private household during morning hours. Took a career break for personal (family) reasons.',
 		},
 		included: true,
 		tags: 'backend,frontend,python,web,nontech',
@@ -51,10 +62,7 @@ export const experience = [
 		duration: 'September 2024 - December 2024',
 		location: 'Copenhagen, Denmark',
 		descriptions: {
-			general:    'Wrote and maintained scraping scripts to collect transport data from various websites. Work included reverse-engineering hidden APIs, filtering data, scheduling tasks, and fixing bugs.',
-			backend:    'Built data pipelines to extract transport data via APIs and direct scraping. Handled data filtering, database insertion, and automated scheduling.',
-			python:     'Used Python with Selenium and BeautifulSoup for web scraping, data processing, and automation.',
-			automation: 'Built an automated ticket purchasing system with Selenium and set up scheduled pipelines for regular data collection.',
+			general:    'Wrote and maintained scraping scripts to automate and collect transport data from various websites. Work included reverse-engineering hidden APIs, filtering data, scheduling tasks, and fixing bugs.',
 		},
 		included: true,
 		tags: 'backend,python,automation,web',
@@ -66,12 +74,31 @@ export const experience = [
 		location: 'Copenhagen, Denmark',
 		descriptions: {
 			general:  'Built a Python GUI application for psychological assessments, helped manage backend infrastructure, and contributed to a React-based website.',
-			backend:  'Managed the infrastructure for a psychological evaluation platform, keeping it stable and running smoothly.',
-			frontend: 'Built and maintained components for a client-facing website in JavaScript and React.',
-			python:   'Built a GUI application in PySimpleGUI with a custom algorithm for tracking-based psychological assessment.',
 		},
 		included: true,
 		tags: 'backend,frontend,python,web',
+	},
+	{
+		title:    'Housekeeper',
+		company:  'Private',
+		duration: 'June 2023 - August 2023',
+		location: 'Kutná Hora, Czechia',
+		descriptions: {
+			general: 'Live-in housekeeper for a private household in Czechia over the summer.',
+		},
+		included: false,
+		tags: 'nontech',
+	},
+	{
+		title:    'Extra Actor',
+		company:  '',
+		duration: 'May 2023',
+		location: 'Rijeka, Croatia',
+		descriptions: {
+			general: 'Acted as an extra for a British TV series shooting in Croatia.',
+		},
+		included: false,
+		tags: 'nontech',
 	},
 	{
 		title:    'Testing Automation Intern',
@@ -79,21 +106,18 @@ export const experience = [
 		duration: 'July 2022 - August 2022',
 		location: 'Rijeka, Croatia',
 		descriptions: {
-			general:    'Wrote around a dozen automated browser tests using Katalon Studio (Selenium-based) for a retail application used by thousands of stores.',
-			automation: 'Wrote browser automation tests with Selenium and Katalon Studio, improving QA coverage for a large retail application.',
-			testing:    'Wrote and maintained automated test scripts in Groovy for a large retail application.',
+			general:    'Wrote around a dozen automated browser tests using Katalon Studio (Selenium) for a retail application used by thousands of stores.',
 		},
 		included: true,
 		tags: 'automation,testing,web',
 	},
 	{
-		title:    'Customer Support Agent',
+		title:    'Customer Service Representative',
 		company:  'Hrvatski Telekom',
 		duration: 'June 2021 - September 2021',
 		location: 'Rijeka, Croatia',
 		descriptions: {
-			general: 'Provided customer support as a call centre agent for bonbon.',
-			nontech: 'Provided customer support as a call centre agent for bonbon.',
+			general: 'Worked as a call centre agent for bonbon, a Croatian mobile virtual network operator.',
 		},
 		included: false,
 		tags: 'nontech',
@@ -104,8 +128,29 @@ export const experience = [
 		duration: 'June 2020 - February 2022',
 		location: 'Rijeka, Croatia',
 		descriptions: {
-			general: 'Worked face-to-face with the public to raise funds and awareness for UNICEF campaigns.',
-			nontech: 'Worked face-to-face with the public to raise funds and awareness for UNICEF campaigns.',
+			general: 'Worked face-to-face with the public to raise funds and awareness for UNICEF campaigns. Talked directly with people and acquired sales skills.',
+		},
+		included: false,
+		tags: 'nontech',
+	},
+	{
+		title:    'Retail Salesworker',
+		company:  'Lidl Hrvatska',
+		duration: 'February 2021 - May 2021',
+		location: 'Rijeka, Croatia',
+		descriptions: {
+			general: 'Worked part-time as a retail salesworker at Lidl.',
+		},
+		included: false,
+		tags: 'nontech',
+	},
+	{
+		title:    'Camera Operator',
+		company:  'Hope Channel Croatia',
+		duration: 'January 2021 - February 2021',
+		location: 'Rijeka, Croatia',
+		descriptions: {
+			general: 'Member of the recording crew for a short TV series.',
 		},
 		included: false,
 		tags: 'nontech',

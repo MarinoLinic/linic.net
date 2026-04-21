@@ -35,12 +35,23 @@ export const sections = [
 // ─── Experience ──────────────────────────────────────────────────
 export const experience = [
 	{
+		title:    'Glumac i gamemaster u horror escape roomu',
+		company:  'Quest Room Zagreb',
+		duration: 'Studeni 2025. - danas',
+		location: 'Zagreb, Hrvatska',
+		descriptions: {
+			general: 'Vodio sam i glumio u igrama za djecu i odrasle kroz 10 različitih scenarija. Uz to sam obavljao administrativne poslove. Imao sam ispunjen raspored i stekao dobru radnu etiku.',
+		},
+		included: false,
+		tags: 'nontech',
+	},
+	{
 		title:    'Pauza u karijeri',
 		company:  '',
 		duration: 'Veljača 2025. - danas',
 		location: 'Zagreb, Hrvatska',
 		descriptions: {
-			general:  'Briga o djetetu u jutarnjim satima. Uzeo sam pauzu u karijeri zbog privatnih (obiteljskih) razloga. Navečer sam radio kao glumac strave, gamemaster i administrator u sobi bijega. Imao sam ispunjen raspored i stekao dobru radnu etiku.',
+			general:  'Briga o djetetu u jutarnjim satima. Uzeo sam pauzu u karijeri zbog osobnih (obiteljskih) razloga.',
 		},
 		included: true,
 		tags: 'backend,frontend,python,web,nontech',
@@ -51,10 +62,7 @@ export const experience = [
 		duration: 'Rujan 2024. - Prosinac 2024.',
 		location: 'Kopenhagen, Danska',
 		descriptions: {
-			general:    'Pisao i održavao scraping skripte za prikupljanje transportnih podataka s raznih web stranica. Posao je uključivao pronalaženje skrivenih API-ja, filtriranje podataka, zakazivanje zadataka i ispravljanje grešaka.',
-			backend:    'Gradio podatkovne pajplajnove za izdvajanje transportnih podataka putem API-ja i direktnog scrapinga. Upravljao filtriranjem podataka, unosom u baze i automatiziranim rasporedom.',
-			python:     'Koristio Python sa Seleniumom i BeautifulSoupom za web scraping, obradu podataka i automatizaciju.',
-			automation: 'Izgradio automatizirani sustav za kupnju karata pomoću Seleniuma i postavio planirane pajplajnove za redovito prikupljanje podataka.',
+			general:    'Pisao sam i održavao scraping skripte za automatizirano prikupljanje transportnih podataka s raznih web stranica. Posao je uključivao pronalaženje skrivenih API-ja, filtriranje podataka, zakazivanje zadataka i ispravljanje bugova.',
 		},
 		included: true,
 		tags: 'backend,python,automation,web',
@@ -65,13 +73,32 @@ export const experience = [
 		duration: 'Ožujak 2024. - Prosinac 2024.',
 		location: 'Kopenhagen, Danska',
 		descriptions: {
-			general:  'Razvio Python GUI aplikaciju za psihološke procjene, pomagao u upravljanju backend infrastrukturom i radio na web stranici temeljenoj na Reactu.',
-			backend:  'Upravljao infrastrukturom za platformu za psihološke evaluacije i brinuo o njenoj stabilnosti i dostupnosti.',
-			frontend: 'Gradio i održavao komponente za klijentsku web stranicu u JavaScriptu i Reactu.',
-			python:   'Izgradio GUI aplikaciju u PySimpleGUI-u s prilagođenim algoritmom za procjenu praćenja za psihološke svrhe.',
+			general:  'Razvio sam Python GUI aplikaciju za psihološku evaluaciju, pomagao sam u upravljanju backend infrastrukturom i radio sam na web stranici temeljenoj na Reactu.',
 		},
 		included: true,
 		tags: 'backend,frontend,python,web',
+	},
+	{
+		title:    'Kućni pomoćnik',
+		company:  'Privatno',
+		duration: 'Lipanj 2023. - Kolovoz 2023.',
+		location: 'Kutná Hora, Češka',
+		descriptions: {
+			general: 'Živio sam i radio kao kućni pomoćnik u privatnom domaćinstvu u Češkoj tijekom ljeta.',
+		},
+		included: false,
+		tags: 'nontech',
+	},
+	{
+		title:    'Statist',
+		company:  '',
+		duration: 'Svibanj 2023.',
+		location: 'Rijeka, Hrvatska',
+		descriptions: {
+			general: 'Radio sam kao statist na snimanju britanske TV serije u Rijeci.',
+		},
+		included: false,
+		tags: 'nontech',
 	},
 	{
 		title:    'Pripravnik za automatizaciju testiranja',
@@ -79,9 +106,7 @@ export const experience = [
 		duration: 'Srpanj 2022. - Kolovoz 2022.',
 		location: 'Rijeka, Hrvatska',
 		descriptions: {
-			general:    'Napisao desetak automatiziranih testova preglednika koristeći Katalon Studio (temeljen na Seleniumu) za maloprodajnu aplikaciju koju koriste tisuće trgovina.',
-			automation: 'Pisao testove za automatizaciju preglednika sa Seleniumom i Katalon Studiom, poboljšavajući QA pokrivenost za veliku maloprodajnu aplikaciju.',
-			testing:    'Pisao i održavao automatizirane testne skripte u Groovyju za veliku maloprodajnu aplikaciju.',
+			general:    'Napisao sam desetak automatiziranih testova koristeći Katalon Studio (Selenium) za aplikaciju koju koriste tisuće trgovina.',
 		},
 		included: true,
 		tags: 'automation,testing,web',
@@ -92,8 +117,7 @@ export const experience = [
 		duration: 'Lipanj 2021. - Rujan 2021.',
 		location: 'Rijeka, Hrvatska',
 		descriptions: {
-			general: 'Pružao korisničku podršku kao agent u pozivnom centru za bonbon.',
-			nontech: 'Pružao sam korisničku podršku kao agent u pozivnom centru za bonbon.',
+			general: 'Radio sam kao agent u pozivnom centru za bonbon.',
 		},
 		included: false,
 		tags: 'nontech',
@@ -104,8 +128,29 @@ export const experience = [
 		duration: 'Lipanj 2020. - Veljača 2022.',
 		location: 'Rijeka, Hrvatska',
 		descriptions: {
-			general: 'Radio s javnošću na prikupljanju sredstava i podizanju svijesti za UNICEF-ove kampanje.',
-			nontech: 'Radio s javnošću na prikupljanju sredstava i podizanju svijesti za UNICEF-ove kampanje.',
+			general: 'Radio sam s javnošću na prikupljanju sredstava i podizanju svijesti o UNICEF-ovim kampanjama. Pričao sam direktno s ljudima i dobio prodajne vještine.',
+		},
+		included: false,
+		tags: 'nontech',
+	},
+	{
+		title:    'Prodavač',
+		company:  'Lidl Hrvatska',
+		duration: 'Veljača 2021. - Svibanj 2021.',
+		location: 'Rijeka, Hrvatska',
+		descriptions: {
+			general: 'Radio part-time kao prodavač u Lidlu.',
+		},
+		included: false,
+		tags: 'nontech',
+	},
+	{
+		title:    'Snimatelj',
+		company:  'Hope Channel Croatia',
+		duration: 'Siječanj 2021. - Veljača 2021.',
+		location: 'Rijeka, Hrvatska',
+		descriptions: {
+			general: 'Član snimateljske ekipe za kratku TV seriju u Hope Channel Croatia.',
 		},
 		included: false,
 		tags: 'nontech',
