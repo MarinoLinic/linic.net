@@ -69,7 +69,7 @@ const Home = () => {
 						src="ml.jpg"
 						alt="Marino Linić"
 						onLoad={() => setLoaded(true)}
-						className="w-32 h-32 rounded-2xl grayscale hover:grayscale-0 transition-all duration-500 hover:shadow-[0_0_28px_rgba(124,112,255,0.4)]"
+						className="w-32 h-32 rounded-2xl grayscale hover:grayscale-0 transition-all hover:shadow-[0_0_28px_rgba(124,112,255,0.4)]"
 					/>
 				</div>
 
