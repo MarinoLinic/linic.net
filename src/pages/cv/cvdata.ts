@@ -58,11 +58,11 @@ export const CV_DATA: Record<string, { sections: SectionConfig[]; personalInfo: 
 	en: {
 		sections:     reorderSections(en.sections) as SectionConfig[],
 		personalInfo: en.personalInfo as unknown as PersonalInfo,
-		dataMap: { experience: en.experience, projects: en.projects, education: en.education, skills: en.skills, certifications: en.certifications, languages: en.languages },
+		dataMap: { experience: en.experience, lectures: en.lectures, projects: en.projects, education: en.education, skills: en.skills, certifications: en.certifications, languages: en.languages },
 	},
 	hr: {
 		sections:     reorderSections(hr.sections) as SectionConfig[],
 		personalInfo: hr.personalInfo as unknown as PersonalInfo,
-		dataMap: { experience: hr.experience, projects: hr.projects, education: hr.education, skills: hr.skills, certifications: hr.certifications, languages: hr.languages },
+		dataMap: { experience: hr.experience, lectures: hr.lectures, projects: hr.projects, education: hr.education, skills: hr.skills, certifications: hr.certifications, languages: hr.languages },
 	},
 }

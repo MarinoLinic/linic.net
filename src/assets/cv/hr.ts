@@ -25,8 +25,9 @@ export const personalInfo = {
 export const sections = [
 	{ id: 'summary',        title: 'Sažetak' },
 	{ id: 'experience',     title: 'Radno iskustvo' },
-	{ id: 'projects',       title: 'Projekti' },
 	{ id: 'education',      title: 'Obrazovanje' },
+	{ id: 'lectures',       title: 'Predavanja' },
+	{ id: 'projects',       title: 'Projekti' },
 	{ id: 'skills',         title: 'Vještine' },
 	{ id: 'certifications', title: 'Certifikati' },
 	{ id: 'languages',      title: 'Jezici' },
@@ -226,6 +227,30 @@ export const skills = {
 export const certifications = [
 	{ name: 'Certifikat o sudjelovanju - DSC Europe \'21',          included: true, tags: 'developer,backend,frontend,python,web,automation,testing' },
 	{ name: 'Potvrda o završenoj procjeni vještina - React (osnovno)', included: true, tags: 'developer,frontend,web' },
+]
+
+// ─── Lectures ────────────────────────────────────────────────────
+export const lectures = [
+	{
+		title:    'Uvod u umjetnu inteligenciju',
+		venue:    'Tehnički muzej "Nikola Tesla"',
+		date:     'Prosinac 2025.',
+		location: 'Zagreb, Hrvatska',
+		description: 'Javno predavanje o osnovama umjetne inteligencije.',
+		url:      'https://www.youtube.com/watch?v=W59GgEU1lgw',
+		included: true,
+		tags:     'developer,frontend,backend,python,web,automation,testing,nontech',
+	},
+	{
+		title:    'Od kamenog oruđa do umjetne inteligencije: ključni izumi koji su oblikovali svijet',
+		venue:    'Tehnički muzej "Nikola Tesla"',
+		date:     'Travanj 2025.',
+		location: 'Zagreb, Hrvatska',
+		description: 'Povijesno predavanje o tehnološkom napretku od kamenog oruđa do umjetne inteligencije.',
+		url:      'https://www.youtube.com/watch?v=ABaCz3CZvSw',
+		included: true,
+		tags:     'developer,nontech',
+	},
 ]
 
 // ─── Languages ───────────────────────────────────────────────────

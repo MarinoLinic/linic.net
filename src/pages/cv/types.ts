@@ -19,3 +19,13 @@ export interface EducationItem {
 }
 export interface SkillItem { name: string; included: boolean; tags: string }
 export interface LanguageItem { name: string; proficiency: string; included: boolean; tags: string }
+export interface LectureItem {
+	title: string
+	venue: string
+	date: string
+	location: string
+	description?: string
+	url?: string
+	included: boolean
+	tags: string
+}

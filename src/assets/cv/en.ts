@@ -25,8 +25,9 @@ export const personalInfo = {
 export const sections = [
 	{ id: 'summary',        title: 'Summary' },
 	{ id: 'experience',     title: 'Experience' },
-	{ id: 'projects',       title: 'Projects' },
 	{ id: 'education',      title: 'Education' },
+	{ id: 'lectures',       title: 'Lectures' },
+	{ id: 'projects',       title: 'Projects' },
 	{ id: 'skills',         title: 'Skills' },
 	{ id: 'certifications', title: 'Certifications' },
 	{ id: 'languages',      title: 'Languages' },
@@ -226,6 +227,30 @@ export const skills = {
 export const certifications = [
 	{ name: "DSC Europe '21 Certificate of Attendance",  included: true, tags: 'developer,backend,frontend,python,web,automation,testing' },
 	{ name: 'React (Basic) Skill Assessment Completion', included: true, tags: 'developer,frontend,web' },
+]
+
+// ─── Lectures ────────────────────────────────────────────────────
+export const lectures = [
+	{
+		title:    'Introduction to Artificial Intelligence',
+		venue:    'Nikola Tesla Technical Museum',
+		date:     'December 2025',
+		location: 'Zagreb, Croatia',
+		description: 'Public lecture covering AI fundamentals.',
+		url:      'https://www.youtube.com/watch?v=W59GgEU1lgw',
+		included: true,
+		tags:     'developer,frontend,backend,python,web,automation,testing,nontech',
+	},
+	{
+		title:    'Key Inventions That Shaped the World',
+		venue:    'Nikola Tesla Technical Museum',
+		date:     'April 2025',
+		location: 'Zagreb, Croatia',
+		description: 'Historical lecture tracing technological progress from stone tools to artificial intelligence.',
+		url:      'https://www.youtube.com/watch?v=ABaCz3CZvSw',
+		included: true,
+		tags:     'developer,nontech',
+	},
 ]
 
 // ─── Languages ───────────────────────────────────────────────────

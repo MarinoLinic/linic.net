@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { CV_STYLES } from './cv/styles'
 import { CV_DATA, cvPic, TAG_LABELS, ESSENTIAL_TAGS, filterByTag, getDescription, getSummary } from './cv/cvdata'
-import type { ContactItem, SectionConfig, ExperienceItem, ProjectItem, EducationItem, SkillItem, LanguageItem } from './cv/types'
+import type { ContactItem, SectionConfig, ExperienceItem, ProjectItem, EducationItem, SkillItem, LanguageItem, LectureItem } from './cv/types'
 import { usePageSEO } from '../hooks/usePageSEO'
 
 // ─── Location colours ───────────────────────────────────────────
@@ -211,6 +211,33 @@ const CV = () => {
 						{items.map((l, i) => <li key={i}><strong>{l.name}:</strong> {l.proficiency}</li>)}
 					</ul>
 				)
+				break
+			}
+			case 'lectures': {
+				const items = filterByTag<LectureItem>(data, tag)
+				if (items.length) content = items.map((lecture, i) => {
+					const lc = getLocColor(lecture.location)
+					return (
+						<div key={i} className="cv-lecture-item" style={lc ? { '--cv-timeline-dot': lc.dot, '--cv-timeline-line': lc.line } as React.CSSProperties : {}}>
+							<div className="cv-item-header">
+								<div className="cv-item-title">{lecture.title}</div>
+								<div className="cv-item-subtitle">{lecture.venue}</div>
+							</div>
+							<div className="cv-item-meta">
+								<span>{lecture.date}</span>
+								{' | '}
+								<span className="cv-item-location" style={lc ? { color: lc.label } : {}}>{lecture.location}</span>
+								{lecture.url && (
+									<>
+										{' | '}
+										<a href={lecture.url} target="_blank" rel="noreferrer" className="cv-lecture-link">youtu.be/{lecture.url.split('v=')[1]}</a>
+									</>
+								)}
+							</div>
+							{lecture.description && <p className="cv-description">{lecture.description}</p>}
+						</div>
+					)
+				})
 				break
 			}
 		}

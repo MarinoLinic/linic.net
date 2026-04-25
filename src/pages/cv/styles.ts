@@ -296,6 +296,58 @@ export const CV_STYLES = `
 }
 .cv-technologies strong { color: var(--cv-primary); font-weight: 600; }
 
+/* Lectures */
+.cv-lecture-item {
+	position: relative;
+	padding-left: 22px;
+	padding-bottom: 18px;
+	break-inside: avoid;
+	page-break-inside: avoid;
+}
+.cv-lecture-item:not(:last-child) {
+	border-left: 1px solid var(--cv-timeline-line, var(--cv-border));
+}
+.cv-lecture-item:last-child { padding-bottom: 0; }
+.cv-lecture-item:last-child::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 11px;
+	border-left: 1px solid var(--cv-timeline-line, var(--cv-border));
+}
+.cv-section-title + .cv-lecture-item {
+	padding-top: 14px;
+	border-left: 1px solid var(--cv-timeline-line, var(--cv-border));
+}
+.cv-section-title + .cv-lecture-item:last-child {
+	border-left: none;
+}
+.cv-section-title + .cv-lecture-item::before {
+	top: 21px;
+}
+.cv-lecture-item::before {
+	content: '';
+	width: 7px;
+	height: 7px;
+	background: var(--cv-timeline-dot, var(--cv-dot));
+	border: 2px solid white;
+	border-radius: 50%;
+	position: absolute;
+	left: -4px;
+	top: 7px;
+	box-shadow: 0 0 0 1px var(--cv-border-accent);
+}
+.cv-lecture-link {
+	font-family: 'JetBrains Mono', monospace;
+	color: var(--cv-text-muted);
+	text-decoration: none;
+}
+.cv-lecture-link:hover {
+	color: var(--cv-link-hover);
+	text-decoration: underline;
+}
+
 /* Skills */
 .cv-skills-grid {
 	display: grid;
@@ -566,7 +618,8 @@ export const CV_STYLES = `
 	}
 	.cv-experience-item,
 	.cv-education-item,
-	.cv-project-item {
+	.cv-project-item,
+	.cv-lecture-item {
 		break-inside: avoid;
 		page-break-inside: avoid;
 	}
