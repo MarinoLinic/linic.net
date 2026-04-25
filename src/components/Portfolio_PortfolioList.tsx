@@ -86,10 +86,21 @@ const PortfolioImage = ({
 	)
 }
 
-const LinkChip = ({ label, url, internal }: PortfolioLink) =>
-	internal
-		? <Link to={url} className="text-sm text-muted border border-white/10 rounded-lg px-3 py-1.5 hover:border-tertiary/50 hover:text-text transition-colors">{label} →</Link>
-		: <a href={url} className="text-sm text-muted border border-white/10 rounded-lg px-3 py-1.5 hover:border-tertiary/50 hover:text-text transition-colors">{label} ↗</a>
+const LinkChip = ({ label, url, internal }: PortfolioLink) => {
+	const isPrimary = ['try it', 'play it', 'live site'].includes(label.toLowerCase())
+	const isGitHub = label.toLowerCase() === 'github'
+
+	const baseClasses = "text-sm rounded-lg px-3 py-1.5 transition-all duration-200 font-medium"
+	const primaryClasses = "bg-accent/20 text-accent border border-accent/40 hover:bg-accent/30 hover:border-accent/60"
+	const gitHubClasses = "bg-secondary/15 text-secondary border border-secondary/30 hover:bg-secondary/25 hover:border-secondary/50"
+	const defaultClasses = "bg-primary/40 text-text border border-white/15 hover:bg-primary/60 hover:border-white/30"
+
+	const classes = `${baseClasses} ${isPrimary ? primaryClasses : isGitHub ? gitHubClasses : defaultClasses}`
+
+	return internal
+		? <Link to={url} className={classes}>{label} →</Link>
+		: <a href={url} className={classes}>{label} ↗</a>
+}
 
 const TechTag = ({ t }: { t: string }) => (
 	<span className="text-xs bg-primary/50 text-tertiary/80 px-2.5 py-1 rounded-full font-mono border border-white/5">{t}</span>
@@ -97,11 +108,14 @@ const TechTag = ({ t }: { t: string }) => (
 
 const toYearNumber = (year: string) => Number.parseInt(year, 10) || 0
 
+const isPreAI = (year: string) => toYearNumber(year) <= 2023
+
 const ProjectCard = ({ title, year, tech, description, image, image2, links, note, wip, priorityImage = false }: PortfolioProject & { priorityImage?: boolean }) => (
 	<article className="bg-surface border border-white/5 rounded-2xl p-6 md:p-8 space-y-5" style={cardRenderStyle}>
 		<div className="flex flex-wrap items-baseline gap-3">
 			<span className="text-xs font-mono text-accent bg-accent/10 border border-accent/20 px-2.5 py-0.5 rounded-full">{year}</span>
 			{wip && <span className="text-xs font-mono text-secondary bg-secondary/10 border border-secondary/20 px-2.5 py-0.5 rounded-full">in progress</span>}
+			{isPreAI(year) && <span className="text-xs font-mono text-amber-300 bg-amber-400/10 border border-amber-400/20 px-2.5 py-0.5 rounded-full">Pre-AI</span>}
 			<h3 className="text-text">{title}</h3>
 		</div>
 		<div className="flex flex-wrap gap-2">

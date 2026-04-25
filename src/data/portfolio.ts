@@ -44,7 +44,7 @@ export interface PortfolioPythonScript {
 export const PORTFOLIO_PROJECT_SECTIONS: PortfolioProjectSection[] = [
 	{
 		id: 'featured',
-		eyebrow: 'Top tier',
+		eyebrow: 'Signature',
 		title: 'Featured Projects',
 		description: 'Most representative work for product thinking, implementation quality, and technical depth.'
 	},
@@ -72,7 +72,7 @@ export const PORTFOLIO_COPY = {
 		title: 'Smaller Works & Experiments'
 	},
 	pythonScripts: {
-		eyebrow: 'ongoing',
+		eyebrow: 'utility',
 		title: 'Python Scripts',
 		description: 'I love making small Python scripts to solve problems and automate tedious tasks.'
 	}
