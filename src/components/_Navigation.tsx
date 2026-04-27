@@ -14,6 +14,7 @@ const navItems: NavItem[] = [
 		{ title: 'Coins', url: '/coins' }
 	]},
 	{ type: 'group', title: 'Projects', items: [
+		{ title: 'impulsenote.com', url: 'https://www.impulsenote.com/projects' },
 		{ title: 'Countdown', url: '/countdown' },
 		{ title: 'Time visualizer', url: '/time-visualization' },
 		{ title: 'Income tax calculator', url: '/income-tax/hr' },
